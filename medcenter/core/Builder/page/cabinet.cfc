@@ -1,6 +1,6 @@
 component attributeName='cabinet' {
 
-	// для виджетов
+	// РґР»СЏ РІРёРґР¶РµС‚РѕРІ
 	request.factoryWidget=createObject('component','core.builder.factoryWidget').Init();
 
 	instance.url.section = request.CRequest.getUrl('section');
@@ -8,8 +8,8 @@ component attributeName='cabinet' {
 
 	function Init() {
 		// -------------------------------------------------------------------------
-		instance.title='Кабинет';
-		instance.description='Кабинет врача';
+		instance.title='РљР°Р±РёРЅРµС‚';
+		instance.description='РљР°Р±РёРЅРµС‚ РІСЂР°С‡Р°';
 		instance.keywords='cab keywords';
 
 		widget.meta=request.factoryWidget.GetWidget('meta').Init(title=instance.title,description=instance.description,keywords=instance.keywords);

@@ -1,10 +1,10 @@
 component attributeName='CRouter' {
 
-	// псевдо конструктор
-	// забераем настройки рутера pageList и pageDefault
-	instance.settings = request.factoryService.getService('CSettings').getSettings('router'); // структура
-	instance.CFireWall = request.factoryService.getService('CFireWall'); // объект
-	instance.CRequest = request.CRequest; // объект
+	// РїСЃРµРІРґРѕ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
+	// Р·Р°Р±РµСЂР°РµРј РЅР°СЃС‚СЂРѕР№РєРё СЂСѓС‚РµСЂР° pageList Рё pageDefault
+	instance.settings = request.factoryService.getService('CSettings').getSettings('router'); // СЃС‚СЂСѓРєС‚СѓСЂР°
+	instance.CFireWall = request.factoryService.getService('CFireWall'); // РѕР±СЉРµРєС‚
+	instance.CRequest = request.CRequest; // РѕР±СЉРµРєС‚
 	instance.redirect = request.factoryService.GetService('redirector');
 
 	function Init() {
@@ -36,24 +36,24 @@ component attributeName='CRouter' {
 			}
 		}else{
 			if ( request.CRequest.CheckUrl() ) {
-				// нужно дописать проверку состояния фаервола и если состояние ok то не пускать на страници captcha - ban - deny
-				// нужно открыть доступ к страницам captcha, ban, deny !!
+				// РЅСѓР¶РЅРѕ РґРѕРїРёСЃР°С‚СЊ РїСЂРѕРІРµСЂРєСѓ СЃРѕСЃС‚РѕСЏРЅРёСЏ С„Р°РµСЂРІРѕР»Р° Рё РµСЃР»Рё СЃРѕСЃС‚РѕСЏРЅРёРµ ok С‚Рѕ РЅРµ РїСѓСЃРєР°С‚СЊ РЅР° СЃС‚СЂР°РЅРёС†Рё captcha - ban - deny
+				// РЅСѓР¶РЅРѕ РѕС‚РєСЂС‹С‚СЊ РґРѕСЃС‚СѓРї Рє СЃС‚СЂР°РЅРёС†Р°Рј captcha, ban, deny !!
 				if ( ListFind('captcha,ban,deny',instance.CRequest.GetUrl('page')) AND ListFind('user,robot', fwRole) ) {
-					instance.redirect.redirect('#request.CRequest.updateURL(false,"/?page=warning")#','&message=#UrlEncodedFormat("Доступ к странице #page# закрыт.")#');
+					instance.redirect.redirect('#request.CRequest.updateURL(false,"/?page=warning")#','&message=#UrlEncodedFormat("Р”РѕСЃС‚СѓРї Рє СЃС‚СЂР°РЅРёС†Рµ #page# Р·Р°РєСЂС‹С‚.")#');
 				}
 
 
 				if (request.CCGI.getCGI('QUERY_STRING')=='') {
-					// это если обратиться к домену digann.ru тогда query_string пустой и надо взять default-home
+					// СЌС‚Рѕ РµСЃР»Рё РѕР±СЂР°С‚РёС‚СЊСЃСЏ Рє РґРѕРјРµРЅСѓ digann.ru С‚РѕРіРґР° query_string РїСѓСЃС‚РѕР№ Рё РЅР°РґРѕ РІР·СЏС‚СЊ default-home
 					pageBuild=instance.settings.pageDefault;  // default home
 				} else {
-					pageBuild=instance.CRequest.GetUrl('page'); // если в урл нет page то false
+					pageBuild=instance.CRequest.GetUrl('page'); // РµСЃР»Рё РІ СѓСЂР» РЅРµС‚ page С‚Рѕ false
 					if (pageBuild!=false and !ListFind(instance.settings.pageList,pageBuild)) {
-						// вызывеам логгер и указываем причину
-						// сюда попадают не существующие страници
-						request.factoryService.getService('Clog').AddLogging(ssection='CRouter', type='event', description='Указанной страници не существует');
-						// вызываем редирект и записываем в него куда и причину
-						instance.redirect.redirect('#request.CRequest.updateURL(false,"/?page=warning")#','message=#UrlEncodedFormat("Указанной страници #page# не существует")#');
+						// РІС‹Р·С‹РІРµР°Рј Р»РѕРіРіРµСЂ Рё СѓРєР°Р·С‹РІР°РµРј РїСЂРёС‡РёРЅСѓ
+						// СЃСЋРґР° РїРѕРїР°РґР°СЋС‚ РЅРµ СЃСѓС‰РµСЃС‚РІСѓСЋС‰РёРµ СЃС‚СЂР°РЅРёС†Рё
+						request.factoryService.getService('Clog').AddLogging(ssection='CRouter', type='event', description='РЈРєР°Р·Р°РЅРЅРѕР№ СЃС‚СЂР°РЅРёС†Рё РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚');
+						// РІС‹Р·С‹РІР°РµРј СЂРµРґРёСЂРµРєС‚ Рё Р·Р°РїРёСЃС‹РІР°РµРј РІ РЅРµРіРѕ РєСѓРґР° Рё РїСЂРёС‡РёРЅСѓ
+						instance.redirect.redirect('#request.CRequest.updateURL(false,"/?page=warning")#','message=#UrlEncodedFormat("РЈРєР°Р·Р°РЅРЅРѕР№ СЃС‚СЂР°РЅРёС†Рё #page# РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚")#');
 					}
 				}
 			
@@ -62,14 +62,14 @@ component attributeName='CRouter' {
 					render=createObject('component','Builder.page.#pageBuild#').init();
 					render.Render();
 				} else {
-					// вызывеам логгер и указываем причину
-					request.factoryService.getService('Clog').AddLogging(ssection='CRouter', type='event', description='Доступ к данной странице закрыт');
-					// вызываем редирект и записываем в него куда и причину
-					instance.redirect.redirect('#request.CRequest.updateURL(false,"/?page=warning")#','message=#UrlEncodedFormat("Доступ к странице #page# закрыт")#');
+					// РІС‹Р·С‹РІРµР°Рј Р»РѕРіРіРµСЂ Рё СѓРєР°Р·С‹РІР°РµРј РїСЂРёС‡РёРЅСѓ
+					request.factoryService.getService('Clog').AddLogging(ssection='CRouter', type='event', description='Р”РѕСЃС‚СѓРї Рє РґР°РЅРЅРѕР№ СЃС‚СЂР°РЅРёС†Рµ Р·Р°РєСЂС‹С‚');
+					// РІС‹Р·С‹РІР°РµРј СЂРµРґРёСЂРµРєС‚ Рё Р·Р°РїРёСЃС‹РІР°РµРј РІ РЅРµРіРѕ РєСѓРґР° Рё РїСЂРёС‡РёРЅСѓ
+					instance.redirect.redirect('#request.CRequest.updateURL(false,"/?page=warning")#','message=#UrlEncodedFormat("Р”РѕСЃС‚СѓРї Рє СЃС‚СЂР°РЅРёС†Рµ #page# Р·Р°РєСЂС‹С‚")#');
 				}
 			}else{
 				//
-				instance.redirect.redirect('#request.CRequest.updateURL(false,"/?page=warning")#','&message=#UrlEncodedFormat("Недопустимые символы в URL")#');
+				instance.redirect.redirect('#request.CRequest.updateURL(false,"/?page=warning")#','&message=#UrlEncodedFormat("РќРµРґРѕРїСѓСЃС‚РёРјС‹Рµ СЃРёРјРІРѕР»С‹ РІ URL")#');
 			}
 
 		}

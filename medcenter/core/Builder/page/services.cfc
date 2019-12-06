@@ -1,6 +1,6 @@
 component attributeName='service list' {
 
-	// для виджетов
+	// РґР»СЏ РІРёРґР¶РµС‚РѕРІ
 	request.factoryWidget=createObject('component','core.builder.factoryWidget').Init();
 
 	instance.url.section = request.CRequest.getUrl('section');
@@ -9,11 +9,11 @@ component attributeName='service list' {
 	function Init() {
 		// -------------------------------------------------------------------------
 
-		instance.title='Список услуг.';
+		instance.title='РЎРїРёСЃРѕРє СѓСЃР»СѓРі.';
 
-		instance.description='Список услуг.';
+		instance.description='РЎРїРёСЃРѕРє СѓСЃР»СѓРі.';
 
-		instance.keywords='Список услуг.';
+		instance.keywords='РЎРїРёСЃРѕРє СѓСЃР»СѓРі.';
 
 		widget.meta=request.factoryWidget.GetWidget('meta').Init( title=instance.title, description=instance.description, keywords=instance.keywords);
 		widget.logo=request.factoryWidget.GetWidget('logo').Init(active=true);

@@ -1,10 +1,10 @@
 /*
-	userServicesAPI - список услуг.
+	userServicesAPI - СЃРїРёСЃРѕРє СѓСЃР»СѓРі.
 */
 
 component attributeName='usersServicesAPI' output='false'{
 
-	// Псевдо конструктор
+	// РџСЃРµРІРґРѕ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
 	instance.usersServicesDAO = createObject('component', 'core.db.usersServicesDAO' ).Init();
 
 	//instance.services = {};
@@ -13,7 +13,7 @@ component attributeName='usersServicesAPI' output='false'{
 		return this;
 	}
 
-	// список пользовательских групп
+	// СЃРїРёСЃРѕРє РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРёС… РіСЂСѓРїРї
 	function getUserServices( userID, _date ){
 		qUserServices = instance.usersServicesDAO.readUserServices( arguments.userID, arguments._date );
 		return qUserServices;

@@ -1,10 +1,10 @@
 /*
-	servicesAPI - список услуг.
+	servicesAPI - СЃРїРёСЃРѕРє СѓСЃР»СѓРі.
 */
 
 component attributeName='userReceptionAPI' output='false'{
 
-	// Псевдо конструктор
+	// РџСЃРµРІРґРѕ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
 	instance.userReceptionDAO = createObject('component', 'core.db.userReceptionDAO' ).Init();
 	instance.userServicesDAO = createObject('component', 'core.db.userServicesDAO' ).Init();
 
@@ -42,7 +42,7 @@ component attributeName='userReceptionAPI' output='false'{
 		var result = structNew();
 		result.RETVAL = 0;
 		result.RETDESC = "";
-		result.STRUCT = structNew(); // для валидации полей
+		result.STRUCT = structNew(); // РґР»СЏ РІР°Р»РёРґР°С†РёРё РїРѕР»РµР№
 
 		validator = request.factoryService.getService('Validator');
 
@@ -59,7 +59,7 @@ component attributeName='userReceptionAPI' output='false'{
 		_rpStartTime = TimeFormat(rpStartTime, "HH:mm:ss");
 		_dateCompare = DateCompare("#_grStartTime#", "#_rpStartTime#" , "n");
 		if ( _dateCompare == 1 ){
-			structInsert(result.struct, '_rpStartTime','Врач не принемает, ещё рано!');
+			structInsert(result.struct, '_rpStartTime','Р’СЂР°С‡ РЅРµ РїСЂРёРЅРµРјР°РµС‚, РµС‰С‘ СЂР°РЅРѕ!');
 		}
 
 		var struct_ = validator.checkInput('#arguments.rpEndTime#',false,'isTime',0,100);
@@ -71,27 +71,27 @@ component attributeName='userReceptionAPI' output='false'{
 		_rpEndTime = TimeFormat(rpEndTime, "HH:mm:ss");
 		_dateCompare = DateCompare("#_rpEndTime#", "#_grEndTime#" , "n");
 		if ( _dateCompare == 1 ){
-			structInsert(result.struct, '_rpEndTime','Врач не принемает, уже поздно!');
+			structInsert(result.struct, '_rpEndTime','Р’СЂР°С‡ РЅРµ РїСЂРёРЅРµРјР°РµС‚, СѓР¶Рµ РїРѕР·РґРЅРѕ!');
 		}
 
 		var struct_ = validator.checkInput('#arguments.rpStatus#',true,'isNumeric',1,2);
 		if ( !struct_.retval ){
 			structInsert(result.struct, 'rpStatus','#struct_.retdesc#');
 		}else if( DateCompare( _rpStartTime, _rpEndTime ) is 0 OR DateCompare( _rpStartTime, _rpEndTime ) is 1){
-			structInsert(result.struct, 'Time','Начало и окончание приема не может быть равно! Дата окончания не должна быть меньше начала приёма!');
+			structInsert(result.struct, 'Time','РќР°С‡Р°Р»Рѕ Рё РѕРєРѕРЅС‡Р°РЅРёРµ РїСЂРёРµРјР° РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ СЂР°РІРЅРѕ! Р”Р°С‚Р° РѕРєРѕРЅС‡Р°РЅРёСЏ РЅРµ РґРѕР»Р¶РЅР° Р±С‹С‚СЊ РјРµРЅСЊС€Рµ РЅР°С‡Р°Р»Р° РїСЂРёС‘РјР°!');
 		}else{
 			// ------------------------------------------------------------------
-			// дописать ещё две проверки, дата должна быть не раньше сегодня и
-			// начало приёма не должно быть больше окончания приёма !!!!!!!!!!!!
+			// РґРѕРїРёСЃР°С‚СЊ РµС‰С‘ РґРІРµ РїСЂРѕРІРµСЂРєРё, РґР°С‚Р° РґРѕР»Р¶РЅР° Р±С‹С‚СЊ РЅРµ СЂР°РЅСЊС€Рµ СЃРµРіРѕРґРЅСЏ Рё
+			// РЅР°С‡Р°Р»Рѕ РїСЂРёС‘РјР° РЅРµ РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ Р±РѕР»СЊС€Рµ РѕРєРѕРЅС‡Р°РЅРёСЏ РїСЂРёС‘РјР° !!!!!!!!!!!!
 			checkUserReception = instance.userReceptionDAO.checkUserReception( '', userID, rpDate, rpStartTime, rpEndTime );
 			//writeDump(checkUserReception);
 			if (checkUserReception.recordcount){
-				structInsert(result.struct, 'Time','Приём пересекается с другим!');
+				structInsert(result.struct, 'Time','РџСЂРёС‘Рј РїРµСЂРµСЃРµРєР°РµС‚СЃСЏ СЃ РґСЂСѓРіРёРј!');
 			}
 		}
 		//--------------------------------------------------------------------
 
-	        // если обнаружены ошибки
+	        // РµСЃР»Рё РѕР±РЅР°СЂСѓР¶РµРЅС‹ РѕС€РёР±РєРё
 		if ( structIsEmpty(result.struct) ){
 
 			structCreateUserReception = instance.userReceptionDAO.createUserReception( userID, rpDate, rpStartTime, rpEndTime, rpStatus );
@@ -123,7 +123,7 @@ component attributeName='userReceptionAPI' output='false'{
 		var result = structNew();
 		result.RETVAL = 0;
 		result.RETDESC = "";
-		result.STRUCT = structNew(); // для валидации полей
+		result.STRUCT = structNew(); // РґР»СЏ РІР°Р»РёРґР°С†РёРё РїРѕР»РµР№
 
 		validator = request.factoryService.getService('Validator');
 
@@ -140,7 +140,7 @@ component attributeName='userReceptionAPI' output='false'{
 		_rpStartTime = TimeFormat(rpStartTime, "HH:mm:ss");
 		_dateCompare = DateCompare("#_grStartTime#", "#_rpStartTime#");
 		if ( _dateCompare == 1 ){
-			structInsert(result.struct, '_rpStartTime','Врач не принемает, ещё рано!');
+			structInsert(result.struct, '_rpStartTime','Р’СЂР°С‡ РЅРµ РїСЂРёРЅРµРјР°РµС‚, РµС‰С‘ СЂР°РЅРѕ!');
 		}
 
 		var struct_ = validator.checkInput('#arguments.rpEndTime#',false,'isTime',0,100);
@@ -152,7 +152,7 @@ component attributeName='userReceptionAPI' output='false'{
 		_rpEndTime = TimeFormat(rpEndTime, "HH:mm:ss");
 		_dateCompare = DateCompare("#_rpEndTime#", "#_grEndTime#");
 		if ( _dateCompare == 1 ){
-			structInsert(result.struct, '_rpEndTime','Врач не принемает, уже поздно!');
+			structInsert(result.struct, '_rpEndTime','Р’СЂР°С‡ РЅРµ РїСЂРёРЅРµРјР°РµС‚, СѓР¶Рµ РїРѕР·РґРЅРѕ!');
 		}
 
 		var struct_ = validator.checkInput('#arguments.rpDescription#',false,'checkString',0,250);
@@ -161,26 +161,26 @@ component attributeName='userReceptionAPI' output='false'{
 		}
 
 		if ( arguments.rpStatus > 1 AND userID != session.sessionStorage.getObject('user').getUserId() ){
-			structInsert(result.struct, 'RBAC','У Вас нет прав доступа.');
+			structInsert(result.struct, 'RBAC','РЈ Р’Р°СЃ РЅРµС‚ РїСЂР°РІ РґРѕСЃС‚СѓРїР°.');
 		}
 
 		if ( arguments.rpStatus == 3 AND DateCompare(DateAdd("d", +7, rpDate), now(),"d") == -1){
-			structInsert(result.struct, 'rpStatus','Данную запись редактировать нельзя, приём окончен! #DateCompare(DateAdd("d", +7, rpDate), now(),"d")#');
+			structInsert(result.struct, 'rpStatus','Р”Р°РЅРЅСѓСЋ Р·Р°РїРёСЃСЊ СЂРµРґР°РєС‚РёСЂРѕРІР°С‚СЊ РЅРµР»СЊР·СЏ, РїСЂРёС‘Рј РѕРєРѕРЅС‡РµРЅ! #DateCompare(DateAdd("d", +7, rpDate), now(),"d")#');
 
 		}else{
 			var struct_ = validator.checkInput('#arguments.rpStatus#',true,'isNumeric',1,2);
 			if ( !struct_.retval ){
 				structInsert(result.struct, 'rpStatus','#struct_.retdesc#');
 			}else if( DateCompare( _rpStartTime, _rpEndTime ) is 0 OR DateCompare( _rpStartTime, _rpEndTime ) is 1){
-				structInsert(result.struct, 'Time','Начало и окончание приема не может быть равно! Дата окончания не должна быть меньше начала приёма!');
+				structInsert(result.struct, 'Time','РќР°С‡Р°Р»Рѕ Рё РѕРєРѕРЅС‡Р°РЅРёРµ РїСЂРёРµРјР° РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ СЂР°РІРЅРѕ! Р”Р°С‚Р° РѕРєРѕРЅС‡Р°РЅРёСЏ РЅРµ РґРѕР»Р¶РЅР° Р±С‹С‚СЊ РјРµРЅСЊС€Рµ РЅР°С‡Р°Р»Р° РїСЂРёС‘РјР°!');
 			}else{
 				// ------------------------------------------------------------------
-				// дописать ещё две проверки, дата должна быть не раньше сегодня и
-				// начало приёма не должно быть больше окончания приёма !!!!!!!!!!!!
+				// РґРѕРїРёСЃР°С‚СЊ РµС‰С‘ РґРІРµ РїСЂРѕРІРµСЂРєРё, РґР°С‚Р° РґРѕР»Р¶РЅР° Р±С‹С‚СЊ РЅРµ СЂР°РЅСЊС€Рµ СЃРµРіРѕРґРЅСЏ Рё
+				// РЅР°С‡Р°Р»Рѕ РїСЂРёС‘РјР° РЅРµ РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ Р±РѕР»СЊС€Рµ РѕРєРѕРЅС‡Р°РЅРёСЏ РїСЂРёС‘РјР° !!!!!!!!!!!!
 				checkUserReception = instance.userReceptionDAO.checkUserReception( rpID, userID, rpDate, rpStartTime, rpEndTime );
 				//writeDump(checkUserReception);
 				if (checkUserReception.recordcount){
-					structInsert(result.struct, 'Time','Приём пересекается с другим!');
+					structInsert(result.struct, 'Time','РџСЂРёС‘Рј РїРµСЂРµСЃРµРєР°РµС‚СЃСЏ СЃ РґСЂСѓРіРёРј!');
 				}
 				//--------------------------------------------------------------------
 			}
@@ -190,7 +190,7 @@ component attributeName='userReceptionAPI' output='false'{
 		}
 
 
-	        // если обнаружены ошибки
+	        // РµСЃР»Рё РѕР±РЅР°СЂСѓР¶РµРЅС‹ РѕС€РёР±РєРё
 		if ( structIsEmpty(result.struct) ){
 
 			structUpdateUserReception = instance.userReceptionDAO._updateUserReception( rpID, userID, rpDate, rpStartTime, rpEndTime, rpDescription, rpStatus );
@@ -214,7 +214,7 @@ component attributeName='userReceptionAPI' output='false'{
 		var result = structNew();
 		result.RETVAL = 0;
 		result.RETDESC = "";
-		result.STRUCT = structNew(); // для валидации полей
+		result.STRUCT = structNew(); // РґР»СЏ РІР°Р»РёРґР°С†РёРё РїРѕР»РµР№
 
 
 		validator = request.factoryService.getService('Validator');
@@ -232,10 +232,10 @@ component attributeName='userReceptionAPI' output='false'{
 		factoryService = request.factoryService;
 		var qReception = factoryService.getService('userReceptionAPI').getReception(rpID);
 		if (qReception.rp_status == 3 AND DateCompare(DateAdd("d", +7, qReception.rp_date), now(),"d") == -1){
-			structInsert(result.struct, 'rpStatus','Данную запись редактировать нельзя, приём окончен! #DateCompare(DateAdd("d", +7, rpDate), now(),"d")#');
+			structInsert(result.struct, 'rpStatus','Р”Р°РЅРЅСѓСЋ Р·Р°РїРёСЃСЊ СЂРµРґР°РєС‚РёСЂРѕРІР°С‚СЊ РЅРµР»СЊР·СЏ, РїСЂРёС‘Рј РѕРєРѕРЅС‡РµРЅ! #DateCompare(DateAdd("d", +7, rpDate), now(),"d")#');
 		}
 
-	        // если обнаружены ошибки
+	        // РµСЃР»Рё РѕР±РЅР°СЂСѓР¶РµРЅС‹ РѕС€РёР±РєРё
 		if ( structIsEmpty(result.struct) ){
 
 			structUpdateUserReception = instance.userReceptionDAO.updateUserReception( rpID, ptID );
@@ -262,7 +262,7 @@ component attributeName='userReceptionAPI' output='false'{
 		var result = structNew();
 		result.RETVAL = 0;
 		result.RETDESC = "";
-		result.STRUCT = structNew(); // для валидации полей
+		result.STRUCT = structNew(); // РґР»СЏ РІР°Р»РёРґР°С†РёРё РїРѕР»РµР№
 
 		validator = request.factoryService.getService('Validator');
 
@@ -277,10 +277,10 @@ component attributeName='userReceptionAPI' output='false'{
 		}
 
 		if ( user_id1 != user_id2 ){
-			structInsert(result.struct, 'RBAC','У Вас нет прав доступа.');
+			structInsert(result.struct, 'RBAC','РЈ Р’Р°СЃ РЅРµС‚ РїСЂР°РІ РґРѕСЃС‚СѓРїР°.');
 		}
 
-	        // если обнаружены ошибки
+	        // РµСЃР»Рё РѕР±РЅР°СЂСѓР¶РµРЅС‹ РѕС€РёР±РєРё
 		if ( structIsEmpty(result.struct) ){
 
 			structUpdateUserReception = instance.userReceptionDAO.startEndUserReception( rpID, rpStatus );
@@ -303,12 +303,12 @@ component attributeName='userReceptionAPI' output='false'{
 		var result = structNew();
 		result.RETVAL = 0;
 		result.RETDESC = "";
-		result.STRUCT = structNew(); // для валидации полей
+		result.STRUCT = structNew(); // РґР»СЏ РІР°Р»РёРґР°С†РёРё РїРѕР»РµР№
 
-	        // если обнаружены ошибки
+	        // РµСЃР»Рё РѕР±РЅР°СЂСѓР¶РµРЅС‹ РѕС€РёР±РєРё
 		if ( structIsEmpty(result.struct) ){
 
-			// в некоторых случаях может произойти перезапись, это плохо
+			// РІ РЅРµРєРѕС‚РѕСЂС‹С… СЃР»СѓС‡Р°СЏС… РјРѕР¶РµС‚ РїСЂРѕРёР·РѕР№С‚Рё РїРµСЂРµР·Р°РїРёСЃСЊ, СЌС‚Рѕ РїР»РѕС…Рѕ
 			structDeleteUserReceptionSv = instance.userServicesDAO.deleteReceptionServices( rpID );
 			if (structDeleteUserReceptionSv.RETVAL == 1){
 				result.RETVAL = structDeleteUserReceptionSv.RETVAL;

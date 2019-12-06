@@ -1,10 +1,10 @@
 /*
-	servicesAPI - список услуг.
+	servicesAPI - СЃРїРёСЃРѕРє СѓСЃР»СѓРі.
 */
 
 component attributeName='servicesAPI' output='false'{
 
-	// Псевдо конструктор
+	// РџСЃРµРІРґРѕ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
 	instance.servicesDAO = createObject('component', 'core.db.servicesDAO' ).Init();
 
 	instance.services = {};
@@ -14,7 +14,7 @@ component attributeName='servicesAPI' output='false'{
 		return this;
 	}
 
-	// список пользовательских групп
+	// СЃРїРёСЃРѕРє РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРёС… РіСЂСѓРїРї
 	//function setServicesList(){
 	//	qServices = instance.servicesDAO.readServiceList();
 	//	instance.services = qServices;
@@ -47,7 +47,7 @@ component attributeName='servicesAPI' output='false'{
 		var result = structNew();
 		result.RETVAL = 0;
 		result.RETDESC = "";
-		result.STRUCT = structNew(); // для валидации полей
+		result.STRUCT = structNew(); // РґР»СЏ РІР°Р»РёРґР°С†РёРё РїРѕР»РµР№
 
 		validator = request.factoryService.getService('Validator');
 		                                               //required
@@ -102,10 +102,10 @@ component attributeName='servicesAPI' output='false'{
 		//--------------------------------------------------------------------
 		rbac = request.RBAC;
 		if ( !rbac.CheckAccess('services','create') ){
-			structInsert(result.struct, 'RBAC','У вас недостаточно прав!');
+			structInsert(result.struct, 'RBAC','РЈ РІР°СЃ РЅРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕ РїСЂР°РІ!');
 		}
 		//--------------------------------------------------------------------
-	        // если обнаружены ошибки
+	        // РµСЃР»Рё РѕР±РЅР°СЂСѓР¶РµРЅС‹ РѕС€РёР±РєРё
 		if ( structIsEmpty(result.struct) ){
 
 			structCreateService = instance.servicesDAO.createService( plsName, plsDescription, plsPriceOt, plsPriceDo, plsCost, emptID, stID, plsStatus, plsTime, plsShablon );
@@ -139,7 +139,7 @@ component attributeName='servicesAPI' output='false'{
 		var result = structNew();
 		result.RETVAL = 0;
 		result.RETDESC = "";
-		result.STRUCT = structNew(); // для валидации полей
+		result.STRUCT = structNew(); // РґР»СЏ РІР°Р»РёРґР°С†РёРё РїРѕР»РµР№
 
 		validator = request.factoryService.getService('Validator');
 		                                                 //required                 //DB
@@ -194,10 +194,10 @@ component attributeName='servicesAPI' output='false'{
 		//--------------------------------------------------------------------
 		rbac = request.RBAC;
 		if ( !rbac.CheckAccess('services','update') ){
-			structInsert(result.struct, 'RBAC','У вас недостаточно прав!');
+			structInsert(result.struct, 'RBAC','РЈ РІР°СЃ РЅРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕ РїСЂР°РІ!');
 		}
 		//--------------------------------------------------------------------
-	        // если обнаружены ошибки
+	        // РµСЃР»Рё РѕР±РЅР°СЂСѓР¶РµРЅС‹ РѕС€РёР±РєРё
 		if ( structIsEmpty(result.struct) ){
 
 			structUpdateService = instance.servicesDAO.updateService( plsID, plsName, plsDescription, plsPriceOt, plsPriceDo, plsCost, emptID, stID, plsStatus, plsTime, plsShablon );

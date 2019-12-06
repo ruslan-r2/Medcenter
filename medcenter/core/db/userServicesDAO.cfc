@@ -1,10 +1,10 @@
-/* услуги которые добавлины к приёму у врача
+/* СѓСЃР»СѓРіРё РєРѕС‚РѕСЂС‹Рµ РґРѕР±Р°РІР»РёРЅС‹ Рє РїСЂРёС‘РјСѓ Сѓ РІСЂР°С‡Р°
 */
 
 component displayName='usersServicesDAO'{
 
-	// Псевдо конструктор
-	instance = {datasource = ''} ; // объект
+	// РџСЃРµРІРґРѕ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
+	instance = {datasource = ''} ; // РѕР±СЉРµРєС‚
 	instance.datasource = createObject('component', 'core.db.Datasource').init();
 
 
@@ -20,7 +20,7 @@ component displayName='usersServicesDAO'{
 
 		qEmpService.setSQL("SELECT * FROM pricelist_services WHERE pls_status >= 1 AND empt_id IN (#arguments.empType#) ORDER BY empt_id,st_id,pls_name");
 	
-		var execute = qEmpService.execute(); // вся структура и result и prefix
+		var execute = qEmpService.execute(); // РІСЃСЏ СЃС‚СЂСѓРєС‚СѓСЂР° Рё result Рё prefix
 		var result = execute.getResult();
 		return result; //query
 	}
@@ -33,7 +33,7 @@ component displayName='usersServicesDAO'{
 
 		qRService.setSQL("SELECT * FROM services WHERE rp_id = #arguments.rpID# ORDER BY st_id,sv_name");
 	
-		var execute = qRService.execute(); // вся структура и result и prefix
+		var execute = qRService.execute(); // РІСЃСЏ СЃС‚СЂСѓРєС‚СѓСЂР° Рё result Рё prefix
 		var result = execute.getResult();
 		return result; //query
 	}
@@ -46,13 +46,13 @@ component displayName='usersServicesDAO'{
 
 		qRService.setSQL("SELECT * FROM services WHERE sv_id = #arguments.svID#");
 	
-		var execute = qRService.execute(); // вся структура и result и prefix
+		var execute = qRService.execute(); // РІСЃСЏ СЃС‚СЂСѓРєС‚СѓСЂР° Рё result Рё prefix
 		var result = execute.getResult();
 		return result; //query
 	}
 
 	function deleteReceptionService( svID ) {
-		// дописать время создания и ip
+		// РґРѕРїРёСЃР°С‚СЊ РІСЂРµРјСЏ СЃРѕР·РґР°РЅРёСЏ Рё ip
 		deleteReceptionService = new Query();
 		deleteReceptionService.setDatasource("#instance.datasource.getDSName()#");
 		deleteReceptionService.setName("deleteReceptionService");
@@ -61,16 +61,16 @@ component displayName='usersServicesDAO'{
 			
 		deleteReceptionService.setSQL("DELETE FROM services WHERE sv_id = :svID ");
 
-		deleteReceptionService.execute(); // вся структура и result и prefix
+		deleteReceptionService.execute(); // РІСЃСЏ СЃС‚СЂСѓРєС‚СѓСЂР° Рё result Рё prefix
 
 		var structDeleteReceptionService = structNew();
 		structDeleteReceptionService.RETVAL = 1; // create
-		structDeleteReceptionService.RETDESC = 'Услуга удалена!';
+		structDeleteReceptionService.RETDESC = 'РЈСЃР»СѓРіР° СѓРґР°Р»РµРЅР°!';
 		return structDeleteReceptionService;
 	}
 
 	function deleteReceptionServices( rpID ) {
-		// дописать время создания и ip
+		// РґРѕРїРёСЃР°С‚СЊ РІСЂРµРјСЏ СЃРѕР·РґР°РЅРёСЏ Рё ip
 		deleteReceptionServices = new Query();
 		deleteReceptionServices.setDatasource("#instance.datasource.getDSName()#");
 		deleteReceptionServices.setName("deleteReceptionServices");
@@ -79,16 +79,16 @@ component displayName='usersServicesDAO'{
 			
 		deleteReceptionServices.setSQL("DELETE FROM services WHERE rp_id = :rpID ");
 
-		deleteReceptionServices.execute(); // вся структура и result и prefix
+		deleteReceptionServices.execute(); // РІСЃСЏ СЃС‚СЂСѓРєС‚СѓСЂР° Рё result Рё prefix
 
 		var structDeleteReceptionServices = structNew();
 		structDeleteReceptionServices.RETVAL = 1; // create
-		structDeleteReceptionServices.RETDESC = 'Услуги удалены!';
+		structDeleteReceptionServices.RETDESC = 'РЈСЃР»СѓРіРё СѓРґР°Р»РµРЅС‹!';
 		return structDeleteReceptionServices;
 	}
 
 	function createReceptionService(required numeric rpID, plsID, svPrice, svCost, svName, svTime, svDescription, svStatus, stID, plsShablon, userInterest ) {
-		// дописать время создания и ip
+		// РґРѕРїРёСЃР°С‚СЊ РІСЂРµРјСЏ СЃРѕР·РґР°РЅРёСЏ Рё ip
 		createReceptionService = new Query();
 		createReceptionService.setDatasource("#instance.datasource.getDSName()#");
 		createReceptionService.setName("createReceptionService");
@@ -109,11 +109,11 @@ component displayName='usersServicesDAO'{
 			VALUES ( :rpID, :plsID, :svPrice, :svCost, :svName, :svTime, :svDescription, :svStatus, :stID, :plsShablon, :userInterest )
 			");
 
-		createReceptionService.execute(); // вся структура и result и prefix
+		createReceptionService.execute(); // РІСЃСЏ СЃС‚СЂСѓРєС‚СѓСЂР° Рё result Рё prefix
 
 		var structCreateReceptionService = structNew();
 		structCreateReceptionService.RETVAL = 1; // create
-		structCreateReceptionService.RETDESC = 'Услуга добавлена!';
+		structCreateReceptionService.RETDESC = 'РЈСЃР»СѓРіР° РґРѕР±Р°РІР»РµРЅР°!';
 		return structCreateReceptionService;
 	}
 
@@ -135,7 +135,7 @@ component displayName='usersServicesDAO'{
 		updateReceptionService.execute();
 		var structUpdateReceptionService = structNew();
 		structUpdateReceptionService.RETVAL = 1; // create
-		structUpdateReceptionService.RETDESC = 'Документ услуги изменён!';
+		structUpdateReceptionService.RETDESC = 'Р”РѕРєСѓРјРµРЅС‚ СѓСЃР»СѓРіРё РёР·РјРµРЅС‘РЅ!';
 		return structUpdateReceptionService;
 
 	}
@@ -160,7 +160,7 @@ component displayName='usersServicesDAO'{
 		updateReceptionServicePrice.execute();
 		var structUpdateReceptionServicePrice = structNew();
 		structUpdateReceptionServicePrice.RETVAL = 1; // create
-		structUpdateReceptionServicePrice.RETDESC = 'Цена услуги изменена!';
+		structUpdateReceptionServicePrice.RETDESC = 'Р¦РµРЅР° СѓСЃР»СѓРіРё РёР·РјРµРЅРµРЅР°!';
 		return structUpdateReceptionServicePrice;
 
 	}
@@ -184,11 +184,11 @@ component displayName='usersServicesDAO'{
 		var structUpdateReceptionServiceStatus = structNew();
 		structUpdateReceptionServiceStatus.RETVAL = 1; // create
 		if (arguments.svStatus == 1){
-			structUpdateReceptionServiceStatus.RETDESC = 'Статус услуг\и изменен на "НЕ ОПЛАЧЕНО"!';
+			structUpdateReceptionServiceStatus.RETDESC = 'РЎС‚Р°С‚СѓСЃ СѓСЃР»СѓРі\Рё РёР·РјРµРЅРµРЅ РЅР° "РќР• РћРџР›РђР§Р•РќРћ"!';
 		}else if(arguments.svStatus == 2){
-			structUpdateReceptionServiceStatus.RETDESC = 'Статус услуг\и изменен на "ОПЛАЧЕНО"!';
+			structUpdateReceptionServiceStatus.RETDESC = 'РЎС‚Р°С‚СѓСЃ СѓСЃР»СѓРі\Рё РёР·РјРµРЅРµРЅ РЅР° "РћРџР›РђР§Р•РќРћ"!';
 		}else if(arguments.svStatus == 3){
-			structUpdateReceptionServiceStatus.RETDESC = 'Статус услуг\и изменен на "ГС СКАЗАЛА"!';
+			structUpdateReceptionServiceStatus.RETDESC = 'РЎС‚Р°С‚СѓСЃ СѓСЃР»СѓРі\Рё РёР·РјРµРЅРµРЅ РЅР° "Р“РЎ РЎРљРђР—РђР›Рђ"!';
 		}
 
 		return structUpdateReceptionServiceStatus;

@@ -1,7 +1,7 @@
 component displayName='userInterestDAO'{
 
-	// Псевдо конструктор
-	instance = {datasource = ''} ; // объект
+	// РџСЃРµРІРґРѕ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
+	instance = {datasource = ''} ; // РѕР±СЉРµРєС‚
 	instance.datasource = createObject('component', 'core.db.Datasource').init();
 
 
@@ -17,14 +17,14 @@ component displayName='userInterestDAO'{
 
 		qUI.setSQL("SELECT * FROM users_interest ");
 	
-		var execute = qUI.execute(); // вся структура и result и prefix
+		var execute = qUI.execute(); // РІСЃСЏ СЃС‚СЂСѓРєС‚СѓСЂР° Рё result Рё prefix
 		var result = execute.getResult();
 		return result; //query
 	}
 
 
 	function createUserInterest(required numeric userID, required numeric stID, numeric uiType, numeric uiValue, numeric uiStatus ) {
-		// дописать время создания и ip
+		// РґРѕРїРёСЃР°С‚СЊ РІСЂРµРјСЏ СЃРѕР·РґР°РЅРёСЏ Рё ip
 		createUserInterest = new Query();
 		createUserInterest.setDatasource("#instance.datasource.getDSName()#");
 		createUserInterest.setName("createUserInterest");
@@ -39,11 +39,11 @@ component displayName='userInterestDAO'{
 			VALUES ( :userID, :stID, :uiType, :uiValue, :uiStatus )
 			");
 
-		createUserInterest.execute(); // вся структура и result и prefix
+		createUserInterest.execute(); // РІСЃСЏ СЃС‚СЂСѓРєС‚СѓСЂР° Рё result Рё prefix
 
 		var structCreateUserInterest = structNew();
 		structCreateUserInterest.RETVAL = 1; // create
-		structCreateUserInterest.RETDESC = '% от услуги создан!';
+		structCreateUserInterest.RETDESC = '% РѕС‚ СѓСЃР»СѓРіРё СЃРѕР·РґР°РЅ!';
 		return structCreateUserInterest;
 	}
 
@@ -73,7 +73,7 @@ component displayName='userInterestDAO'{
 		updateUserInterest.execute();
 		var structupdateUserInterest = structNew();
 		structupdateUserInterest.RETVAL = 1; // create
-		structupdateUserInterest.RETDESC = 'Запись изменена!';
+		structupdateUserInterest.RETDESC = 'Р—Р°РїРёСЃСЊ РёР·РјРµРЅРµРЅР°!';
 		return structupdateUserInterest;
 
 	}

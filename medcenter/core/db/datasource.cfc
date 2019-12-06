@@ -1,9 +1,9 @@
-component displayname="Datasource" output="false" hint="Это класс базы данных." {
-	// Псевдо-конструктор
+component displayname="Datasource" output="false" hint="Р­С‚Рѕ РєР»Р°СЃСЃ Р±Р°Р·С‹ РґР°РЅРЅС‹С…." {
+	// РџСЃРµРІРґРѕ-РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
 	instance = { DSName = 'bbs_test', username = '', password = '' } ;
 
 	function init(){ 
-		/* Устанавливаем значения при инициализации модели */
+		/* РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј Р·РЅР°С‡РµРЅРёСЏ РїСЂРё РёРЅРёС†РёР°Р»РёР·Р°С†РёРё РјРѕРґРµР»Рё */
 		//instance.DSName = arguments.DSName;
 		//instance.username = arguments.username;
 		//instance.password = arguments.password;

@@ -59,8 +59,8 @@ component attributeName='admin' {
 <form action="" method="post">
   <input type="hidden" name="oldRole" value="#roleName#">
   <input type="text" name="newRole" value="#roleName#">
-  <input type="submit" name="renameRole" value="переименовать">
-  <input type="submit" name="deleteRole" value="удалить">
+  <input type="submit" name="renameRole" value="РїРµСЂРµРёРјРµРЅРѕРІР°С‚СЊ">
+  <input type="submit" name="deleteRole" value="СѓРґР°Р»РёС‚СЊ">
 </form>
 ');
     }
@@ -85,13 +85,13 @@ for (x=1; x<=resultRole.recordCount; x=x+1 ) {
   <input type="hidden" name="oldPrmsId" value="#prmsId#">
   <input type="hidden" name="oldRoleName" value="#roleName#">
   <input type="text" name="newPermName" value="#prmsName#">
-  <input type="submit" name="renamePerm" value="переименовать">
-  <input type="submit" name="deletePerm" value="удалить">
+  <input type="submit" name="renamePerm" value="РїРµСЂРµРёРјРµРЅРѕРІР°С‚СЊ">
+  <input type="submit" name="deletePerm" value="СѓРґР°Р»РёС‚СЊ">
   <select name="newRoleName"><option value="empty"');
 if (roleName=='') {
   writeoutput(' selected');
 }
-writeoutput('>не указано</option><option value="abstract"');
+writeoutput('>РЅРµ СѓРєР°Р·Р°РЅРѕ</option><option value="abstract"');
 if (roleName=='abstract') {
   writeoutput(' selected');
 }
@@ -104,14 +104,14 @@ if (roleName=='user') {
   writeoutput(' selected');
 }
 writeoutput('>user</option</select>
-  <input type="submit" name="asignPerm" value="переназначить">
+  <input type="submit" name="asignPerm" value="РїРµСЂРµРЅР°Р·РЅР°С‡РёС‚СЊ">
 </form>
 ');
 }
 writeoutput('
 <form action="" method="post">
   <input type="text" name="newPerm">
-  <input type="submit" name="createPerm" value="создать разрешение">
+  <input type="submit" name="createPerm" value="СЃРѕР·РґР°С‚СЊ СЂР°Р·СЂРµС€РµРЅРёРµ">
 </form>
 ');
 

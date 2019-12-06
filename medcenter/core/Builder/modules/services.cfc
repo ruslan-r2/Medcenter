@@ -1,9 +1,9 @@
 /* 
-	Виджет список услуг --
+	Р’РёРґР¶РµС‚ СЃРїРёСЃРѕРє СѓСЃР»СѓРі --
 */
 
 component attributeName='servicelist' output='false'{
-	// псевдо конструктор
+	// РїСЃРµРІРґРѕ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
 	factoryService = request.factoryService;
 
 	instance.view = '';
@@ -56,9 +56,9 @@ component attributeName='servicelist' output='false'{
 		}
 	}
 
-	// обработчик формы если ява выключена
+	// РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹ РµСЃР»Рё СЏРІР° РІС‹РєР»СЋС‡РµРЅР°
 	private function addServiceFormHandler(){
-		// --- обработчик формы---
+		// --- РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹---
 		if ( isdefined('form.addService') ){
 		  if ( !isDefined('form.empt_id') ){
 			form.empt_id = '';
@@ -71,7 +71,7 @@ component attributeName='servicelist' output='false'{
 			if ( result.RETVAL is 1 ){
 				factoryService.getService('redirector').redirect('/?page=services');
 			}else{
-				// --- пробная версия
+				// --- РїСЂРѕР±РЅР°СЏ РІРµСЂСЃРёСЏ
 				if (StructKeyExists(result, 'RETDESC')) {
 					instance.message = result['RETDESC'];
 				} else {
@@ -136,7 +136,7 @@ component attributeName='servicelist' output='false'{
 
 			}
 		}
-		// --- обработчик формы---
+		// --- РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹---
 	}
 
 	function addServiceForm(){
@@ -156,10 +156,10 @@ component attributeName='servicelist' output='false'{
 		view &= '
 			<form name="" id="" action="#request.CRequest.updateURL(false,"/?page=services&section=service&action=add")#" method="post">
 			<div class="grid_8"><div class="signin-box">
-				<a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,"/?page=services")#">Назад</a><br><br>
-				<h2>Добавление услуги</h2>
+				<a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,"/?page=services")#">РќР°Р·Р°Рґ</a><br><br>
+				<h2>Р”РѕР±Р°РІР»РµРЅРёРµ СѓСЃР»СѓРіРё</h2>
 				<div>
-					<label for="pls_name"><b>Наименование услуги:</b></label> 
+					<label for="pls_name"><b>РќР°РёРјРµРЅРѕРІР°РЅРёРµ СѓСЃР»СѓРіРё:</b></label> 
 					<input type="text" name="pls_name" value="#form.pls_name#" size = "50" maxlength = "250">';
 
 			if (instance.plsName is not ''){
@@ -169,7 +169,7 @@ component attributeName='servicelist' output='false'{
 			view &= '
 				</div>
 				<div>
-					<label for="pls_description"><b>Описание:</b></label>
+					<label for="pls_description"><b>РћРїРёСЃР°РЅРёРµ:</b></label>
 					<textarea name = "pls_description" rows="6" cols="47" >#form.pls_description#</textarea>';
 
 			if (instance.plsDescription is not ''){
@@ -179,7 +179,7 @@ component attributeName='servicelist' output='false'{
 			view &= '
 				</div>
 				<div>
-					<label for="pls_shablon"><b>Шаблон:</b></label>
+					<label for="pls_shablon"><b>РЁР°Р±Р»РѕРЅ:</b></label>
 					<textarea name = "pls_shablon" rows="6" cols="47" >#form.pls_shablon#</textarea>';
 
 			if (instance.plsShablon is not ''){
@@ -189,7 +189,7 @@ component attributeName='servicelist' output='false'{
 			view &= '
 				</div>
 				<div>
-					<label for="pls_price_ot"><b>Цена услуги от:</b></label>
+					<label for="pls_price_ot"><b>Р¦РµРЅР° СѓСЃР»СѓРіРё РѕС‚:</b></label>
 					<input type="text" name="pls_price_ot" value="#form.pls_price_ot#" size="10" maxlength="10"/>';
 
 			if (instance.plsPriceOt is not ''){
@@ -199,7 +199,7 @@ component attributeName='servicelist' output='false'{
 			view &= '
 				</div>
 				<div>
-					<label for="pls_price_do"><b>Цена услуги до:</b></label>
+					<label for="pls_price_do"><b>Р¦РµРЅР° СѓСЃР»СѓРіРё РґРѕ:</b></label>
 					<input type="text" name="pls_price_do" value="#form.pls_price_do#" size="10" maxlength="10"/>';
 
 			if (instance.plsPriceDo is not ''){
@@ -209,7 +209,7 @@ component attributeName='servicelist' output='false'{
 			view &= '
 				</div>
 				<div>
-					<label for="pls_cost"><b>Себестоимость услуги:</b></label>
+					<label for="pls_cost"><b>РЎРµР±РµСЃС‚РѕРёРјРѕСЃС‚СЊ СѓСЃР»СѓРіРё:</b></label>
 					<input type="text" name="pls_cost" value="#form.pls_cost#" size="10" maxlength="10"/>';
 
 			if (instance.plsCost is not ''){
@@ -219,7 +219,7 @@ component attributeName='servicelist' output='false'{
 			view &= '
 				</div>
 				<div>
-					<label for="pls_time"><b>Требуемое время:</b></label>
+					<label for="pls_time"><b>РўСЂРµР±СѓРµРјРѕРµ РІСЂРµРјСЏ:</b></label>
 					<input type="text" name="pls_time" value="#form.pls_time#" size="10" maxlength="10"/>';
 
 			if (instance.plsTime is not ''){
@@ -229,7 +229,7 @@ component attributeName='servicelist' output='false'{
 			view &= '
 				</div>
 				<div>
-					<label for="empt_id"><b>Тип служащего:</b></label>';
+					<label for="empt_id"><b>РўРёРї СЃР»СѓР¶Р°С‰РµРіРѕ:</b></label>';
 
 				employeesList = factoryService.getService('employeesAPI').getEmployeesList();
 				for (var x=1; x<=employeesList.recordcount; x++){
@@ -243,7 +243,7 @@ component attributeName='servicelist' output='false'{
 			view &= '
 				</div>
 				<div>
-					<label for="st_id"><b>Тип услуги:</b></label>';
+					<label for="st_id"><b>РўРёРї СѓСЃР»СѓРіРё:</b></label>';
 
 				servicesTypeList = factoryService.getService('servicesTypeAPI').getServicesTypeList();
 				for (var x=1; x<=servicesTypeList.recordcount; x++){
@@ -256,9 +256,9 @@ component attributeName='servicelist' output='false'{
 
 			view &= '</div>
 				<div>
-					<label for="pls_status"><b>Статус:</b></label> 
-					<input type="radio" name="pls_status" value="1" #checkedRadio("1", form.pls_status)# /> Включена <br>
-					<input type="radio" name="pls_status" value="0" #checkedRadio("0", form.pls_status)#/> Выключена <br>
+					<label for="pls_status"><b>РЎС‚Р°С‚СѓСЃ:</b></label> 
+					<input type="radio" name="pls_status" value="1" #checkedRadio("1", form.pls_status)# /> Р’РєР»СЋС‡РµРЅР° <br>
+					<input type="radio" name="pls_status" value="0" #checkedRadio("0", form.pls_status)#/> Р’С‹РєР»СЋС‡РµРЅР° <br>
 				</div>';
 
 			if (instance.plsStatus is not ''){
@@ -267,8 +267,8 @@ component attributeName='servicelist' output='false'{
 
 			view &= '
 				<div>
-					<input disabled class="g-button g-button-submit" type="submit" name="escape" value="Отмена">
-					<input class="g-button g-button-submit" type="submit" name="addService" value="Сохранить">
+					<input disabled class="g-button g-button-submit" type="submit" name="escape" value="РћС‚РјРµРЅР°">
+					<input class="g-button g-button-submit" type="submit" name="addService" value="РЎРѕС…СЂР°РЅРёС‚СЊ">
 				</div>';
 
 			if (instance.message is not ''){
@@ -285,7 +285,7 @@ component attributeName='servicelist' output='false'{
 	}
 
 	private function updateServiceFormHandler(){
-		// --- обработчик формы---
+		// --- РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹---
 		if ( isdefined('form.updateService') ){
 		  if ( !isDefined('form.empt_id') ){
 			form.empt_id = '';
@@ -301,7 +301,7 @@ component attributeName='servicelist' output='false'{
 				}
 
 			}else{
-				// --- пробная версия
+				// --- РїСЂРѕР±РЅР°СЏ РІРµСЂСЃРёСЏ
 				if (StructKeyExists(result, 'RETDESC')) {
 					instance.message = result['RETDESC'];
 				} else {
@@ -366,7 +366,7 @@ component attributeName='servicelist' output='false'{
 
 			}
 		}
-		// --- обработчик формы---
+		// --- РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹---
 	}
 
 	function updateServiceForm( plsid ){
@@ -390,15 +390,15 @@ component attributeName='servicelist' output='false'{
 		view &= '
 			<form name="" id="" action="#request.CRequest.updateURL(false,"/?page=services&section=service&action=edite&plsid=#arguments.plsid#")#" method="post">
 			<div class="grid_8"><div class="signin-box">
-				<a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,"/?page=services")#">Назад</a><br><br>
-				<h2>Редактирование услуги</h2>
+				<a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,"/?page=services")#">РќР°Р·Р°Рґ</a><br><br>
+				<h2>Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ СѓСЃР»СѓРіРё</h2>
 				<div>
-					<label for="pls_id"><b>ID услуги:</b></label>
+					<label for="pls_id"><b>ID СѓСЃР»СѓРіРё:</b></label>
 					<input disabled type="text" name="_pls_id" value="#form.pls_id#" size = "2" maxlength = "2">
 					<input type="hidden" name="pls_id" value="#form.pls_id#" size = "2" maxlength = "2">
 				</div>
 				<div>
-					<label for="pls_name"><b>Наименование услуги:</b></label> 
+					<label for="pls_name"><b>РќР°РёРјРµРЅРѕРІР°РЅРёРµ СѓСЃР»СѓРіРё:</b></label> 
 					<input type="text" name="pls_name" value="#form.pls_name#" size = "50" maxlength = "250">';
 
 			if (instance.plsName is not ''){
@@ -408,7 +408,7 @@ component attributeName='servicelist' output='false'{
 			view &= '
 				</div>
 				<div>
-					<label for="pls_description"><b>Описание:</b></label>
+					<label for="pls_description"><b>РћРїРёСЃР°РЅРёРµ:</b></label>
 					<textarea name = "pls_description" rows="6" cols="47" >#form.pls_description#</textarea>';
 			if (instance.plsDescription is not ''){
 			view &= '		<label for="pls_description" class="error" generated="0">#instance.plsDescription#</label>';
@@ -417,7 +417,7 @@ component attributeName='servicelist' output='false'{
 			view &= '
 				</div>
 				<div>
-					<label for="pls_shablon"><b>Шаблон:</b></label>
+					<label for="pls_shablon"><b>РЁР°Р±Р»РѕРЅ:</b></label>
 					<textarea name = "pls_shablon" rows="6" cols="47" >#form.pls_shablon#</textarea>';
 			if (instance.plsShablon is not ''){
 			view &= '		<label for="pls_shablon" class="error" generated="0">#instance.plsShablon#</label>';
@@ -426,7 +426,7 @@ component attributeName='servicelist' output='false'{
 			view &= '
 				</div>
 				<div>
-					<label for="pls_price_ot"><b>Цена услуги от:</b></label>
+					<label for="pls_price_ot"><b>Р¦РµРЅР° СѓСЃР»СѓРіРё РѕС‚:</b></label>
 					<input type="text" name="pls_price_ot" value="#form.pls_price_ot#" size="10" maxlength="10"/>';
 
 			if (instance.plsPriceOt is not ''){
@@ -436,7 +436,7 @@ component attributeName='servicelist' output='false'{
 			view &= '
 				</div>
 				<div>
-					<label for="pls_price_do"><b>Цена услуги до:</b></label>
+					<label for="pls_price_do"><b>Р¦РµРЅР° СѓСЃР»СѓРіРё РґРѕ:</b></label>
 					<input type="text" name="pls_price_do" value="#form.pls_price_do#" size="10" maxlength="10"/>';
 
 			if (instance.plsPriceDo is not ''){
@@ -446,7 +446,7 @@ component attributeName='servicelist' output='false'{
 			view &= '
 				</div>
 				<div>
-					<label for="pls_cost"><b>Себестоимость услуги:</b></label>
+					<label for="pls_cost"><b>РЎРµР±РµСЃС‚РѕРёРјРѕСЃС‚СЊ СѓСЃР»СѓРіРё:</b></label>
 					<input type="text" name="pls_cost" value="#form.pls_cost#" size="10" maxlength="10"/>';
 
 			if (instance.plsCost is not ''){
@@ -456,7 +456,7 @@ component attributeName='servicelist' output='false'{
 			view &= '
 				</div>
 				<div>
-					<label for="pls_time"><b>Требуемое время:</b></label>
+					<label for="pls_time"><b>РўСЂРµР±СѓРµРјРѕРµ РІСЂРµРјСЏ:</b></label>
 					<input type="text" name="pls_time" value="#form.pls_time#" size="10" maxlength="10"/>';
 
 			if (instance.plsTime is not ''){
@@ -466,7 +466,7 @@ component attributeName='servicelist' output='false'{
 			view &= '
 				</div>
 				<div>
-					<label for="empt_id"><b>Тип служащего:</b></label>';
+					<label for="empt_id"><b>РўРёРї СЃР»СѓР¶Р°С‰РµРіРѕ:</b></label>';
 
 				employeesList = factoryService.getService('employeesAPI').getEmployeesList();
 				for (var x=1; x<=employeesList.recordcount; x++){
@@ -480,7 +480,7 @@ component attributeName='servicelist' output='false'{
 			view &= '
 				</div>
 				<div>
-					<label for="st_id"><b>Тип услуги:</b></label>';
+					<label for="st_id"><b>РўРёРї СѓСЃР»СѓРіРё:</b></label>';
 
 				servicesTypeList = factoryService.getService('servicesTypeAPI').getServicesTypeList();
 				for (var x=1; x<=servicesTypeList.recordcount; x++){
@@ -493,9 +493,9 @@ component attributeName='servicelist' output='false'{
 
 			view &= '</div>
 				<div>
-					<label for="pls_status"><b>Статус:</b></label> 
-					<input type="radio" name="pls_status" value="1" #checkedRadio("1", form.pls_status)# /> Включена <br>
-					<input type="radio" name="pls_status" value="0" #checkedRadio("0", form.pls_status)#/> Выключена <br>
+					<label for="pls_status"><b>РЎС‚Р°С‚СѓСЃ:</b></label> 
+					<input type="radio" name="pls_status" value="1" #checkedRadio("1", form.pls_status)# /> Р’РєР»СЋС‡РµРЅР° <br>
+					<input type="radio" name="pls_status" value="0" #checkedRadio("0", form.pls_status)#/> Р’С‹РєР»СЋС‡РµРЅР° <br>
 				';
 
 			if (instance.plsStatus is not ''){
@@ -504,8 +504,8 @@ component attributeName='servicelist' output='false'{
 
 			view &= '</div>
 				<div>
-					<input disabled class="g-button g-button-submit" type="submit" name="escape" value="Отмена">
-					<input class="g-button g-button-submit" type="submit" name="updateService" value="Сохранить">
+					<input disabled class="g-button g-button-submit" type="submit" name="escape" value="РћС‚РјРµРЅР°">
+					<input class="g-button g-button-submit" type="submit" name="updateService" value="РЎРѕС…СЂР°РЅРёС‚СЊ">
 				</div>';
 
 			if (instance.message is not ''){
@@ -530,8 +530,8 @@ component attributeName='servicelist' output='false'{
 
 	function servicesListForm(sortBy){
 
-		// сюда нужно поместить сортировки из клиентских переменных и может быть форму
-		// если будет форма, тогда нужно сделать обработчик
+		// СЃСЋРґР° РЅСѓР¶РЅРѕ РїРѕРјРµСЃС‚РёС‚СЊ СЃРѕСЂС‚РёСЂРѕРІРєРё РёР· РєР»РёРµРЅС‚СЃРєРёС… РїРµСЂРµРјРµРЅРЅС‹С… Рё РјРѕР¶РµС‚ Р±С‹С‚СЊ С„РѕСЂРјСѓ
+		// РµСЃР»Рё Р±СѓРґРµС‚ С„РѕСЂРјР°, С‚РѕРіРґР° РЅСѓР¶РЅРѕ СЃРґРµР»Р°С‚СЊ РѕР±СЂР°Р±РѕС‚С‡РёРє
 		//sortBy = client['sortby'];
 		sortBy = arguments.sortBy;
 		emptID = client.emptID;
@@ -544,19 +544,19 @@ component attributeName='servicelist' output='false'{
 		//writeDump(employeesList);
 		//writeDump(client);
 
-		// создать обработчик есть ли такая клиентская переменная если нет то назначить, если есть то
-		// использовать ее
+		// СЃРѕР·РґР°С‚СЊ РѕР±СЂР°Р±РѕС‚С‡РёРє РµСЃС‚СЊ Р»Рё С‚Р°РєР°СЏ РєР»РёРµРЅС‚СЃРєР°СЏ РїРµСЂРµРјРµРЅРЅР°СЏ РµСЃР»Рё РЅРµС‚ С‚Рѕ РЅР°Р·РЅР°С‡РёС‚СЊ, РµСЃР»Рё РµСЃС‚СЊ С‚Рѕ
+		// РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ РµРµ
 
 		servicesList = factoryService.getService('servicesAPI').getServicesList(sortBy,emptID,stID);
 		//writeDump(servicesList);
 		var view = '';
-		view &= '<div class="grid_16"><div class="signin-box"><h2>Список услуг:</h2>';
+		view &= '<div class="grid_16"><div class="signin-box"><h2>РЎРїРёСЃРѕРє СѓСЃР»СѓРі:</h2>';
 			view &= '<table class="td_head" width="100%">
-						<tr><td style="text-align:right;" colspan="11"><a class="g-button g-button-submit" href="/?page=services&section=service&action=add">+Добавить услугу</a></td></tr>
+						<tr><td style="text-align:right;" colspan="11"><a class="g-button g-button-submit" href="/?page=services&section=service&action=add">+Р”РѕР±Р°РІРёС‚СЊ СѓСЃР»СѓРіСѓ</a></td></tr>
 						<tr><td style="text-align:left;" colspan="11">
 							<form name="" action="#request.CRequest.updateURL(false,"/?page=services")#" method="post">
-								Тип служащего: <select name="emptID" сlass="select">
-									<option value="all" #iif( emptID is "all", DE("selected"), DE(""))#>Все</option>';
+								РўРёРї СЃР»СѓР¶Р°С‰РµРіРѕ: <select name="emptID" СЃlass="select">
+									<option value="all" #iif( emptID is "all", DE("selected"), DE(""))#>Р’СЃРµ</option>';
 									for (var x=1; x<=employeesList.recordcount; x++){
 										if (employeesList.empt_parent[x] == 4){
 											view &= '<option value="#employeesList.empt_id[x]#" #iif( employeesList.empt_id[x] is emptID, DE("selected"), DE(""))#>#employeesList.empt_name[x]#</option>';
@@ -564,27 +564,27 @@ component attributeName='servicelist' output='false'{
 									}
 
 							view &= '</select>
-								&nbsp;&nbsp;Тип услуги: <select name="stID" сlass="select">
-									<option value="all" #iif( stID is "all", DE("selected"), DE(""))#>Все</option>';
+								&nbsp;&nbsp;РўРёРї СѓСЃР»СѓРіРё: <select name="stID" СЃlass="select">
+									<option value="all" #iif( stID is "all", DE("selected"), DE(""))#>Р’СЃРµ</option>';
 									for (var x=1; x<=servicesTypeList.recordcount; x++){
 										view &= '<option value="#servicesTypeList.st_id[x]#" #iif( servicesTypeList.st_id[x] is stID, DE("selected"), DE(""))#>#servicesTypeList.st_name[x]#</option>';
 									}
 							view &= '</select>
-								<input class="g-button g-button-submit" type="submit" name="SORT" value="Применить">
+								<input class="g-button g-button-submit" type="submit" name="SORT" value="РџСЂРёРјРµРЅРёС‚СЊ">
 							</form>
 						</td></tr>
 
 						<tr>
 						<th><a href="#request.CRequest.updateURL(false,"/?page=services&sortby=id")#">id</a></th>
-						<th>Наименование</th>
-						<th title="Описание">-</th>
-						<th>Цена</th>
-						<th title="Себестоимость">-</th>
-						<th>Тип служащего</th>
-						<th>Тип услуги</th>
-						<th title="Шаблон">-</th>
-						<th title="Статус услуги">Ст</th>
-						<th title="Требуемое время">ТВ</th>
+						<th>РќР°РёРјРµРЅРѕРІР°РЅРёРµ</th>
+						<th title="РћРїРёСЃР°РЅРёРµ">-</th>
+						<th>Р¦РµРЅР°</th>
+						<th title="РЎРµР±РµСЃС‚РѕРёРјРѕСЃС‚СЊ">-</th>
+						<th>РўРёРї СЃР»СѓР¶Р°С‰РµРіРѕ</th>
+						<th>РўРёРї СѓСЃР»СѓРіРё</th>
+						<th title="РЁР°Р±Р»РѕРЅ">-</th>
+						<th title="РЎС‚Р°С‚СѓСЃ СѓСЃР»СѓРіРё">РЎС‚</th>
+						<th title="РўСЂРµР±СѓРµРјРѕРµ РІСЂРµРјСЏ">РўР’</th>
 						<th> --- </th>
 						</tr>';
 
@@ -609,7 +609,7 @@ component attributeName='servicelist' output='false'{
 						if ( servicesList.pls_price_do[x] == '' ){
 							view &= '#LSCurrencyFormat(servicesList.pls_price_ot[x])#';
 						}else{
-							view &= 'от #LSCurrencyFormat(servicesList.pls_price_ot[x])# - до #LSCurrencyFormat(servicesList.pls_price_do[x])#';
+							view &= 'РѕС‚ #LSCurrencyFormat(servicesList.pls_price_ot[x])# - РґРѕ #LSCurrencyFormat(servicesList.pls_price_do[x])#';
 						}
 
 						view &= '</td>
@@ -617,13 +617,13 @@ component attributeName='servicelist' output='false'{
 						<td nowrap>#servicesList.empt_name[x]#</td>
 						<td>#servicesList.st_name[x]#</td>
 						<td>#shablon#</td>
-						<td>#IIF(servicesList.pls_status[x] is 0, DE('<font color="red">выкл</font>'), DE('<font color="green">вкл</font>'))#</td>
+						<td>#IIF(servicesList.pls_status[x] is 0, DE('<font color="red">РІС‹РєР»</font>'), DE('<font color="green">РІРєР»</font>'))#</td>
 						<td>#servicesList.pls_time[x]#</td> 
-						<td nowrap><a href="/?page=services&section=service&action=edite&plsid=#servicesList.pls_id[x]#">Ред.</a> | 
-							<a href="/?page=services&section=service&action=delete&plsid=#servicesList.pls_id[x]#">Удл.</a></td>
+						<td nowrap><a href="/?page=services&section=service&action=edite&plsid=#servicesList.pls_id[x]#">Р РµРґ.</a> | 
+							<a href="/?page=services&section=service&action=delete&plsid=#servicesList.pls_id[x]#">РЈРґР».</a></td>
 						</tr>';
 			}
-			view &= '<tr><td style="text-align:right;" colspan="11"><a class="g-button g-button-submit" href="/?page=services&section=service&action=add">+Добавить услугу</a></td></tr>';
+			view &= '<tr><td style="text-align:right;" colspan="11"><a class="g-button g-button-submit" href="/?page=services&section=service&action=add">+Р”РѕР±Р°РІРёС‚СЊ СѓСЃР»СѓРіСѓ</a></td></tr>';
 
 			view &= '</tbody></table>';
 		view &= '</div></div>';

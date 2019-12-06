@@ -1,7 +1,7 @@
 component displayName='contactsTypeDAO'{
 
-	// Псевдо конструктор
-	instance = {datasource = ''} ; // объект
+	// РџСЃРµРІРґРѕ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
+	instance = {datasource = ''} ; // РѕР±СЉРµРєС‚
 	instance.datasource = createObject('component', 'core.db.Datasource').init();
 
 
@@ -17,7 +17,7 @@ component displayName='contactsTypeDAO'{
 
 		qContactsTypeList.setSQL("SELECT * FROM contacts_types");
 	
-		var execute = qContactsTypeList.execute(); // вся структура и result и prefix
+		var execute = qContactsTypeList.execute(); // РІСЃСЏ СЃС‚СЂСѓРєС‚СѓСЂР° Рё result Рё prefix
 		var result = execute.getResult();
 		return result; //query
 	}

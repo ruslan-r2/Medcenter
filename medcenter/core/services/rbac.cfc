@@ -1,19 +1,19 @@
 /*
-	Role Based Access Control - Управление доступом на основе ролей.
+	Role Based Access Control - РЈРїСЂР°РІР»РµРЅРёРµ РґРѕСЃС‚СѓРїРѕРј РЅР° РѕСЃРЅРѕРІРµ СЂРѕР»РµР№.
 */
 component attributeName='RBACService' output='false'{
 
-	// Псевдо конструктор
+	// РџСЃРµРІРґРѕ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
 	instance.rbacDAO = createObject('component', 'core.db.rbacDAO' ).Init();
 
 	lock scope="session" type="exclusive" timeout="5" {
-		instance.user = session.sessionStorage.getObject('user'); // сесионный Объект
+		instance.user = session.sessionStorage.getObject('user'); // СЃРµСЃРёРѕРЅРЅС‹Р№ РћР±СЉРµРєС‚
 	}
 
 	instance.groups = {};
 	instance.roles = {};
 	instance.prms = {};
-	// пока использование этих структур под вопросом
+	// РїРѕРєР° РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ СЌС‚РёС… СЃС‚СЂСѓРєС‚СѓСЂ РїРѕРґ РІРѕРїСЂРѕСЃРѕРј
 	//instance.obs = {};
 	//instance.ops = {};	
 
@@ -26,7 +26,7 @@ component attributeName='RBACService' output='false'{
 		return this;
 	}
 
-	// назначенные группы пользователю. возвращает список id груп
+	// РЅР°Р·РЅР°С‡РµРЅРЅС‹Рµ РіСЂСѓРїРїС‹ РїРѕР»СЊР·РѕРІР°С‚РµР»СЋ. РІРѕР·РІСЂР°С‰Р°РµС‚ СЃРїРёСЃРѕРє id РіСЂСѓРї
 	function AssignedGroups(){
 		return instance.user.getUserGroups();
 	}
@@ -36,7 +36,7 @@ component attributeName='RBACService' output='false'{
 		structAppend(instance.groups,structGroups);
 	}
 	function getRolesId(){
-		groupName = structKeyList(instance.groups); // может вернуть список, но пока возвращает список из одного элемента
+		groupName = structKeyList(instance.groups); // РјРѕР¶РµС‚ РІРµСЂРЅСѓС‚СЊ СЃРїРёСЃРѕРє, РЅРѕ РїРѕРєР° РІРѕР·РІСЂР°С‰Р°РµС‚ СЃРїРёСЃРѕРє РёР· РѕРґРЅРѕРіРѕ СЌР»РµРјРµРЅС‚Р°
 		return instance.groups[groupName];
 	}
 
@@ -75,7 +75,7 @@ component attributeName='RBACService' output='false'{
 	}
 
 
-	// есть ли среди назначенных ролей указанная роль. возвращает true\false
+	// РµСЃС‚СЊ Р»Рё СЃСЂРµРґРё РЅР°Р·РЅР°С‡РµРЅРЅС‹С… СЂРѕР»РµР№ СѓРєР°Р·Р°РЅРЅР°СЏ СЂРѕР»СЊ. РІРѕР·РІСЂР°С‰Р°РµС‚ true\false
 	function findAssignedRoles( string roles ){
 		var structRoles =  getRoles();
 		return structKeyExists(structRoles,arguments.roles);
@@ -109,7 +109,7 @@ component attributeName='RBACService' output='false'{
 	-DropActiveRole( user,session,role:NAME )
 	-CheckAccess ( session,operation,object:NAME; out result:BOOLEAN )
 
-	// Функции обзора для ядра RBAC
+	// Р¤СѓРЅРєС†РёРё РѕР±Р·РѕСЂР° РґР»СЏ СЏРґСЂР° RBAC
 	Review Functions for Core RBAC
 	-AssignedUsers ( role:NAME; out result: 2 USERS )
 	-AssignedRoles ( user:NAME; result: 2 ROLES )
@@ -118,7 +118,7 @@ component attributeName='RBACService' output='false'{
 	-AuthorizedUsers ( role:NAME; out result: 2 USERS )
 	-AuthorizedRoles ( user:NAME; result: 2 ROLES )
 
-	// Функции расширенного обзора для ядра RBAC
+	// Р¤СѓРЅРєС†РёРё СЂР°СЃС€РёСЂРµРЅРЅРѕРіРѕ РѕР±Р·РѕСЂР° РґР»СЏ СЏРґСЂР° RBAC
 	Advanced Review Functions for Core RBAC
 	-RolePermissions ( role: NAME; result: 2 PERMS )
 	-UserPermissions ( user: NAME: result: 2 PERMS )

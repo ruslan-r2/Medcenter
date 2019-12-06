@@ -1,6 +1,6 @@
 component attributeName='RBAC' {
 
-	// для виджетов
+	// РґР»СЏ РІРёРґР¶РµС‚РѕРІ
 	request.factoryWidget=createObject('component','core.builder.factoryWidget').Init();
 
 	service.rbac = request.RBAC;
@@ -22,7 +22,7 @@ component attributeName='RBAC' {
 		widget.auth=request.factoryWidget.GetWidget('auth').Init();
 		widget.menu=request.factoryWidget.GetWidget('menu').Init('RBAC');
 		widget.rbac=request.factoryWidget.GetWidget('rbac').Init(instance.url.section,instance.url.action);
-		// виджеты отоносящиеся к этому разделу
+		// РІРёРґР¶РµС‚С‹ РѕС‚РѕРЅРѕСЃСЏС‰РёРµСЃСЏ Рє СЌС‚РѕРјСѓ СЂР°Р·РґРµР»Сѓ
 
 		widget.info=request.factoryWidget.GetWidget('info').Init(pageName='RBAC',sniplet=instance.description);
 		widget.footer=request.factoryWidget.GetWidget('footer').Init();

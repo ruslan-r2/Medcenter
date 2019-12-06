@@ -1,10 +1,10 @@
 /*
-	employeesAPI - типы служащих.
+	employeesAPI - С‚РёРїС‹ СЃР»СѓР¶Р°С‰РёС….
 */
 
 component attributeName='employeesServiceAPI' output='false'{
 
-	// Псевдо конструктор
+	// РџСЃРµРІРґРѕ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
 	instance.employeesDAO = createObject('component', 'core.db.employeesDAO' ).Init();
 
 	instance.employees = {};
@@ -14,7 +14,7 @@ component attributeName='employeesServiceAPI' output='false'{
 		return this;
 	}
 
-	// список пользовательских групп
+	// СЃРїРёСЃРѕРє РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРёС… РіСЂСѓРїРї
 	function setEmployeesList(){
 		qEmployees = instance.employeesDAO.readEmployeesList();
 		instance.employees = qEmployees;
@@ -38,11 +38,11 @@ component attributeName='employeesServiceAPI' output='false'{
 		var result = structNew();
 		result.RETVAL = 0;
 		result.RETDESC = "";
-		result.STRUCT = structNew(); // для валидации полей
+		result.STRUCT = structNew(); // РґР»СЏ РІР°Р»РёРґР°С†РёРё РїРѕР»РµР№
 
 		validator = request.factoryService.getService('Validator');
 		                                                 //required                 //DB
-		var struct_ = validator.checkInput('#emptName#',true,'isAllowSimbolRusEn',2,50, true, 'type_employees', 'empt_name','Наименование типа служащего');
+		var struct_ = validator.checkInput('#emptName#',true,'isAllowSimbolRusEn',2,50, true, 'type_employees', 'empt_name','РќР°РёРјРµРЅРѕРІР°РЅРёРµ С‚РёРїР° СЃР»СѓР¶Р°С‰РµРіРѕ');
 		if ( !struct_.retval ){
 			structInsert(result.struct, 'emptName','#struct_.retdesc#');
 		}
@@ -69,7 +69,7 @@ component attributeName='employeesServiceAPI' output='false'{
 
 		//--------------------------------------------------------------------
 
-	        // если обнаружены ошибки
+	        // РµСЃР»Рё РѕР±РЅР°СЂСѓР¶РµРЅС‹ РѕС€РёР±РєРё
 		if ( structIsEmpty(result.struct) ){
 
 			structCreateEmployee = instance.employeesDAO.createEmployee( emptName, emptDescription, emptParent, emptChild, emptStatus );
@@ -98,11 +98,11 @@ component attributeName='employeesServiceAPI' output='false'{
 		var result = structNew();
 		result.RETVAL = 0;
 		result.RETDESC = "";
-		result.STRUCT = structNew(); // для валидации полей
+		result.STRUCT = structNew(); // РґР»СЏ РІР°Р»РёРґР°С†РёРё РїРѕР»РµР№
 
 		validator = request.factoryService.getService('Validator');
 		                                                 //required                 //DB
-		var struct_ = validator.checkInput('#emptName#',true,'isAllowSimbolRusEn',2,50, false, 'type_employees', 'empt_name','Наименование типа служащего');
+		var struct_ = validator.checkInput('#emptName#',true,'isAllowSimbolRusEn',2,50, false, 'type_employees', 'empt_name','РќР°РёРјРµРЅРѕРІР°РЅРёРµ С‚РёРїР° СЃР»СѓР¶Р°С‰РµРіРѕ');
 		if ( !struct_.retval ){
 			structInsert(result.struct, 'emptName','#struct_.retdesc#');
 		}
@@ -129,7 +129,7 @@ component attributeName='employeesServiceAPI' output='false'{
 
 		//--------------------------------------------------------------------
 
-	        // если обнаружены ошибки
+	        // РµСЃР»Рё РѕР±РЅР°СЂСѓР¶РµРЅС‹ РѕС€РёР±РєРё
 		if ( structIsEmpty(result.struct) ){
 
 			structUpdateEmployee = instance.employeesDAO.updateEmployee( emptID, emptName, emptDescription, emptParent, emptChild, emptStatus );

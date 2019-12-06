@@ -1,5 +1,5 @@
 /*
-	Добавить возможно отображения canonical при необходимости
+	Р”РѕР±Р°РІРёС‚СЊ РІРѕР·РјРѕР¶РЅРѕ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ canonical РїСЂРё РЅРµРѕР±С…РѕРґРёРјРѕСЃС‚Рё
 */
 
 component attributeName='meta' {
@@ -76,16 +76,16 @@ component attributeName='meta' {
 	<link rel="stylesheet" type="text/css" href="#instance.stylesheet7#" media="all">
 	<link rel="shortcut icon" href="#instance.shortcut#" type="image/x-icon">';
 
-		// проверка на включение у пользователя ява или нет
+		// РїСЂРѕРІРµСЂРєР° РЅР° РІРєР»СЋС‡РµРЅРёРµ Сѓ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ СЏРІР° РёР»Рё РЅРµС‚
 		if ( request.CClient.getClient('javascript') ){
 		meta &= '
 			<script src="/js/scripts.js?CFID=#client.CFID#&CFTOKEN=#client.CFTOKEN#" type="text/javascript"></script>';
 		}
 
-		// нужно передавать в яваскрипт CFID и CFTOKEN и все ява запросы делать с этими параметрами без исключения
-		// как это сделать пока не знаю.
+		// РЅСѓР¶РЅРѕ РїРµСЂРµРґР°РІР°С‚СЊ РІ СЏРІР°СЃРєСЂРёРїС‚ CFID Рё CFTOKEN Рё РІСЃРµ СЏРІР° Р·Р°РїСЂРѕСЃС‹ РґРµР»Р°С‚СЊ СЃ СЌС‚РёРјРё РїР°СЂР°РјРµС‚СЂР°РјРё Р±РµР· РёСЃРєР»СЋС‡РµРЅРёСЏ
+		// РєР°Рє СЌС‚Рѕ СЃРґРµР»Р°С‚СЊ РїРѕРєР° РЅРµ Р·РЅР°СЋ.
 
-		// добавление тега каноникал
+		// РґРѕР±Р°РІР»РµРЅРёРµ С‚РµРіР° РєР°РЅРѕРЅРёРєР°Р»
 		//meta &= '';
 			/*
 			<cfset canonical="">

@@ -1,10 +1,10 @@
 /*
-	Role Based Access Control - Управление доступом на основе ролей.
+	Role Based Access Control - РЈРїСЂР°РІР»РµРЅРёРµ РґРѕСЃС‚СѓРїРѕРј РЅР° РѕСЃРЅРѕРІРµ СЂРѕР»РµР№.
 */
 
 component attributeName='RBACServiceAPI' output='false'{
 
-	// Псевдо конструктор
+	// РџСЃРµРІРґРѕ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
 	instance.rbacDAO = createObject('component', 'core.db.rbacDAO' ).Init();
 
 	instance.groups = {};
@@ -23,7 +23,7 @@ component attributeName='RBACServiceAPI' output='false'{
 		return this;
 	}
 
-	// список пользовательских групп
+	// СЃРїРёСЃРѕРє РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРёС… РіСЂСѓРїРї
 	function setGroupList(){
 		qGroups = instance.rbacDAO.readGroupList();
 		instance.groups = qGroups;
@@ -45,11 +45,11 @@ component attributeName='RBACServiceAPI' output='false'{
 		var result = structNew();
 		result.RETVAL = 0;
 		result.RETDESC = "";
-		result.STRUCT = structNew(); // для валидации полей
+		result.STRUCT = structNew(); // РґР»СЏ РІР°Р»РёРґР°С†РёРё РїРѕР»РµР№
 
 		validator = request.factoryService.getService('Validator');
 		                                                 //required                 //DB
-		var struct_ = validator.checkInput('#groupName#',true,'isAllowSimbolRusEn',2,20, true, 'bbs_rbac_groups', 'group_name','Имя пользовательской группы');
+		var struct_ = validator.checkInput('#groupName#',true,'isAllowSimbolRusEn',2,20, true, 'bbs_rbac_groups', 'group_name','РРјСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРѕР№ РіСЂСѓРїРїС‹');
 		if ( !struct_.retval ){
 			structInsert(result.struct, 'groupName','#struct_.retdesc#');
 		}
@@ -71,7 +71,7 @@ component attributeName='RBACServiceAPI' output='false'{
 
 		//--------------------------------------------------------------------
 
-	        // если обнаружены ошибки
+	        // РµСЃР»Рё РѕР±РЅР°СЂСѓР¶РµРЅС‹ РѕС€РёР±РєРё
 		if ( structIsEmpty(result.struct) ){
 
 			structCreateGroup = instance.rbacDAO.createGroup( groupName, groupDescription, rolesID, groupStatus );
@@ -99,11 +99,11 @@ component attributeName='RBACServiceAPI' output='false'{
 		var result = structNew();
 		result.RETVAL = 0;
 		result.RETDESC = "";
-		result.STRUCT = structNew(); // для валидации полей
+		result.STRUCT = structNew(); // РґР»СЏ РІР°Р»РёРґР°С†РёРё РїРѕР»РµР№
 
 		validator = request.factoryService.getService('Validator');
 		                                                 //required                 //DB
-		var struct_ = validator.checkInput('#groupName#',true,'isAllowSimbolRusEn',2,20, false, 'bbs_rbac_groups', 'group_name','Имя пользовательской группы');
+		var struct_ = validator.checkInput('#groupName#',true,'isAllowSimbolRusEn',2,20, false, 'bbs_rbac_groups', 'group_name','РРјСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРѕР№ РіСЂСѓРїРїС‹');
 		if ( !struct_.retval ){
 			structInsert(result.struct, 'groupName','#struct_.retdesc#');
 		}
@@ -125,7 +125,7 @@ component attributeName='RBACServiceAPI' output='false'{
 
 		//--------------------------------------------------------------------
 
-	        // если обнаружены ошибки
+	        // РµСЃР»Рё РѕР±РЅР°СЂСѓР¶РµРЅС‹ РѕС€РёР±РєРё
 		if ( structIsEmpty(result.struct) ){
 
 			structUpdateGroup = instance.rbacDAO.updateGroup( groupID, groupName, groupDescription, rolesID, groupStatus );
@@ -159,11 +159,11 @@ component attributeName='RBACServiceAPI' output='false'{
 		var result = structNew();
 		result.RETVAL = 0;
 		result.RETDESC = "";
-		result.STRUCT = structNew(); // для валидации полей
+		result.STRUCT = structNew(); // РґР»СЏ РІР°Р»РёРґР°С†РёРё РїРѕР»РµР№
 
 		validator = request.factoryService.getService('Validator');
 		                                                 //required                 //DB
-		var struct_ = validator.checkInput('#roleName#',true,'isAllowSimbolRusEn',2,20, true, 'bbs_rbac_roles', 'role_name','Имя пользовательской роли');
+		var struct_ = validator.checkInput('#roleName#',true,'isAllowSimbolRusEn',2,20, true, 'bbs_rbac_roles', 'role_name','РРјСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРѕР№ СЂРѕР»Рё');
 		if ( !struct_.retval ){
 			structInsert(result.struct, 'roleName','#struct_.retdesc#');
 		}
@@ -195,7 +195,7 @@ component attributeName='RBACServiceAPI' output='false'{
 
 		//--------------------------------------------------------------------
 
-	        // если обнаружены ошибки
+	        // РµСЃР»Рё РѕР±РЅР°СЂСѓР¶РµРЅС‹ РѕС€РёР±РєРё
 		if ( structIsEmpty(result.struct) ){
 
 			structCreateRole = instance.rbacDAO.createRole( roleName, roleDescription, roleChild, roleParent, prmsIDs, roleStatus );
@@ -225,11 +225,11 @@ component attributeName='RBACServiceAPI' output='false'{
 		var result = structNew();
 		result.RETVAL = 0;
 		result.RETDESC = "";
-		result.STRUCT = structNew(); // для валидации полей
+		result.STRUCT = structNew(); // РґР»СЏ РІР°Р»РёРґР°С†РёРё РїРѕР»РµР№
 
 		validator = request.factoryService.getService('Validator');
 		                                                 //required                 //DB
-		var struct_ = validator.checkInput('#roleName#',true,'isAllowSimbolRusEn',2,20, false, 'bbs_rbac_roles', 'role_name','Имя пользовательской группы');
+		var struct_ = validator.checkInput('#roleName#',true,'isAllowSimbolRusEn',2,20, false, 'bbs_rbac_roles', 'role_name','РРјСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРѕР№ РіСЂСѓРїРїС‹');
 		if ( !struct_.retval ){
 			structInsert(result.struct, 'roleName','#struct_.retdesc#');
 		}
@@ -261,7 +261,7 @@ component attributeName='RBACServiceAPI' output='false'{
 
 		//--------------------------------------------------------------------
 
-	        // если обнаружены ошибки
+	        // РµСЃР»Рё РѕР±РЅР°СЂСѓР¶РµРЅС‹ РѕС€РёР±РєРё
 		if ( structIsEmpty(result.struct) ){
 			structUpdateRole = instance.rbacDAO.updateRole( roleID, roleName, roleDescription, roleChild, roleParent, prmsIDs, roleStatus );
 			if (structUpdateRole.RETVAL == 1){
@@ -291,11 +291,11 @@ component attributeName='RBACServiceAPI' output='false'{
 		var result = structNew();
 		result.RETVAL = 0;
 		result.RETDESC = "";
-		result.STRUCT = structNew(); // для валидации полей
+		result.STRUCT = structNew(); // РґР»СЏ РІР°Р»РёРґР°С†РёРё РїРѕР»РµР№
 
 		validator = request.factoryService.getService('Validator');
 		                                                 //required                 //DB
-		var struct_ = validator.checkInput('#prmsName#',true,'isAllowSimbolRusEn',2,50, true, 'bbs_rbac_prms', 'prms_name','Имя разрешения');
+		var struct_ = validator.checkInput('#prmsName#',true,'isAllowSimbolRusEn',2,50, true, 'bbs_rbac_prms', 'prms_name','РРјСЏ СЂР°Р·СЂРµС€РµРЅРёСЏ');
 		if ( !struct_.retval ){
 			structInsert(result.struct, 'prmsName','#struct_.retdesc#');
 		}
@@ -320,7 +320,7 @@ component attributeName='RBACServiceAPI' output='false'{
 			structInsert(result.struct, 'prmsStatus','#struct_.retdesc#');
 		}
 		//--------------------------------------------------------------------
-	        // если обнаружены ошибки
+	        // РµСЃР»Рё РѕР±РЅР°СЂСѓР¶РµРЅС‹ РѕС€РёР±РєРё
 		if ( structIsEmpty(result.struct) ){
 			structCreateRole = instance.rbacDAO.createPermission( prmsName, prmsDescription, obsID, opsID, prmsStatus );
 			if (structCreateRole.RETVAL == 1){
@@ -346,11 +346,11 @@ component attributeName='RBACServiceAPI' output='false'{
 		var result = structNew();
 		result.RETVAL = 0;
 		result.RETDESC = "";
-		result.STRUCT = structNew(); // для валидации полей
+		result.STRUCT = structNew(); // РґР»СЏ РІР°Р»РёРґР°С†РёРё РїРѕР»РµР№
 
 		validator = request.factoryService.getService('Validator');
 		                                                 //required                 //DB
-		var struct_ = validator.checkInput('#prmsName#',true,'isAllowSimbolRusEn',2,50, false, 'bbs_rbac_prms', 'prms_name','Имя разрешения');
+		var struct_ = validator.checkInput('#prmsName#',true,'isAllowSimbolRusEn',2,50, false, 'bbs_rbac_prms', 'prms_name','РРјСЏ СЂР°Р·СЂРµС€РµРЅРёСЏ');
 		if ( !struct_.retval ){
 			structInsert(result.struct, 'prmsName','#struct_.retdesc#');
 		}
@@ -376,7 +376,7 @@ component attributeName='RBACServiceAPI' output='false'{
 		}
 
 		//--------------------------------------------------------------------
-	        // если обнаружены ошибки
+	        // РµСЃР»Рё РѕР±РЅР°СЂСѓР¶РµРЅС‹ РѕС€РёР±РєРё
 		if ( structIsEmpty(result.struct) ){
 			structUpdatePermission = instance.rbacDAO.updatePermission( prmsID, prmsName, prmsDescription, obsID, opsID, prmsStatus );
 			if (structUpdatePermission.RETVAL == 1){
@@ -405,11 +405,11 @@ component attributeName='RBACServiceAPI' output='false'{
 		var result = structNew();
 		result.RETVAL = 0;
 		result.RETDESC = "";
-		result.STRUCT = structNew(); // для валидации полей
+		result.STRUCT = structNew(); // РґР»СЏ РІР°Р»РёРґР°С†РёРё РїРѕР»РµР№
 
 		validator = request.factoryService.getService('Validator');
 		                                                 //required                 //DB
-		var struct_ = validator.checkInput('#obsName#',true,'isAllowSimbolRusEn',2,50, true, 'bbs_rbac_obs', 'obs_name','Имя объекта');
+		var struct_ = validator.checkInput('#obsName#',true,'isAllowSimbolRusEn',2,50, true, 'bbs_rbac_obs', 'obs_name','РРјСЏ РѕР±СЉРµРєС‚Р°');
 		if ( !struct_.retval ){
 			structInsert(result.struct, 'obsName','#struct_.retdesc#');
 		}
@@ -430,7 +430,7 @@ component attributeName='RBACServiceAPI' output='false'{
 		}
 
 		//--------------------------------------------------------------------
-	        // если обнаружены ошибки
+	        // РµСЃР»Рё РѕР±РЅР°СЂСѓР¶РµРЅС‹ РѕС€РёР±РєРё
 		if ( structIsEmpty(result.struct) ){
 
 			structCreateObject = instance.rbacDAO.createObject( obsName, obsType, obsDescription, obsStatus );
@@ -458,11 +458,11 @@ component attributeName='RBACServiceAPI' output='false'{
 		var result = structNew();
 		result.RETVAL = 0;
 		result.RETDESC = "";
-		result.STRUCT = structNew(); // для валидации полей
+		result.STRUCT = structNew(); // РґР»СЏ РІР°Р»РёРґР°С†РёРё РїРѕР»РµР№
 
 		validator = request.factoryService.getService('Validator');
 		                                                 //required                 //DB
-		var struct_ = validator.checkInput('#obsName#',true,'isAllowSimbolRusEn',2,50, false, 'bbs_rbac_obs', 'obs_name','Имя объекта');
+		var struct_ = validator.checkInput('#obsName#',true,'isAllowSimbolRusEn',2,50, false, 'bbs_rbac_obs', 'obs_name','РРјСЏ РѕР±СЉРµРєС‚Р°');
 		if ( !struct_.retval ){
 			structInsert(result.struct, 'obsName','#struct_.retdesc#');
 		}
@@ -483,7 +483,7 @@ component attributeName='RBACServiceAPI' output='false'{
 		}
 
 		//--------------------------------------------------------------------
-	        // если обнаружены ошибки
+	        // РµСЃР»Рё РѕР±РЅР°СЂСѓР¶РµРЅС‹ РѕС€РёР±РєРё
 		if ( structIsEmpty(result.struct) ){
 			structUpdateObject = instance.rbacDAO.updateObject( obsID, obsName, obsType, obsDescription, obsStatus );
 			if (structUpdateObject.RETVAL == 1){
@@ -512,11 +512,11 @@ component attributeName='RBACServiceAPI' output='false'{
 		var result = structNew();
 		result.RETVAL = 0;
 		result.RETDESC = "";
-		result.STRUCT = structNew(); // для валидации полей
+		result.STRUCT = structNew(); // РґР»СЏ РІР°Р»РёРґР°С†РёРё РїРѕР»РµР№
 
 		validator = request.factoryService.getService('Validator');
 		                                                 //required                 //DB
-		var struct_ = validator.checkInput('#opsName#',true,'isAllowSimbolRusEn',2,50, true, 'bbs_rbac_ops', 'ops_name','Имя операции');
+		var struct_ = validator.checkInput('#opsName#',true,'isAllowSimbolRusEn',2,50, true, 'bbs_rbac_ops', 'ops_name','РРјСЏ РѕРїРµСЂР°С†РёРё');
 		if ( !struct_.retval ){
 			structInsert(result.struct, 'opsName','#struct_.retdesc#');
 		}
@@ -537,7 +537,7 @@ component attributeName='RBACServiceAPI' output='false'{
 		}
 
 		//--------------------------------------------------------------------
-	        // если обнаружены ошибки
+	        // РµСЃР»Рё РѕР±РЅР°СЂСѓР¶РµРЅС‹ РѕС€РёР±РєРё
 		if ( structIsEmpty(result.struct) ){
 
 			structCreateOperation = instance.rbacDAO.createOperation( opsName, opsType, opsDescription, opsStatus );
@@ -565,11 +565,11 @@ component attributeName='RBACServiceAPI' output='false'{
 		var result = structNew();
 		result.RETVAL = 0;
 		result.RETDESC = "";
-		result.STRUCT = structNew(); // для валидации полей
+		result.STRUCT = structNew(); // РґР»СЏ РІР°Р»РёРґР°С†РёРё РїРѕР»РµР№
 
 		validator = request.factoryService.getService('Validator');
 		                                                 //required                 //DB
-		var struct_ = validator.checkInput('#opsName#',true,'isAllowSimbolRusEn',2,50, false, 'bbs_rbac_ops', 'ops_name','Имя операции');
+		var struct_ = validator.checkInput('#opsName#',true,'isAllowSimbolRusEn',2,50, false, 'bbs_rbac_ops', 'ops_name','РРјСЏ РѕРїРµСЂР°С†РёРё');
 		if ( !struct_.retval ){
 			structInsert(result.struct, 'opsName','#struct_.retdesc#');
 		}
@@ -590,7 +590,7 @@ component attributeName='RBACServiceAPI' output='false'{
 		}
 
 		//--------------------------------------------------------------------
-	        // если обнаружены ошибки
+	        // РµСЃР»Рё РѕР±РЅР°СЂСѓР¶РµРЅС‹ РѕС€РёР±РєРё
 		if ( structIsEmpty(result.struct) ){
 			structUpdateOperation = instance.rbacDAO.updateOperation( opsID, opsName, opsType, opsDescription, opsStatus );
 			if (structUpdateOperation.RETVAL == 1){

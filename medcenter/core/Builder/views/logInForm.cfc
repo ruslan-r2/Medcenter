@@ -13,7 +13,7 @@
 			if ( result.RETVAL is 1 ){
 				factoryService.getService('redirector').redirect('#redir#');
 			}else{
-				// --- пробная версия
+				// --- РїСЂРѕР±РЅР°СЏ РІРµСЂСЃРёСЏ
 				if (StructKeyExists(result, 'RETDESC')) {
 					instance.message = result['RETDESC'];
 				} else {
@@ -38,16 +38,16 @@
 
 		if (arguments.mini){
 			view = '<form name="LogIn" action = "#arguments.action#" method = "post">
-					<input type = "text" placeholder="логин" name = "username" value = "" size = "10" maxlength = "22">
-					<input class="passwd-label" type = "password" placeholder="пароль" name = "password" value = "" size = "10" maxlength = "20">
-					<input class="g-button g-button-submit" type = "submit" name = "login" value = "Войти">
+					<input type = "text" placeholder="Р»РѕРіРёРЅ" name = "username" value = "" size = "10" maxlength = "22">
+					<input class="passwd-label" type = "password" placeholder="РїР°СЂРѕР»СЊ" name = "password" value = "" size = "10" maxlength = "20">
+					<input class="g-button g-button-submit" type = "submit" name = "login" value = "Р’РѕР№С‚Рё">
 				</form>';
 
 		}else{
 
-			// Если JavaScript выключен то попадаем в action
-			// сейчас скрипты добавляются жостко в объекте CJavaScript
-			// нужно его перевести в аппликатион и пусть каждый скрипт в него добавляет свои пометки
+			// Р•СЃР»Рё JavaScript РІС‹РєР»СЋС‡РµРЅ С‚Рѕ РїРѕРїР°РґР°РµРј РІ action
+			// СЃРµР№С‡Р°СЃ СЃРєСЂРёРїС‚С‹ РґРѕР±Р°РІР»СЏСЋС‚СЃСЏ Р¶РѕСЃС‚РєРѕ РІ РѕР±СЉРµРєС‚Рµ CJavaScript
+			// РЅСѓР¶РЅРѕ РµРіРѕ РїРµСЂРµРІРµСЃС‚Рё РІ Р°РїРїР»РёРєР°С‚РёРѕРЅ Рё РїСѓСЃС‚СЊ РєР°Р¶РґС‹Р№ СЃРєСЂРёРїС‚ РІ РЅРµРіРѕ РґРѕР±Р°РІР»СЏРµС‚ СЃРІРѕРё РїРѕРјРµС‚РєРё
 			//factoryService.getService('CJavaScript').addJScript(fileName=',/js/jquery.validate.js');
 			//factoryService.getService('CJavaScript').addJScript(fileName=',/js/authorization.js');
 
@@ -57,17 +57,17 @@
 			view = '';
 			view &='<div class="push_5 grid_6">
 				<div class="signin-box">
-				<h2>ООО "Жемчужина подолья"</h2>
+				<h2>РћРћРћ "Р–РµРјС‡СѓР¶РёРЅР° РїРѕРґРѕР»СЊСЏ"</h2>
 				<form name="LogIn" id="logInForm" action="#arguments.action#" method="post">
 					<div class="username-div">
-						<label><strong class="username-label">Логин</strong></label>
+						<label><strong class="username-label">Р›РѕРіРёРЅ</strong></label>
 						<input type="text" id="username" name="username" size="34" value="#form.username#" maxlength = "20" >';
 			if (instance.username is not ''){
 			view &= '		<label for="username" class="error" generated="0">#instance.username#</label>';
 			}
 			view &= '	</div>
 					<div class="passwd-div">
-						<label><strong class="passwd-label">Пароль</strong></label>
+						<label><strong class="passwd-label">РџР°СЂРѕР»СЊ</strong></label>
 						<input type="password" id="password" name="password" size="34" maxlength = "20">';
 			if (instance.password is not ''){
 			view &= '		<label for="password" class="error" generated="1">#instance.password#</label>';
@@ -75,7 +75,7 @@
 			view &= '
 					</div>
 					<input type="hidden" name="redir" value="#redir#">
-					<p><input class="g-button g-button-submit" type="submit" name="login" value="Войти"></p>
+					<p><input class="g-button g-button-submit" type="submit" name="login" value="Р’РѕР№С‚Рё"></p>
 					';
 			if (instance.message is not ''){
 				view &= '<div id="mes" style="color:red;">#instance.message#</div>';

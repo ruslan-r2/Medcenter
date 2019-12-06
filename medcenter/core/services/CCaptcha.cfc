@@ -1,13 +1,13 @@
 /*
-	CCaptcha - сервис
+	CCaptcha - СЃРµСЂРІРёСЃ
 */
 component displayname="CCaptcha" output="false" {
 
-	// Псевдо конструктор
-	instance.captcha = {}; //объект
+	// РџСЃРµРІРґРѕ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
+	instance.captcha = {}; //РѕР±СЉРµРєС‚
 
 	lock scope="session" type="exclusive" timeout="5" {
-		instance.captcha = session.sessionStorage.getObject('captcha'); // сесионный Объект
+		instance.captcha = session.sessionStorage.getObject('captcha'); // СЃРµСЃРёРѕРЅРЅС‹Р№ РћР±СЉРµРєС‚
 	}
 
 	
@@ -24,12 +24,12 @@ component displayname="CCaptcha" output="false" {
 	}
 
 
-	function generateCaptcha(required UUID){ //UUID генерируем в форме
+	function generateCaptcha(required UUID){ //UUID РіРµРЅРµСЂРёСЂСѓРµРј РІ С„РѕСЂРјРµ
 
 		//UUID = createUUID();
 		UUID = arguments.UUID;
 
-		// генерируем случайную страку
+		// РіРµРЅРµСЂРёСЂСѓРµРј СЃР»СѓС‡Р°Р№РЅСѓСЋ СЃС‚СЂР°РєСѓ
 		countSymbols = randrange(6,6);
 		symbols = '';
 		for ( x = 1; x LTE countSymbols; x=x+1) {
@@ -45,7 +45,7 @@ component displayname="CCaptcha" output="false" {
 		  }
 		}
 
-		instance.captcha.setCaptcha(UUID, symbols); // заносим данные в объект
+		instance.captcha.setCaptcha(UUID, symbols); // Р·Р°РЅРѕСЃРёРј РґР°РЅРЅС‹Рµ РІ РѕР±СЉРµРєС‚
 
 	}
 

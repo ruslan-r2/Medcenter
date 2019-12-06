@@ -1,10 +1,10 @@
 /*
-	contactsTypeAPI - список услуг.
+	contactsTypeAPI - СЃРїРёСЃРѕРє СѓСЃР»СѓРі.
 */
 
 component attributeName='contactsTypeAPI' output='false'{
 
-	// Псевдо конструктор
+	// РџСЃРµРІРґРѕ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
 	instance.contactsTypeDAO = createObject('component', 'core.db.contactsTypeDAO' ).Init();
 
 	instance.contactsType = {};
@@ -12,7 +12,7 @@ component attributeName='contactsTypeAPI' output='false'{
 	function init(){
 		return this;
 	}
-	// список пользовательских групп
+	// СЃРїРёСЃРѕРє РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРёС… РіСЂСѓРїРї
 
 	function getContactsTypeList(){
 		qContactsType = instance.contactsTypeDAO.readContactsTypeList();

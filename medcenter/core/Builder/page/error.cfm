@@ -1,6 +1,6 @@
 <html lang="ru">
 	<head>
-		<title>Ошибка!</title>
+		<title>РћС€РёР±РєР°!</title>
 		<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8" />
 		<meta name="generator" content="digann.ru v.2.0" />
 		<meta name="robots" content="nofollow" />
@@ -8,14 +8,14 @@
 	</head>
 
 	<body>
-		<div id="header">ЛОГОТИП</div>
-		<div id="menu">МЕНЮ</div>
+		<div id="header">Р›РћР“РћРўРРџ</div>
+		<div id="menu">РњР•РќР®</div>
 
 		<div id="block">
-			<h3>Внимание! Зафиксирована ошибка!</h3>
+			<h3>Р’РЅРёРјР°РЅРёРµ! Р—Р°С„РёРєСЃРёСЂРѕРІР°РЅР° РѕС€РёР±РєР°!</h3>
 			<hr size="1">
-			<p>Информация об ошибке сохранена и отправлена Администратору сайта.</p>
-			<a href="http://medcenter-gp.ru">Вернуться на главную страницу.</a>
+			<p>РРЅС„РѕСЂРјР°С†РёСЏ РѕР± РѕС€РёР±РєРµ СЃРѕС…СЂР°РЅРµРЅР° Рё РѕС‚РїСЂР°РІР»РµРЅР° РђРґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂСѓ СЃР°Р№С‚Р°.</p>
+			<a href="http://medcenter-gp.ru">Р’РµСЂРЅСѓС‚СЊСЃСЏ РЅР° РіР»Р°РІРЅСѓСЋ СЃС‚СЂР°РЅРёС†Сѓ.</a>
 		</div>
 		<cfoutput>
 
@@ -29,7 +29,7 @@
 		</div><!--/content -->
 		</cfoutput>
 
-		<div id="menu">ФУТЕР</div>
+		<div id="menu">Р¤РЈРўР•Р </div>
 
 	</body>
 </html>

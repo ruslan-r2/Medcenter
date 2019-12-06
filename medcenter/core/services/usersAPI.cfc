@@ -1,9 +1,9 @@
 /*
-	users API - сервис
+	users API - СЃРµСЂРІРёСЃ
 */
 component displayname="usersAPI" output="false" {
 
-	// Псевдо конструктор
+	// РџСЃРµРІРґРѕ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
 	instance = {users = '', userDAO = '' };
 
 	instance.userDAO = createObject('component', 'core.db.userDAO' ).init();

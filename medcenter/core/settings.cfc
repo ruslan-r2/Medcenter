@@ -8,7 +8,7 @@ component displayname="settings" output="false" {
 	}
 
 	function setSettings(required query settings) {
-		// нужна проверка на пустой query
+		// РЅСѓР¶РЅР° РїСЂРѕРІРµСЂРєР° РЅР° РїСѓСЃС‚РѕР№ query
 		instance.querySettings = arguments.settings;
 	}
 
@@ -28,7 +28,7 @@ component displayname="settings" output="false" {
 		// --------------------------------------------------------------------------------------------------------------------------
 		qSettings.setSQL(select);
 
-		var result = qSettings.execute(dbtype="query"); // вся структура и result и prefix
+		var result = qSettings.execute(dbtype="query"); // РІСЃСЏ СЃС‚СЂСѓРєС‚СѓСЂР° Рё result Рё prefix
 		var querySettings = result.getResult();
 
 		if (arguments.type == 'struct'){
@@ -36,12 +36,12 @@ component displayname="settings" output="false" {
 			if (querySettings.RecordCount gt 0) {
 				for (x=1; x<=querySettings.RecordCount; x++) {
 					setVariable('structSettings.#querySettings.cfvar[x]#',querySettings.data[x]);
-					// структура ключ-значение
+					// СЃС‚СЂСѓРєС‚СѓСЂР° РєР»СЋС‡-Р·РЅР°С‡РµРЅРёРµ
 				}
 			}
 			return structSettings;
 		}else{
-			return querySettings; // возвращает query
+			return querySettings; // РІРѕР·РІСЂР°С‰Р°РµС‚ query
 		}
 	}
 

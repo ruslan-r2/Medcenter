@@ -1,9 +1,9 @@
 /* 
-	Виджет список типов услуг --
+	Р’РёРґР¶РµС‚ СЃРїРёСЃРѕРє С‚РёРїРѕРІ СѓСЃР»СѓРі --
 */
 
 component attributeName='serviceTypelist' output='false'{
-	// псевдо конструктор
+	// РїСЃРµРІРґРѕ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
 	factoryService = request.factoryService;
 
 	instance.view = '';
@@ -46,16 +46,16 @@ component attributeName='serviceTypelist' output='false'{
 		}
 	}
 
-	// обработчик формы если ява выключена
+	// РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹ РµСЃР»Рё СЏРІР° РІС‹РєР»СЋС‡РµРЅР°
 	private function addServiceTypeFormHandler(){
-		// --- обработчик формы---
+		// --- РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹---
 		if ( isdefined('form.addServiceType') ){
 		  servicesTypeAPI = factoryService.getService('servicesTypeAPI');
 		      result = servicesTypeAPI.addServiceType( #form.st_name# , #form.st_description#, #form.st_status# );
 			if ( result.RETVAL is 1 ){
 				factoryService.getService('redirector').redirect('/?page=servicesType');
 			}else{
-				// --- пробная версия
+				// --- РїСЂРѕР±РЅР°СЏ РІРµСЂСЃРёСЏ
 				if (StructKeyExists(result, 'RETDESC')) {
 					instance.message = result['RETDESC'];
 				} else {
@@ -79,7 +79,7 @@ component attributeName='serviceTypelist' output='false'{
 				}
 			}
 		}
-		// --- обработчик формы---
+		// --- РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹---
 	}
 
 	function addServiceTypeForm(){
@@ -92,10 +92,10 @@ component attributeName='serviceTypelist' output='false'{
 		view &= '
 			<form name="" id="" action="#request.CRequest.updateURL(false,"/?page=servicesType&section=serviceType&action=add")#" method="post">
 			<div class="grid_8"><div class="signin-box">
-				<a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,"/?page=servicesType")#">Назад</a><br><br>
-				<h2>Добавление типа услуги</h2>
+				<a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,"/?page=servicesType")#">РќР°Р·Р°Рґ</a><br><br>
+				<h2>Р”РѕР±Р°РІР»РµРЅРёРµ С‚РёРїР° СѓСЃР»СѓРіРё</h2>
 				<div>
-					<label for="st_name"><b>Наименование типа услуги:</b></label> 
+					<label for="st_name"><b>РќР°РёРјРµРЅРѕРІР°РЅРёРµ С‚РёРїР° СѓСЃР»СѓРіРё:</b></label> 
 					<input type="text" name="st_name" value="#form.st_name#" size = "50" maxlength = "50">';
 
 			if (instance.stName is not ''){
@@ -105,7 +105,7 @@ component attributeName='serviceTypelist' output='false'{
 			view &= '
 				</div>
 				<div>
-					<label for="st_description"><b>Описание:</b></label>
+					<label for="st_description"><b>РћРїРёСЃР°РЅРёРµ:</b></label>
 					<textarea name = "st_description" rows="6" cols="47" >#form.st_description#</textarea>';
 
 			if (instance.stDescription is not ''){
@@ -114,9 +114,9 @@ component attributeName='serviceTypelist' output='false'{
 
 			view &= '</div>
 				<div>
-					<label for="st_status"><b>Статус:</b></label> 
-					<input type="radio" name="st_status" value="1" #checkedRadio("1", form.st_status)# /> Включена <br>
-					<input type="radio" name="st_status" value="0" #checkedRadio("0", form.st_status)#/> Выключена <br>
+					<label for="st_status"><b>РЎС‚Р°С‚СѓСЃ:</b></label> 
+					<input type="radio" name="st_status" value="1" #checkedRadio("1", form.st_status)# /> Р’РєР»СЋС‡РµРЅР° <br>
+					<input type="radio" name="st_status" value="0" #checkedRadio("0", form.st_status)#/> Р’С‹РєР»СЋС‡РµРЅР° <br>
 				</div>';
 
 			if (instance.stStatus is not ''){
@@ -125,8 +125,8 @@ component attributeName='serviceTypelist' output='false'{
 
 			view &= '
 				<div>
-					<input disabled class="g-button g-button-submit" type="submit" name="escape" value="Отмена">
-					<input class="g-button g-button-submit" type="submit" name="addServiceType" value="Сохранить">
+					<input disabled class="g-button g-button-submit" type="submit" name="escape" value="РћС‚РјРµРЅР°">
+					<input class="g-button g-button-submit" type="submit" name="addServiceType" value="РЎРѕС…СЂР°РЅРёС‚СЊ">
 				</div>';
 
 			if (instance.message is not ''){
@@ -139,7 +139,7 @@ component attributeName='serviceTypelist' output='false'{
 		return view;
 	}
 	private function updateServiceTypeFormHandler(){
-		// --- обработчик формы---
+		// --- РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹---
 		if ( isdefined('form.updateServiceType') ){
 		//writeDump(form);
 		  servicesTypeAPI = factoryService.getService('servicesTypeAPI');
@@ -152,7 +152,7 @@ component attributeName='serviceTypelist' output='false'{
 				}
 
 			}else{
-				// --- пробная версия
+				// --- РїСЂРѕР±РЅР°СЏ РІРµСЂСЃРёСЏ
 				if (StructKeyExists(result, 'RETDESC')) {
 					instance.message = result['RETDESC'];
 				} else {
@@ -176,7 +176,7 @@ component attributeName='serviceTypelist' output='false'{
 				}
 			}
 		}
-		// --- обработчик формы---
+		// --- РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹---
 	}
 
 	function updateServiceTypeForm( stid ){
@@ -194,15 +194,15 @@ component attributeName='serviceTypelist' output='false'{
 		view &= '
 			<form name="" id="" action="#request.CRequest.updateURL(false,"/?page=servicesType&section=serviceType&action=edite&stid=#arguments.stid#")#" method="post">
 			<div class="grid_8"><div class="signin-box">
-				<a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,"/?page=servicesType")#">Назад</a><br><br>
-				<h2>Редактирование типа услуги</h2>
+				<a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,"/?page=servicesType")#">РќР°Р·Р°Рґ</a><br><br>
+				<h2>Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ С‚РёРїР° СѓСЃР»СѓРіРё</h2>
 				<div>
-					<label for="st_id"><b>ID типа услуги:</b></label>
+					<label for="st_id"><b>ID С‚РёРїР° СѓСЃР»СѓРіРё:</b></label>
 					<input disabled type="text" name="_st_id" value="#form.st_id#" size = "2" maxlength = "2">
 					<input type="hidden" name="st_id" value="#form.st_id#" size = "2" maxlength = "2">
 				</div>
 				<div>
-					<label for="st_name"><b>Наименование типа услуги:</b></label> 
+					<label for="st_name"><b>РќР°РёРјРµРЅРѕРІР°РЅРёРµ С‚РёРїР° СѓСЃР»СѓРіРё:</b></label> 
 					<input type="text" name="st_name" value="#form.st_name#" size = "50" maxlength = "50">';
 
 			if (instance.stName is not ''){
@@ -212,7 +212,7 @@ component attributeName='serviceTypelist' output='false'{
 			view &= '
 				</div>
 				<div>
-					<label for="st_description"><b>Описание:</b></label>
+					<label for="st_description"><b>РћРїРёСЃР°РЅРёРµ:</b></label>
 					<textarea name = "st_description" rows="6" cols="47" >#form.st_description#</textarea>';
 			if (instance.stDescription is not ''){
 			view &= '		<label for="st_description" class="error" generated="0">#instance.stDescription#</label>';
@@ -220,9 +220,9 @@ component attributeName='serviceTypelist' output='false'{
 
 			view &= '</div>
 				<div>
-					<label for="st_status"><b>Статус:</b></label> 
-					<input type="radio" name="st_status" value="1" #checkedRadio("1", form.st_status)# /> Включена <br>
-					<input type="radio" name="st_status" value="0" #checkedRadio("0", form.st_status)#/> Выключена <br>
+					<label for="st_status"><b>РЎС‚Р°С‚СѓСЃ:</b></label> 
+					<input type="radio" name="st_status" value="1" #checkedRadio("1", form.st_status)# /> Р’РєР»СЋС‡РµРЅР° <br>
+					<input type="radio" name="st_status" value="0" #checkedRadio("0", form.st_status)#/> Р’С‹РєР»СЋС‡РµРЅР° <br>
 				';
 
 			if (instance.stStatus is not ''){
@@ -231,8 +231,8 @@ component attributeName='serviceTypelist' output='false'{
 
 			view &= '</div>
 				<div>
-					<input disabled class="g-button g-button-submit" type="submit" name="escape" value="Отмена">
-					<input class="g-button g-button-submit" type="submit" name="updateServiceType" value="Сохранить">
+					<input disabled class="g-button g-button-submit" type="submit" name="escape" value="РћС‚РјРµРЅР°">
+					<input class="g-button g-button-submit" type="submit" name="updateServiceType" value="РЎРѕС…СЂР°РЅРёС‚СЊ">
 				</div>';
 
 			if (instance.message is not ''){
@@ -247,13 +247,13 @@ component attributeName='serviceTypelist' output='false'{
 	function servicesTypeListForm(){
 		servicesTypeList = factoryService.getService('servicesTypeAPI').getServicesTypeList();
 		var view = '';
-		view &= '<div class="grid_16"><div class="signin-box"><h2>Список услуг:</h2>';
+		view &= '<div class="grid_16"><div class="signin-box"><h2>РЎРїРёСЃРѕРє СѓСЃР»СѓРі:</h2>';
 			view &= '<table width="100%">
 						<tr style="color:grey;">
 						<td>ID</td> 
-						<td>Наименование</td>
-						<td>Описание</td>
-						<td>Статус</td>
+						<td>РќР°РёРјРµРЅРѕРІР°РЅРёРµ</td>
+						<td>РћРїРёСЃР°РЅРёРµ</td>
+						<td>РЎС‚Р°С‚СѓСЃ</td>
 						<td> --- </td>
 						</tr>';
 			for (var x=1; x<=servicesTypeList.recordcount; x++){
@@ -263,11 +263,11 @@ component attributeName='serviceTypelist' output='false'{
 						<td>#servicesTypeList.st_name[x]#</td>
 						<td>#servicesTypeList.st_description[x]#</td>
 						<td>#servicesTypeList.st_status[x]#</td>
-						<td nowrap><a href="/?page=servicesType&section=serviceType&action=edite&stid=#servicesTypeList.st_id[x]#">Редактировать</a> | 
-							<a href="/?page=servicesType&section=serviceType&action=delete&stid=#servicesTypeList.st_id[x]#">Удалить</a></td>
+						<td nowrap><a href="/?page=servicesType&section=serviceType&action=edite&stid=#servicesTypeList.st_id[x]#">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a> | 
+							<a href="/?page=servicesType&section=serviceType&action=delete&stid=#servicesTypeList.st_id[x]#">РЈРґР°Р»РёС‚СЊ</a></td>
 						</tr>';
 			}
-			view &= '<tr><td style="text-align:left;" colspan="5"><a href="/?page=servicesType&section=serviceType&action=add"><br>+Добавить тип услуги</a></td></tr>';
+			view &= '<tr><td style="text-align:left;" colspan="5"><a href="/?page=servicesType&section=serviceType&action=add"><br>+Р”РѕР±Р°РІРёС‚СЊ С‚РёРї СѓСЃР»СѓРіРё</a></td></tr>';
 
 			view &= '</table>';
 		view &= '</div></div>';

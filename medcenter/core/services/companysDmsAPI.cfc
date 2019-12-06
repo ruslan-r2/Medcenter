@@ -1,10 +1,10 @@
 /*
-	companysDmsAPI - список услуг.
+	companysDmsAPI - СЃРїРёСЃРѕРє СѓСЃР»СѓРі.
 */
 
 component attributeName='companysDmsAPI' output='false'{
 
-	// Псевдо конструктор
+	// РџСЃРµРІРґРѕ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
 	instance.companysDmsDAO = createObject('component', 'core.db.companysDmsDAO' ).Init();
 
 	//instance.companysDms = {};
@@ -29,7 +29,7 @@ component attributeName='companysDmsAPI' output='false'{
 		var result = structNew();
 		result.RETVAL = 0;
 		result.RETDESC = "";
-		result.STRUCT = structNew(); // для валидации полей
+		result.STRUCT = structNew(); // РґР»СЏ РІР°Р»РёРґР°С†РёРё РїРѕР»РµР№
 
 		validator = request.factoryService.getService('Validator');
 		var struct_ = validator.checkInput('#cdmsID#',true,'isNumeric',1,1000000);
@@ -57,7 +57,7 @@ component attributeName='companysDmsAPI' output='false'{
 				result.RETDATA = qCompanysDmsReport.RETDATA;
 			}else {
 				result.RETVAL = 0;
-				result.RETDESC = 'Ошибка при обращении к базе!';
+				result.RETDESC = 'РћС€РёР±РєР° РїСЂРё РѕР±СЂР°С‰РµРЅРёРё Рє Р±Р°Р·Рµ!';
 			}
 
 		}
@@ -84,7 +84,7 @@ component attributeName='companysDmsAPI' output='false'{
 		var result = structNew();
 		result.RETVAL = 0;
 		result.RETDESC = "";
-		result.STRUCT = structNew(); // для валидации полей
+		result.STRUCT = structNew(); // РґР»СЏ РІР°Р»РёРґР°С†РёРё РїРѕР»РµР№
 
 		validator = request.factoryService.getService('Validator');
 		                                               //required
@@ -120,12 +120,12 @@ component attributeName='companysDmsAPI' output='false'{
 		//--------------------------------------------------------------------
 		rbac = request.RBAC;
 		if ( !rbac.CheckAccess('companysDMS','create') ){
-			structInsert(result.struct, 'RBAC','У вас недостаточно прав!');
+			structInsert(result.struct, 'RBAC','РЈ РІР°СЃ РЅРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕ РїСЂР°РІ!');
 		}
 		//--------------------------------------------------------------------
 
 
-	        // если обнаружены ошибки
+	        // РµСЃР»Рё РѕР±РЅР°СЂСѓР¶РµРЅС‹ РѕС€РёР±РєРё
 		if ( structIsEmpty(result.struct) ){
 
 			structCreateCompanyDMS = instance.companysDmsDAO.createCompanyDms( cdmsName, cdmsContractNumber, cdmsDateStart, cdmsDateEnd, cdmsDescription, cdmsStatus );
@@ -155,7 +155,7 @@ component attributeName='companysDmsAPI' output='false'{
 		var result = structNew();
 		result.RETVAL = 0;
 		result.RETDESC = "";
-		result.STRUCT = structNew(); // для валидации полей
+		result.STRUCT = structNew(); // РґР»СЏ РІР°Р»РёРґР°С†РёРё РїРѕР»РµР№
 
 		validator = request.factoryService.getService('Validator');
 		                                               //required
@@ -191,12 +191,12 @@ component attributeName='companysDmsAPI' output='false'{
 		//--------------------------------------------------------------------
 		rbac = request.RBAC;
 		if ( !rbac.CheckAccess('companysDMS','create') ){
-			structInsert(result.struct, 'RBAC','У вас недостаточно прав!');
+			structInsert(result.struct, 'RBAC','РЈ РІР°СЃ РЅРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕ РїСЂР°РІ!');
 		}
 		//--------------------------------------------------------------------
 
 
-	        // если обнаружены ошибки
+	        // РµСЃР»Рё РѕР±РЅР°СЂСѓР¶РµРЅС‹ РѕС€РёР±РєРё
 		if ( structIsEmpty(result.struct) ){
 
 			structUpdateCompanyDMS = instance.companysDmsDAO.updateCompanyDms( cdmsID, cdmsName, cdmsContractNumber, cdmsDateStart, cdmsDateEnd, cdmsDescription, cdmsStatus );

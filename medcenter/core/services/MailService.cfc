@@ -1,21 +1,21 @@
 component attributeName='mailService' output='false'{
 
     instance.mailer=createObject("component", "mail");
-    // айпи или хост-имя SMTP-сервера
+    // Р°Р№РїРё РёР»Рё С…РѕСЃС‚-РёРјСЏ SMTP-СЃРµСЂРІРµСЂР°
     instance.mailer.SetServer('192.168.1.150');
-    // порт почтового сервера
+    // РїРѕСЂС‚ РїРѕС‡С‚РѕРІРѕРіРѕ СЃРµСЂРІРµСЂР°
     instance.mailer.SetPort(25);
-    // логин для сервера
+    // Р»РѕРіРёРЅ РґР»СЏ СЃРµСЂРІРµСЂР°
     instance.mailer.SetUserName('support');
-    // пароль для сервера
+    // РїР°СЂРѕР»СЊ РґР»СЏ СЃРµСЂРІРµСЂР°
     instance.mailer.SetPassword('Qtx75uN3');
-    // адрес отправителя
+    // Р°РґСЂРµСЃ РѕС‚РїСЂР°РІРёС‚РµР»СЏ
     instance.mailer.SetFrom('support@digann.ru');
-    // кодировка
+    // РєРѕРґРёСЂРѕРІРєР°
     instance.mailer.SetCharset('utf-8');
-    // НЕ ПРОВЕРЕНО! адрес для отправки сообщения об ошибке
+    // РќР• РџР РћР’Р•Р Р•РќРћ! Р°РґСЂРµСЃ РґР»СЏ РѕС‚РїСЂР°РІРєРё СЃРѕРѕР±С‰РµРЅРёСЏ РѕР± РѕС€РёР±РєРµ
     instance.mailer.SetFailTo('odmin@digann.ru');
-    // НЕ ПРОВЕРЕНО! идентификатор программы отправившей сообщение
+    // РќР• РџР РћР’Р•Р Р•РќРћ! РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїСЂРѕРіСЂР°РјРјС‹ РѕС‚РїСЂР°РІРёРІС€РµР№ СЃРѕРѕР±С‰РµРЅРёРµ
     instance.mailer.SetMailerId('ColdFusion Application Server');
 
   function Init() {
@@ -26,8 +26,8 @@ component attributeName='mailService' output='false'{
     mailer=instance.mailer;
     mailer.SetTo(arguments.to);
     mailer.SetSubject(arguments.subject);
-    // mailer.SetCc();   // копии письма
-    // mailer.SetBcc();  // скрытые копии
+    // mailer.SetCc();   // РєРѕРїРёРё РїРёСЃСЊРјР°
+    // mailer.SetBcc();  // СЃРєСЂС‹С‚С‹Рµ РєРѕРїРёРё
     mailer.Send(body=arguments.body); 
   }
 

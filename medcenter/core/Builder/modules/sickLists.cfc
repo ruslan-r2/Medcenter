@@ -1,9 +1,9 @@
 /* 
-	Виджет список компаний ДМС --
+	Р’РёРґР¶РµС‚ СЃРїРёСЃРѕРє РєРѕРјРїР°РЅРёР№ Р”РњРЎ --
 */
 
 component attributeName='sickLists' output='false'{
-	// псевдо конструктор
+	// РїСЃРµРІРґРѕ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
 	factoryService = request.factoryService;
 
 	instance.view = '';
@@ -60,25 +60,25 @@ component attributeName='sickLists' output='false'{
 
 	function sickListsForm(){
 
-		// Обращаемся к RBAC и смотрим кто есть кто. Если главный врач, то показываем все листы, если
-		// врач то только открытые им листы.
+		// РћР±СЂР°С‰Р°РµРјСЃСЏ Рє RBAC Рё СЃРјРѕС‚СЂРёРј РєС‚Рѕ РµСЃС‚СЊ РєС‚Рѕ. Р•СЃР»Рё РіР»Р°РІРЅС‹Р№ РІСЂР°С‡, С‚Рѕ РїРѕРєР°Р·С‹РІР°РµРј РІСЃРµ Р»РёСЃС‚С‹, РµСЃР»Рё
+		// РІСЂР°С‡ С‚Рѕ С‚РѕР»СЊРєРѕ РѕС‚РєСЂС‹С‚С‹Рµ РёРј Р»РёСЃС‚С‹.
 		sickLists = factoryService.getService('sickListsAPI').getAllSickLists();
 		var view = '';
-		view &= '<div class="grid_16"><div class="signin-box"><h2>Список больничных листов: ##роль##</h2>';
+		view &= '<div class="grid_16"><div class="signin-box"><h2>РЎРїРёСЃРѕРє Р±РѕР»СЊРЅРёС‡РЅС‹С… Р»РёСЃС‚РѕРІ: ##СЂРѕР»СЊ##</h2>';
 			view &= '<table class="td_head" width="100%">
-						<tr><td style="text-align:right;" colspan="12"><a class="g-button g-button-submit" href="/?page=sickLists&section=sickList&action=add">+Добавить больничный лист</a></td></tr>
+						<tr><td style="text-align:right;" colspan="12"><a class="g-button g-button-submit" href="/?page=sickLists&section=sickList&action=add">+Р”РѕР±Р°РІРёС‚СЊ Р±РѕР»СЊРЅРёС‡РЅС‹Р№ Р»РёСЃС‚</a></td></tr>
 						<tr style="color:grey;">
 						<th>id</th> 
-						<th>№ БЛ</th> 
-						<th>№ БЛ предок</th> 
-						<th>Пациент</th>
-						<th>С какого числа</th> 
-						<th>По какое число</th> 
-						<th>Врач</th>
-						<th>Приём</th>
-						<th>Приступить к работе</th>
-						<th>Примечание</th>
-						<th>Статус</th>
+						<th>в„– Р‘Р›</th> 
+						<th>в„– Р‘Р› РїСЂРµРґРѕРє</th> 
+						<th>РџР°С†РёРµРЅС‚</th>
+						<th>РЎ РєР°РєРѕРіРѕ С‡РёСЃР»Р°</th> 
+						<th>РџРѕ РєР°РєРѕРµ С‡РёСЃР»Рѕ</th> 
+						<th>Р’СЂР°С‡</th>
+						<th>РџСЂРёС‘Рј</th>
+						<th>РџСЂРёСЃС‚СѓРїРёС‚СЊ Рє СЂР°Р±РѕС‚Рµ</th>
+						<th>РџСЂРёРјРµС‡Р°РЅРёРµ</th>
+						<th>РЎС‚Р°С‚СѓСЃ</th>
 						<th> --- </th>
 						</tr>';
 			//writeDump(sickLists);
@@ -97,13 +97,13 @@ component attributeName='sickLists' output='false'{
 					<td>#sickLists.sl_date_closing[x]#</td>
 					<td>#sickLists.sl_description[x]#</td>
 					<td>#sickLists.sl_status[x]#</td>
-					<td> <a href="/?page=users&section=user&action=edite&userid=userList.user_id[x]">Редактировать</a> | <a href="/?page=users&section=user&action=delete&userid=userList.user_id[x]">Удалить</a> </td>
+					<td> <a href="/?page=users&section=user&action=edite&userid=userList.user_id[x]">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a> | <a href="/?page=users&section=user&action=delete&userid=userList.user_id[x]">РЈРґР°Р»РёС‚СЊ</a> </td>
 					</tr>';
 			}
 			}else{
-			view &= '<tr><td colspan="12"><font color="red">В базе данных нет больничных листов!</font></td></tr>';
+			view &= '<tr><td colspan="12"><font color="red">Р’ Р±Р°Р·Рµ РґР°РЅРЅС‹С… РЅРµС‚ Р±РѕР»СЊРЅРёС‡РЅС‹С… Р»РёСЃС‚РѕРІ!</font></td></tr>';
 			}
-			view &= '<tr><td style="text-align:right;" colspan="12"><a class="g-button g-button-submit" href="/?page=sickLists&section=sickList&action=add">+Добавить больничный лист</a></td></tr>';
+			view &= '<tr><td style="text-align:right;" colspan="12"><a class="g-button g-button-submit" href="/?page=sickLists&section=sickList&action=add">+Р”РѕР±Р°РІРёС‚СЊ Р±РѕР»СЊРЅРёС‡РЅС‹Р№ Р»РёСЃС‚</a></td></tr>';
 
 			view &= '</table>';
 		view &= '</div></div>';

@@ -1,11 +1,11 @@
 /*
-	Данный объект сохраняет в себе пути скриптов JavaScript всех меню сайта.
-	В момен инициализации виджета, если динамическое с javaScript то в этот объект
-	добавляется путь это скрипта.
+	Р”Р°РЅРЅС‹Р№ РѕР±СЉРµРєС‚ СЃРѕС…СЂР°РЅСЏРµС‚ РІ СЃРµР±Рµ РїСѓС‚Рё СЃРєСЂРёРїС‚РѕРІ JavaScript РІСЃРµС… РјРµРЅСЋ СЃР°Р№С‚Р°.
+	Р’ РјРѕРјРµРЅ РёРЅРёС†РёР°Р»РёР·Р°С†РёРё РІРёРґР¶РµС‚Р°, РµСЃР»Рё РґРёРЅР°РјРёС‡РµСЃРєРѕРµ СЃ javaScript С‚Рѕ РІ СЌС‚РѕС‚ РѕР±СЉРµРєС‚
+	РґРѕР±Р°РІР»СЏРµС‚СЃСЏ РїСѓС‚СЊ СЌС‚Рѕ СЃРєСЂРёРїС‚Р°.
 */
 component attributeName='CJavaScript' output='false'{
 
-	// Псевдо конструктор
+	// РџСЃРµРІРґРѕ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
 	instance.listJScripts = structNew();
 	instance.listJScripts.pasport = '/js/jquery.js,/js/jquery.validate.js,/js/authorization.js';
 	instance.listJScripts.registration = '/js/jquery.js,/js/jquery.validate.js,/js/registration.js';

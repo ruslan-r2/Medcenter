@@ -28,33 +28,33 @@ component attributeName='menu' {
 			<div class="grid_16">
 				<div class="signin-box" style="text-align:left;background:##f1f1f1">';
 
-		// Панель администратора
+		// РџР°РЅРµР»СЊ Р°РґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂР°
 		menu &= #renderMenu('RBAC','access','RBAC','/?page=rbac')#;
-		menu &= #renderMenu('typeEmployees','access','Типы служащих','/?page=typeEmployees')#;
-		menu &= #renderMenu('users','access','Пользователи','/?page=users')#;
-		menu &= #renderMenu('companysDms','access','Компании ДМС','/?page=companysDms')#;
+		menu &= #renderMenu('typeEmployees','access','РўРёРїС‹ СЃР»СѓР¶Р°С‰РёС…','/?page=typeEmployees')#;
+		menu &= #renderMenu('users','access','РџРѕР»СЊР·РѕРІР°С‚РµР»Рё','/?page=users')#;
+		menu &= #renderMenu('companysDms','access','РљРѕРјРїР°РЅРёРё Р”РњРЎ','/?page=companysDms')#;
 
-		// Бухгалтерия
-		menu &= #renderMenu('services','access','Услуги','/?page=services')#;
-		menu &= #renderMenu('servicesType','access','Типы услуг','/?page=servicesType')#;
-		menu &= #renderMenu('usersInterest','access','% от услуг','/?page=usersInterest')#;
+		// Р‘СѓС…РіР°Р»С‚РµСЂРёСЏ
+		menu &= #renderMenu('services','access','РЈСЃР»СѓРіРё','/?page=services')#;
+		menu &= #renderMenu('servicesType','access','РўРёРїС‹ СѓСЃР»СѓРі','/?page=servicesType')#;
+		menu &= #renderMenu('usersInterest','access','% РѕС‚ СѓСЃР»СѓРі','/?page=usersInterest')#;
 
-		// Составители графиков
-		menu &= #renderMenu('usersGraphics','access','График врачей','/?page=usersGraphics')#;
+		// РЎРѕСЃС‚Р°РІРёС‚РµР»Рё РіСЂР°С„РёРєРѕРІ
+		menu &= #renderMenu('usersGraphics','access','Р“СЂР°С„РёРє РІСЂР°С‡РµР№','/?page=usersGraphics')#;
 
-		// Регистратура
-		menu &= #renderMenu('reception','access','Регистратура','/?page=reception')#;
-		menu &= #renderMenu('patients','access','Картотека','/?page=patients')#;
+		// Р РµРіРёСЃС‚СЂР°С‚СѓСЂР°
+		menu &= #renderMenu('reception','access','Р РµРіРёСЃС‚СЂР°С‚СѓСЂР°','/?page=reception')#;
+		menu &= #renderMenu('patients','access','РљР°СЂС‚РѕС‚РµРєР°','/?page=patients')#;
 
-		// Врач
-		menu &= #renderMenu('cabinet','access','Кабинет','/?page=cabinet')#;
-		menu &= #renderMenu('sickLists','access','Больничные','/?page=sickLists')#;
+		// Р’СЂР°С‡
+		menu &= #renderMenu('cabinet','access','РљР°Р±РёРЅРµС‚','/?page=cabinet')#;
+		menu &= #renderMenu('sickLists','access','Р‘РѕР»СЊРЅРёС‡РЅС‹Рµ','/?page=sickLists')#;
 
-		//Настройки пользователя
-		menu &= #renderMenu('settings','access','Настройки','/?page=settings')#;
+		//РќР°СЃС‚СЂРѕР№РєРё РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+		menu &= #renderMenu('settings','access','РќР°СЃС‚СЂРѕР№РєРё','/?page=settings')#;
 
-		// ткмповая страница
-		menu &= #renderMenu('temp','access','Темп','/?page=temp')#;
+		// С‚РєРјРїРѕРІР°СЏ СЃС‚СЂР°РЅРёС†Р°
+		menu &= #renderMenu('temp','access','РўРµРјРї','/?page=temp')#;
 
 		menu &= '
 				</div>

@@ -1,15 +1,15 @@
 /*
-	Данный контролер объединяет в себе всю логику по созданию объекта настроек для
-	всего приложения.
+	Р”Р°РЅРЅС‹Р№ РєРѕРЅС‚СЂРѕР»РµСЂ РѕР±СЉРµРґРёРЅСЏРµС‚ РІ СЃРµР±Рµ РІСЃСЋ Р»РѕРіРёРєСѓ РїРѕ СЃРѕР·РґР°РЅРёСЋ РѕР±СЉРµРєС‚Р° РЅР°СЃС‚СЂРѕРµРє РґР»СЏ
+	РІСЃРµРіРѕ РїСЂРёР»РѕР¶РµРЅРёСЏ.
 
-	Доступ к базе bbs_test и к таблице bbs_settings скрыт в компаненте DAOSettings.
-	DAOSettings возвращает структуру в которой содержатся все записи таблици bbs_settings
+	Р”РѕСЃС‚СѓРї Рє Р±Р°Р·Рµ bbs_test Рё Рє С‚Р°Р±Р»РёС†Рµ bbs_settings СЃРєСЂС‹С‚ РІ РєРѕРјРїР°РЅРµРЅС‚Рµ DAOSettings.
+	DAOSettings РІРѕР·РІСЂР°С‰Р°РµС‚ СЃС‚СЂСѓРєС‚СѓСЂСѓ РІ РєРѕС‚РѕСЂРѕР№ СЃРѕРґРµСЂР¶Р°С‚СЃСЏ РІСЃРµ Р·Р°РїРёСЃРё С‚Р°Р±Р»РёС†Рё bbs_settings
 */
 
 component displayname="CSettings" output="false" {
 
 	lock scope="application" type="exclusive" timeout="5" {
-		instance.settings = application.applicationStorage.getObject('settings'); // объект причем application
+		instance.settings = application.applicationStorage.getObject('settings'); // РѕР±СЉРµРєС‚ РїСЂРёС‡РµРј application
 	}
 
 	function init() {
@@ -17,34 +17,34 @@ component displayname="CSettings" output="false" {
 	}
 	
 
-	// этот метот вызывается только один раз при страте приложения
+	// СЌС‚РѕС‚ РјРµС‚РѕС‚ РІС‹Р·С‹РІР°РµС‚СЃСЏ С‚РѕР»СЊРєРѕ РѕРґРёРЅ СЂР°Р· РїСЂРё СЃС‚СЂР°С‚Рµ РїСЂРёР»РѕР¶РµРЅРёСЏ
 	function setSettings(){
-		//settingsDAO - объект;
+		//settingsDAO - РѕР±СЉРµРєС‚;
 		settingsDAO = createObject("component", "core.db.settingsDAO").init();
 
 		lock scope="application" type="exclusive" timeout="5" {
-			instance.settings.setSettings(settingsDAO.readSettings()); // Объект приложения
+			instance.settings.setSettings(settingsDAO.readSettings()); // РћР±СЉРµРєС‚ РїСЂРёР»РѕР¶РµРЅРёСЏ
 		}
 	}
 
 	function getSettings(string category='', string type='struct'){
 		if (arguments.category=='') {
-			return instance.settings.getSettings(); // вся структура settings
+			return instance.settings.getSettings(); // РІСЃСЏ СЃС‚СЂСѓРєС‚СѓСЂР° settings
 		} else {
-			return instance.settings.getSettings(arguments.category,arguments.type); // структура определенного модуля
+			return instance.settings.getSettings(arguments.category,arguments.type); // СЃС‚СЂСѓРєС‚СѓСЂР° РѕРїСЂРµРґРµР»РµРЅРЅРѕРіРѕ РјРѕРґСѓР»СЏ
 		}
 
 	}
 	/*
 	function getSettings(category='') {
 		if (category=='') {
-			return instance.settings.getSettings(); // вся структура settings
+			return instance.settings.getSettings(); // РІСЃСЏ СЃС‚СЂСѓРєС‚СѓСЂР° settings
 		} else {
-			// На время отладки
+			// РќР° РІСЂРµРјСЏ РѕС‚Р»Р°РґРєРё
 			if (structKeyExists(instance.settings.getSettings(),category)){
-				return instance.settings.getSettings(category); // структура определенного модуля
+				return instance.settings.getSettings(category); // СЃС‚СЂСѓРєС‚СѓСЂР° РѕРїСЂРµРґРµР»РµРЅРЅРѕРіРѕ РјРѕРґСѓР»СЏ
 			}else{
-				writeOutPut('Запрашиваемой категории нет в базе: #category#');
+				writeOutPut('Р—Р°РїСЂР°С€РёРІР°РµРјРѕР№ РєР°С‚РµРіРѕСЂРёРё РЅРµС‚ РІ Р±Р°Р·Рµ: #category#');
 				abort;
 			}
 		}

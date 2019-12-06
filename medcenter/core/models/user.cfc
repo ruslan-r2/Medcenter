@@ -1,23 +1,23 @@
 /*
-  пользователь объект - user object
+  РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ РѕР±СЉРµРєС‚ - user object
 */
 
 component displayname="user" output="false" {
 
-	// Псевдо конструктор
-	instance.user = structNew(); // структура
+	// РџСЃРµРІРґРѕ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
+	instance.user = structNew(); // СЃС‚СЂСѓРєС‚СѓСЂР°
 	instance.user.id = 1;
-	instance.user.Name = 'Гость';
+	instance.user.Name = 'Р“РѕСЃС‚СЊ';
 	instance.user.family = '';
 	instance.user.firstname = '';
 	instance.user.lastname = '';
-	instance.user.type = ''; // гость - guest
-	instance.user.groups = '1'; // гость - guest
-	// либо доверить назначение группы модулю RBAC
+	instance.user.type = ''; // РіРѕСЃС‚СЊ - guest
+	instance.user.groups = '1'; // РіРѕСЃС‚СЊ - guest
+	// Р»РёР±Рѕ РґРѕРІРµСЂРёС‚СЊ РЅР°Р·РЅР°С‡РµРЅРёРµ РіСЂСѓРїРїС‹ РјРѕРґСѓР»СЋ RBAC
 	
 	function init(){return this;}
 
-	//Геттеры
+	//Р“РµС‚С‚РµСЂС‹
 	function getUserId(){return instance.user.id;}
 	function getUserName(){return instance.user.Name;}
 	function getUserFamily(){return instance.user.family;}
@@ -26,7 +26,7 @@ component displayname="user" output="false" {
 	function getUserType(){return instance.user.type;}
 	function getUserGroups(){return instance.user.groups;}
 	
-	// Сеттеры
+	// РЎРµС‚С‚РµСЂС‹
 	function setUserId(required numeric id){instance.user.id = arguments.id;}
 	function setUserName(required string name){instance.user.Name = arguments.name;}
 	function setUserFamily(required string family){instance.user.family = arguments.family;}
@@ -35,7 +35,7 @@ component displayname="user" output="false" {
 	function setUserType(string type){instance.user.type = arguments.type;}
 	function setUserGroups(string groups){instance.user.groups = arguments.groups;}
 	
-	// Для дебаагера
+	// Р”Р»СЏ РґРµР±Р°Р°РіРµСЂР°
 	function getMemento(){return instance.user;}
 
 }

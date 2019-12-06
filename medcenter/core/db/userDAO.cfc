@@ -2,8 +2,8 @@
 */
 component displayname="userDAO" output="false" {
 
-	/* Псевдо конструктор */
-	instance = {datasource = ''} ; // объект
+	/* РџСЃРµРІРґРѕ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ */
+	instance = {datasource = ''} ; // РѕР±СЉРµРєС‚
 
 	function init() {
 		instance.datasource = createObject('component', 'core.db.Datasource').init();
@@ -32,11 +32,11 @@ component displayname="userDAO" output="false" {
 			queryUsers.setSQL("SELECT user_id, user_name, user_pass, emp_family, emp_firstname, emp_lastname, emp_type 
 						FROM bbs_users 
 						WHERE user_groups IN (#arguments.empType#) 
-						ORDER BY emp_family");  // конструкция NOT IN не работает, из-за того, что в поле emp_type не id -
-									// int, а nvarchar пример у булатова "7,26".
+						ORDER BY emp_family");  // РєРѕРЅСЃС‚СЂСѓРєС†РёСЏ NOT IN РЅРµ СЂР°Р±РѕС‚Р°РµС‚, РёР·-Р·Р° С‚РѕРіРѕ, С‡С‚Рѕ РІ РїРѕР»Рµ emp_type РЅРµ id -
+									// int, Р° nvarchar РїСЂРёРјРµСЂ Сѓ Р±СѓР»Р°С‚РѕРІР° "7,26".
 		}
 	
-		var execute = queryUsers.execute(); // вся структура и result и prefix
+		var execute = queryUsers.execute(); // РІСЃСЏ СЃС‚СЂСѓРєС‚СѓСЂР° Рё result Рё prefix
 		var result = execute.getResult();
 		return result; //query
 	}
@@ -49,7 +49,7 @@ component displayname="userDAO" output="false" {
 
 		queryUser.setSQL("SELECT * FROM bbs_users WHERE user_id = '#arguments.userID#' ");
 	
-		var execute = queryUser.execute(); // вся структура и result и prefix
+		var execute = queryUser.execute(); // РІСЃСЏ СЃС‚СЂСѓРєС‚СѓСЂР° Рё result Рё prefix
 		var result = execute.getResult();
 
 		return result;
@@ -66,15 +66,15 @@ component displayname="userDAO" output="false" {
 
 		queryUser.setSQL("SELECT * FROM bbs_users WHERE user_name = :username AND user_pass = :password ");
 	
-		var execute = queryUser.execute(); // вся структура и result и prefix
+		var execute = queryUser.execute(); // РІСЃСЏ СЃС‚СЂСѓРєС‚СѓСЂР° Рё result Рё prefix
 		var result = execute.getResult();
 
-		// доделать алгоритм удаления двойных записей
+		// РґРѕРґРµР»Р°С‚СЊ Р°Р»РіРѕСЂРёС‚Рј СѓРґР°Р»РµРЅРёСЏ РґРІРѕР№РЅС‹С… Р·Р°РїРёСЃРµР№
 		var structUser=structNew();
 		structUser.RETVAL = 0; // login
-		structUser.RETDESC = 'Пользователя с таким логином и паролем нет! #now()#';
+		structUser.RETDESC = 'РџРѕР»СЊР·РѕРІР°С‚РµР»СЏ СЃ С‚Р°РєРёРј Р»РѕРіРёРЅРѕРј Рё РїР°СЂРѕР»РµРј РЅРµС‚! #now()#';
 		if (result.RecordCount gt 0) {
-			structUser.RETDESC = 'Поздравляем вас!';
+			structUser.RETDESC = 'РџРѕР·РґСЂР°РІР»СЏРµРј РІР°СЃ!';
 			structUser.RETVAL = 1;
 			//setVariable('structUser.RETVAL',1);
 			setVariable('structUser.user_id',result.user_id);
@@ -88,9 +88,9 @@ component displayname="userDAO" output="false" {
 		return structUser;
 	}
 
-	// создание нового пользователя - регистрация
+	// СЃРѕР·РґР°РЅРёРµ РЅРѕРІРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ - СЂРµРіРёСЃС‚СЂР°С†РёСЏ
 	function createUser(required string userName, required string userPass, required numeric userStatus, userGroups, empType, empFamily, empFirstName, empLastName, empDescription ) {
-		// дописать время создания и ip
+		// РґРѕРїРёСЃР°С‚СЊ РІСЂРµРјСЏ СЃРѕР·РґР°РЅРёСЏ Рё ip
 		createUser = new Query();
 		createUser.setDatasource("#instance.datasource.getDSName()#");
 		createUser.setName("createUser");
@@ -109,11 +109,11 @@ component displayname="userDAO" output="false" {
 			VALUES ( :userName, :userPass, :userStatus, :userGroups, :empType, :empFamily, :empFirstName, :empLastName, :empDescription )
 			");
 
-		ss = createUser.execute(); // вся структура и result и prefix
+		ss = createUser.execute(); // РІСЃСЏ СЃС‚СЂСѓРєС‚СѓСЂР° Рё result Рё prefix
 		//writeDump(ss);
 		var structRegUser=structNew();
 		structRegUser.RETVAL = 1; //REG
-		structRegUser.RETDESC = 'Пользователь добавлен!';
+		structRegUser.RETDESC = 'РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ РґРѕР±Р°РІР»РµРЅ!';
 		return structRegUser;
 	}
 
@@ -152,7 +152,7 @@ component displayname="userDAO" output="false" {
 		updateUser.execute();
 		var structUpdateUser = structNew();
 		structUpdateUser.RETVAL = 1; // create
-		structUpdateUser.RETDESC = 'Учётная запись изменена!';
+		structUpdateUser.RETDESC = 'РЈС‡С‘С‚РЅР°СЏ Р·Р°РїРёСЃСЊ РёР·РјРµРЅРµРЅР°!';
 		return structUpdateUser;
 
 	}
@@ -169,9 +169,9 @@ component displayname="userDAO" output="false" {
 		//query &= " AND user_id <> 1"; // session.userID
 
 		qCheck.setSQL(query);
-		var execute = qCheck.execute(); // вся структура и result и prefix
+		var execute = qCheck.execute(); // РІСЃСЏ СЃС‚СЂСѓРєС‚СѓСЂР° Рё result Рё prefix
 		var result = execute.getResult();
 
-		return result; // возвращает query
+		return result; // РІРѕР·РІСЂР°С‰Р°РµС‚ query
 	}
 }

@@ -1,9 +1,9 @@
 /*
-	patients API - сервис
+	patients API - СЃРµСЂРІРёСЃ
 */
 component displayname="patientsAPI" output="false" {
 
-	// Псевдо конструктор
+	// РџСЃРµРІРґРѕ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
 	instance.patientsDAO = '';
 	instance.patients = '';
 	instance.patient = '';
@@ -115,7 +115,7 @@ component displayname="patientsAPI" output="false" {
 		var result = structNew();
 		result.RETVAL = 0;
 		result.RETDESC = "";
-		result.STRUCT = structNew(); // для валидации полей
+		result.STRUCT = structNew(); // РґР»СЏ РІР°Р»РёРґР°С†РёРё РїРѕР»РµР№
 
 		validator = request.factoryService.getService('Validator');
 
@@ -153,15 +153,15 @@ component displayname="patientsAPI" output="false" {
 			structInsert(result.struct, 'patientStatus','#struct_.retdesc#');
 		}
 		//--------------------------------------------------------------------
-		// делаем запрос к базе есть ли такой пациент
+		// РґРµР»Р°РµРј Р·Р°РїСЂРѕСЃ Рє Р±Р°Р·Рµ РµСЃС‚СЊ Р»Рё С‚Р°РєРѕР№ РїР°С†РёРµРЅС‚
 		if ( structIsEmpty(result.struct) ){
 			chPatient = instance.patientsDAO.checkPatient( patientFamily, patientFirstName, patientLastName, patientDoB );
 			if (chPatient.recordcount){
-				structInsert(result.struct, 'chPatient','Пациент: #patientFamily# #patientFirstName# #patientLastName# (дата рождения: #patientDoB#) - уже есть в базе.');
+				structInsert(result.struct, 'chPatient','РџР°С†РёРµРЅС‚: #patientFamily# #patientFirstName# #patientLastName# (РґР°С‚Р° СЂРѕР¶РґРµРЅРёСЏ: #patientDoB#) - СѓР¶Рµ РµСЃС‚СЊ РІ Р±Р°Р·Рµ.');
 			}
 		}
 
-	        // если обнаружены ошибки
+	        // РµСЃР»Рё РѕР±РЅР°СЂСѓР¶РµРЅС‹ РѕС€РёР±РєРё
 		if ( structIsEmpty(result.struct) ){
 
 			structCreatePatient = instance.patientsDAO.createPatient( patientFamily, patientFirstName, patientLastName, patientGender, patientDoB, patientDateAdd, patientStatus );
@@ -196,7 +196,7 @@ component displayname="patientsAPI" output="false" {
 		var result = structNew();
 		result.RETVAL = 0;
 		result.RETDESC = "";
-		result.STRUCT = structNew(); // для валидации полей
+		result.STRUCT = structNew(); // РґР»СЏ РІР°Р»РёРґР°С†РёРё РїРѕР»РµР№
 
 		validator = request.factoryService.getService('Validator');
 
@@ -234,13 +234,13 @@ component displayname="patientsAPI" output="false" {
 			structInsert(result.struct, 'patientStatus','#struct_.retdesc#');
 		}
 		//--------------------------------------------------------------------
-		// делаем запрос к базе есть ли такой пациент
+		// РґРµР»Р°РµРј Р·Р°РїСЂРѕСЃ Рє Р±Р°Р·Рµ РµСЃС‚СЊ Р»Рё С‚Р°РєРѕР№ РїР°С†РёРµРЅС‚
 		chPatient = instance.patientsDAO.checkPatient( patientFamily, patientFirstName, patientLastName, patientDoB );
 		if (chPatient.recordcount){
-			structInsert(result.struct, 'chPatient','Пациент: #patientFamily# #patientFirstName# #patientLastName# (дата рождения: #patientDoB#) - уже есть в базе.');
+			structInsert(result.struct, 'chPatient','РџР°С†РёРµРЅС‚: #patientFamily# #patientFirstName# #patientLastName# (РґР°С‚Р° СЂРѕР¶РґРµРЅРёСЏ: #patientDoB#) - СѓР¶Рµ РµСЃС‚СЊ РІ Р±Р°Р·Рµ.');
 		}
 
-	        // если обнаружены ошибки
+	        // РµСЃР»Рё РѕР±РЅР°СЂСѓР¶РµРЅС‹ РѕС€РёР±РєРё
 		if ( structIsEmpty(result.struct) ){
 
 			structEditePatient = instance.patientsDAO.updatePatient( patientID, patientFamily, patientFirstName, patientLastName, patientGender, patientDoB, patientDateAdd, patientStatus );
@@ -268,7 +268,7 @@ component displayname="patientsAPI" output="false" {
 		var result = structNew();
 		result.RETVAL = 0;
 		result.RETDESC = "";
-		result.STRUCT = structNew(); // для валидации полей
+		result.STRUCT = structNew(); // РґР»СЏ РІР°Р»РёРґР°С†РёРё РїРѕР»РµР№
 
 		validator = request.factoryService.getService('Validator');
 
@@ -318,7 +318,7 @@ component displayname="patientsAPI" output="false" {
 		if ( !isDefined('result.struct.ptcData') ){
 			chPatientC = instance.patientsDAO.checkContact( ptcData );
 			if (chPatientC.recordcount){
-				structInsert(result.struct, 'ptcData','Контакт "<b>#ptcData#</b>" уже есть в базе!');
+				structInsert(result.struct, 'ptcData','РљРѕРЅС‚Р°РєС‚ "<b>#ptcData#</b>" СѓР¶Рµ РµСЃС‚СЊ РІ Р±Р°Р·Рµ!');
 			}
 		}
 		*/
@@ -334,7 +334,7 @@ component displayname="patientsAPI" output="false" {
 		}
 		//--------------------------------------------------------------------
 
-	        // если обнаружены ошибки
+	        // РµСЃР»Рё РѕР±РЅР°СЂСѓР¶РµРЅС‹ РѕС€РёР±РєРё
 		if ( structIsEmpty(result.struct) ){
 
 			structCreateContact = instance.patientsDAO.createContact( ptID, ctID, ptcData, ptcDescription, ptcStatus );
@@ -363,7 +363,7 @@ component displayname="patientsAPI" output="false" {
 		var result = structNew();
 		result.RETVAL = 0;
 		result.RETDESC = "";
-		result.STRUCT = structNew(); // для валидации полей
+		result.STRUCT = structNew(); // РґР»СЏ РІР°Р»РёРґР°С†РёРё РїРѕР»РµР№
 
 		validator = request.factoryService.getService('Validator');
 
@@ -418,7 +418,7 @@ component displayname="patientsAPI" output="false" {
 		if ( !isDefined('result.struct.ptcData') ){
 			chPatientC = instance.patientsDAO.checkContact( ptcData );
 			if (chPatientC.recordcount){
-				structInsert(result.struct, 'ptcData','Контакт "<b>#ptcData#</b>" уже есть в базе!');
+				structInsert(result.struct, 'ptcData','РљРѕРЅС‚Р°РєС‚ "<b>#ptcData#</b>" СѓР¶Рµ РµСЃС‚СЊ РІ Р±Р°Р·Рµ!');
 			}
 		}
 		*/
@@ -434,7 +434,7 @@ component displayname="patientsAPI" output="false" {
 		}
 		//--------------------------------------------------------------------
 
-	        // если обнаружены ошибки
+	        // РµСЃР»Рё РѕР±РЅР°СЂСѓР¶РµРЅС‹ РѕС€РёР±РєРё
 		if ( structIsEmpty(result.struct) ){
 
 			structEditeContact = instance.patientsDAO.updateContact( ptcID, ptID, ctID, ptcData, ptcDescription, ptcStatus );
@@ -459,7 +459,7 @@ component displayname="patientsAPI" output="false" {
 		var result = structNew();
 		result.RETVAL = 0;
 		result.RETDESC = "";
-		result.STRUCT = structNew(); // для валидации полей
+		result.STRUCT = structNew(); // РґР»СЏ РІР°Р»РёРґР°С†РёРё РїРѕР»РµР№
 
 		validator = request.factoryService.getService('Validator');
 
@@ -472,7 +472,7 @@ component displayname="patientsAPI" output="false" {
 
 		//--------------------------------------------------------------------
 
-	        // если обнаружены ошибки
+	        // РµСЃР»Рё РѕР±РЅР°СЂСѓР¶РµРЅС‹ РѕС€РёР±РєРё
 		if ( structIsEmpty(result.struct) ){
 
 			ptAnamnez = SerializeJSON(ptAnamnez);
@@ -506,7 +506,7 @@ component displayname="patientsAPI" output="false" {
 		var result = structNew();
 		result.RETVAL = 0;
 		result.RETDESC = "";
-		result.STRUCT = structNew(); // для валидации полей
+		result.STRUCT = structNew(); // РґР»СЏ РІР°Р»РёРґР°С†РёРё РїРѕР»РµР№
 
 		validator = request.factoryService.getService('Validator');
 
@@ -529,7 +529,7 @@ component displayname="patientsAPI" output="false" {
 			structInsert(result.struct, 'ptdNumber1','#struct_.retdesc#');
 		}
 
-		var struct_ = validator.checkInput('#ptdIssued#',true,'checkString',1,50); // нужно изменить
+		var struct_ = validator.checkInput('#ptdIssued#',true,'checkString',1,50); // РЅСѓР¶РЅРѕ РёР·РјРµРЅРёС‚СЊ
 		if ( !struct_.retval ){
 			structInsert(result.struct, 'ptdIssued','#struct_.retdesc#');
 		}
@@ -554,7 +554,7 @@ component displayname="patientsAPI" output="false" {
 		}
 		//--------------------------------------------------------------------
 
-	        // если обнаружены ошибки
+	        // РµСЃР»Рё РѕР±РЅР°СЂСѓР¶РµРЅС‹ РѕС€РёР±РєРё
 		if ( structIsEmpty(result.struct) ){
 			ptdNumber = '#arguments.ptdNumber#-#arguments.ptdNumber1#';
 			ptdSc = '#ptdSc#-#ptdSc1#';
@@ -589,7 +589,7 @@ component displayname="patientsAPI" output="false" {
 		var result = structNew();
 		result.RETVAL = 0;
 		result.RETDESC = "";
-		result.STRUCT = structNew(); // для валидации полей
+		result.STRUCT = structNew(); // РґР»СЏ РІР°Р»РёРґР°С†РёРё РїРѕР»РµР№
 
 		validator = request.factoryService.getService('Validator');
 
@@ -617,7 +617,7 @@ component displayname="patientsAPI" output="false" {
 			structInsert(result.struct, 'ptdNumber1','#struct_.retdesc#');
 		}
 
-		var struct_ = validator.checkInput('#ptdIssued#',true,'checkString',1,50); // нужно изменить
+		var struct_ = validator.checkInput('#ptdIssued#',true,'checkString',1,50); // РЅСѓР¶РЅРѕ РёР·РјРµРЅРёС‚СЊ
 		if ( !struct_.retval ){
 			structInsert(result.struct, 'ptdIssued','#struct_.retdesc#');
 		}
@@ -642,7 +642,7 @@ component displayname="patientsAPI" output="false" {
 		}
 		//--------------------------------------------------------------------
 
-	        // если обнаружены ошибки
+	        // РµСЃР»Рё РѕР±РЅР°СЂСѓР¶РµРЅС‹ РѕС€РёР±РєРё
 		if ( structIsEmpty(result.struct) ){
 			ptdNumber = '#arguments.ptdNumber#-#arguments.ptdNumber1#';
 			ptdSc = '#ptdSc#-#ptdSc1#';
@@ -680,7 +680,7 @@ component displayname="patientsAPI" output="false" {
 		var result = structNew();
 		result.RETVAL = 0;
 		result.RETDESC = "";
-		result.STRUCT = structNew(); // для валидации полей
+		result.STRUCT = structNew(); // РґР»СЏ РІР°Р»РёРґР°С†РёРё РїРѕР»РµР№
 
 		validator = request.factoryService.getService('Validator');
 
@@ -708,7 +708,7 @@ component displayname="patientsAPI" output="false" {
 			structInsert(result.struct, 'ptaRegion','#struct_.retdesc#');
 		}
 
-		var struct_ = validator.checkInput('#ptaCity#',false,'checkString',0,50); // нужно изменить
+		var struct_ = validator.checkInput('#ptaCity#',false,'checkString',0,50); // РЅСѓР¶РЅРѕ РёР·РјРµРЅРёС‚СЊ
 		if ( !struct_.retval ){
 			structInsert(result.struct, 'ptaCity','#struct_.retdesc#');
 		}
@@ -754,7 +754,7 @@ component displayname="patientsAPI" output="false" {
 		}
 		//--------------------------------------------------------------------
 
-	        // если обнаружены ошибки
+	        // РµСЃР»Рё РѕР±РЅР°СЂСѓР¶РµРЅС‹ РѕС€РёР±РєРё
 		if ( structIsEmpty(result.struct) ){
 
 			writeDump(arguments);
@@ -794,7 +794,7 @@ component displayname="patientsAPI" output="false" {
 		var result = structNew();
 		result.RETVAL = 0;
 		result.RETDESC = "";
-		result.STRUCT = structNew(); // для валидации полей
+		result.STRUCT = structNew(); // РґР»СЏ РІР°Р»РёРґР°С†РёРё РїРѕР»РµР№
 
 		validator = request.factoryService.getService('Validator');
 
@@ -827,7 +827,7 @@ component displayname="patientsAPI" output="false" {
 			structInsert(result.struct, 'ptaRegion','#struct_.retdesc#');
 		}
 
-		var struct_ = validator.checkInput('#ptaCity#',false,'checkString',0,50); // нужно изменить
+		var struct_ = validator.checkInput('#ptaCity#',false,'checkString',0,50); // РЅСѓР¶РЅРѕ РёР·РјРµРЅРёС‚СЊ
 		if ( !struct_.retval ){
 			structInsert(result.struct, 'ptaCity','#struct_.retdesc#');
 		}
@@ -873,7 +873,7 @@ component displayname="patientsAPI" output="false" {
 		}
 		//--------------------------------------------------------------------
 
-	        // если обнаружены ошибки
+	        // РµСЃР»Рё РѕР±РЅР°СЂСѓР¶РµРЅС‹ РѕС€РёР±РєРё
 		if ( structIsEmpty(result.struct) ){
 
 			structUpdateAddress = instance.patientsDAO.updateAddress( ptaID, ptID, ptaType, ptaFirmData, ptaCountry, ptaRegion, ptaCity, ptaLocality, ptaStreet, ptaIndex, ptaHouse, ptaBuilding, ptaFlat, ptaDescription, ptaStatus );
@@ -901,7 +901,7 @@ component displayname="patientsAPI" output="false" {
 		var result = structNew();
 		result.RETVAL = 0;
 		result.RETDESC = "";
-		result.STRUCT = structNew(); // для валидации полей
+		result.STRUCT = structNew(); // РґР»СЏ РІР°Р»РёРґР°С†РёРё РїРѕР»РµР№
 
 		validator = request.factoryService.getService('Validator');
 
@@ -924,7 +924,7 @@ component displayname="patientsAPI" output="false" {
 		if ( !isDefined('result.struct.ptcData') ){
 			chPatientC = instance.patientsDAO.checkContact( ptcData );
 			if (chPatientC.recordcount){
-				structInsert(result.struct, 'ptcData','Контакт "<b>#ptcData#</b>" уже есть в базе!');
+				structInsert(result.struct, 'ptcData','РљРѕРЅС‚Р°РєС‚ "<b>#ptcData#</b>" СѓР¶Рµ РµСЃС‚СЊ РІ Р±Р°Р·Рµ!');
 			}
 		}
 		*/
@@ -940,7 +940,7 @@ component displayname="patientsAPI" output="false" {
 		}
 		//--------------------------------------------------------------------
 
-	        // если обнаружены ошибки
+	        // РµСЃР»Рё РѕР±РЅР°СЂСѓР¶РµРЅС‹ РѕС€РёР±РєРё
 		if ( structIsEmpty(result.struct) ){
 
 			structCreateDMS = instance.patientsDAO.createDMS( ptID, cdmsID, ptdmsPolisNumber, ptdmsDescription, ptdmsStatus );
@@ -969,7 +969,7 @@ component displayname="patientsAPI" output="false" {
 		var result = structNew();
 		result.RETVAL = 0;
 		result.RETDESC = "";
-		result.STRUCT = structNew(); // для валидации полей
+		result.STRUCT = structNew(); // РґР»СЏ РІР°Р»РёРґР°С†РёРё РїРѕР»РµР№
 
 		validator = request.factoryService.getService('Validator');
 
@@ -992,7 +992,7 @@ component displayname="patientsAPI" output="false" {
 		if ( !isDefined('result.struct.ptcData') ){
 			chPatientC = instance.patientsDAO.checkContact( ptcData );
 			if (chPatientC.recordcount){
-				structInsert(result.struct, 'ptcData','Контакт "<b>#ptcData#</b>" уже есть в базе!');
+				structInsert(result.struct, 'ptcData','РљРѕРЅС‚Р°РєС‚ "<b>#ptcData#</b>" СѓР¶Рµ РµСЃС‚СЊ РІ Р±Р°Р·Рµ!');
 			}
 		}
 		*/
@@ -1008,7 +1008,7 @@ component displayname="patientsAPI" output="false" {
 		}
 		//--------------------------------------------------------------------
 
-	        // если обнаружены ошибки
+	        // РµСЃР»Рё РѕР±РЅР°СЂСѓР¶РµРЅС‹ РѕС€РёР±РєРё
 		if ( structIsEmpty(result.struct) ){
 
 			structUpdateDMS = instance.patientsDAO.updateDMS( ptdmsID, ptID, cdmsID, ptdmsPolisNumber, ptdmsDescription, ptdmsStatus );

@@ -19,12 +19,12 @@ component displayName='info' {
 		currentMonth = Month(now());
 		currentYear = Year(now());
 
-		gInfo = '<span>Сегодня: <b>#currentDay# #MonthAsString(currentMonth)# #currentYear#</b></span>';
+		gInfo = '<span>РЎРµРіРѕРґРЅСЏ: <b>#currentDay# #MonthAsString(currentMonth)# #currentYear#</b></span>';
 		return gInfo;
 	}
 
 	function GetLocalInfo(pageName, sniplet = '') {
-		//работаем с базой через ДАО
+		//СЂР°Р±РѕС‚Р°РµРј СЃ Р±Р°Р·РѕР№ С‡РµСЂРµР· Р”РђРћ
 		lInfo = '';
 
 		if (sniplet != ''){
@@ -37,7 +37,7 @@ component displayName='info' {
 	}
 
 	function CheckJava() {
-		result = "<div>Включите javascript <a href='http://support.google.com/bin/answer.py?hl=ru&answer=23852'>как?</a></div>";
+		result = "<div>Р’РєР»СЋС‡РёС‚Рµ javascript <a href='http://support.google.com/bin/answer.py?hl=ru&answer=23852'>РєР°Рє?</a></div>";
 		return result;
 	}
 
@@ -48,7 +48,7 @@ component displayName='info' {
 
 		if (note != '') {
 			view &= '<noscript>#CheckJava()#</noscript>';
-			// нужно для уведомлений сделать вывод может в div
+			// РЅСѓР¶РЅРѕ РґР»СЏ СѓРІРµРґРѕРјР»РµРЅРёР№ СЃРґРµР»Р°С‚СЊ РІС‹РІРѕРґ РјРѕР¶РµС‚ РІ div
 			view &= note;
 		} else {
 			view &= '<noscript>#CheckJava()#</noscript>';

@@ -1,9 +1,9 @@
 /* 
-	Виджет список компаний ДМС --
+	Р’РёРґР¶РµС‚ СЃРїРёСЃРѕРє РєРѕРјРїР°РЅРёР№ Р”РњРЎ --
 */
 
 component attributeName='companyDMS' output='false'{
-	// псевдо конструктор
+	// РїСЃРµРІРґРѕ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
 	factoryService = request.factoryService;
 
 	instance.view = '';
@@ -58,7 +58,7 @@ component attributeName='companyDMS' output='false'{
 	}
 
 	private function addCompanyDMSFormHandler(){
-		// --- обработчик формы---
+		// --- РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹---
 		if ( isdefined('form.addCompanyDMS') ){
 
 		  companysDmsAPI = factoryService.getService('companysDmsAPI');
@@ -66,7 +66,7 @@ component attributeName='companyDMS' output='false'{
 			if ( result.RETVAL is 1 ){
 				factoryService.getService('redirector').redirect('/?page=companysDms');
 			}else{
-				// --- пробная версия
+				// --- РїСЂРѕР±РЅР°СЏ РІРµСЂСЃРёСЏ
 				if ( result.RETDESC is '') {
 					instance.message = '';
 				} else {
@@ -83,7 +83,7 @@ component attributeName='companyDMS' output='false'{
 
 			}
 		}
-		// --- обработчик формы---
+		// --- РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹---
 	}
 
 	function addCompanyDMSForm(){
@@ -99,10 +99,10 @@ component attributeName='companyDMS' output='false'{
 		view &= '
 			<form name="" id="" action="#request.CRequest.updateURL(false,"/?page=companysDms&section=companyDms&action=add")#" method="post">
 			<div class="grid_8"><div class="signin-box">
-				<a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,"/?page=companysDms")#">Назад</a><br><br>
-				<h2>Добавление компании ДМС</h2>
+				<a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,"/?page=companysDms")#">РќР°Р·Р°Рґ</a><br><br>
+				<h2>Р”РѕР±Р°РІР»РµРЅРёРµ РєРѕРјРїР°РЅРёРё Р”РњРЎ</h2>
 				<div>
-					<label for="cdms_name"><b>Наименование компании ДМС:</b></label> 
+					<label for="cdms_name"><b>РќР°РёРјРµРЅРѕРІР°РЅРёРµ РєРѕРјРїР°РЅРёРё Р”РњРЎ:</b></label> 
 					<input type="text" name="cdms_name" value="#form.cdms_name#" size = "50" maxlength = "250">';
 
 			if (instance.cdmsName is not ''){
@@ -112,7 +112,7 @@ component attributeName='companyDMS' output='false'{
 			view &= '
 				</div>
 				<div>
-					<label for="cdms_contract_number"><b>Номер договора:</b></label>
+					<label for="cdms_contract_number"><b>РќРѕРјРµСЂ РґРѕРіРѕРІРѕСЂР°:</b></label>
 					<input type="text" name="cdms_contract_number" value="#form.cdms_contract_number#" size="10" maxlength="10"/>';
 
 			if (instance.cdmsContractNumber is not ''){
@@ -122,7 +122,7 @@ component attributeName='companyDMS' output='false'{
 			view &= '
 				</div>
 				<div>
-					<label for="cdms_date_start"><b>Дата заключения договора:</b></label>
+					<label for="cdms_date_start"><b>Р”Р°С‚Р° Р·Р°РєР»СЋС‡РµРЅРёСЏ РґРѕРіРѕРІРѕСЂР°:</b></label>
 					<input type="text" name="cdms_date_start" value="#form.cdms_date_start#" size="10" maxlength="10"/>';
 
 			if (instance.cdmsDateStart is not ''){
@@ -132,7 +132,7 @@ component attributeName='companyDMS' output='false'{
 			view &= '
 				</div>
 				<div>
-					<label for="cdms_date_end"><b>Дата окончания договора:</b></label>
+					<label for="cdms_date_end"><b>Р”Р°С‚Р° РѕРєРѕРЅС‡Р°РЅРёСЏ РґРѕРіРѕРІРѕСЂР°:</b></label>
 					<input type="text" name="cdms_date_end" value="#form.cdms_date_end#" size="10" maxlength="10"/>';
 
 			if (instance.cdmsDateEnd is not ''){
@@ -142,7 +142,7 @@ component attributeName='companyDMS' output='false'{
 			view &= '
 				</div>
 				<div>
-					<label for="cdms_description"><b>Описание:</b></label>
+					<label for="cdms_description"><b>РћРїРёСЃР°РЅРёРµ:</b></label>
 					<textarea name = "cdms_description" rows="6" cols="47" >#form.cdms_description#</textarea>';
 
 			if (instance.cdmsDescription is not ''){
@@ -152,9 +152,9 @@ component attributeName='companyDMS' output='false'{
 
 			view &= '</div>
 				<div>
-					<label for="cdms_status"><b>Статус:</b></label> 
-					<input type="radio" name="cdms_status" value="1" #checkedRadio("1", form.cdms_status)# /> Включена <br>
-					<input type="radio" name="cdms_status" value="0" #checkedRadio("0", form.cdms_status)#/> Выключена <br>
+					<label for="cdms_status"><b>РЎС‚Р°С‚СѓСЃ:</b></label> 
+					<input type="radio" name="cdms_status" value="1" #checkedRadio("1", form.cdms_status)# /> Р’РєР»СЋС‡РµРЅР° <br>
+					<input type="radio" name="cdms_status" value="0" #checkedRadio("0", form.cdms_status)#/> Р’С‹РєР»СЋС‡РµРЅР° <br>
 				</div>';
 
 			if (instance.cdmsStatus is not ''){
@@ -163,8 +163,8 @@ component attributeName='companyDMS' output='false'{
 
 			view &= '
 				<div>
-					<input disabled class="g-button g-button-submit" type="submit" name="escape" value="Отмена">
-					<input class="g-button g-button-submit" type="submit" name="addCompanyDMS" value="Сохранить">
+					<input disabled class="g-button g-button-submit" type="submit" name="escape" value="РћС‚РјРµРЅР°">
+					<input class="g-button g-button-submit" type="submit" name="addCompanyDMS" value="РЎРѕС…СЂР°РЅРёС‚СЊ">
 				</div>';
 
 			if (instance.message is not ''){
@@ -181,7 +181,7 @@ component attributeName='companyDMS' output='false'{
 	}
 
 	private function updateCompanyDMSFormHandler(){
-		// --- обработчик формы---
+		// --- РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹---
 		if ( isdefined('form.updateCompanyDMS') ){
 
 		  companysDmsAPI = factoryService.getService('companysDmsAPI');
@@ -189,7 +189,7 @@ component attributeName='companyDMS' output='false'{
 			if ( result.RETVAL is 1 ){
 				factoryService.getService('redirector').redirect('/?page=companysDms');
 			}else{
-				// --- пробная версия
+				// --- РїСЂРѕР±РЅР°СЏ РІРµСЂСЃРёСЏ
 				if ( result.RETDESC is '') {
 					instance.message = '';
 				} else {
@@ -206,7 +206,7 @@ component attributeName='companyDMS' output='false'{
 
 			}
 		}
-		// --- обработчик формы---
+		// --- РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹---
 	}
 
 	function updateCompanyDMSForm(cdmsid){
@@ -226,15 +226,15 @@ component attributeName='companyDMS' output='false'{
 		view &= '
 			<form name="" id="" action="#request.CRequest.updateURL(false,"/?page=companysDms&section=companyDms&action=edite&cdmsid=#arguments.cdmsid#")#" method="post">
 			<div class="grid_8"><div class="signin-box">
-				<a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,"/?page=companysDms")#">Назад</a><br><br>
-				<h2>Добавление компании ДМС</h2>
+				<a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,"/?page=companysDms")#">РќР°Р·Р°Рґ</a><br><br>
+				<h2>Р”РѕР±Р°РІР»РµРЅРёРµ РєРѕРјРїР°РЅРёРё Р”РњРЎ</h2>
 				<div>
-					<label for="cdms_id"><b>ID компании ДМС:</b></label>
+					<label for="cdms_id"><b>ID РєРѕРјРїР°РЅРёРё Р”РњРЎ:</b></label>
 					<input disabled type="text" name="_cdms_id" value="#form.cdms_id#" size = "2" maxlength = "2">
 					<input type="hidden" name="cdms_id" value="#form.cdms_id#" size = "2" maxlength = "2">
 				</div>
 				<div>
-					<label for="cdms_name"><b>Наименование компании ДМС:</b></label> 
+					<label for="cdms_name"><b>РќР°РёРјРµРЅРѕРІР°РЅРёРµ РєРѕРјРїР°РЅРёРё Р”РњРЎ:</b></label> 
 					<input type="text" name="cdms_name" value="#form.cdms_name#" size = "50" maxlength = "250">';
 
 			if (instance.cdmsName is not ''){
@@ -244,7 +244,7 @@ component attributeName='companyDMS' output='false'{
 			view &= '
 				</div>
 				<div>
-					<label for="cdms_contract_number"><b>Номер договора:</b></label>
+					<label for="cdms_contract_number"><b>РќРѕРјРµСЂ РґРѕРіРѕРІРѕСЂР°:</b></label>
 					<input type="text" name="cdms_contract_number" value="#form.cdms_contract_number#" size="10" maxlength="10"/>';
 
 			if (instance.cdmsContractNumber is not ''){
@@ -254,7 +254,7 @@ component attributeName='companyDMS' output='false'{
 			view &= '
 				</div>
 				<div>
-					<label for="cdms_date_start"><b>Дата заключения договора:</b></label>
+					<label for="cdms_date_start"><b>Р”Р°С‚Р° Р·Р°РєР»СЋС‡РµРЅРёСЏ РґРѕРіРѕРІРѕСЂР°:</b></label>
 					<input type="text" name="cdms_date_start" value="#form.cdms_date_start#" size="10" maxlength="10"/>';
 
 			if (instance.cdmsDateStart is not ''){
@@ -264,7 +264,7 @@ component attributeName='companyDMS' output='false'{
 			view &= '
 				</div>
 				<div>
-					<label for="cdms_date_end"><b>Дата окончания договора:</b></label>
+					<label for="cdms_date_end"><b>Р”Р°С‚Р° РѕРєРѕРЅС‡Р°РЅРёСЏ РґРѕРіРѕРІРѕСЂР°:</b></label>
 					<input type="text" name="cdms_date_end" value="#form.cdms_date_end#" size="10" maxlength="10"/>';
 
 			if (instance.cdmsDateEnd is not ''){
@@ -274,7 +274,7 @@ component attributeName='companyDMS' output='false'{
 			view &= '
 				</div>
 				<div>
-					<label for="cdms_description"><b>Описание:</b></label>
+					<label for="cdms_description"><b>РћРїРёСЃР°РЅРёРµ:</b></label>
 					<textarea name = "cdms_description" rows="6" cols="47" >#form.cdms_description#</textarea>';
 
 			if (instance.cdmsDescription is not ''){
@@ -284,9 +284,9 @@ component attributeName='companyDMS' output='false'{
 
 			view &= '</div>
 				<div>
-					<label for="cdms_status"><b>Статус:</b></label> 
-					<input type="radio" name="cdms_status" value="1" #checkedRadio("1", form.cdms_status)# /> Включена <br>
-					<input type="radio" name="cdms_status" value="0" #checkedRadio("0", form.cdms_status)#/> Выключена <br>
+					<label for="cdms_status"><b>РЎС‚Р°С‚СѓСЃ:</b></label> 
+					<input type="radio" name="cdms_status" value="1" #checkedRadio("1", form.cdms_status)# /> Р’РєР»СЋС‡РµРЅР° <br>
+					<input type="radio" name="cdms_status" value="0" #checkedRadio("0", form.cdms_status)#/> Р’С‹РєР»СЋС‡РµРЅР° <br>
 				</div>';
 
 			if (instance.cdmsStatus is not ''){
@@ -295,8 +295,8 @@ component attributeName='companyDMS' output='false'{
 
 			view &= '
 				<div>
-					<input disabled class="g-button g-button-submit" type="submit" name="escape" value="Отмена">
-					<input class="g-button g-button-submit" type="submit" name="updateCompanyDMS" value="Сохранить">
+					<input disabled class="g-button g-button-submit" type="submit" name="escape" value="РћС‚РјРµРЅР°">
+					<input class="g-button g-button-submit" type="submit" name="updateCompanyDMS" value="РЎРѕС…СЂР°РЅРёС‚СЊ">
 				</div>';
 
 			if (instance.message is not ''){
@@ -321,11 +321,11 @@ component attributeName='companyDMS' output='false'{
 			report = '';
 
 			if ( result.RETVAL is 1 ){
-				report = 'Отчёт с #form.report_date_start# - по #form.report_date_end# - #form.cdms_id# - #now()#';
+				report = 'РћС‚С‡С‘С‚ СЃ #form.report_date_start# - РїРѕ #form.report_date_end# - #form.cdms_id# - #now()#';
 				companysDmsReport = result.RETDATA;
 
 			}else{
-				// --- пробная версия
+				// --- РїСЂРѕР±РЅР°СЏ РІРµСЂСЃРёСЏ
 				if ( result.RETDESC is '') {
 					instance.message = '';
 				} else {
@@ -351,17 +351,17 @@ component attributeName='companyDMS' output='false'{
 				if (companysDmsReport.recordcount){
 					report &= '<table border="1">
 							<tr>
-								<th>№</th>
-								<th>id пц</th>
-								<th>Полис</th>
-								<th>ФИО</th>
-								<th>id приема</th>
-								<th>Дата приема</th>
-								<th>Доктор</th>
-								<th>id услуги по прайсу</th>
-								<th>Наименование услуги</th>
-								<th>Диагноз</th>
-								<th>Цена</th>
+								<th>в„–</th>
+								<th>id РїС†</th>
+								<th>РџРѕР»РёСЃ</th>
+								<th>Р¤РРћ</th>
+								<th>id РїСЂРёРµРјР°</th>
+								<th>Р”Р°С‚Р° РїСЂРёРµРјР°</th>
+								<th>Р”РѕРєС‚РѕСЂ</th>
+								<th>id СѓСЃР»СѓРіРё РїРѕ РїСЂР°Р№СЃСѓ</th>
+								<th>РќР°РёРјРµРЅРѕРІР°РЅРёРµ СѓСЃР»СѓРіРё</th>
+								<th>Р”РёР°РіРЅРѕР·</th>
+								<th>Р¦РµРЅР°</th>
 							</tr>';
 
 					tempMass = arrayNew(1);
@@ -402,7 +402,7 @@ component attributeName='companyDMS' output='false'{
 					for (x=1; x<= arrayLen(tempMass); x++){
 						report &= replace(tempMass[x], '@', "", "all");
 					}
-					report &= '<tr><td style="text-align:right;" colspan="10">ИТОГО:</td><td>=СУММ(K2:K#val(companysDmsReport.recordcount+1)#)</td></tr>';
+					report &= '<tr><td style="text-align:right;" colspan="10">РРўРћР“Рћ:</td><td>=РЎРЈРњРњ(K2:K#val(companysDmsReport.recordcount+1)#)</td></tr>';
 					report &= '</table>';
 				}
 				serveFile("report.xls","#report#");
@@ -423,19 +423,19 @@ component attributeName='companyDMS' output='false'{
 		companysDmsList = factoryService.getService('companysDmsAPI').getCompanysDmsList();
 
 		var view = '';
-		view &= '<div class="grid_16"><div class="signin-box"><h2>Список компаний ДМС:</h2>';
+		view &= '<div class="grid_16"><div class="signin-box"><h2>РЎРїРёСЃРѕРє РєРѕРјРїР°РЅРёР№ Р”РњРЎ:</h2>';
 			view &= '<table class="td_head" width="100%">
-						<tr><td style="text-align:right;" colspan="11"><a class="g-button g-button-submit" href="/?page=companysDms&section=companyDMS&action=add">+Добавить услугу</a></td></tr>
+						<tr><td style="text-align:right;" colspan="11"><a class="g-button g-button-submit" href="/?page=companysDms&section=companyDMS&action=add">+Р”РѕР±Р°РІРёС‚СЊ СѓСЃР»СѓРіСѓ</a></td></tr>
 
 						<tr>
 						<th>id</th>
-						<th>Наименование</th>
-						<th>Номер договора</th>
-						<th>Дата начала</th>
-						<th>Дата окончания</th>
-						<th>Кол-во пц</th>
-						<th>Описание</th>
-						<th>Статус</th>
+						<th>РќР°РёРјРµРЅРѕРІР°РЅРёРµ</th>
+						<th>РќРѕРјРµСЂ РґРѕРіРѕРІРѕСЂР°</th>
+						<th>Р”Р°С‚Р° РЅР°С‡Р°Р»Р°</th>
+						<th>Р”Р°С‚Р° РѕРєРѕРЅС‡Р°РЅРёСЏ</th>
+						<th>РљРѕР»-РІРѕ РїС†</th>
+						<th>РћРїРёСЃР°РЅРёРµ</th>
+						<th>РЎС‚Р°С‚СѓСЃ</th>
 						<th> --- </th>
 						</tr>';
 			if ( companysDmsList.recordcount ){
@@ -449,18 +449,18 @@ component attributeName='companyDMS' output='false'{
 						<td>#DateFormat(companysDmsList.cdms_date_end[x], "dd-mm-yyyy")#</td>
 						<td>#companysDmsList.cnt[x]#</td>
 						<td>#companysDmsList.cdms_description[x]#</td>
-						<td>#IIF(companysDmsList.cdms_status[x] is 1, DE('<font color="green">вкл</font>'), DE('<font color="red">выкл</font>'))#</td>
-						<td nowrap><a href="/?page=companysDms&section=companyDms&action=edite&cdmsid=#companysDmsList.cdms_id[x]#">Ред.</a> | 
-							<a href="/?page=companysDms&section=companyDms&action=delete&plsid=#companysDmsList.cdms_id[x]#">Удл.</a></td>
+						<td>#IIF(companysDmsList.cdms_status[x] is 1, DE('<font color="green">РІРєР»</font>'), DE('<font color="red">РІС‹РєР»</font>'))#</td>
+						<td nowrap><a href="/?page=companysDms&section=companyDms&action=edite&cdmsid=#companysDmsList.cdms_id[x]#">Р РµРґ.</a> | 
+							<a href="/?page=companysDms&section=companyDms&action=delete&plsid=#companysDmsList.cdms_id[x]#">РЈРґР».</a></td>
 						</tr>';
 			}
 			}else{
 						view &= '<tr>
-						<td colspan="9"> В базе нет компаний. </td> 
+						<td colspan="9"> Р’ Р±Р°Р·Рµ РЅРµС‚ РєРѕРјРїР°РЅРёР№. </td> 
 						</tr>';
 			}
 
-			view &= '<tr><td style="text-align:right;" colspan="11"><a class="g-button g-button-submit" href="/?page=companysDms&section=companyDMS&action=add">+Добавить услугу</a></td></tr>';
+			view &= '<tr><td style="text-align:right;" colspan="11"><a class="g-button g-button-submit" href="/?page=companysDms&section=companyDMS&action=add">+Р”РѕР±Р°РІРёС‚СЊ СѓСЃР»СѓРіСѓ</a></td></tr>';
 
 			view &= '</table>';
 
@@ -472,19 +472,19 @@ component attributeName='companyDMS' output='false'{
 			view &= '<hr>
 				<form name="reportDMS" action="#request.CRequest.updateURL(false,"/?page=companysDms")#" method="post">
 
-					<b>Дата начала:</b>
+					<b>Р”Р°С‚Р° РЅР°С‡Р°Р»Р°:</b>
 					<input class="date" type="text" name="report_date_start" value="#form.report_date_start#" size="6" maxlength="10"/>
-					&nbsp;&nbsp;<b>Дата окончания:</b>
+					&nbsp;&nbsp;<b>Р”Р°С‚Р° РѕРєРѕРЅС‡Р°РЅРёСЏ:</b>
 					<input class="date" type="text" name="report_date_end" value="#form.report_date_end#" size="6" maxlength="10"/> ';
 
-					view &= '&nbsp;&nbsp;<b>ДМС:</b> <select name="cdms_id">
+					view &= '&nbsp;&nbsp;<b>Р”РњРЎ:</b> <select name="cdms_id">
 					<option value="" #checkedSelect("", form.cdms_id)# >-</option>';
 					for (var x=1; x<=companysDmsList.recordcount; x++){
 						view &= '<option value="#companysDmsList.cdms_id[x]#" #checkedSelect("#companysDmsList.cdms_id[x]#", form.cdms_id)# >#companysDmsList.cdms_name[x]#</option>';
 					}
 					view &= ' </select>';
 
-				view &= '&nbsp;&nbsp;<input class="g-button g-button-submit" type="submit" name="reportDMS" value="Создать отчёт"> 
+				view &= '&nbsp;&nbsp;<input class="g-button g-button-submit" type="submit" name="reportDMS" value="РЎРѕР·РґР°С‚СЊ РѕС‚С‡С‘С‚"> 
 					&nbsp;<input class="g-button g-button-submit" type="submit" name="reportDMSXLS" value="XLS">
 				</form>
 				<br><hr>';
@@ -505,17 +505,17 @@ component attributeName='companyDMS' output='false'{
 				if (companysDmsReport.recordcount){
 					view &= '<table class="td_head" width="100%">
 							<tr>
-								<th>№</th>
-								<th>id пц</th>
-								<th>Полис</th>
-								<th>ФИО</th>
-								<th>id приема</th>
-								<th>Дата приема</th>
-								<th>Доктор</th>
-								<th title="ID услуги по прайсу">id</th>
-								<th>Наименование услуги</th>
-								<th>Диагноз</th>
-								<th>Цена</th>
+								<th>в„–</th>
+								<th>id РїС†</th>
+								<th>РџРѕР»РёСЃ</th>
+								<th>Р¤РРћ</th>
+								<th>id РїСЂРёРµРјР°</th>
+								<th>Р”Р°С‚Р° РїСЂРёРµРјР°</th>
+								<th>Р”РѕРєС‚РѕСЂ</th>
+								<th title="ID СѓСЃР»СѓРіРё РїРѕ РїСЂР°Р№СЃСѓ">id</th>
+								<th>РќР°РёРјРµРЅРѕРІР°РЅРёРµ СѓСЃР»СѓРіРё</th>
+								<th>Р”РёР°РіРЅРѕР·</th>
+								<th>Р¦РµРЅР°</th>
 							</tr>';
 
 					tempMass = arrayNew(1);
@@ -558,7 +558,7 @@ component attributeName='companyDMS' output='false'{
 					}
 					view &= '</table>';
 				}else{
-					view &= ' <font color="red">Поданной компании, в заданном временном диапазоне нет записей!</font>';
+					view &= ' <font color="red">РџРѕРґР°РЅРЅРѕР№ РєРѕРјРїР°РЅРёРё, РІ Р·Р°РґР°РЅРЅРѕРј РІСЂРµРјРµРЅРЅРѕРј РґРёР°РїР°Р·РѕРЅРµ РЅРµС‚ Р·Р°РїРёСЃРµР№!</font>';
 				}
 			}
 

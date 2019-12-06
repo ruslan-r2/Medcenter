@@ -2,8 +2,8 @@
 */
 component displayname="patientsDAO" output="false" {
 
-	/* Псевдо конструктор */
-	instance = {datasource = ''} ; // объект
+	/* РџСЃРµРІРґРѕ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ */
+	instance = {datasource = ''} ; // РѕР±СЉРµРєС‚
 
 	function init() {
 		instance.datasource = createObject('component', 'core.db.Datasource').init();
@@ -34,7 +34,7 @@ component displayname="patientsDAO" output="false" {
 				WHERE a.pt_family LIKE('#string#%') 
 				ORDER by a.pt_id DESC");
 
-		var execute = qSearch.execute(); // вся структура и result и prefix
+		var execute = qSearch.execute(); // РІСЃСЏ СЃС‚СЂСѓРєС‚СѓСЂР° Рё result Рё prefix
 		var result = execute.getResult();
 		//writeDump(result);
 		return result; //query
@@ -49,7 +49,7 @@ component displayname="patientsDAO" output="false" {
 
 		qPatients.setSQL("SELECT * FROM patients");
 
-		var execute = qPatients.execute(); // вся структура и result и prefix
+		var execute = qPatients.execute(); // РІСЃСЏ СЃС‚СЂСѓРєС‚СѓСЂР° Рё result Рё prefix
 		var result = execute.getResult();
 		return result; //query
 	}
@@ -62,7 +62,7 @@ component displayname="patientsDAO" output="false" {
 
 		qPatient.setSQL("SELECT * FROM patients WHERE pt_id = '#arguments.ptID#' ");
 	
-		var execute = qPatient.execute(); // вся структура и result и prefix
+		var execute = qPatient.execute(); // РІСЃСЏ СЃС‚СЂСѓРєС‚СѓСЂР° Рё result Рё prefix
 		var result = execute.getResult();
 
 		return result;
@@ -81,7 +81,7 @@ component displayname="patientsDAO" output="false" {
 
 		chPatient.setSQL("SELECT * FROM patients WHERE pt_family = :patientFamily AND pt_firstname = :patientFirstNAme AND pt_lastname = :patientLastName AND pt_dob = :patientDoB");
 	
-		var execute = chPatient.execute(); // вся структура и result и prefix
+		var execute = chPatient.execute(); // РІСЃСЏ СЃС‚СЂСѓРєС‚СѓСЂР° Рё result Рё prefix
 		var result = execute.getResult();
 
 		return result;
@@ -95,7 +95,7 @@ component displayname="patientsDAO" output="false" {
 
 		qPatientDocs.setSQL("SELECT * FROM patients_documents WHERE pt_id = '#arguments.ptID#' ");
 	
-		var execute = qPatientDocs.execute(); // вся структура и result и prefix
+		var execute = qPatientDocs.execute(); // РІСЃСЏ СЃС‚СЂСѓРєС‚СѓСЂР° Рё result Рё prefix
 		var result = execute.getResult();
 
 		return result;
@@ -109,7 +109,7 @@ component displayname="patientsDAO" output="false" {
 
 		qPatientDoc.setSQL("SELECT * FROM patients_documents WHERE ptd_id = '#arguments.ptdID#' ");
 	
-		var execute = qPatientDoc.execute(); // вся структура и result и prefix
+		var execute = qPatientDoc.execute(); // РІСЃСЏ СЃС‚СЂСѓРєС‚СѓСЂР° Рё result Рё prefix
 		var result = execute.getResult();
 
 		return result;
@@ -123,7 +123,7 @@ component displayname="patientsDAO" output="false" {
 
 		qPatientAdds.setSQL("SELECT * FROM patients_addresses WHERE pt_id = '#arguments.ptID#' ");
 	
-		var execute = qPatientAdds.execute(); // вся структура и result и prefix
+		var execute = qPatientAdds.execute(); // РІСЃСЏ СЃС‚СЂСѓРєС‚СѓСЂР° Рё result Рё prefix
 		var result = execute.getResult();
 
 		return result;
@@ -137,7 +137,7 @@ component displayname="patientsDAO" output="false" {
 
 		qPatientAdd.setSQL("SELECT * FROM patients_addresses WHERE pta_id = '#arguments.ptaID#' ");
 	
-		var execute = qPatientAdd.execute(); // вся структура и result и prefix
+		var execute = qPatientAdd.execute(); // РІСЃСЏ СЃС‚СЂСѓРєС‚СѓСЂР° Рё result Рё prefix
 		var result = execute.getResult();
 
 		return result;
@@ -154,7 +154,7 @@ component displayname="patientsDAO" output="false" {
 					WHERE pt_id = '#arguments.ptID#'
 						AND a.ct_id = b.cnt_type_id");
 
-		var execute = qPatientCon.execute(); // вся структура и result и prefix
+		var execute = qPatientCon.execute(); // РІСЃСЏ СЃС‚СЂСѓРєС‚СѓСЂР° Рё result Рё prefix
 		var result = execute.getResult();
 
 		return result;
@@ -168,7 +168,7 @@ component displayname="patientsDAO" output="false" {
 
 		qPatientC.setSQL("SELECT * FROM patients_contacts WHERE ptc_id = '#arguments.ptcID#' ");
 	
-		var execute = qPatientC.execute(); // вся структура и result и prefix
+		var execute = qPatientC.execute(); // РІСЃСЏ СЃС‚СЂСѓРєС‚СѓСЂР° Рё result Рё prefix
 		var result = execute.getResult();
 
 		return result;
@@ -182,7 +182,7 @@ component displayname="patientsDAO" output="false" {
 
 		chPatientC.setSQL("SELECT * FROM patients_contacts WHERE ptc_data = '#arguments.ptcData#' ");
 	
-		var execute = chPatientC.execute(); // вся структура и result и prefix
+		var execute = chPatientC.execute(); // РІСЃСЏ СЃС‚СЂСѓРєС‚СѓСЂР° Рё result Рё prefix
 		var result = execute.getResult();
 
 		return result;
@@ -196,7 +196,7 @@ component displayname="patientsDAO" output="false" {
 
 		qPtReception.setSQL("SELECT * FROM reception WHERE pt_id = #arguments.ptID# AND rp_status >= 1 ORDER BY rp_date DESC, rp_starttime_default DESC");
 	
-		var execute = qPtReception.execute(); // вся структура и result и prefix
+		var execute = qPtReception.execute(); // РІСЃСЏ СЃС‚СЂСѓРєС‚СѓСЂР° Рё result Рё prefix
 		var result = execute.getResult();
 		return result; //query
 	}
@@ -208,25 +208,25 @@ component displayname="patientsDAO" output="false" {
 		qPtDMS.setDatasource("#variables.instance.datasource.getDSName()#");
 
 		if (arguments.ptdmsID is not '' ){
-			// считываем конкретную запись по id
+			// СЃС‡РёС‚С‹РІР°РµРј РєРѕРЅРєСЂРµС‚РЅСѓСЋ Р·Р°РїРёСЃСЊ РїРѕ id
 			qPtDMS.setSQL("SELECT * FROM patients_dms WHERE ptdms_id = #arguments.ptdmsID#");
 		}else{
-			// считываем из базы записи конкретного пациента должна быть одна
+			// СЃС‡РёС‚С‹РІР°РµРј РёР· Р±Р°Р·С‹ Р·Р°РїРёСЃРё РєРѕРЅРєСЂРµС‚РЅРѕРіРѕ РїР°С†РёРµРЅС‚Р° РґРѕР»Р¶РЅР° Р±С‹С‚СЊ РѕРґРЅР°
 			qPtDMS.setSQL("SELECT a.ptdms_id, a.pt_id, a.cdms_id, a.ptdms_polis_number, a.ptdms_description, a.ptdms_status, b.cdms_name 
 					FROM patients_dms a, companysdms b 
 					WHERE a.pt_id = #arguments.ptID# 
 						AND b.cdms_id = a.cdms_id");
 		}
 	
-		var execute = qPtDMS.execute(); // вся структура и result и prefix
+		var execute = qPtDMS.execute(); // РІСЃСЏ СЃС‚СЂСѓРєС‚СѓСЂР° Рё result Рё prefix
 		var result = execute.getResult();
 		return result; //query
 	}
 
 
-	// создание нового пациента
+	// СЃРѕР·РґР°РЅРёРµ РЅРѕРІРѕРіРѕ РїР°С†РёРµРЅС‚Р°
 	function createPatient(required string patientFamily, required string patientFirstName, required string patientLastName, required string patientGender, required patientDoB, required patientDateAdd, required patientStatus ) {
-		// дописать время создания и ip
+		// РґРѕРїРёСЃР°С‚СЊ РІСЂРµРјСЏ СЃРѕР·РґР°РЅРёСЏ Рё ip
 		createPatient = new Query();
 		createPatient.setDatasource("#instance.datasource.getDSName()#");
 		createPatient.setName("createPatient");
@@ -243,7 +243,7 @@ component displayname="patientsDAO" output="false" {
 			VALUES ( :patientFamily, :patientFirstName, :patientLastName, :patientGender, :patientDoB, :patientDateAdd, :patientStatus )
 			");
 
-		ret = createPatient.execute(); // вся структура и result и prefix
+		ret = createPatient.execute(); // РІСЃСЏ СЃС‚СЂСѓРєС‚СѓСЂР° Рё result Рё prefix
 		//writeDump(ss);
 		var structCreatePatient=structNew();
 		structCreatePatient.RETVAL = 1; //REG
@@ -281,13 +281,13 @@ component displayname="patientsDAO" output="false" {
 		updatePatient.execute();
 		var structUpdatePatient = structNew();
 		structUpdatePatient.RETVAL = 1; // create
-		structUpdatePatient.RETDESC = 'Информация пациента изменена!';
+		structUpdatePatient.RETDESC = 'РРЅС„РѕСЂРјР°С†РёСЏ РїР°С†РёРµРЅС‚Р° РёР·РјРµРЅРµРЅР°!';
 		return structUpdatePatient;
 
 	}
 
 	function createContact( required numeric ptID, required numeric ctID, required ptcData, ptcDescription, ptcStatus ) {
-		// дописать время создания и ip
+		// РґРѕРїРёСЃР°С‚СЊ РІСЂРµРјСЏ СЃРѕР·РґР°РЅРёСЏ Рё ip
 		createContact = new Query();
 		createContact.setDatasource("#instance.datasource.getDSName()#");
 		createContact.setName("createContact");
@@ -302,11 +302,11 @@ component displayname="patientsDAO" output="false" {
 			VALUES ( :ptID, :ctID, :ptcData, :ptcDescription, :ptcStatus )
 			");
 
-		ss = createContact.execute(); // вся структура и result и prefix
+		ss = createContact.execute(); // РІСЃСЏ СЃС‚СЂСѓРєС‚СѓСЂР° Рё result Рё prefix
 		//writeDump(ss);
 		var structCreateContact=structNew();
 		structCreateContact.RETVAL = 1; //REG
-		structCreateContact.RETDESC = 'Контакт пациента добавлен!';
+		structCreateContact.RETDESC = 'РљРѕРЅС‚Р°РєС‚ РїР°С†РёРµРЅС‚Р° РґРѕР±Р°РІР»РµРЅ!';
 		return structCreateContact;
 	}
 
@@ -336,13 +336,13 @@ component displayname="patientsDAO" output="false" {
 		updateContact.execute();
 		var structupdateContact = structNew();
 		structupdateContact.RETVAL = 1; // create
-		structupdateContact.RETDESC = 'Информация пациента изменена!';
+		structupdateContact.RETDESC = 'РРЅС„РѕСЂРјР°С†РёСЏ РїР°С†РёРµРЅС‚Р° РёР·РјРµРЅРµРЅР°!';
 		return structupdateContact;
 
 	}
 
 	function createDMS( required numeric ptID, required numeric cdmsID, required ptdmsPolisNumber, ptdmsDescription, ptdmsStatus ) {
-		// дописать время создания и ip
+		// РґРѕРїРёСЃР°С‚СЊ РІСЂРµРјСЏ СЃРѕР·РґР°РЅРёСЏ Рё ip
 		createDMS = new Query();
 		createDMS.setDatasource("#instance.datasource.getDSName()#");
 		createDMS.setName("createDMS");
@@ -357,10 +357,10 @@ component displayname="patientsDAO" output="false" {
 			VALUES ( :ptID, :cdmsID, :ptdmsPolisNumber, :ptdmsDescription, :ptdmsStatus )
 			");
 
-		createDMS.execute(); // вся структура и result и prefix
+		createDMS.execute(); // РІСЃСЏ СЃС‚СЂСѓРєС‚СѓСЂР° Рё result Рё prefix
 		var structCreateDMS=structNew();
 		structCreateDMS.RETVAL = 1; //REG
-		structCreateDMS.RETDESC = 'Информация о ДМС добавлена!';
+		structCreateDMS.RETDESC = 'РРЅС„РѕСЂРјР°С†РёСЏ Рѕ Р”РњРЎ РґРѕР±Р°РІР»РµРЅР°!';
 		return structCreateDMS;
 	}
 
@@ -390,7 +390,7 @@ component displayname="patientsDAO" output="false" {
 		updateDMS.execute();
 		var structUpdateDMS = structNew();
 		structUpdateDMS.RETVAL = 1; // create
-		structUpdateDMS.RETDESC = 'Информация о ДМС изменена!';
+		structUpdateDMS.RETDESC = 'РРЅС„РѕСЂРјР°С†РёСЏ Рѕ Р”РњРЎ РёР·РјРµРЅРµРЅР°!';
 		return structUpdateDMS;
 
 	}
@@ -413,13 +413,13 @@ component displayname="patientsDAO" output="false" {
 		updateAnamnez.execute();
 		var structUpdateAnamnez = structNew();
 		structUpdateAnamnez.RETVAL = 1; // create
-		structUpdateAnamnez.RETDESC = 'Анамнез жизни пациента изменён!';
+		structUpdateAnamnez.RETDESC = 'РђРЅР°РјРЅРµР· Р¶РёР·РЅРё РїР°С†РёРµРЅС‚Р° РёР·РјРµРЅС‘РЅ!';
 		return structUpdateAnamnez;
 
 	}
 
 	function createDocument( ptID, ptdDocument, ptdNumber, ptdIssued, ptdDate, ptdSc, ptdStatus ) {
-		// дописать время создания и ip
+		// РґРѕРїРёСЃР°С‚СЊ РІСЂРµРјСЏ СЃРѕР·РґР°РЅРёСЏ Рё ip
 		createDocument = new Query();
 		createDocument.setDatasource("#instance.datasource.getDSName()#");
 		createDocument.setName("createDocument");
@@ -436,11 +436,11 @@ component displayname="patientsDAO" output="false" {
 			VALUES ( :ptID, :ptdDocument, :ptdNumber, :ptdIssued, :ptdDate, :ptdSc, :ptdStatus )
 			");
 
-		ret = createDocument.execute(); // вся структура и result и prefix
+		ret = createDocument.execute(); // РІСЃСЏ СЃС‚СЂСѓРєС‚СѓСЂР° Рё result Рё prefix
 		//writeDump(ss);
 		var structCreateDocument=structNew();
 		structCreateDocument.RETVAL = 1; //REG
-		structCreateDocument.RETDESC = 'Документ добавлен!';
+		structCreateDocument.RETDESC = 'Р”РѕРєСѓРјРµРЅС‚ РґРѕР±Р°РІР»РµРЅ!';
 		return structCreateDocument;
 	}
 
@@ -474,13 +474,13 @@ component displayname="patientsDAO" output="false" {
 		updateDocument.execute();
 		var structUpdateDocument = structNew();
 		structUpdateDocument.RETVAL = 1; // create
-		structUpdateDocument.RETDESC = 'Информация изменена!';
+		structUpdateDocument.RETDESC = 'РРЅС„РѕСЂРјР°С†РёСЏ РёР·РјРµРЅРµРЅР°!';
 		return structUpdateDocument;
 
 	}
 
 	function createAddress( ptID, ptaType, ptaFirmData, ptaCountry, ptaRegion, ptaCity, ptaLocality, ptaStreet, ptaIndex, ptaHouse, ptaBuilding, ptaFlat, ptaDescription, ptaStatus ) {
-		// дописать время создания и ip
+		// РґРѕРїРёСЃР°С‚СЊ РІСЂРµРјСЏ СЃРѕР·РґР°РЅРёСЏ Рё ip
 		createAddress = new Query();
 		createAddress.setDatasource("#instance.datasource.getDSName()#");
 		createAddress.setName("createAddress");
@@ -505,10 +505,10 @@ component displayname="patientsDAO" output="false" {
 			VALUES ( :ptID, :ptaType, :ptaFirmData, :ptaCountry, :ptaRegion, :ptaCity, :ptaLocality, :ptaStreet, :ptaIndex, :ptaHouse, :ptaBuilding, :ptaFlat, :ptaDescription, :ptaStatus )
 			");
 
-		createAddress.execute(); // вся структура и result и prefix
+		createAddress.execute(); // РІСЃСЏ СЃС‚СЂСѓРєС‚СѓСЂР° Рё result Рё prefix
 		var structCreateAddress=structNew();
 		structCreateAddress.RETVAL = 1; //REG
-		structCreateAddress.RETDESC = 'Адрес добавлен!';
+		structCreateAddress.RETDESC = 'РђРґСЂРµСЃ РґРѕР±Р°РІР»РµРЅ!';
 		return structCreateAddress;
 	}
 
@@ -556,7 +556,7 @@ component displayname="patientsDAO" output="false" {
 		updateAddress.execute();
 		var structUpdateAddress = structNew();
 		structUpdateAddress.RETVAL = 1; // create
-		structUpdateAddress.RETDESC = 'Адрес изменён!';
+		structUpdateAddress.RETDESC = 'РђРґСЂРµСЃ РёР·РјРµРЅС‘РЅ!';
 		return structUpdateAddress;
 
 	}

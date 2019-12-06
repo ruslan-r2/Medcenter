@@ -2,8 +2,8 @@
 */
 component displayname="phrasesDAO" output="false" {
 
-	/* Псевдо конструктор */
-	instance = {datasource = ''} ; // объект
+	/* РџСЃРµРІРґРѕ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ */
+	instance = {datasource = ''} ; // РѕР±СЉРµРєС‚
 
 	function init() {
 		instance.datasource = createObject('component', 'core.db.Datasource').init();
@@ -18,14 +18,14 @@ component displayname="phrasesDAO" output="false" {
 
 		qPhrases.setSQL("SELECT * FROM phrases WHERE user_id = '#arguments.userID#' AND ph_key = '#arguments.phKey#'");
 	
-		var execute = qPhrases.execute(); // вся структура и result и prefix
+		var execute = qPhrases.execute(); // РІСЃСЏ СЃС‚СЂСѓРєС‚СѓСЂР° Рё result Рё prefix
 		var result = execute.getResult();
 
 		return result;
 	}
 
 	function createPhrase(required numeric userID, required string phKey, required string phValue ) {
-		// дописать время создания и ip
+		// РґРѕРїРёСЃР°С‚СЊ РІСЂРµРјСЏ СЃРѕР·РґР°РЅРёСЏ Рё ip
 		createPhrase = new Query();
 		createPhrase.setDatasource("#instance.datasource.getDSName()#");
 		createPhrase.setName("createPhrase");
@@ -38,16 +38,16 @@ component displayname="phrasesDAO" output="false" {
 			VALUES ( :userID, :phKey, :phValue )
 			");
 
-		createPhrase.execute(); // вся структура и result и prefix
+		createPhrase.execute(); // РІСЃСЏ СЃС‚СЂСѓРєС‚СѓСЂР° Рё result Рё prefix
 
 		var structCreatePhrase = structNew();
 		structCreatePhrase.RETVAL = 1; // create
-		structCreatePhrase.RETDESC = 'Фраза добавлена.';
+		structCreatePhrase.RETDESC = 'Р¤СЂР°Р·Р° РґРѕР±Р°РІР»РµРЅР°.';
 		return structCreatePhrase;
 	}
 
 	function deletePhrase(required numeric userID, required string phKey, required string phValue ) {
-		// дописать время создания и ip
+		// РґРѕРїРёСЃР°С‚СЊ РІСЂРµРјСЏ СЃРѕР·РґР°РЅРёСЏ Рё ip
 		deletePhrase = new Query();
 		deletePhrase.setDatasource("#instance.datasource.getDSName()#");
 		deletePhrase.setName("deletePhrase");
@@ -58,11 +58,11 @@ component displayname="phrasesDAO" output="false" {
 
 		deletePhrase.setSQL("DELETE FROM phrases WHERE user_id = :userID AND ph_key = :phKey AND ph_value = :phValue");			
 
-		deletePhrase.execute(); // вся структура и result и prefix
+		deletePhrase.execute(); // РІСЃСЏ СЃС‚СЂСѓРєС‚СѓСЂР° Рё result Рё prefix
 
 		var structDeletePhrase = structNew();
 		structDeletePhrase.RETVAL = 1; // create
-		structDeletePhrase.RETDESC = 'Фраза удалена!';
+		structDeletePhrase.RETDESC = 'Р¤СЂР°Р·Р° СѓРґР°Р»РµРЅР°!';
 		return structDeletePhrase;
 	}
 

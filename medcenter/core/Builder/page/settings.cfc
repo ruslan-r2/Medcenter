@@ -1,13 +1,13 @@
 component attributeName='settings' {
 
-	// для виджетов
+	// РґР»СЏ РІРёРґР¶РµС‚РѕРІ
 	request.factoryWidget=createObject('component','core.builder.factoryWidget').Init();
 
 	function Init() {
 		// -------------------------------------------------------------------------
-		instance.title='Пользовательские настройки.';
-		instance.description='Пользовательские настройки.';
-		instance.keywords='Пользовательские настройки.';
+		instance.title='РџРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРёРµ РЅР°СЃС‚СЂРѕР№РєРё.';
+		instance.description='РџРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРёРµ РЅР°СЃС‚СЂРѕР№РєРё.';
+		instance.keywords='РџРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРёРµ РЅР°СЃС‚СЂРѕР№РєРё.';
 
 		widget.meta=request.factoryWidget.GetWidget('meta').Init(title=instance.title,description=instance.description,keywords=instance.keywords);
 		widget.logo=request.factoryWidget.GetWidget('logo').Init(active=true);
@@ -40,7 +40,7 @@ component attributeName='settings' {
 			page &= '<div class="clear"></div>';
 
 			page &= widget.settings.View();
-			page &= '<div class="grid_8"><div class="signin-box"><h2>Помощь</h2> <p>Пользовательские настройки.</p> </div></div>';
+			page &= '<div class="grid_8"><div class="signin-box"><h2>РџРѕРјРѕС‰СЊ</h2> <p>РџРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРёРµ РЅР°СЃС‚СЂРѕР№РєРё.</p> </div></div>';
 			page &= '<div class="clear"></div>';
 
 			page &= widget.footer.View();

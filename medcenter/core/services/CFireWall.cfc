@@ -1,18 +1,18 @@
 /*
-  Сервис FireWall - Service CFireWall
+  РЎРµСЂРІРёСЃ FireWall - Service CFireWall
 */
 
 component displayname="CFireWall" output="false" {
 
-	// Псевдо конструктор
+	// РџСЃРµРІРґРѕ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
 	instance = {UserIp = '', fireWallDAO = '' };
-	instance.result = structNew(); // для управления выводом страници warnings
+	instance.result = structNew(); // РґР»СЏ СѓРїСЂР°РІР»РµРЅРёСЏ РІС‹РІРѕРґРѕРј СЃС‚СЂР°РЅРёС†Рё warnings
 	//instance.result.state = true;
 	//instance.result.reason = '';
 
 	instance.fireWallDAO = createObject('component', 'core.db.fireWallDAO' ).init();
 	lock scope="session" type="exclusive" timeout="5" {
-		instance.UserIp = session.sessionStorage.getObject('userIP'); // сесионный Объект
+		instance.UserIp = session.sessionStorage.getObject('userIP'); // СЃРµСЃРёРѕРЅРЅС‹Р№ РћР±СЉРµРєС‚
 	}
 	
 	function init(){
@@ -24,11 +24,11 @@ component displayname="CFireWall" output="false" {
 		var REMOTE_ADDR = request.CCGI.getCGI('REMOTE_ADDR');
 		//var REMOTE_ADDR = '66.249.65.184';
 
-		if ( instance.UserIp.getCurrentIp() NEQ REMOTE_ADDR ){ // если ip поменялся в одной сессии то нужно удалить предидущий из базы
+		if ( instance.UserIp.getCurrentIp() NEQ REMOTE_ADDR ){ // РµСЃР»Рё ip РїРѕРјРµРЅСЏР»СЃСЏ РІ РѕРґРЅРѕР№ СЃРµСЃСЃРёРё С‚Рѕ РЅСѓР¶РЅРѕ СѓРґР°Р»РёС‚СЊ РїСЂРµРґРёРґСѓС‰РёР№ РёР· Р±Р°Р·С‹
 			instance.UserIp.setCurrentIp('#REMOTE_ADDR#');
 			structIP = instance.fireWallDAO.readIP('#REMOTE_ADDR#');
 			if ( !structIsEmpty(structIP) ){
-				// заполняе объект instance.UserIp из structIP
+				// Р·Р°РїРѕР»РЅСЏРµ РѕР±СЉРµРєС‚ instance.UserIp РёР· structIP
 				instance.UserIp.setIpFrom('#structIP.ipFrom#');
 				instance.UserIp.setIpTo('#structIP.ipTo#');
 				instance.UserIp.setIsRange('#structIP.isRange#');
@@ -41,53 +41,53 @@ component displayname="CFireWall" output="false" {
 			}
 		}
 
-		// для проверки
+		// РґР»СЏ РїСЂРѕРІРµСЂРєРё
 		instance.UserIp.setRole('user');
 		instance.UserIp.setWarnings(0);
 		//instance.UserIp.setDateTimeCreate('');
 		//instance.UserIp.setDateTimeEdite("{ts '2012-03-06 15:30:50'}");
 		//instance.UserIp.setIpCfid('1608');
 		//instance.UserIp.setIpCftoken('81223722');
-		// для проверки
+		// РґР»СЏ РїСЂРѕРІРµСЂРєРё
 
 // user		
 		if (instance.UserIp.getRole() is 'user') {
 			if (instance.UserIp.getWarnings() LT 3){
-				// в данном цикле нужно анализировать оведение пользователя.
+				// РІ РґР°РЅРЅРѕРј С†РёРєР»Рµ РЅСѓР¶РЅРѕ Р°РЅР°Р»РёР·РёСЂРѕРІР°С‚СЊ РѕРІРµРґРµРЅРёРµ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
 			}
-			else if (instance.UserIp.getWarnings() GTE 3){ // Больше или равно 3. такого ip нет в базе и набралось предупреждений
-				setUserIpParam( role='podoz', description='Накопилось 3 предупреждения.', doLog=true );
+			else if (instance.UserIp.getWarnings() GTE 3){ // Р‘РѕР»СЊС€Рµ РёР»Рё СЂР°РІРЅРѕ 3. С‚Р°РєРѕРіРѕ ip РЅРµС‚ РІ Р±Р°Р·Рµ Рё РЅР°Р±СЂР°Р»РѕСЃСЊ РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёР№
+				setUserIpParam( role='podoz', description='РќР°РєРѕРїРёР»РѕСЃСЊ 3 РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёСЏ.', doLog=true );
 
 				instance.fireWallDAO.createIP(ipFrom='#instance.UserIp.getCurrentIp()#', ipTo='#instance.UserIp.getCurrentIp()#', isRange='No',dateTimeCreate='#now()#', 
-								dateTimeEdite='#now()#',role='podoz', description = 'Накопилось 3 предупреждения.', ipCfid='#client.CFID#',
+								dateTimeEdite='#now()#',role='podoz', description = 'РќР°РєРѕРїРёР»РѕСЃСЊ 3 РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёСЏ.', ipCfid='#client.CFID#',
 								ipCftoken='#client.CFToken#');
 			}
 		}
 //podoz		
 		if (instance.UserIp.getRole() is 'podoz') {
 			if (instance.UserIp.getWarnings() is 0 ){
-				if (DateDiff("n",instance.UserIp.getDateTimeEdite(),now()) LT 30 ){ // меньше 30 минут
-						// выводим капчу
-						// этот цикл получился лишним
+				if (DateDiff("n",instance.UserIp.getDateTimeEdite(),now()) LT 30 ){ // РјРµРЅСЊС€Рµ 30 РјРёРЅСѓС‚
+						// РІС‹РІРѕРґРёРј РєР°РїС‡Сѓ
+						// СЌС‚РѕС‚ С†РёРєР» РїРѕР»СѓС‡РёР»СЃСЏ Р»РёС€РЅРёРј
 				}
-				else if (DateDiff("n",instance.UserIp.getDateTimeEdite(),now()) GTE 30 ){ //Больше или равно 30 минут>
-					// client.CFID и client.CFToken пока оставить в таком виде
+				else if (DateDiff("n",instance.UserIp.getDateTimeEdite(),now()) GTE 30 ){ //Р‘РѕР»СЊС€Рµ РёР»Рё СЂР°РІРЅРѕ 30 РјРёРЅСѓС‚>
+					// client.CFID Рё client.CFToken РїРѕРєР° РѕСЃС‚Р°РІРёС‚СЊ РІ С‚Р°РєРѕРј РІРёРґРµ
 					if (client.CFID IS instance.UserIp.getIpCfid() AND client.CFToken IS instance.UserIp.getIpCftoken() ){
-						setUserIpParam( role='podoz', description='Подозрительный IP адрес!', doLog=true );
+						setUserIpParam( role='podoz', description='РџРѕРґРѕР·СЂРёС‚РµР»СЊРЅС‹Р№ IP Р°РґСЂРµСЃ!', doLog=true );
 					}
 					else {
-						setUserIpParam( role='user', description='Пропускаем данный IP, данные в базе не актуальны.', doLog=true, opsDB='deleteIP');
+						setUserIpParam( role='user', description='РџСЂРѕРїСѓСЃРєР°РµРј РґР°РЅРЅС‹Р№ IP, РґР°РЅРЅС‹Рµ РІ Р±Р°Р·Рµ РЅРµ Р°РєС‚СѓР°Р»СЊРЅС‹.', doLog=true, opsDB='deleteIP');
 						instance.fireWallDAO.deleteIP(UserIP=#instance.UserIp.getCurrentIp()#);
 
 					}
 				}
 			}
 			else if (instance.UserIp.getWarnings() IS NOT 0 AND instance.UserIp.getWarnings() LT 3) {
-				setUserIpParam( role='podoz', description='Оставляем данный IP под подозрением.', doLog=false );
+				setUserIpParam( role='podoz', description='РћСЃС‚Р°РІР»СЏРµРј РґР°РЅРЅС‹Р№ IP РїРѕРґ РїРѕРґРѕР·СЂРµРЅРёРµРј.', doLog=false );
 			}
 			else if (instance.UserIp.getWarnings() GTE 3){
-				setUserIpParam( role='ban', description='Накопилось 3 предупреждения. Выставляем бан.', doLog=true );
-				instance.fireWallDAO.updateIP(UserIP='#instance.UserIp.getCurrentIp()#', dateTimeEdite='#now()#', role='ban', description='Накопилось 3 предупреждения. Выставляем бан.',
+				setUserIpParam( role='ban', description='РќР°РєРѕРїРёР»РѕСЃСЊ 3 РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёСЏ. Р’С‹СЃС‚Р°РІР»СЏРµРј Р±Р°РЅ.', doLog=true );
+				instance.fireWallDAO.updateIP(UserIP='#instance.UserIp.getCurrentIp()#', dateTimeEdite='#now()#', role='ban', description='РќР°РєРѕРїРёР»РѕСЃСЊ 3 РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёСЏ. Р’С‹СЃС‚Р°РІР»СЏРµРј Р±Р°РЅ.',
 								ipCfid='#client.CFID#', ipCftoken='#client.CFToken#');
 
 			}
@@ -95,46 +95,46 @@ component displayname="CFireWall" output="false" {
 //ban
 		if (instance.UserIp.getRole() is 'ban'){
 			if (DateDiff("n",instance.UserIp.getDateTimeEdite(),now()) LT 5 AND instance.UserIp.getWarnings() LT 3 ){
-				setUserIpParam( role='ban', description='Время бана не истекло.', doLog=false );
+				setUserIpParam( role='ban', description='Р’СЂРµРјСЏ Р±Р°РЅР° РЅРµ РёСЃС‚РµРєР»Рѕ.', doLog=false );
 			}
 			else if (DateDiff("n",instance.UserIp.getDateTimeEdite(),now()) LT 5 AND instance.UserIp.getWarnings() GTE 3){
-				setUserIpParam( role='ban', description='Продляем бан за нарушения.', doLog=true );
-				instance.fireWallDAO.updateIP(UserIP='#instance.UserIp.getCurrentIp()#', dateTimeEdite='#now()#', role='ban', description='Продляем бан за нарушения.',
+				setUserIpParam( role='ban', description='РџСЂРѕРґР»СЏРµРј Р±Р°РЅ Р·Р° РЅР°СЂСѓС€РµРЅРёСЏ.', doLog=true );
+				instance.fireWallDAO.updateIP(UserIP='#instance.UserIp.getCurrentIp()#', dateTimeEdite='#now()#', role='ban', description='РџСЂРѕРґР»СЏРµРј Р±Р°РЅ Р·Р° РЅР°СЂСѓС€РµРЅРёСЏ.',
 								ipCfid='#client.CFID#', ipCftoken='#client.CFToken#');
 
 			}
 			else if ( DateDiff("n",instance.UserIp.getDateTimeEdite(),now()) GTE 5 AND DateDiff("n",instance.UserIp.getDateTimeEdite(),now()) LT 30 AND instance.UserIp.getWarnings() LT 3 ){
-				setUserIpParam( role='podoz', description='Снимаем бан с IP но оставляем под подозрением.', doLog=true );
-				instance.fireWallDAO.updateIP(UserIP='#instance.UserIp.getCurrentIp()#', dateTimeEdite='#now()#', role='ban', description='Снимаем бан с IP но оставляем под подозрением.',
+				setUserIpParam( role='podoz', description='РЎРЅРёРјР°РµРј Р±Р°РЅ СЃ IP РЅРѕ РѕСЃС‚Р°РІР»СЏРµРј РїРѕРґ РїРѕРґРѕР·СЂРµРЅРёРµРј.', doLog=true );
+				instance.fireWallDAO.updateIP(UserIP='#instance.UserIp.getCurrentIp()#', dateTimeEdite='#now()#', role='ban', description='РЎРЅРёРјР°РµРј Р±Р°РЅ СЃ IP РЅРѕ РѕСЃС‚Р°РІР»СЏРµРј РїРѕРґ РїРѕРґРѕР·СЂРµРЅРёРµРј.',
 								ipCfid='#client.CFID#', ipCftoken='#client.CFToken#');
 
 			}
-			// нужно проработать более детально это условие.
+			// РЅСѓР¶РЅРѕ РїСЂРѕСЂР°Р±РѕС‚Р°С‚СЊ Р±РѕР»РµРµ РґРµС‚Р°Р»СЊРЅРѕ СЌС‚Рѕ СѓСЃР»РѕРІРёРµ.
 			else if (DateDiff("n",instance.UserIp.getDateTimeEdite(),now()) GTE 30 AND instance.UserIp.getWarnings() IS 0 ){
-				// клиентсские переменные пока оставить
+				// РєР»РёРµРЅС‚СЃСЃРєРёРµ РїРµСЂРµРјРµРЅРЅС‹Рµ РїРѕРєР° РѕСЃС‚Р°РІРёС‚СЊ
 				if (client.CFID IS instance.UserIp.getIpCfid() AND client.CFToken IS instance.UserIp.getIpCftoken() ){
-					setUserIpParam( role='podoz', description='Снимаем бан с IP, но оставляем под подозрением.', doLog=true );
-					instance.fireWallDAO.updateIP(UserIP='#instance.UserIp.getCurrentIp()#', dateTimeEdite='#now()#', role='ban', description='Снимаем бан с IP, но оставляем под подозрением.',
+					setUserIpParam( role='podoz', description='РЎРЅРёРјР°РµРј Р±Р°РЅ СЃ IP, РЅРѕ РѕСЃС‚Р°РІР»СЏРµРј РїРѕРґ РїРѕРґРѕР·СЂРµРЅРёРµРј.', doLog=true );
+					instance.fireWallDAO.updateIP(UserIP='#instance.UserIp.getCurrentIp()#', dateTimeEdite='#now()#', role='ban', description='РЎРЅРёРјР°РµРј Р±Р°РЅ СЃ IP, РЅРѕ РѕСЃС‚Р°РІР»СЏРµРј РїРѕРґ РїРѕРґРѕР·СЂРµРЅРёРµРј.',
 									ipCfid='#client.CFID#', ipCftoken='#client.CFToken#');
 
 				}
 				else {
-					//обновляем обект User
-					setUserIpParam( role='user', description='Снимаем бан и подозрение с данного IP, скорей всего это уже другой пользователь.', doLog=true);
+					//РѕР±РЅРѕРІР»СЏРµРј РѕР±РµРєС‚ User
+					setUserIpParam( role='user', description='РЎРЅРёРјР°РµРј Р±Р°РЅ Рё РїРѕРґРѕР·СЂРµРЅРёРµ СЃ РґР°РЅРЅРѕРіРѕ IP, СЃРєРѕСЂРµР№ РІСЃРµРіРѕ СЌС‚Рѕ СѓР¶Рµ РґСЂСѓРіРѕР№ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ.', doLog=true);
 					instance.fireWallDAO.deleteIP(UserIP=#instance.UserIp.getCurrentIp()#);
 				}
 			}
 		}
 //deny
-		if (instance.UserIp.getRole() is 'deny' ){ // тип deny и robot выставляется только администратором.
-			setUserIpParam( role='deny', description='Обращение с запрещенного IP.', doLog=true );
+		if (instance.UserIp.getRole() is 'deny' ){ // С‚РёРї deny Рё robot РІС‹СЃС‚Р°РІР»СЏРµС‚СЃСЏ С‚РѕР»СЊРєРѕ Р°РґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂРѕРј.
+			setUserIpParam( role='deny', description='РћР±СЂР°С‰РµРЅРёРµ СЃ Р·Р°РїСЂРµС‰РµРЅРЅРѕРіРѕ IP.', doLog=true );
 		}
 	}
 
 	function addWarnings(required numeric warning){
 	
 		instance.UserIP.setWarnings(instance.UserIP.getWarnings() + warning);
-		// если предупреждений больше 3 вызываем runFireWall();
+		// РµСЃР»Рё РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёР№ Р±РѕР»СЊС€Рµ 3 РІС‹Р·С‹РІР°РµРј runFireWall();
 		if (instance.UserIP.getWarnings() GTE 3){
 				runFireWall();
 		}
@@ -143,18 +143,18 @@ component displayname="CFireWall" output="false" {
 
 	function setUserIpParam( required role, required description, required doLog ){
 		
-		//обновляем обект User
+		//РѕР±РЅРѕРІР»СЏРµРј РѕР±РµРєС‚ User
 		instance.UserIp.setRole('#arguments.role#');
 		instance.UserIp.setWarnings(0);
 		instance.UserIp.setDateTimeEdite(now());
 		instance.UserIp.setDescription('#arguments.description#');
 
-		// логирование
+		// Р»РѕРіРёСЂРѕРІР°РЅРёРµ
 		if (arguments.doLog is true){
 			request.factoryService.getService('Clog').AddLogging(ssection='CFireWall', type='#arguments.role#', description='#arguments.description#');
 		}
 	
-		// работа с базой
+		// СЂР°Р±РѕС‚Р° СЃ Р±Р°Р·РѕР№
 		
 	}
 
@@ -162,7 +162,7 @@ component displayname="CFireWall" output="false" {
 		return instance.UserIP.getRole();
 	}
 
-	// Для отладки
+	// Р”Р»СЏ РѕС‚Р»Р°РґРєРё
 	function getMemento(){
 		return instance.UserIP.getMemento() ;
 	}

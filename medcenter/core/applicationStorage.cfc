@@ -1,10 +1,10 @@
 /*
-	Контроллер переменных приложения - applicationStorage
+	РљРѕРЅС‚СЂРѕР»Р»РµСЂ РїРµСЂРµРјРµРЅРЅС‹С… РїСЂРёР»РѕР¶РµРЅРёСЏ - applicationStorage
 */
 
 component displayname="applicationStorage" output="false" {
 
-	// Псевдо конструктор
+	// РџСЃРµРІРґРѕ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
 	//lock scope="application" type="exclusive" timeout="5" {
 		application.object = structNew();
 		//application.object = {};

@@ -1,9 +1,9 @@
 /* 
-	Виджет список пользовательские группы.
+	Р’РёРґР¶РµС‚ СЃРїРёСЃРѕРє РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРёРµ РіСЂСѓРїРїС‹.
 */
 
 component attributeName='grouplist' output='false'{
-	// псевдо конструктор
+	// РїСЃРµРІРґРѕ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
 	factoryService = request.factoryService;
 
 	instance.view = '';
@@ -37,8 +37,8 @@ component attributeName='grouplist' output='false'{
 	instance.opsDescription = '';
 	instance.opsStatus = '';
 
-	// прийдется переменные для форм добавлять внутоь вьювером или оставлять здесь
-	// но здесь их будет очень много
+	// РїСЂРёР№РґРµС‚СЃСЏ РїРµСЂРµРјРµРЅРЅС‹Рµ РґР»СЏ С„РѕСЂРј РґРѕР±Р°РІР»СЏС‚СЊ РІРЅСѓС‚РѕСЊ РІСЊСЋРІРµСЂРѕРј РёР»Рё РѕСЃС‚Р°РІР»СЏС‚СЊ Р·РґРµСЃСЊ
+	// РЅРѕ Р·РґРµСЃСЊ РёС… Р±СѓРґРµС‚ РѕС‡РµРЅСЊ РјРЅРѕРіРѕ
 
 
 	function Init(string section, string action) {
@@ -121,9 +121,9 @@ component attributeName='grouplist' output='false'{
 		}
 	}
 
-	// обработчик формы если ява выключена
+	// РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹ РµСЃР»Рё СЏРІР° РІС‹РєР»СЋС‡РµРЅР°
 	private function addGroupFormHandler(){
-		// --- обработчик формы---
+		// --- РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹---
 		if ( isdefined('form.addGroup') ){
 		  if ( !isDefined('form.roles_id') ){
 			form.roles_id = '';
@@ -135,7 +135,7 @@ component attributeName='grouplist' output='false'{
 			if ( result.RETVAL is 1 ){
 				factoryService.getService('redirector').redirect('/?page=rbac');
 			}else{
-				// --- пробная версия
+				// --- РїСЂРѕР±РЅР°СЏ РІРµСЂСЃРёСЏ
 				if (StructKeyExists(result, 'RETDESC')) {
 					instance.message = result['RETDESC'];
 				} else {
@@ -165,7 +165,7 @@ component attributeName='grouplist' output='false'{
 
 			}
 		}
-		// --- обработчик формы---
+		// --- РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹---
 	}
 
 	function addGroupForm(){
@@ -173,16 +173,16 @@ component attributeName='grouplist' output='false'{
 		param name='form.group_name' default='';
 		param name='form.group_description' default='';
 		param name='form.roles_id' default='';
-		param name='form.group_status' default='1'; // включено
+		param name='form.group_status' default='1'; // РІРєР»СЋС‡РµРЅРѕ
 
 		var view = '';
 		view &= '
 			<form name="" id="" action="#request.CRequest.updateURL(false,"/?page=rbac&section=group&action=add")#" method="post">
 			<div class="grid_8"><div class="signin-box">
-				<a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,"/?page=rbac")#">Назад</a><br><br>
-				<h2>Добавление пользовательской группы</h2>
+				<a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,"/?page=rbac")#">РќР°Р·Р°Рґ</a><br><br>
+				<h2>Р”РѕР±Р°РІР»РµРЅРёРµ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРѕР№ РіСЂСѓРїРїС‹</h2>
 				<div>
-					<label for="group_name"><b>Имя группы:</b></label> 
+					<label for="group_name"><b>РРјСЏ РіСЂСѓРїРїС‹:</b></label> 
 					<input type="text" name="group_name" value="#form.group_name#" size = "50" maxlength = "50">';
 
 			if (instance.groupName is not ''){
@@ -192,7 +192,7 @@ component attributeName='grouplist' output='false'{
 			view &= '
 				</div>
 				<div>
-					<label for="group_description"><b>Описание:</b></label>
+					<label for="group_description"><b>РћРїРёСЃР°РЅРёРµ:</b></label>
 					<textarea name = "group_description" rows="6" cols="47" >#form.group_description#</textarea>';
 
 			if (instance.groupDescription is not ''){
@@ -202,7 +202,7 @@ component attributeName='grouplist' output='false'{
 			view &= '
 				</div>
 				<div>
-					<label for="roles_id"><b>Пользовательские роли:</b></label> ';
+					<label for="roles_id"><b>РџРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРёРµ СЂРѕР»Рё:</b></label> ';
 
 				roleList = factoryService.getService('rbacAPI').getRoleList();
 				for (var x=1; x<=roleList.recordcount; x++){
@@ -219,9 +219,9 @@ component attributeName='grouplist' output='false'{
 
 			view &= '</div>
 				<div>
-					<label for="group_status"><b>Статус:</b></label> 
-					<input type="radio" name="group_status" value="1" #checkedRadio("1", form.group_status)# /> Включена <br>
-					<input type="radio" name="group_status" value="0" #checkedRadio("0", form.group_status)#/> Выключена <br>
+					<label for="group_status"><b>РЎС‚Р°С‚СѓСЃ:</b></label> 
+					<input type="radio" name="group_status" value="1" #checkedRadio("1", form.group_status)# /> Р’РєР»СЋС‡РµРЅР° <br>
+					<input type="radio" name="group_status" value="0" #checkedRadio("0", form.group_status)#/> Р’С‹РєР»СЋС‡РµРЅР° <br>
 				</div>';
 
 			if (instance.groupStatus is not ''){
@@ -230,8 +230,8 @@ component attributeName='grouplist' output='false'{
 
 			view &= '
 				<div>
-					<input disabled class="g-button g-button-submit" type="submit" name="escape" value="Отмена">
-					<input class="g-button g-button-submit" type="submit" name="addGroup" value="Сохранить">
+					<input disabled class="g-button g-button-submit" type="submit" name="escape" value="РћС‚РјРµРЅР°">
+					<input class="g-button g-button-submit" type="submit" name="addGroup" value="РЎРѕС…СЂР°РЅРёС‚СЊ">
 				</div>';
 
 			if (instance.message is not ''){
@@ -248,7 +248,7 @@ component attributeName='grouplist' output='false'{
 	}
 
 	private function updateGroupFormHandler(){
-		// --- обработчик формы---
+		// --- РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹---
 		if ( isdefined('form.updateGroup') ){
 		  if ( !isDefined('form.roles_id') ){
 			form.roles_id = '';
@@ -264,7 +264,7 @@ component attributeName='grouplist' output='false'{
 				//factoryService.getService('redirector').redirect('/?page=rbac&section=group&action=edite&groupid=#form.group_id#');
 
 			}else{
-				// --- пробная версия
+				// --- РїСЂРѕР±РЅР°СЏ РІРµСЂСЃРёСЏ
 				if (StructKeyExists(result, 'RETDESC')) {
 					instance.message = result['RETDESC'];
 				} else {
@@ -293,7 +293,7 @@ component attributeName='grouplist' output='false'{
 				}
 			}
 		}
-		// --- обработчик формы---
+		// --- РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹---
 	}
 
 	function updateGroupForm( groupid ){
@@ -311,15 +311,15 @@ component attributeName='grouplist' output='false'{
 		view &= '
 			<form name="" id="" action="#request.CRequest.updateURL(false,"/?page=rbac&section=group&action=edite&groupid=#arguments.groupid#")#" method="post">
 			<div class="grid_8"><div class="signin-box">
-				<a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,"/?page=rbac")#">Назад</a><br><br>
-				<h2>Редактирование пользовательской группы</h2>
+				<a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,"/?page=rbac")#">РќР°Р·Р°Рґ</a><br><br>
+				<h2>Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРѕР№ РіСЂСѓРїРїС‹</h2>
 				<div>
-					<label for="group_id"><b>ID группы:</b></label>
+					<label for="group_id"><b>ID РіСЂСѓРїРїС‹:</b></label>
 					<input disabled type="text" name="_group_id" value="#form.group_id#" size = "2" maxlength = "2">
 					<input type="hidden" name="group_id" value="#form.group_id#" size = "2" maxlength = "2">
 				</div>
 				<div>
-					<label for="group_name"><b>Имя группы:</b></label> 
+					<label for="group_name"><b>РРјСЏ РіСЂСѓРїРїС‹:</b></label> 
 					<input type="text" name="group_name" value="#form.group_name#" size = "50" maxlength = "50">';
 
 			if (instance.groupName is not ''){
@@ -329,7 +329,7 @@ component attributeName='grouplist' output='false'{
 			view &= '
 				</div>
 				<div>
-					<label for="group_description"><b>Описание:</b></label>
+					<label for="group_description"><b>РћРїРёСЃР°РЅРёРµ:</b></label>
 					<textarea name = "group_description" rows="6" cols="47" >#form.group_description#</textarea>';
 			if (instance.groupDescription is not ''){
 			view &= '		<label for="group_description" class="error" generated="0">#instance.groupDescription#</label>';
@@ -338,7 +338,7 @@ component attributeName='grouplist' output='false'{
 			view &= '
 				</div>
 				<div>
-					<label for="roles_id"><b>Пользовательские роли:</b></label> ';
+					<label for="roles_id"><b>РџРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРёРµ СЂРѕР»Рё:</b></label> ';
 
 			roleList = factoryService.getService('rbacAPI').getRoleList();
 			for (var x=1; x<=roleList.recordcount; x++){
@@ -353,13 +353,13 @@ component attributeName='grouplist' output='false'{
 
 			view &= '</div>
 				<div>
-					<label for="group_status"><b>Статус:</b></label> 
-					<input type="radio" name="group_status" value="1" #checkedRadio("1", form.group_status)# /> Включена <br>
-					<input type="radio" name="group_status" value="0" #checkedRadio("0", form.group_status)# /> Выключена <br>
+					<label for="group_status"><b>РЎС‚Р°С‚СѓСЃ:</b></label> 
+					<input type="radio" name="group_status" value="1" #checkedRadio("1", form.group_status)# /> Р’РєР»СЋС‡РµРЅР° <br>
+					<input type="radio" name="group_status" value="0" #checkedRadio("0", form.group_status)# /> Р’С‹РєР»СЋС‡РµРЅР° <br>
 				</div>
 				<div>
-					<input disabled class="g-button g-button-submit" type="submit" name="escape" value="Отмена">
-					<input class="g-button g-button-submit" type="submit" name="updateGroup" value="Сохранить">
+					<input disabled class="g-button g-button-submit" type="submit" name="escape" value="РћС‚РјРµРЅР°">
+					<input class="g-button g-button-submit" type="submit" name="updateGroup" value="РЎРѕС…СЂР°РЅРёС‚СЊ">
 				</div>';
 
 			if (instance.message is not ''){
@@ -371,9 +371,9 @@ component attributeName='grouplist' output='false'{
 		return view;
 	}
 
-	// обработчик формы если ява выключена
+	// РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹ РµСЃР»Рё СЏРІР° РІС‹РєР»СЋС‡РµРЅР°
 	private function addRoleFormHandler(){
-		// --- обработчик формы---
+		// --- РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹---
 		if ( isdefined('form.addRole') ){
 		  if ( !isDefined('form.prms_ids') ){
 			form.prms_ids = '';
@@ -385,7 +385,7 @@ component attributeName='grouplist' output='false'{
 			if ( result.RETVAL is 1 ){
 				factoryService.getService('redirector').redirect('/?page=rbac');
 			}else{
-				// --- пробная версия
+				// --- РїСЂРѕР±РЅР°СЏ РІРµСЂСЃРёСЏ
 				if (StructKeyExists(result, 'RETDESC')) {
 					instance.message = result['RETDESC'];
 				} else {
@@ -425,7 +425,7 @@ component attributeName='grouplist' output='false'{
 
 			}
 		}
-		// --- обработчик формы---
+		// --- РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹---
 	}
 
 	function addRoleForm(){
@@ -435,16 +435,16 @@ component attributeName='grouplist' output='false'{
 		param name='form.role_child' default='';
 		param name='form.role_parent' default='';
 		param name='form.prms_ids' default='';
-		param name='form.role_status' default='1'; // включено
+		param name='form.role_status' default='1'; // РІРєР»СЋС‡РµРЅРѕ
 
 		var view = '';
 		view &= '
 			<form name="" id="" action="#request.CRequest.updateURL(false,"/?page=rbac&section=role&action=add")#" method="post">
 			<div class="grid_8"><div class="signin-box">
-				<a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,"/?page=rbac")#">Назад</a><br><br>
-				<h2>Добавление пользовательской роли</h2>
+				<a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,"/?page=rbac")#">РќР°Р·Р°Рґ</a><br><br>
+				<h2>Р”РѕР±Р°РІР»РµРЅРёРµ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРѕР№ СЂРѕР»Рё</h2>
 				<div>
-					<label for="role_name"><b>Имя роли:</b></label> 
+					<label for="role_name"><b>РРјСЏ СЂРѕР»Рё:</b></label> 
 					<input type="text" name="role_name" value="#form.role_name#" size = "50" maxlength = "50">';
 			if (instance.roleName is not ''){
 			view &= '		<label for="role_name" class="error" generated="0">#instance.roleName#</label>';
@@ -452,7 +452,7 @@ component attributeName='grouplist' output='false'{
 			view &= '
 				</div>
 				<div>
-					<label for="role_description"><b>Описание:</b></label>
+					<label for="role_description"><b>РћРїРёСЃР°РЅРёРµ:</b></label>
 					<textarea name = "role_description" rows="6" cols="47" >#form.role_description#</textarea>';
 			if (instance.roleDescription is not ''){
 			view &= '		<label for="role_description" class="error" generated="0">#instance.roleDescription#</label>';
@@ -461,7 +461,7 @@ component attributeName='grouplist' output='false'{
 			view &= '
 				</div>
 				<div>
-					<label for="role_child"><b>Роль потомок:</b></label>
+					<label for="role_child"><b>Р РѕР»СЊ РїРѕС‚РѕРјРѕРє:</b></label>
 					<input type="radio" name="role_child" value="" #checkedRadio("", form.role_child)# /> None <br> ';
 
 				roleList = factoryService.getService('rbacAPI').getRoleList();
@@ -477,7 +477,7 @@ component attributeName='grouplist' output='false'{
 			view &= '
 				</div>
 				<div>
-					<label for="roles_parent"><b>Роль предок:</b></label>
+					<label for="roles_parent"><b>Р РѕР»СЊ РїСЂРµРґРѕРє:</b></label>
 					<input type="radio" name="role_parent" value="" #checkedRadio("", form.role_parent)# /> None <br>';
 				//roleList = factoryService.getService('rbacAPI').getRoleList();
 				for (var x=1; x<=roleList.recordcount; x++){
@@ -492,7 +492,7 @@ component attributeName='grouplist' output='false'{
 			view &= '
 				</div>
 				<div>
-					<label for="prms_ids"><b>Пользовательские разрешения:</b></label> ';
+					<label for="prms_ids"><b>РџРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРёРµ СЂР°Р·СЂРµС€РµРЅРёСЏ:</b></label> ';
 
 				permissionList = factoryService.getService('rbacAPI').getPermissionList();
 				for (var x=1; x<=permissionList.recordcount; x++){
@@ -509,9 +509,9 @@ component attributeName='grouplist' output='false'{
 
 			view &= '</div>
 				<div>
-					<label for="role_status"><b>Статус:</b></label> 
-					<input type="radio" name="role_status" value="1" #checkedRadio("1", form.role_status)# /> Включена <br>
-					<input type="radio" name="role_status" value="0" #checkedRadio("0", form.role_status)#/> Выключена <br>
+					<label for="role_status"><b>РЎС‚Р°С‚СѓСЃ:</b></label> 
+					<input type="radio" name="role_status" value="1" #checkedRadio("1", form.role_status)# /> Р’РєР»СЋС‡РµРЅР° <br>
+					<input type="radio" name="role_status" value="0" #checkedRadio("0", form.role_status)#/> Р’С‹РєР»СЋС‡РµРЅР° <br>
 				</div>';
 
 			if (instance.roleStatus is not ''){
@@ -520,8 +520,8 @@ component attributeName='grouplist' output='false'{
 
 			view &= '
 				<div>
-					<input disabled class="g-button g-button-submit" type="submit" name="escape" value="Отмена">
-					<input class="g-button g-button-submit" type="submit" name="addRole" value="Сохранить">
+					<input disabled class="g-button g-button-submit" type="submit" name="escape" value="РћС‚РјРµРЅР°">
+					<input class="g-button g-button-submit" type="submit" name="addRole" value="РЎРѕС…СЂР°РЅРёС‚СЊ">
 				</div>';
 
 			if (instance.message is not ''){
@@ -537,9 +537,9 @@ component attributeName='grouplist' output='false'{
 		return view;
 	}
 
-	// обработчик формы если ява выключена
+	// РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹ РµСЃР»Рё СЏРІР° РІС‹РєР»СЋС‡РµРЅР°
 	private function updateRoleFormHandler(){
-		// --- обработчик формы---
+		// --- РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹---
 		if ( isdefined('form.updateRole') ){
 		  if ( !isDefined('form.prms_ids') ){
 			form.prms_ids = '';
@@ -556,7 +556,7 @@ component attributeName='grouplist' output='false'{
 					instance.message = '';
 				}
 			}else{
-				// --- пробная версия
+				// --- РїСЂРѕР±РЅР°СЏ РІРµСЂСЃРёСЏ
 				if (StructKeyExists(result, 'RETDESC')) {
 					instance.message = result['RETDESC'];
 				} else {
@@ -595,7 +595,7 @@ component attributeName='grouplist' output='false'{
 
 			}
 		}
-		// --- обработчик формы---
+		// --- РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹---
 	}
 
 	function updateRoleForm(roleid){
@@ -609,21 +609,21 @@ component attributeName='grouplist' output='false'{
 		param name='form.role_child' default='#qRole.role_child#';
 		param name='form.role_parent' default='#qRole.role_parent#';
 		param name='form.prms_ids' default='#qRole.prms_ids#';
-		param name='form.role_status' default='#qRole.role_status#'; // включено
+		param name='form.role_status' default='#qRole.role_status#'; // РІРєР»СЋС‡РµРЅРѕ
 
 		var view = '';
 		view &= '
 			<form name="" id="" action="#request.CRequest.updateURL(false,"/?page=rbac&section=role&action=edite&roleid=#arguments.roleid#")#" method="post">
 			<div class="grid_8"><div class="signin-box">
-				<a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,"/?page=rbac")#">Назад</a><br><br>
-				<h2>Редактирование пользовательской роли</h2>
+				<a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,"/?page=rbac")#">РќР°Р·Р°Рґ</a><br><br>
+				<h2>Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРѕР№ СЂРѕР»Рё</h2>
 				<div>
-					<label for="role_id"><b>ID роли:</b></label>
+					<label for="role_id"><b>ID СЂРѕР»Рё:</b></label>
 					<input disabled type="text" name="_role_id" value="#form.role_id#" size = "2" maxlength = "2">
 					<input type="hidden" name="role_id" value="#form.role_id#" size = "2" maxlength = "2">
 				</div>
 				<div>
-					<label for="role_name"><b>Имя роли:</b></label> 
+					<label for="role_name"><b>РРјСЏ СЂРѕР»Рё:</b></label> 
 					<input type="text" name="role_name" value="#form.role_name#" size = "50" maxlength = "50">';
 			if (instance.roleName is not ''){
 			view &= '		<label for="role_name" class="error" generated="0">#instance.roleName#</label>';
@@ -631,7 +631,7 @@ component attributeName='grouplist' output='false'{
 			view &= '
 				</div>
 				<div>
-					<label for="role_description"><b>Описание:</b></label>
+					<label for="role_description"><b>РћРїРёСЃР°РЅРёРµ:</b></label>
 					<textarea name = "role_description" rows="6" cols="47" >#form.role_description#</textarea>';
 			if (instance.roleDescription is not ''){
 			view &= '		<label for="role_description" class="error" generated="0">#instance.roleDescription#</label>';
@@ -640,7 +640,7 @@ component attributeName='grouplist' output='false'{
 			view &= '
 				</div>
 				<div>
-					<label for="role_child"><b>Роль потомок:</b></label>
+					<label for="role_child"><b>Р РѕР»СЊ РїРѕС‚РѕРјРѕРє:</b></label>
 					<input type="radio" name="role_child" value="" #checkedRadio("", form.role_child)# /> None <br> ';
 
 				roleList = factoryService.getService('rbacAPI').getRoleList();
@@ -656,7 +656,7 @@ component attributeName='grouplist' output='false'{
 			view &= '
 				</div>
 				<div>
-					<label for="role_parent"><b>Роль предок:</b></label>
+					<label for="role_parent"><b>Р РѕР»СЊ РїСЂРµРґРѕРє:</b></label>
 					<input type="radio" name="role_parent" value="" #checkedRadio("", form.role_parent)# /> None <br>';
 				//roleList = factoryService.getService('rbacAPI').getRoleList();
 				for (var x=1; x<=roleList.recordcount; x++){
@@ -671,7 +671,7 @@ component attributeName='grouplist' output='false'{
 			view &= '
 				</div>
 				<div>
-					<label for="prms_ids"><b>Пользовательские разрешения:</b></label> ';
+					<label for="prms_ids"><b>РџРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРёРµ СЂР°Р·СЂРµС€РµРЅРёСЏ:</b></label> ';
 
 				permissionList = factoryService.getService('rbacAPI').getPermissionList();
 				for (var x=1; x<=permissionList.recordcount; x++){
@@ -688,9 +688,9 @@ component attributeName='grouplist' output='false'{
 
 			view &= '</div>
 				<div>
-					<label for="role_status"><b>Статус:</b></label> 
-					<input type="radio" name="role_status" value="1" #checkedRadio("1", form.role_status)# /> Включена <br>
-					<input type="radio" name="role_status" value="0" #checkedRadio("0", form.role_status)#/> Выключена <br>
+					<label for="role_status"><b>РЎС‚Р°С‚СѓСЃ:</b></label> 
+					<input type="radio" name="role_status" value="1" #checkedRadio("1", form.role_status)# /> Р’РєР»СЋС‡РµРЅР° <br>
+					<input type="radio" name="role_status" value="0" #checkedRadio("0", form.role_status)#/> Р’С‹РєР»СЋС‡РµРЅР° <br>
 				</div>';
 
 			if (instance.roleStatus is not ''){
@@ -699,8 +699,8 @@ component attributeName='grouplist' output='false'{
 
 			view &= '
 				<div>
-					<input disabled class="g-button g-button-submit" type="submit" name="escape" value="Отмена">
-					<input class="g-button g-button-submit" type="submit" name="updateRole" value="Сохранить">
+					<input disabled class="g-button g-button-submit" type="submit" name="escape" value="РћС‚РјРµРЅР°">
+					<input class="g-button g-button-submit" type="submit" name="updateRole" value="РЎРѕС…СЂР°РЅРёС‚СЊ">
 				</div>';
 
 			if (instance.message is not ''){
@@ -713,9 +713,9 @@ component attributeName='grouplist' output='false'{
 		return view;
 	}
 
-	// обработчик формы если ява выключена
+	// РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹ РµСЃР»Рё СЏРІР° РІС‹РєР»СЋС‡РµРЅР°
 	private function addPermissionFormHandler(){
-		// --- обработчик формы---
+		// --- РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹---
 		if ( isdefined('form.addPermission') ){
 		  if ( !isDefined('form.obs_id') ){
 			form.obs_id = '';
@@ -730,7 +730,7 @@ component attributeName='grouplist' output='false'{
 			if ( result.RETVAL is 1 ){
 				factoryService.getService('redirector').redirect('/?page=rbac');
 			}else{
-				// --- пробная версия
+				// --- РїСЂРѕР±РЅР°СЏ РІРµСЂСЃРёСЏ
 				if (StructKeyExists(result, 'RETDESC')) {
 					instance.message = result['RETDESC'];
 				} else {
@@ -765,7 +765,7 @@ component attributeName='grouplist' output='false'{
 
 			}
 		}
-		// --- обработчик формы---
+		// --- РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹---
 	}
 
 	function addPermissionForm(){
@@ -774,16 +774,16 @@ component attributeName='grouplist' output='false'{
 		param name='form.prms_description' default='';
 		param name='form.obs_id' default='';
 		param name='form.ops_id' default='';
-		param name='form.prms_status' default='1'; // включено
+		param name='form.prms_status' default='1'; // РІРєР»СЋС‡РµРЅРѕ
 
 		var view = '';
 		view &= '
 			<form name="" id="" action="#request.CRequest.updateURL(false,"/?page=rbac&section=permission&action=add")#" method="post">
 			<div class="grid_8"><div class="signin-box">
-				<a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,"/?page=rbac")#">Назад</a><br><br>
-				<h2>Добавление разрешения</h2>
+				<a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,"/?page=rbac")#">РќР°Р·Р°Рґ</a><br><br>
+				<h2>Р”РѕР±Р°РІР»РµРЅРёРµ СЂР°Р·СЂРµС€РµРЅРёСЏ</h2>
 				<div>
-					<label for="prms_name"><b>Имя разрешения:</b></label> 
+					<label for="prms_name"><b>РРјСЏ СЂР°Р·СЂРµС€РµРЅРёСЏ:</b></label> 
 					<input type="text" name="prms_name" value="#form.prms_name#" size = "50" maxlength = "50">';
 
 			if (instance.prmsName is not ''){
@@ -792,7 +792,7 @@ component attributeName='grouplist' output='false'{
 			view &= '
 				</div>
 				<div>
-					<label for="prms_description"><b>Описание:</b></label>
+					<label for="prms_description"><b>РћРїРёСЃР°РЅРёРµ:</b></label>
 					<textarea name = "prms_description" rows="6" cols="47" >#form.prms_description#</textarea>';
 			if (instance.prmsDescription is not ''){
 			view &= '		<label for="prms_description" class="error" generated="0">#instance.prmsDescription#</label>';
@@ -801,7 +801,7 @@ component attributeName='grouplist' output='false'{
 			view &= '
 				</div>
 				<div>
-					<label for="obs_id"><b>Объект:</b></label>';
+					<label for="obs_id"><b>РћР±СЉРµРєС‚:</b></label>';
 
 				objectList = factoryService.getService('rbacAPI').getObjectList();
 				for (var x=1; x<=objectList.recordcount; x++){
@@ -816,7 +816,7 @@ component attributeName='grouplist' output='false'{
 			view &= '
 				</div>
 				<div>
-					<label for="ops_id"><b>Операция:</b></label>';
+					<label for="ops_id"><b>РћРїРµСЂР°С†РёСЏ:</b></label>';
 				operationList = factoryService.getService('rbacAPI').getOperationList();
 				for (var x=1; x<=operationList.recordcount; x++){
 					view &= '
@@ -829,9 +829,9 @@ component attributeName='grouplist' output='false'{
 
 			view &= '</div>
 				<div>
-					<label for="prms_status"><b>Статус:</b></label> 
-					<input type="radio" name="prms_status" value="1" #checkedRadio("1", form.prms_status)# /> Включена <br>
-					<input type="radio" name="prms_status" value="0" #checkedRadio("0", form.prms_status)#/> Выключена <br>
+					<label for="prms_status"><b>РЎС‚Р°С‚СѓСЃ:</b></label> 
+					<input type="radio" name="prms_status" value="1" #checkedRadio("1", form.prms_status)# /> Р’РєР»СЋС‡РµРЅР° <br>
+					<input type="radio" name="prms_status" value="0" #checkedRadio("0", form.prms_status)#/> Р’С‹РєР»СЋС‡РµРЅР° <br>
 				</div>';
 
 			if (instance.prmsStatus is not ''){
@@ -840,8 +840,8 @@ component attributeName='grouplist' output='false'{
 
 			view &= '
 				<div>
-					<input disabled class="g-button g-button-submit" type="submit" name="escape" value="Отмена">
-					<input class="g-button g-button-submit" type="submit" name="addPermission" value="Сохранить">
+					<input disabled class="g-button g-button-submit" type="submit" name="escape" value="РћС‚РјРµРЅР°">
+					<input class="g-button g-button-submit" type="submit" name="addPermission" value="РЎРѕС…СЂР°РЅРёС‚СЊ">
 				</div>';
 
 			if (instance.message is not ''){
@@ -857,9 +857,9 @@ component attributeName='grouplist' output='false'{
 		return view;
 	}
 
-	// обработчик формы если ява выключена
+	// РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹ РµСЃР»Рё СЏРІР° РІС‹РєР»СЋС‡РµРЅР°
 	private function updatePermissionFormHandler(){
-		// --- обработчик формы---
+		// --- РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹---
 		if ( isdefined('form.updatePermission') ){
 		  rbacAPI = factoryService.getService('rbacAPI');
 		      result = rbacAPI.editePermission( #form.prms_id#, #form.prms_name# , #form.prms_description#, #form.obs_id#, #form.ops_id#, #form.prms_status# );
@@ -873,7 +873,7 @@ component attributeName='grouplist' output='false'{
 					instance.message = '';
 				}
 			}else{
-				// --- пробная версия
+				// --- РїСЂРѕР±РЅР°СЏ РІРµСЂСЃРёСЏ
 				if (StructKeyExists(result, 'RETDESC')) {
 					instance.message = result['RETDESC'];
 				} else {
@@ -907,7 +907,7 @@ component attributeName='grouplist' output='false'{
 
 			}
 		}
-		// --- обработчик формы---
+		// --- РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹---
 	}
 
 	function updatePermissionForm(prmsid){
@@ -920,21 +920,21 @@ component attributeName='grouplist' output='false'{
 		param name='form.prms_description' default='#qPermission.prms_description#';
 		param name='form.obs_id' default='#qPermission.obs_id#';
 		param name='form.ops_id' default='#qPermission.ops_id#';
-		param name='form.prms_status' default='#qPermission.prms_status#'; // включено
+		param name='form.prms_status' default='#qPermission.prms_status#'; // РІРєР»СЋС‡РµРЅРѕ
 
 		var view = '';
 		view &= '
 			<form name="" id="" action="#request.CRequest.updateURL(false,"/?page=rbac&section=permission&action=edite&prmsid=#arguments.prmsid#")#" method="post">
 			<div class="grid_8"><div class="signin-box">
-				<a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,"/?page=rbac")#">Назад</a><br><br>
-				<h2>Редактирование разрешения</h2>
+				<a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,"/?page=rbac")#">РќР°Р·Р°Рґ</a><br><br>
+				<h2>Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ СЂР°Р·СЂРµС€РµРЅРёСЏ</h2>
 				<div>
-					<label for="prms_id"><b>ID разрешения:</b></label>
+					<label for="prms_id"><b>ID СЂР°Р·СЂРµС€РµРЅРёСЏ:</b></label>
 					<input disabled type="text" name="_prms_id" value="#form.prms_id#" size = "2" maxlength = "2">
 					<input type="hidden" name="prms_id" value="#form.prms_id#" size = "2" maxlength = "2">
 				</div>
 				<div>
-					<label for="prms_name"><b>Имя разрешения:</b></label> 
+					<label for="prms_name"><b>РРјСЏ СЂР°Р·СЂРµС€РµРЅРёСЏ:</b></label> 
 					<input type="text" name="prms_name" value="#form.prms_name#" size = "50" maxlength = "50">';
 			if (instance.prmsName is not ''){
 			view &= '		<label for="prms_name" class="error" generated="0">#instance.prmsName#</label>';
@@ -942,7 +942,7 @@ component attributeName='grouplist' output='false'{
 			view &= '
 				</div>
 				<div>
-					<label for="prms_description"><b>Описание:</b></label>
+					<label for="prms_description"><b>РћРїРёСЃР°РЅРёРµ:</b></label>
 					<textarea name = "prms_description" rows="6" cols="47" >#form.prms_description#</textarea>';
 			if (instance.prmsDescription is not ''){
 			view &= '		<label for="prms_description" class="error" generated="0">#instance.prmsDescription#</label>';
@@ -951,7 +951,7 @@ component attributeName='grouplist' output='false'{
 			view &= '
 				</div>
 				<div>
-					<label for="obs_id"><b>Объект:</b></label>';
+					<label for="obs_id"><b>РћР±СЉРµРєС‚:</b></label>';
 				objectList = factoryService.getService('rbacAPI').getObjectList();
 				for (var x=1; x<=objectList.recordcount; x++){
 					view &= '
@@ -965,7 +965,7 @@ component attributeName='grouplist' output='false'{
 			view &= '
 				</div>
 				<div>
-					<label for="ops_id"><b>Операция:</b></label>';
+					<label for="ops_id"><b>РћРїРµСЂР°С†РёСЏ:</b></label>';
 				operationList = factoryService.getService('rbacAPI').getOperationList();
 				for (var x=1; x<=operationList.recordcount; x++){
 					view &= '
@@ -978,9 +978,9 @@ component attributeName='grouplist' output='false'{
 
 			view &= '</div>
 				<div>
-					<label for="prms_status"><b>Статус:</b></label> 
-					<input type="radio" name="prms_status" value="1" #checkedRadio("1", form.prms_status)# /> Включена <br>
-					<input type="radio" name="prms_status" value="0" #checkedRadio("0", form.prms_status)#/> Выключена <br>
+					<label for="prms_status"><b>РЎС‚Р°С‚СѓСЃ:</b></label> 
+					<input type="radio" name="prms_status" value="1" #checkedRadio("1", form.prms_status)# /> Р’РєР»СЋС‡РµРЅР° <br>
+					<input type="radio" name="prms_status" value="0" #checkedRadio("0", form.prms_status)#/> Р’С‹РєР»СЋС‡РµРЅР° <br>
 				</div>';
 
 			if (instance.prmsStatus is not ''){
@@ -989,8 +989,8 @@ component attributeName='grouplist' output='false'{
 
 			view &= '
 				<div>
-					<input disabled class="g-button g-button-submit" type="submit" name="escape" value="Отмена">
-					<input class="g-button g-button-submit" type="submit" name="updatePermission" value="Сохранить">
+					<input disabled class="g-button g-button-submit" type="submit" name="escape" value="РћС‚РјРµРЅР°">
+					<input class="g-button g-button-submit" type="submit" name="updatePermission" value="РЎРѕС…СЂР°РЅРёС‚СЊ">
 				</div>';
 
 			if (instance.message is not ''){
@@ -1003,9 +1003,9 @@ component attributeName='grouplist' output='false'{
 		return view;
 	}
 
-	// обработчик формы если ява выключена
+	// РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹ РµСЃР»Рё СЏРІР° РІС‹РєР»СЋС‡РµРЅР°
 	private function addObjectFormHandler(){
-		// --- обработчик формы---
+		// --- РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹---
 		if ( isdefined('form.addObject') ){
 		  rbacAPI = factoryService.getService('rbacAPI');
 		      result = rbacAPI.addObject( #form.obs_name# , #form.obs_type#, #form.obs_description#,  #form.obs_status# );
@@ -1014,7 +1014,7 @@ component attributeName='grouplist' output='false'{
 			if ( result.RETVAL is 1 ){
 				factoryService.getService('redirector').redirect('/?page=rbac');
 			}else{
-				// --- пробная версия
+				// --- РїСЂРѕР±РЅР°СЏ РІРµСЂСЃРёСЏ
 				if (StructKeyExists(result, 'RETDESC')) {
 					instance.message = result['RETDESC'];
 				} else {
@@ -1045,7 +1045,7 @@ component attributeName='grouplist' output='false'{
 
 			}
 		}
-		// --- обработчик формы---
+		// --- РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹---
 	}
 
 	function addObjectForm(){
@@ -1053,16 +1053,16 @@ component attributeName='grouplist' output='false'{
 		param name='form.obs_name' default='';
 		param name='form.obs_type' default='';
 		param name='form.obs_description' default='';
-		param name='form.obs_status' default='1'; // включено
+		param name='form.obs_status' default='1'; // РІРєР»СЋС‡РµРЅРѕ
 
 		var view = '';
 		view &= '
 			<form name="" id="" action="#request.CRequest.updateURL(false,"/?page=rbac&section=object&action=add")#" method="post">
 			<div class="grid_8"><div class="signin-box">
-				<a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,"/?page=rbac")#">Назад</a><br><br>
-				<h2>Добавление объекта</h2>
+				<a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,"/?page=rbac")#">РќР°Р·Р°Рґ</a><br><br>
+				<h2>Р”РѕР±Р°РІР»РµРЅРёРµ РѕР±СЉРµРєС‚Р°</h2>
 				<div>
-					<label for="obs_name"><b>Имя объекта:</b></label> 
+					<label for="obs_name"><b>РРјСЏ РѕР±СЉРµРєС‚Р°:</b></label> 
 					<input type="text" name="obs_name" value="#form.obs_name#" size = "50" maxlength = "50">';
 
 			if (instance.obsName is not ''){
@@ -1072,7 +1072,7 @@ component attributeName='grouplist' output='false'{
 			view &= '
 				</div>
 				<div>
-					<label for="obs_type"><b>Тип объекта:</b></label>
+					<label for="obs_type"><b>РўРёРї РѕР±СЉРµРєС‚Р°:</b></label>
 					<input type="text" name = "obs_type" value="#form.obs_type#" size = "50" maxlength = "50" >';
 			if (instance.obsType is not ''){
 			view &= '		<label for="obs_type" class="error" generated="0">#instance.obsType#</label>';
@@ -1081,7 +1081,7 @@ component attributeName='grouplist' output='false'{
 			view &= '
 				</div>
 				<div>
-					<label for="obs_description"><b>Описание:</b></label>
+					<label for="obs_description"><b>РћРїРёСЃР°РЅРёРµ:</b></label>
 					<textarea name = "obs_description" rows="6" cols="47" >#form.obs_description#</textarea>';
 			if (instance.obsDescription is not ''){
 			view &= '		<label for="obs_description" class="error" generated="0">#instance.obsDescription#</label>';
@@ -1089,9 +1089,9 @@ component attributeName='grouplist' output='false'{
 
 			view &= '</div>
 				<div>
-					<label for="obs_status"><b>Статус:</b></label> 
-					<input type="radio" name="obs_status" value="1" #checkedRadio("1", form.obs_status)# /> Включена <br>
-					<input type="radio" name="obs_status" value="0" #checkedRadio("0", form.obs_status)#/> Выключена <br>
+					<label for="obs_status"><b>РЎС‚Р°С‚СѓСЃ:</b></label> 
+					<input type="radio" name="obs_status" value="1" #checkedRadio("1", form.obs_status)# /> Р’РєР»СЋС‡РµРЅР° <br>
+					<input type="radio" name="obs_status" value="0" #checkedRadio("0", form.obs_status)#/> Р’С‹РєР»СЋС‡РµРЅР° <br>
 				</div>';
 
 			if (instance.obsStatus is not ''){
@@ -1100,8 +1100,8 @@ component attributeName='grouplist' output='false'{
 
 			view &= '
 				<div>
-					<input disabled class="g-button g-button-submit" type="submit" name="escape" value="Отмена">
-					<input class="g-button g-button-submit" type="submit" name="addObject" value="Сохранить">
+					<input disabled class="g-button g-button-submit" type="submit" name="escape" value="РћС‚РјРµРЅР°">
+					<input class="g-button g-button-submit" type="submit" name="addObject" value="РЎРѕС…СЂР°РЅРёС‚СЊ">
 				</div>';
 
 			if (instance.message is not ''){
@@ -1117,9 +1117,9 @@ component attributeName='grouplist' output='false'{
 		return view;
 	}
 
-	// обработчик формы если ява выключена
+	// РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹ РµСЃР»Рё СЏРІР° РІС‹РєР»СЋС‡РµРЅР°
 	private function updateObjectFormHandler(){
-		// --- обработчик формы---
+		// --- РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹---
 		if ( isdefined('form.updateObject') ){
 		  rbacAPI = factoryService.getService('rbacAPI');
 		      result = rbacAPI.editeObject( #form.obs_id#, #form.obs_name# , #form.obs_type#, #form.obs_description#, #form.obs_status# );
@@ -1133,7 +1133,7 @@ component attributeName='grouplist' output='false'{
 					instance.message = '';
 				}
 			}else{
-				// --- пробная версия
+				// --- РїСЂРѕР±РЅР°СЏ РІРµСЂСЃРёСЏ
 				if (StructKeyExists(result, 'RETDESC')) {
 					instance.message = result['RETDESC'];
 				} else {
@@ -1163,7 +1163,7 @@ component attributeName='grouplist' output='false'{
 
 			}
 		}
-		// --- обработчик формы---
+		// --- РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹---
 	}
 
 	function updateObjectForm(obsid){
@@ -1175,21 +1175,21 @@ component attributeName='grouplist' output='false'{
 		param name='form.obs_name' default='#qObject.obs_name#';
 		param name='form.obs_type' default='#qObject.obs_type#';
 		param name='form.obs_description' default='#qObject.obs_description#';
-		param name='form.obs_status' default='#qObject.obs_status#'; // включено
+		param name='form.obs_status' default='#qObject.obs_status#'; // РІРєР»СЋС‡РµРЅРѕ
 
 		var view = '';
 		view &= '
 			<form name="" id="" action="#request.CRequest.updateURL(false,"/?page=rbac&section=object&action=edite&obsid=#arguments.obsid#")#" method="post">
 			<div class="grid_8"><div class="signin-box">
-				<a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,"/?page=rbac")#">Назад</a><br><br>
-				<h2>Редактирование объекта</h2>
+				<a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,"/?page=rbac")#">РќР°Р·Р°Рґ</a><br><br>
+				<h2>Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РѕР±СЉРµРєС‚Р°</h2>
 				<div>
-					<label for="obs_id"><b>ID объекта:</b></label>
+					<label for="obs_id"><b>ID РѕР±СЉРµРєС‚Р°:</b></label>
 					<input disabled type="text" name="_obs_id" value="#form.obs_id#" size = "2" maxlength = "2">
 					<input type="hidden" name="obs_id" value="#form.obs_id#" size = "2" maxlength = "2">
 				</div>
 				<div>
-					<label for="obs_name"><b>Имя объекта:</b></label> 
+					<label for="obs_name"><b>РРјСЏ РѕР±СЉРµРєС‚Р°:</b></label> 
 					<input type="text" name="obs_name" value="#form.obs_name#" size = "50" maxlength = "50">';
 			if (instance.obsName is not ''){
 			view &= '		<label for="obs_name" class="error" generated="0">#instance.obsName#</label>';
@@ -1197,7 +1197,7 @@ component attributeName='grouplist' output='false'{
 			view &= '
 				</div>
 				<div>
-					<label for="obs_type"><b>Тип объекта (нужен список):</b></label>
+					<label for="obs_type"><b>РўРёРї РѕР±СЉРµРєС‚Р° (РЅСѓР¶РµРЅ СЃРїРёСЃРѕРє):</b></label>
 					<input type="text" name="obs_type" value="#form.obs_type#" size = "50" maxlength = "50">';
 			if (instance.obsType is not ''){
 			view &= '		<label for="obs_type" class="error" generated="0">#instance.obsType#</label>';
@@ -1205,7 +1205,7 @@ component attributeName='grouplist' output='false'{
 			view &= '
 				</div>
 				<div>
-					<label for="obs_description"><b>Описание:</b></label>
+					<label for="obs_description"><b>РћРїРёСЃР°РЅРёРµ:</b></label>
 					<textarea name = "obs_description" rows="6" cols="47" >#form.obs_description#</textarea>';
 			if (instance.obsDescription is not ''){
 			view &= '		<label for="obs_description" class="error" generated="0">#instance.obsDescription#</label>';
@@ -1213,9 +1213,9 @@ component attributeName='grouplist' output='false'{
 
 			view &= '</div>
 				<div>
-					<label for="obs_status"><b>Статус:</b></label> 
-					<input type="radio" name="obs_status" value="1" #checkedRadio("1", form.obs_status)# /> Включена <br>
-					<input type="radio" name="obs_status" value="0" #checkedRadio("0", form.obs_status)#/> Выключена <br>
+					<label for="obs_status"><b>РЎС‚Р°С‚СѓСЃ:</b></label> 
+					<input type="radio" name="obs_status" value="1" #checkedRadio("1", form.obs_status)# /> Р’РєР»СЋС‡РµРЅР° <br>
+					<input type="radio" name="obs_status" value="0" #checkedRadio("0", form.obs_status)#/> Р’С‹РєР»СЋС‡РµРЅР° <br>
 				</div>';
 
 			if (instance.obsStatus is not ''){
@@ -1224,8 +1224,8 @@ component attributeName='grouplist' output='false'{
 
 			view &= '
 				<div>
-					<input disabled class="g-button g-button-submit" type="submit" name="escape" value="Отмена">
-					<input class="g-button g-button-submit" type="submit" name="updateObject" value="Сохранить">
+					<input disabled class="g-button g-button-submit" type="submit" name="escape" value="РћС‚РјРµРЅР°">
+					<input class="g-button g-button-submit" type="submit" name="updateObject" value="РЎРѕС…СЂР°РЅРёС‚СЊ">
 				</div>';
 
 			if (instance.message is not ''){
@@ -1238,9 +1238,9 @@ component attributeName='grouplist' output='false'{
 		return view;
 	}
 
-	// обработчик формы если ява выключена
+	// РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹ РµСЃР»Рё СЏРІР° РІС‹РєР»СЋС‡РµРЅР°
 	private function addOperationFormHandler(){
-		// --- обработчик формы---
+		// --- РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹---
 		if ( isdefined('form.addOperation') ){
 		  rbacAPI = factoryService.getService('rbacAPI');
 		      result = rbacAPI.addOperation( #form.ops_name# , #form.ops_type#, #form.ops_description#,  #form.ops_status# );
@@ -1249,7 +1249,7 @@ component attributeName='grouplist' output='false'{
 			if ( result.RETVAL is 1 ){
 				factoryService.getService('redirector').redirect('/?page=rbac');
 			}else{
-				// --- пробная версия
+				// --- РїСЂРѕР±РЅР°СЏ РІРµСЂСЃРёСЏ
 				if (StructKeyExists(result, 'RETDESC')) {
 					instance.message = result['RETDESC'];
 				} else {
@@ -1280,7 +1280,7 @@ component attributeName='grouplist' output='false'{
 
 			}
 		}
-		// --- обработчик формы---
+		// --- РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹---
 	}
 
 	function addOperationForm(){
@@ -1288,16 +1288,16 @@ component attributeName='grouplist' output='false'{
 		param name='form.ops_name' default='';
 		param name='form.ops_type' default='';
 		param name='form.ops_description' default='';
-		param name='form.ops_status' default='1'; // включено
+		param name='form.ops_status' default='1'; // РІРєР»СЋС‡РµРЅРѕ
 
 		var view = '';
 		view &= '
 			<form name="" id="" action="#request.CRequest.updateURL(false,"/?page=rbac&section=operation&action=add")#" method="post">
 			<div class="grid_8"><div class="signin-box">
-				<a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,"/?page=rbac")#">Назад</a><br><br>
-				<h2>Добавление объекта</h2>
+				<a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,"/?page=rbac")#">РќР°Р·Р°Рґ</a><br><br>
+				<h2>Р”РѕР±Р°РІР»РµРЅРёРµ РѕР±СЉРµРєС‚Р°</h2>
 				<div>
-					<label for="ops_name"><b>Имя операции:</b></label> 
+					<label for="ops_name"><b>РРјСЏ РѕРїРµСЂР°С†РёРё:</b></label> 
 					<input type="text" name="ops_name" value="#form.ops_name#" size = "50" maxlength = "50">';
 
 			if (instance.opsName is not ''){
@@ -1307,7 +1307,7 @@ component attributeName='grouplist' output='false'{
 			view &= '
 				</div>
 				<div>
-					<label for="ops_type"><b>Тип операции:</b></label>
+					<label for="ops_type"><b>РўРёРї РѕРїРµСЂР°С†РёРё:</b></label>
 					<input type="text" name = "ops_type" value="#form.ops_type#" size = "50" maxlength = "50" >';
 			if (instance.opsType is not ''){
 			view &= '		<label for="ops_type" class="error" generated="0">#instance.opsType#</label>';
@@ -1316,7 +1316,7 @@ component attributeName='grouplist' output='false'{
 			view &= '
 				</div>
 				<div>
-					<label for="ops_description"><b>Описание:</b></label>
+					<label for="ops_description"><b>РћРїРёСЃР°РЅРёРµ:</b></label>
 					<textarea name = "ops_description" rows="6" cols="47" >#form.ops_description#</textarea>';
 			if (instance.opsDescription is not ''){
 			view &= '		<label for="ops_description" class="error" generated="0">#instance.opsDescription#</label>';
@@ -1324,9 +1324,9 @@ component attributeName='grouplist' output='false'{
 
 			view &= '</div>
 				<div>
-					<label for="ops_status"><b>Статус:</b></label> 
-					<input type="radio" name="ops_status" value="1" #checkedRadio("1", form.ops_status)# /> Включена <br>
-					<input type="radio" name="ops_status" value="0" #checkedRadio("0", form.ops_status)#/> Выключена <br>
+					<label for="ops_status"><b>РЎС‚Р°С‚СѓСЃ:</b></label> 
+					<input type="radio" name="ops_status" value="1" #checkedRadio("1", form.ops_status)# /> Р’РєР»СЋС‡РµРЅР° <br>
+					<input type="radio" name="ops_status" value="0" #checkedRadio("0", form.ops_status)#/> Р’С‹РєР»СЋС‡РµРЅР° <br>
 				</div>';
 
 			if (instance.opsStatus is not ''){
@@ -1335,8 +1335,8 @@ component attributeName='grouplist' output='false'{
 
 			view &= '
 				<div>
-					<input disabled class="g-button g-button-submit" type="submit" name="escape" value="Отмена">
-					<input class="g-button g-button-submit" type="submit" name="addOperation" value="Сохранить">
+					<input disabled class="g-button g-button-submit" type="submit" name="escape" value="РћС‚РјРµРЅР°">
+					<input class="g-button g-button-submit" type="submit" name="addOperation" value="РЎРѕС…СЂР°РЅРёС‚СЊ">
 				</div>';
 
 			if (instance.message is not ''){
@@ -1352,9 +1352,9 @@ component attributeName='grouplist' output='false'{
 		return view;
 	}
 
-	// обработчик формы если ява выключена
+	// РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹ РµСЃР»Рё СЏРІР° РІС‹РєР»СЋС‡РµРЅР°
 	private function updateOperationFormHandler(){
-		// --- обработчик формы---
+		// --- РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹---
 		if ( isdefined('form.updateOperation') ){
 		  rbacAPI = factoryService.getService('rbacAPI');
 		      result = rbacAPI.editeOperation( #form.ops_id#, #form.ops_name# , #form.ops_type#, #form.ops_description#, #form.ops_status# );
@@ -1368,7 +1368,7 @@ component attributeName='grouplist' output='false'{
 					instance.message = '';
 				}
 			}else{
-				// --- пробная версия
+				// --- РїСЂРѕР±РЅР°СЏ РІРµСЂСЃРёСЏ
 				if (StructKeyExists(result, 'RETDESC')) {
 					instance.message = result['RETDESC'];
 				} else {
@@ -1398,7 +1398,7 @@ component attributeName='grouplist' output='false'{
 
 			}
 		}
-		// --- обработчик формы---
+		// --- РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹---
 	}
 
 	function updateOperationForm(opsid){
@@ -1410,21 +1410,21 @@ component attributeName='grouplist' output='false'{
 		param name='form.ops_name' default='#qOperation.ops_name#';
 		param name='form.ops_type' default='#qOperation.ops_type#';
 		param name='form.ops_description' default='#qOperation.ops_description#';
-		param name='form.ops_status' default='#qOperation.ops_status#'; // включено
+		param name='form.ops_status' default='#qOperation.ops_status#'; // РІРєР»СЋС‡РµРЅРѕ
 
 		var view = '';
 		view &= '
 			<form name="" id="" action="#request.CRequest.updateURL(false,"/?page=rbac&section=operation&action=edite&opsid=#arguments.opsid#")#" method="post">
 			<div class="grid_8"><div class="signin-box">
-				<a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,"/?page=rbac")#">Назад</a><br><br>
-				<h2>Редактирование операции</h2>
+				<a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,"/?page=rbac")#">РќР°Р·Р°Рґ</a><br><br>
+				<h2>Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РѕРїРµСЂР°С†РёРё</h2>
 				<div>
-					<label for="ops_id"><b>ID операции:</b></label>
+					<label for="ops_id"><b>ID РѕРїРµСЂР°С†РёРё:</b></label>
 					<input disabled type="text" name="_ops_id" value="#form.ops_id#" size = "2" maxlength = "2">
 					<input type="hidden" name="ops_id" value="#form.ops_id#" size = "2" maxlength = "2">
 				</div>
 				<div>
-					<label for="ops_name"><b>Имя операции:</b></label> 
+					<label for="ops_name"><b>РРјСЏ РѕРїРµСЂР°С†РёРё:</b></label> 
 					<input type="text" name="ops_name" value="#form.ops_name#" size = "50" maxlength = "50">';
 			if (instance.opsName is not ''){
 			view &= '		<label for="ops_name" class="error" generated="0">#instance.opsName#</label>';
@@ -1432,7 +1432,7 @@ component attributeName='grouplist' output='false'{
 			view &= '
 				</div>
 				<div>
-					<label for="ops_type"><b>Тип операции (нужен список):</b></label>
+					<label for="ops_type"><b>РўРёРї РѕРїРµСЂР°С†РёРё (РЅСѓР¶РµРЅ СЃРїРёСЃРѕРє):</b></label>
 					<input type="text" name="ops_type" value="#form.ops_type#" size = "50" maxlength = "50">';
 			if (instance.opsType is not ''){
 			view &= '		<label for="ops_type" class="error" generated="0">#instance.opsType#</label>';
@@ -1440,7 +1440,7 @@ component attributeName='grouplist' output='false'{
 			view &= '
 				</div>
 				<div>
-					<label for="ops_description"><b>Описание:</b></label>
+					<label for="ops_description"><b>РћРїРёСЃР°РЅРёРµ:</b></label>
 					<textarea name = "ops_description" rows="6" cols="47" >#form.ops_description#</textarea>';
 			if (instance.opsDescription is not ''){
 			view &= '		<label for="ops_description" class="error" generated="0">#instance.opsDescription#</label>';
@@ -1448,9 +1448,9 @@ component attributeName='grouplist' output='false'{
 
 			view &= '</div>
 				<div>
-					<label for="ops_status"><b>Статус:</b></label> 
-					<input type="radio" name="ops_status" value="1" #checkedRadio("1", form.ops_status)# /> Включена <br>
-					<input type="radio" name="ops_status" value="0" #checkedRadio("0", form.ops_status)#/> Выключена <br>
+					<label for="ops_status"><b>РЎС‚Р°С‚СѓСЃ:</b></label> 
+					<input type="radio" name="ops_status" value="1" #checkedRadio("1", form.ops_status)# /> Р’РєР»СЋС‡РµРЅР° <br>
+					<input type="radio" name="ops_status" value="0" #checkedRadio("0", form.ops_status)#/> Р’С‹РєР»СЋС‡РµРЅР° <br>
 				</div>';
 
 			if (instance.opsStatus is not ''){
@@ -1459,8 +1459,8 @@ component attributeName='grouplist' output='false'{
 
 			view &= '
 				<div>
-					<input disabled class="g-button g-button-submit" type="submit" name="escape" value="Отмена">
-					<input class="g-button g-button-submit" type="submit" name="updateOperation" value="Сохранить">
+					<input disabled class="g-button g-button-submit" type="submit" name="escape" value="РћС‚РјРµРЅР°">
+					<input class="g-button g-button-submit" type="submit" name="updateOperation" value="РЎРѕС…СЂР°РЅРёС‚СЊ">
 				</div>';
 
 			if (instance.message is not ''){
@@ -1476,14 +1476,14 @@ component attributeName='grouplist' output='false'{
 	function groupListForm(){
 		groupList = factoryService.getService('rbacAPI').getGroupList();
 		var view = '';
-		view &= '<div class="grid_16"><div class="signin-box"><h2>Пользовательские группы:</h2>';
+		view &= '<div class="grid_16"><div class="signin-box"><h2>РџРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРёРµ РіСЂСѓРїРїС‹:</h2>';
 			view &= '<table width="100%">
 						<tr style="color:grey;">
-						<td>ID группы</td> 
-						<td>Имя группы</td> 
-						<td>Описание</td> 
-						<td>Назначенные роли</td> 
-						<td>Статус</td>
+						<td>ID РіСЂСѓРїРїС‹</td> 
+						<td>РРјСЏ РіСЂСѓРїРїС‹</td> 
+						<td>РћРїРёСЃР°РЅРёРµ</td> 
+						<td>РќР°Р·РЅР°С‡РµРЅРЅС‹Рµ СЂРѕР»Рё</td> 
+						<td>РЎС‚Р°С‚СѓСЃ</td>
 						<td> --- </td>
 						</tr>';
 
@@ -1495,12 +1495,12 @@ component attributeName='grouplist' output='false'{
 						<td>#groupList.group_description[x]#</td> 
 						<td>#groupList.roles_id[x]#</td> 
 						<td>#groupList.group_status[x]#</td>
-						<td><a href="/?page=rbac&section=group&action=edite&groupid=#groupList.group_id[x]#">Редактировать</a> | 
-							<a href="/?page=rbac&section=group&action=delete&groupid=#groupList.group_id[x]#">Удалить</a></td>
+						<td><a href="/?page=rbac&section=group&action=edite&groupid=#groupList.group_id[x]#">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a> | 
+							<a href="/?page=rbac&section=group&action=delete&groupid=#groupList.group_id[x]#">РЈРґР°Р»РёС‚СЊ</a></td>
 						</tr>';
 			}
 
-			view &= '<tr><td style="text-align:left;" colspan="6"><a href="/?page=rbac&section=group&action=add"><br>+Добавить пользовательскую группу</a></td></tr>';
+			view &= '<tr><td style="text-align:left;" colspan="6"><a href="/?page=rbac&section=group&action=add"><br>+Р”РѕР±Р°РІРёС‚СЊ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєСѓСЋ РіСЂСѓРїРїСѓ</a></td></tr>';
 
 			view &= '</table>';
 		view &= '</div></div>';
@@ -1511,16 +1511,16 @@ component attributeName='grouplist' output='false'{
 	function roleListForm(){
 		roleList = factoryService.getService('rbacAPI').getRoleList();
 		var view = '';
-		view &= '<div class="grid_16"><div class="signin-box"><h2>Пользовательские роли:</h2>';
+		view &= '<div class="grid_16"><div class="signin-box"><h2>РџРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРёРµ СЂРѕР»Рё:</h2>';
 			view &= '<table width="100%">
 						<tr style="color:grey;">
-						<td>ID роли</td> 
-						<td>Имя роли</td> 
-						<td>Описание</td>
-						<td>Роль потомок</td>
-						<td>Роль предок</td>
-						<td>Назначенные разрешения</td> 
-						<td>Статус</td>
+						<td>ID СЂРѕР»Рё</td> 
+						<td>РРјСЏ СЂРѕР»Рё</td> 
+						<td>РћРїРёСЃР°РЅРёРµ</td>
+						<td>Р РѕР»СЊ РїРѕС‚РѕРјРѕРє</td>
+						<td>Р РѕР»СЊ РїСЂРµРґРѕРє</td>
+						<td>РќР°Р·РЅР°С‡РµРЅРЅС‹Рµ СЂР°Р·СЂРµС€РµРЅРёСЏ</td> 
+						<td>РЎС‚Р°С‚СѓСЃ</td>
 						<td> --- </td>
 						</tr>';
 			for (var x=1; x<=roleList.recordcount; x++){
@@ -1533,10 +1533,10 @@ component attributeName='grouplist' output='false'{
 						<td>#roleList.role_parent[x]#</td>
 						<td>#roleList.prms_ids[x]#</td> 
 						<td>#roleList.role_status[x]#</td>
-						<td nowrap> <a href="/?page=rbac&section=role&action=edite&roleid=#roleList.role_id[x]#">Редактировать</a> | <a href="/?page=rbac&section=role&action=delete&roleid=#roleList.role_id[x]#">Удалить</a>&nbsp;</td>
+						<td nowrap> <a href="/?page=rbac&section=role&action=edite&roleid=#roleList.role_id[x]#">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a> | <a href="/?page=rbac&section=role&action=delete&roleid=#roleList.role_id[x]#">РЈРґР°Р»РёС‚СЊ</a>&nbsp;</td>
 						</tr>';
 			}
-			view &= '<tr><td style="text-align:left;" colspan="6"><a href="/?page=rbac&section=role&action=add"><br>+Добавить пользовательскую роль</a></td></tr>';
+			view &= '<tr><td style="text-align:left;" colspan="6"><a href="/?page=rbac&section=role&action=add"><br>+Р”РѕР±Р°РІРёС‚СЊ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєСѓСЋ СЂРѕР»СЊ</a></td></tr>';
 
 			view &= '</table>';
 		view &= '</div></div>';
@@ -1547,15 +1547,15 @@ component attributeName='grouplist' output='false'{
 	function permissionListForm(){
 		permissionList = factoryService.getService('rbacAPI').getPermissionList();
 		var view = '';
-		view &= '<div class="grid_16"><div class="signin-box"><h2>Пользовательские разрешения:</h2>';
+		view &= '<div class="grid_16"><div class="signin-box"><h2>РџРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРёРµ СЂР°Р·СЂРµС€РµРЅРёСЏ:</h2>';
 			view &= '<table width="100%">
 						<tr style="color:grey;">
-						<td>ID разрешения</td> 
-						<td>Имя разрешения</td> 
-						<td>Описание</td>
-						<td>ID Объекта</td>
-						<td>ID Операции</td>
-						<td>Статус</td>
+						<td>ID СЂР°Р·СЂРµС€РµРЅРёСЏ</td> 
+						<td>РРјСЏ СЂР°Р·СЂРµС€РµРЅРёСЏ</td> 
+						<td>РћРїРёСЃР°РЅРёРµ</td>
+						<td>ID РћР±СЉРµРєС‚Р°</td>
+						<td>ID РћРїРµСЂР°С†РёРё</td>
+						<td>РЎС‚Р°С‚СѓСЃ</td>
 						<td> --- </td>
 						</tr>';
 			for (var x=1; x<=permissionList.recordcount; x++){
@@ -1567,10 +1567,10 @@ component attributeName='grouplist' output='false'{
 						<td>#permissionList.obs_id[x]#</td> 
 						<td>#permissionList.ops_id[x]#</td>
 						<td>#permissionList.prms_status[x]#</td>
-						<td><a href="/?page=rbac&section=permission&action=edite&prmsid=#permissionList.prms_id[x]#">Редактировать</a> | <a href="/?page=rbac&section=permission&action=delete&prmsid=#permissionList.prms_id[x]#">Удалить</a></td>
+						<td><a href="/?page=rbac&section=permission&action=edite&prmsid=#permissionList.prms_id[x]#">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a> | <a href="/?page=rbac&section=permission&action=delete&prmsid=#permissionList.prms_id[x]#">РЈРґР°Р»РёС‚СЊ</a></td>
 						</tr>';
 			}
-			view &= '<tr><td style="text-align:left;" colspan="7"><a href="/?page=rbac&section=permission&action=add"><br>+Добавить разрешение</a></td></tr>';
+			view &= '<tr><td style="text-align:left;" colspan="7"><a href="/?page=rbac&section=permission&action=add"><br>+Р”РѕР±Р°РІРёС‚СЊ СЂР°Р·СЂРµС€РµРЅРёРµ</a></td></tr>';
 
 			view &= '</table>';
 		view &= '</div></div>';
@@ -1581,14 +1581,14 @@ component attributeName='grouplist' output='false'{
 	function objectListForm(){
 		objectList = factoryService.getService('rbacAPI').getObjectList();
 		var view = '';
-		view &= '<div class="grid_16"><div class="signin-box"><h2>Объекты:</h2>';
+		view &= '<div class="grid_16"><div class="signin-box"><h2>РћР±СЉРµРєС‚С‹:</h2>';
 			view &= '<table width="100%">
 						<tr style="color:grey;">
-						<td>ID объекта</td> 
-						<td>Имя объекта</td>
-						<td>Тип объекта</td> 
-						<td>Описание</td>
-						<td>Статус</td>
+						<td>ID РѕР±СЉРµРєС‚Р°</td> 
+						<td>РРјСЏ РѕР±СЉРµРєС‚Р°</td>
+						<td>РўРёРї РѕР±СЉРµРєС‚Р°</td> 
+						<td>РћРїРёСЃР°РЅРёРµ</td>
+						<td>РЎС‚Р°С‚СѓСЃ</td>
 						<td> --- </td>
 						</tr>';
 			for (var x=1; x<=objectList.recordcount; x++){
@@ -1599,10 +1599,10 @@ component attributeName='grouplist' output='false'{
 						<td>#objectList.obs_type[x]#</td>
 						<td>#objectList.obs_description[x]#</td>
 						<td>#objectList.obs_status[x]#</td> 
-						<td><a href="/?page=rbac&section=object&action=edite&obsid=#objectList.obs_id[x]#">Редактировать</a> | <a href="/?page=rbac&section=object&action=delete&obsid=#objectList.obs_id[x]#">Удалить</a></td>
+						<td><a href="/?page=rbac&section=object&action=edite&obsid=#objectList.obs_id[x]#">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a> | <a href="/?page=rbac&section=object&action=delete&obsid=#objectList.obs_id[x]#">РЈРґР°Р»РёС‚СЊ</a></td>
 						</tr>';
 			}
-			view &= '<tr><td style="text-align:left;" colspan="6"><a href="/?page=rbac&section=object&action=add"><br>+Добавить объект</a></td></tr>';
+			view &= '<tr><td style="text-align:left;" colspan="6"><a href="/?page=rbac&section=object&action=add"><br>+Р”РѕР±Р°РІРёС‚СЊ РѕР±СЉРµРєС‚</a></td></tr>';
 
 			view &= '</table>';
 		view &= '</div></div>';
@@ -1613,14 +1613,14 @@ component attributeName='grouplist' output='false'{
 	function operationListForm(){
 		operationList = factoryService.getService('rbacAPI').getOperationList();
 		var view = '';
-		view &= '<div class="grid_16"><div class="signin-box"><h2>Операции:</h2>';
+		view &= '<div class="grid_16"><div class="signin-box"><h2>РћРїРµСЂР°С†РёРё:</h2>';
 			view &= '<table width="100%">
 						<tr style="color:grey;">
-						<td>ID оерации</td> 
-						<td>Имя операции</td>
-						<td>Тип операции</td> 
-						<td>Описание</td>
-						<td>Статус</td>
+						<td>ID РѕРµСЂР°С†РёРё</td> 
+						<td>РРјСЏ РѕРїРµСЂР°С†РёРё</td>
+						<td>РўРёРї РѕРїРµСЂР°С†РёРё</td> 
+						<td>РћРїРёСЃР°РЅРёРµ</td>
+						<td>РЎС‚Р°С‚СѓСЃ</td>
 						<td> --- </td>
 						</tr>';
 			for (var x=1; x<=operationList.recordcount; x++){
@@ -1631,10 +1631,10 @@ component attributeName='grouplist' output='false'{
 						<td>#operationList.ops_type[x]#</td>
 						<td>#operationList.ops_description[x]#</td>
 						<td>#operationList.ops_status[x]#</td> 
-						<td><a href="/?page=rbac&section=operation&action=edite&opsid=#operationList.ops_id[x]#">Редактировать</a> | <a href="/?page=rbac&section=operation&action=delete&opsid=#operationList.ops_id[x]#">Удалить</a></td>
+						<td><a href="/?page=rbac&section=operation&action=edite&opsid=#operationList.ops_id[x]#">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a> | <a href="/?page=rbac&section=operation&action=delete&opsid=#operationList.ops_id[x]#">РЈРґР°Р»РёС‚СЊ</a></td>
 						</tr>';
 			}
-			view &= '<tr><td style="text-align:left;" colspan="6"><a href="/?page=rbac&section=operation&action=add"><br>+Добавить операцию</a></td></tr>';
+			view &= '<tr><td style="text-align:left;" colspan="6"><a href="/?page=rbac&section=operation&action=add"><br>+Р”РѕР±Р°РІРёС‚СЊ РѕРїРµСЂР°С†РёСЋ</a></td></tr>';
 
 			view &= '</table>';
 		view &= '</div></div>';

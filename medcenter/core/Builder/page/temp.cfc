@@ -1,6 +1,6 @@
 component attributeName='temp' {
 
-	// для виджетов
+	// РґР»СЏ РІРёРґР¶РµС‚РѕРІ
 	request.factoryWidget=createObject('component','core.builder.factoryWidget').Init();
 
 	instance.url.section = request.CRequest.getUrl('section');

@@ -1,9 +1,9 @@
 /*
-	users interest API - сервис
+	users interest API - СЃРµСЂРІРёСЃ
 */
 component displayname="usersInterestAPI" output="false" {
 
-	// Псевдо конструктор
+	// РџСЃРµРІРґРѕ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
 	instance.usersInterestDAO = '';
 	instance.usersInterest = '';
 
@@ -42,10 +42,10 @@ component displayname="usersInterestAPI" output="false" {
 		// --------------------------------------------------------------------------------------------------------------------------
 		qUserInterestList.setSQL(select);
 
-		var execute = qUserInterestList.execute(dbtype="query"); // вся структура и result и prefix
+		var execute = qUserInterestList.execute(dbtype="query"); // РІСЃСЏ СЃС‚СЂСѓРєС‚СѓСЂР° Рё result Рё prefix
 		var result = execute.getResult();
 		//writeDump( result );
-		return result; // возвращает query
+		return result; // РІРѕР·РІСЂР°С‰Р°РµС‚ query
 	}
 
 	function addUserInterest( userID, stID, uiType, uiValue, uiStatus ){
@@ -59,7 +59,7 @@ component displayname="usersInterestAPI" output="false" {
 		var result = structNew();
 		result.RETVAL = 0;
 		result.RETDESC = "";
-		result.STRUCT = structNew(); // для валидации полей
+		result.STRUCT = structNew(); // РґР»СЏ РІР°Р»РёРґР°С†РёРё РїРѕР»РµР№
 
 		validator = request.factoryService.getService('Validator');
 
@@ -79,7 +79,7 @@ component displayname="usersInterestAPI" output="false" {
 		}
 		//--------------------------------------------------------------------
 
-	        // если обнаружены ошибки
+	        // РµСЃР»Рё РѕР±РЅР°СЂСѓР¶РµРЅС‹ РѕС€РёР±РєРё
 		if ( structIsEmpty(result.struct) ){
 
 			structCreateUserInterest = instance.usersInterestDAO.createUserInterest( userID, stID, uiType, uiValue, uiStatus );
@@ -108,7 +108,7 @@ component displayname="usersInterestAPI" output="false" {
 		var result = structNew();
 		result.RETVAL = 0;
 		result.RETDESC = "";
-		result.STRUCT = structNew(); // для валидации полей
+		result.STRUCT = structNew(); // РґР»СЏ РІР°Р»РёРґР°С†РёРё РїРѕР»РµР№
 
 		validator = request.factoryService.getService('Validator');
 
@@ -128,7 +128,7 @@ component displayname="usersInterestAPI" output="false" {
 		}
 		//--------------------------------------------------------------------
 
-	        // если обнаружены ошибки
+	        // РµСЃР»Рё РѕР±РЅР°СЂСѓР¶РµРЅС‹ РѕС€РёР±РєРё
 		if ( structIsEmpty(result.struct) ){
 
 			structUpdateUserInterest = instance.usersInterestDAO.updateUserInterest( uiID, userID, stID, uiType, uiValue, uiStatus );

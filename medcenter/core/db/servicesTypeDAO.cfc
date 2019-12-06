@@ -1,7 +1,7 @@
 component displayName='servicesTypeDAO'{
 
-	// Псевдо конструктор
-	instance = {datasource = ''} ; // объект
+	// РџСЃРµРІРґРѕ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
+	instance = {datasource = ''} ; // РѕР±СЉРµРєС‚
 	instance.datasource = createObject('component', 'core.db.Datasource').init();
 
 
@@ -17,7 +17,7 @@ component displayName='servicesTypeDAO'{
 
 		qServiceTypeList.setSQL("SELECT * FROM services_type");
 	
-		var execute = qServiceTypeList.execute(); // вся структура и result и prefix
+		var execute = qServiceTypeList.execute(); // РІСЃСЏ СЃС‚СЂСѓРєС‚СѓСЂР° Рё result Рё prefix
 		var result = execute.getResult();
 		return result; //query
 	}
@@ -30,13 +30,13 @@ component displayName='servicesTypeDAO'{
 
 		qServiceType.setSQL("SELECT * FROM services_type WHERE st_id = '#arguments.stid#' ");
 	
-		var execute = qServiceType.execute(); // вся структура и result и prefix
+		var execute = qServiceType.execute(); // РІСЃСЏ СЃС‚СЂСѓРєС‚СѓСЂР° Рё result Рё prefix
 		var result = execute.getResult();
 		return result; //query
 	}
 
 	function createServiceType( required string stName, string stDescription , numeric stStatus ) {
-		// дописать время создания и ip
+		// РґРѕРїРёСЃР°С‚СЊ РІСЂРµРјСЏ СЃРѕР·РґР°РЅРёСЏ Рё ip
 		createServiceType = new Query();
 		createServiceType.setDatasource("#instance.datasource.getDSName()#");
 		createServiceType.setName("createServiceType");
@@ -49,11 +49,11 @@ component displayName='servicesTypeDAO'{
 			VALUES ( :stName, :stDescription, :stStatus )
 			");
 
-		createServiceType.execute(); // вся структура и result и prefix
+		createServiceType.execute(); // РІСЃСЏ СЃС‚СЂСѓРєС‚СѓСЂР° Рё result Рё prefix
 
 		var structCreateServiceType = structNew();
 		structCreateServiceType.RETVAL = 1; // create
-		structCreateServiceType.RETDESC = 'Тип служащего создан!';
+		structCreateServiceType.RETDESC = 'РўРёРї СЃР»СѓР¶Р°С‰РµРіРѕ СЃРѕР·РґР°РЅ!';
 		return structCreateServiceType;
 	}
 
@@ -79,7 +79,7 @@ component displayName='servicesTypeDAO'{
 		updateServiceType.execute();
 		var structupdateServiceType = structNew();
 		structupdateServiceType.RETVAL = 1; // create
-		structupdateServiceType.RETDESC = 'Услуга изменена!';
+		structupdateServiceType.RETDESC = 'РЈСЃР»СѓРіР° РёР·РјРµРЅРµРЅР°!';
 		return structupdateServiceType;
 
 	}

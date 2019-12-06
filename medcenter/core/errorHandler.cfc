@@ -48,13 +48,13 @@ component displayName='errorHandler' {
           instance.description='#locDetail# [snipet]';
           break;
         case 'Object':
-          //этой ошибки добиться не смог
+          //СЌС‚РѕР№ РѕС€РёР±РєРё РґРѕР±РёС‚СЊСЃСЏ РЅРµ СЃРјРѕРі
           instance.section='Object';
           instance.type='SYSTEM';
           instance.description='#locDetail#';
           break;
         case 'Security':
-          //этой ошибки добиться не смог
+          //СЌС‚РѕР№ РѕС€РёР±РєРё РґРѕР±РёС‚СЊСЃСЏ РЅРµ СЃРјРѕРі
           instance.section='Security';
           instance.type='SYSTEM';
           instance.description='#locDetail#';
@@ -65,13 +65,13 @@ component displayName='errorHandler' {
           instance.description='#locDetail#';
           break;
         case 'Lock':
-          //этой ошибки добиться не смог
+          //СЌС‚РѕР№ РѕС€РёР±РєРё РґРѕР±РёС‚СЊСЃСЏ РЅРµ СЃРјРѕРі
           instance.section='Lock';
           instance.type='SYSTEM';
           instance.description='#locDetail#';
           break;
         case 'SearchEngine':
-          //этой ошибки добиться не смог
+          //СЌС‚РѕР№ РѕС€РёР±РєРё РґРѕР±РёС‚СЊСЃСЏ РЅРµ СЃРјРѕРі
           instance.section='SearchEngine';
           instance.type='SYSTEM';
           instance.description='#locDetail#';
@@ -82,7 +82,7 @@ component displayName='errorHandler' {
           instance.description='#locDetail#';
           break;
           //--------------------------------------------------------------------
-          //--- пользовательские искоючения ------------------------------------
+          //--- РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРёРµ РёСЃРєРѕСЋС‡РµРЅРёСЏ ------------------------------------
           //--------------------------------------------------------------------
         default:
           instance.section=locMessage;
@@ -97,10 +97,10 @@ component displayName='errorHandler' {
       }
       errorString='<br>section=#instance.section#<br>type=#instance.type#<br>description=#instance.description#<br>dumpArray=#dumpArray#<hr>';
       if (instance.ajaxFlag) {
-        //Writeoutput('{"REDIR":"http:\/\/127.0.0.1\/","STRUCT":{"MESSAGE":"База не доступна!"},"LOGGEDIN":0.0}');
-        Writeoutput('{"RETVAL": 0, "RETDESC":"Произошла внутренняя ошибка серевера!"}');
+        //Writeoutput('{"REDIR":"http:\/\/127.0.0.1\/","STRUCT":{"MESSAGE":"Р‘Р°Р·Р° РЅРµ РґРѕСЃС‚СѓРїРЅР°!"},"LOGGEDIN":0.0}');
+        Writeoutput('{"RETVAL": 0, "RETDESC":"РџСЂРѕРёР·РѕС€Р»Р° РІРЅСѓС‚СЂРµРЅРЅСЏСЏ РѕС€РёР±РєР° СЃРµСЂРµРІРµСЂР°!"}');
       } else {
-        title='Дебагер дамп';
+        title='Р”РµР±Р°РіРµСЂ РґР°РјРї';
         text='';
         data=errorString;
         include '/core/Builder/page/error.cfm';

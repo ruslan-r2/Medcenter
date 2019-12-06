@@ -1,9 +1,9 @@
 /*
-	Виджет типы служащих --
+	Р’РёРґР¶РµС‚ С‚РёРїС‹ СЃР»СѓР¶Р°С‰РёС… --
 */
 
 component attributeName='employees' output='false'{
-	// псевдо конструктор
+	// РїСЃРµРІРґРѕ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
 	factoryService = request.factoryService;
 	//authorization = factoryService.getService('authorization');
 
@@ -53,9 +53,9 @@ component attributeName='employees' output='false'{
 		}
 	}
 
-	// обработчик формы если ява выключена
+	// РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹ РµСЃР»Рё СЏРІР° РІС‹РєР»СЋС‡РµРЅР°
 	private function addEmployeeFormHandler(){
-		// --- обработчик формы---
+		// --- РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹---
 		if ( isdefined('form.addEmployee') ){
 		  if ( !isDefined('form.empt_parent') ){
 			form.empt_parent = '';
@@ -70,7 +70,7 @@ component attributeName='employees' output='false'{
 			if ( result.RETVAL is 1 ){
 				factoryService.getService('redirector').redirect('/?page=typeEmployees');
 			}else{
-				// --- пробная версия
+				// --- РїСЂРѕР±РЅР°СЏ РІРµСЂСЃРёСЏ
 				if (StructKeyExists(result, 'RETDESC')) {
 					instance.message = result['RETDESC'];
 				} else {
@@ -105,7 +105,7 @@ component attributeName='employees' output='false'{
 
 			}
 		}
-		// --- обработчик формы---
+		// --- РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹---
 	}
 
 	function addEmployeeForm(){
@@ -114,16 +114,16 @@ component attributeName='employees' output='false'{
 		param name='form.empt_description' default='';
 		param name='form.empt_parent' default='';
 		param name='form.empt_child' default='';
-		param name='form.empt_status' default='1'; // включено
+		param name='form.empt_status' default='1'; // РІРєР»СЋС‡РµРЅРѕ
 
 		var view = '';
 		view &= '
 			<form name="" id="" action="#request.CRequest.updateURL(false,"/?page=typeEmployees&section=employees&action=add")#" method="post">
 			<div class="grid_8"><div class="signin-box">
-				<a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,"/?page=typeEmployees")#">Назад</a><br><br>
-				<h2>Добавление типа служащего</h2>
+				<a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,"/?page=typeEmployees")#">РќР°Р·Р°Рґ</a><br><br>
+				<h2>Р”РѕР±Р°РІР»РµРЅРёРµ С‚РёРїР° СЃР»СѓР¶Р°С‰РµРіРѕ</h2>
 				<div>
-					<label for="empt_name"><b>Наименование:</b></label> 
+					<label for="empt_name"><b>РќР°РёРјРµРЅРѕРІР°РЅРёРµ:</b></label> 
 					<input type="text" name="empt_name" value="#form.empt_name#" size = "50" maxlength = "50">';
 
 			if (instance.emptName is not ''){
@@ -133,7 +133,7 @@ component attributeName='employees' output='false'{
 			view &= '
 				</div>
 				<div>
-					<label for="empt_description"><b>Описание:</b></label>
+					<label for="empt_description"><b>РћРїРёСЃР°РЅРёРµ:</b></label>
 					<textarea name = "empt_description" rows="6" cols="47" >#form.empt_description#</textarea>';
 
 			if (instance.emptDescription is not ''){
@@ -143,7 +143,7 @@ component attributeName='employees' output='false'{
 			view &= '
 				</div>
 				<div>
-					<label for="empt_parent"><b>Родительский тип:</b></label>
+					<label for="empt_parent"><b>Р РѕРґРёС‚РµР»СЊСЃРєРёР№ С‚РёРї:</b></label>
 					<input type="radio" name="empt_parent" value="" #checkedRadio("", form.empt_parent)# /> None <br> ';
 
 				employeesList = factoryService.getService('employeesAPI').getEmployeesList();
@@ -157,9 +157,9 @@ component attributeName='employees' output='false'{
 
 			view &= '</div>
 				<div>
-					<label for="empt_status"><b>Статус:</b></label> 
-					<input type="radio" name="empt_status" value="1" #checkedRadio("1", form.empt_status)# /> Включена <br>
-					<input type="radio" name="empt_status" value="0" #checkedRadio("0", form.empt_status)#/> Выключена <br>
+					<label for="empt_status"><b>РЎС‚Р°С‚СѓСЃ:</b></label> 
+					<input type="radio" name="empt_status" value="1" #checkedRadio("1", form.empt_status)# /> Р’РєР»СЋС‡РµРЅР° <br>
+					<input type="radio" name="empt_status" value="0" #checkedRadio("0", form.empt_status)#/> Р’С‹РєР»СЋС‡РµРЅР° <br>
 				</div>';
 
 			if (instance.emptStatus is not ''){
@@ -168,8 +168,8 @@ component attributeName='employees' output='false'{
 
 			view &= '
 				<div>
-					<input disabled class="g-button g-button-submit" type="submit" name="escape" value="Отмена">
-					<input class="g-button g-button-submit" type="submit" name="addEmployee" value="Сохранить">
+					<input disabled class="g-button g-button-submit" type="submit" name="escape" value="РћС‚РјРµРЅР°">
+					<input class="g-button g-button-submit" type="submit" name="addEmployee" value="РЎРѕС…СЂР°РЅРёС‚СЊ">
 				</div>';
 
 			if (instance.message is not ''){
@@ -186,7 +186,7 @@ component attributeName='employees' output='false'{
 	}
 
 	private function updateEmployeeFormHandler(){
-		// --- обработчик формы---
+		// --- РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹---
 		if ( isdefined('form.updateEmployee') ){
 		  if ( !isDefined('form.empt_parent') ){
 			form.empt_parent = '';
@@ -205,7 +205,7 @@ component attributeName='employees' output='false'{
 				//factoryService.getService('redirector').redirect('/?page=rbac&section=group&action=edite&groupid=#form.group_id#');
 
 			}else{
-				// --- пробная версия
+				// --- РїСЂРѕР±РЅР°СЏ РІРµСЂСЃРёСЏ
 				if (StructKeyExists(result, 'RETDESC')) {
 					instance.message = result['RETDESC'];
 				} else {
@@ -239,7 +239,7 @@ component attributeName='employees' output='false'{
 				}
 			}
 		}
-		// --- обработчик формы---
+		// --- РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹---
 	}
 
 	function updateEmployeeForm( emptid ){
@@ -259,15 +259,15 @@ component attributeName='employees' output='false'{
 		view &= '
 			<form name="" id="" action="#request.CRequest.updateURL(false,"/?page=typeEmployees&section=employees&action=edite&emptid=#arguments.emptid#")#" method="post">
 			<div class="grid_8"><div class="signin-box">
-				<a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,"/?page=typeEmployees")#">Назад</a><br><br>
-				<h2>Редактирование типа служащего</h2>
+				<a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,"/?page=typeEmployees")#">РќР°Р·Р°Рґ</a><br><br>
+				<h2>Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ С‚РёРїР° СЃР»СѓР¶Р°С‰РµРіРѕ</h2>
 				<div>
-					<label for="empt_id"><b>ID типа:</b></label>
+					<label for="empt_id"><b>ID С‚РёРїР°:</b></label>
 					<input disabled type="text" name="_empt_id" value="#form.empt_id#" size = "2" maxlength = "2">
 					<input type="hidden" name="empt_id" value="#form.empt_id#" size = "2" maxlength = "2">
 				</div>
 				<div>
-					<label for="empt_name"><b>Наименование типа:</b></label> 
+					<label for="empt_name"><b>РќР°РёРјРµРЅРѕРІР°РЅРёРµ С‚РёРїР°:</b></label> 
 					<input type="text" name="empt_name" value="#form.empt_name#" size = "50" maxlength = "50">';
 
 			if (instance.emptName is not ''){
@@ -277,7 +277,7 @@ component attributeName='employees' output='false'{
 			view &= '
 				</div>
 				<div>
-					<label for="empt_description"><b>Описание:</b></label>
+					<label for="empt_description"><b>РћРїРёСЃР°РЅРёРµ:</b></label>
 					<textarea name = "empt_description" rows="6" cols="47" >#form.empt_description#</textarea>';
 			if (instance.emptDescription is not ''){
 			view &= '		<label for="empt_description" class="error" generated="0">#instance.emptDescription#</label>';
@@ -286,10 +286,10 @@ component attributeName='employees' output='false'{
 			view &= '
 				</div>
 				<div>
-					<label for="empt_parent"><b>Родительский тип:</b></label>
+					<label for="empt_parent"><b>Р РѕРґРёС‚РµР»СЊСЃРєРёР№ С‚РёРї:</b></label>
 					<input type="radio" name="empt_parent" value="" #checkedRadio("", form.empt_parent)# /> None <br> ';
 
-			// нужен не полный список а только разделы
+			// РЅСѓР¶РµРЅ РЅРµ РїРѕР»РЅС‹Р№ СЃРїРёСЃРѕРє Р° С‚РѕР»СЊРєРѕ СЂР°Р·РґРµР»С‹
 			employeesList = factoryService.getService('employeesAPI').getEmployeesList();
 			for (var x=1; x<=employeesList.recordcount; x++){
 				view &= '
@@ -299,13 +299,13 @@ component attributeName='employees' output='false'{
 
 			view &= '</div>
 				<div>
-					<label for="empt_status"><b>Статус:</b></label> 
-					<input type="radio" name="empt_status" value="1" #checkedRadio("1", form.empt_status)# /> Включена <br>
-					<input type="radio" name="empt_status" value="0" #checkedRadio("0", form.empt_status)# /> Выключена <br>
+					<label for="empt_status"><b>РЎС‚Р°С‚СѓСЃ:</b></label> 
+					<input type="radio" name="empt_status" value="1" #checkedRadio("1", form.empt_status)# /> Р’РєР»СЋС‡РµРЅР° <br>
+					<input type="radio" name="empt_status" value="0" #checkedRadio("0", form.empt_status)# /> Р’С‹РєР»СЋС‡РµРЅР° <br>
 				</div>
 				<div>
-					<input disabled class="g-button g-button-submit" type="submit" name="escape" value="Отмена">
-					<input class="g-button g-button-submit" type="submit" name="updateEmployee" value="Сохранить">
+					<input disabled class="g-button g-button-submit" type="submit" name="escape" value="РћС‚РјРµРЅР°">
+					<input class="g-button g-button-submit" type="submit" name="updateEmployee" value="РЎРѕС…СЂР°РЅРёС‚СЊ">
 				</div>';
 
 			if (instance.message is not ''){
@@ -321,15 +321,15 @@ component attributeName='employees' output='false'{
 	function employeeListForm(){
 		employeesList = factoryService.getService('employeesAPI').getEmployeesList();
 		var view = '';
-		view &= '<div class="grid_16"><div class="signin-box"><h2>Типы служащих:</h2>';
+		view &= '<div class="grid_16"><div class="signin-box"><h2>РўРёРїС‹ СЃР»СѓР¶Р°С‰РёС…:</h2>';
 			view &= '<table width="100%">
 						<tr style="color:grey;">
 						<td>ID</td> 
-						<td>Наименование</td>
-						<td>Описание</td>
-						<td>Предок</td>
-						<td>Потомок</td>
-						<td>Статус</td>
+						<td>РќР°РёРјРµРЅРѕРІР°РЅРёРµ</td>
+						<td>РћРїРёСЃР°РЅРёРµ</td>
+						<td>РџСЂРµРґРѕРє</td>
+						<td>РџРѕС‚РѕРјРѕРє</td>
+						<td>РЎС‚Р°С‚СѓСЃ</td>
 						<td> --- </td>
 						</tr>';
 			for (var x=1; x<=employeesList.recordcount; x++){
@@ -341,11 +341,11 @@ component attributeName='employees' output='false'{
 						<td>#employeesList.empt_parent[x]#</td>
 						<td>#employeesList.empt_child[x]#</td>
 						<td>#employeesList.empt_status[x]#</td> 
-						<td><a href="/?page=typeEmployees&section=employees&action=edite&emptid=#employeesList.empt_id[x]#">Редактировать</a> | 
-							<a href="/?page=typeEmployees&section=employees&action=delete&emptid=#employeesList.empt_id[x]#">Удалить</a></td>
+						<td><a href="/?page=typeEmployees&section=employees&action=edite&emptid=#employeesList.empt_id[x]#">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a> | 
+							<a href="/?page=typeEmployees&section=employees&action=delete&emptid=#employeesList.empt_id[x]#">РЈРґР°Р»РёС‚СЊ</a></td>
 						</tr>';
 			}
-			view &= '<tr><td style="text-align:left;" colspan="6"><a href="/?page=typeEmployees&section=employees&action=add"><br>+Добавить тип служащего</a></td></tr>';
+			view &= '<tr><td style="text-align:left;" colspan="6"><a href="/?page=typeEmployees&section=employees&action=add"><br>+Р”РѕР±Р°РІРёС‚СЊ С‚РёРї СЃР»СѓР¶Р°С‰РµРіРѕ</a></td></tr>';
 
 			view &= '</table>';
 		view &= '</div></div>';

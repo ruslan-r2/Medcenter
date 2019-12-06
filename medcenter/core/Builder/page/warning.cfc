@@ -1,6 +1,6 @@
 component attributeName='warning' {
 
-	// для виджетов
+	// РґР»СЏ РІРёРґР¶РµС‚РѕРІ
 	request.factoryWidget=createObject('component','core.builder.factoryWidget').Init();
 
 	function Init() {
@@ -35,7 +35,7 @@ component attributeName='warning' {
 			page &= widget.info.View();
 			page &= '<div class="clear"></div>';
 
-			page &= '<div id="block"><br><br><br><br><br><b>Ошибка!</b><hr>#url.message#<br><br><br><br><br></div></body></html>';
+			page &= '<div id="block"><br><br><br><br><br><b>РћС€РёР±РєР°!</b><hr>#url.message#<br><br><br><br><br></div></body></html>';
 			page &= '<div class="clear"></div>';
 
 			page &= widget.footer.View();

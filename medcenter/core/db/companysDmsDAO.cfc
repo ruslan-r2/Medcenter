@@ -1,7 +1,7 @@
 component displayName='companysDmsDAO'{
 
-	// Псевдо конструктор
-	instance = {datasource = ''} ; // объект
+	// РџСЃРµРІРґРѕ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
+	instance = {datasource = ''} ; // РѕР±СЉРµРєС‚
 	instance.datasource = createObject('component', 'core.db.Datasource').init();
 
 
@@ -19,7 +19,7 @@ component displayName='companysDmsDAO'{
 		qCompanysDmsList.setSQL("SELECT * , ( SELECT COUNT(*) as cnt FROM patients_dms WHERE ptdms_status > 0 AND cdms_id = a.cdms_id) as cnt
 					FROM companysdms a ORDER BY a.cdms_name asc");
 	
-		var execute = qCompanysDmsList.execute(); // вся структура и result и prefix
+		var execute = qCompanysDmsList.execute(); // РІСЃСЏ СЃС‚СЂСѓРєС‚СѓСЂР° Рё result Рё prefix
 		var result = execute.getResult();
 		return result; //query
 	}
@@ -47,12 +47,12 @@ component displayName='companysDmsDAO'{
 
 					");
 	
-		var execute = qCompanysDmsReport.execute(); // вся структура и result и prefix
+		var execute = qCompanysDmsReport.execute(); // РІСЃСЏ СЃС‚СЂСѓРєС‚СѓСЂР° Рё result Рё prefix
 		var DATA = execute.getResult();
 
 		var structCompanyDMSReport = structNew();
 		structCompanyDMSReport.RETVAL = 1; // create
-		structCompanyDMSReport.RETDESC = 'Отчёт создан!';
+		structCompanyDMSReport.RETDESC = 'РћС‚С‡С‘С‚ СЃРѕР·РґР°РЅ!';
 		structCompanyDMSReport.RETDATA = DATA;
 		return structCompanyDMSReport;
 	}
@@ -65,13 +65,13 @@ component displayName='companysDmsDAO'{
 
 		qCompanyDms.setSQL("SELECT * FROM companysdms WHERE cdms_id = '#arguments.cdmsid#' ");
 	
-		var execute = qCompanyDms.execute(); // вся структура и result и prefix
+		var execute = qCompanyDms.execute(); // РІСЃСЏ СЃС‚СЂСѓРєС‚СѓСЂР° Рё result Рё prefix
 		var result = execute.getResult();
 		return result; //query
 	}
 
 	function createCompanyDMS( required string cdmsName, cdmsContractNumber, cdmsDateStart, cdmsDateEnd, string cdmsDescription , numeric cdmsStatus ) {
-		// дописать время создания и ip
+		// РґРѕРїРёСЃР°С‚СЊ РІСЂРµРјСЏ СЃРѕР·РґР°РЅРёСЏ Рё ip
 		createCompanyDMS = new Query();
 		createCompanyDMS.setDatasource("#instance.datasource.getDSName()#");
 		createCompanyDMS.setName("createCompanyDMS");
@@ -87,11 +87,11 @@ component displayName='companysDmsDAO'{
 			VALUES ( :cdmsName, :cdmsContractNumber, :cdmsDateStart, :cdmsDateEnd, :cdmsDescription, :cdmsStatus )
 			");
 
-		createCompanyDMS.execute(); // вся структура и result и prefix
+		createCompanyDMS.execute(); // РІСЃСЏ СЃС‚СЂСѓРєС‚СѓСЂР° Рё result Рё prefix
 
 		var structCreateCompanyDMS = structNew();
 		structCreateCompanyDMS.RETVAL = 1; // create
-		structCreateCompanyDMS.RETDESC = 'Компания ДМС создана!';
+		structCreateCompanyDMS.RETDESC = 'РљРѕРјРїР°РЅРёСЏ Р”РњРЎ СЃРѕР·РґР°РЅР°!';
 		return structCreateCompanyDMS;
 	}
 
@@ -123,7 +123,7 @@ component displayName='companysDmsDAO'{
 		updateCompanyDMS.execute();
 		var structUpdateCompanyDMS = structNew();
 		structUpdateCompanyDMS.RETVAL = 1; // create
-		structUpdateCompanyDMS.RETDESC = 'Компания ДМС изменена!';
+		structUpdateCompanyDMS.RETDESC = 'РљРѕРјРїР°РЅРёСЏ Р”РњРЎ РёР·РјРµРЅРµРЅР°!';
 		return structUpdateCompanyDMS;
 
 	}

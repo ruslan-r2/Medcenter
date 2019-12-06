@@ -1,15 +1,15 @@
 /* 
-	Виджет авторизации --
+	Р’РёРґР¶РµС‚ Р°РІС‚РѕСЂРёР·Р°С†РёРё --
 */
 
 component attributeName='auth' output='false'{
-	// псевдо конструктор
-	// обернуть в лок
+	// РїСЃРµРІРґРѕ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
+	// РѕР±РµСЂРЅСѓС‚СЊ РІ Р»РѕРє
 	factoryService = request.factoryService;
-	// обернуть в лок
-	instance.user = session.sessionStorage.getObject('user'); // сесионный Объект
+	// РѕР±РµСЂРЅСѓС‚СЊ РІ Р»РѕРє
+	instance.user = session.sessionStorage.getObject('user'); // СЃРµСЃРёРѕРЅРЅС‹Р№ РћР±СЉРµРєС‚
 	
-	instance.mini = '';		// страница для которой строить вьювер
+	instance.mini = '';		// СЃС‚СЂР°РЅРёС†Р° РґР»СЏ РєРѕС‚РѕСЂРѕР№ СЃС‚СЂРѕРёС‚СЊ РІСЊСЋРІРµСЂ
 	instance.view = '';
 
 	instance.username = '';
@@ -18,7 +18,7 @@ component attributeName='auth' output='false'{
 
 
 	function Init(mini='true') {
-		// форм фактор	
+		// С„РѕСЂРј С„Р°РєС‚РѕСЂ	
 		instance.mini=arguments.mini;
 		run();
 		return this;
@@ -27,11 +27,11 @@ component attributeName='auth' output='false'{
 	function run(){
 
 		formHandler();
-		// при выключенных кукисах неправильно работает форма авторизации
-		// если добавить в актион урлтокен то работает безьявовый вариант явовый не работает !!!!
+		// РїСЂРё РІС‹РєР»СЋС‡РµРЅРЅС‹С… РєСѓРєРёСЃР°С… РЅРµРїСЂР°РІРёР»СЊРЅРѕ СЂР°Р±РѕС‚Р°РµС‚ С„РѕСЂРјР° Р°РІС‚РѕСЂРёР·Р°С†РёРё
+		// РµСЃР»Рё РґРѕР±Р°РІРёС‚СЊ РІ Р°РєС‚РёРѕРЅ СѓСЂР»С‚РѕРєРµРЅ С‚Рѕ СЂР°Р±РѕС‚Р°РµС‚ Р±РµР·СЊСЏРІРѕРІС‹Р№ РІР°СЂРёР°РЅС‚ СЏРІРѕРІС‹Р№ РЅРµ СЂР°Р±РѕС‚Р°РµС‚ !!!!
 		
 
-		// проверяем параметр в урле
+		// РїСЂРѕРІРµСЂСЏРµРј РїР°СЂР°РјРµС‚СЂ РІ СѓСЂР»Рµ
 		if ( isdefined('url.redir') ){
 			redir = '#url.redir#';
 		}else{
@@ -53,9 +53,9 @@ component attributeName='auth' output='false'{
 
 	}
 
-	// обработчик формы если ява выключена
+	// РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹ РµСЃР»Рё СЏРІР° РІС‹РєР»СЋС‡РµРЅР°
 	private function formHandler(){
-		// --- обработчик формы---
+		// --- РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹---
 		//errmsg = '';
 		if ( isdefined('form.logout') ){
 		  authorization = factoryService.getService('authorization');
@@ -72,7 +72,7 @@ component attributeName='auth' output='false'{
 				factoryService.getService('redirector').redirect('#redir#');
 
 			}else{
-				// --- пробная версия
+				// --- РїСЂРѕР±РЅР°СЏ РІРµСЂСЃРёСЏ
 				if (StructKeyExists(result, 'RETDESC')) {
 					instance.message = result['RETDESC'];
 				} else {
@@ -93,7 +93,7 @@ component attributeName='auth' output='false'{
 			}
 	
 		}
-		// --- обработчик формы---
+		// --- РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹---
 	}
 
 	function logInForm(mini='true', action=''){
@@ -103,15 +103,15 @@ component attributeName='auth' output='false'{
 			<div class="grid_8">
 				<form name="LogIn" action = "#arguments.action#" method = "post">
 					<div style="text-align:right; ">
-					<input type = "text" placeholder="логин" name = "username" value = "" size = "10" maxlength = "22"><input class="passwd-label" type = "password" placeholder="пароль" name = "password" value = "" size = "10" maxlength = "20"><input class="g-button g-button-submit" type = "submit" name = "login" value = "Войти">
+					<input type = "text" placeholder="Р»РѕРіРёРЅ" name = "username" value = "" size = "10" maxlength = "22"><input class="passwd-label" type = "password" placeholder="РїР°СЂРѕР»СЊ" name = "password" value = "" size = "10" maxlength = "20"><input class="g-button g-button-submit" type = "submit" name = "login" value = "Р’РѕР№С‚Рё">
 					</div>
 				</form>
 			</div>';
 		}else{
 
-			// Если JavaScript выключен то попадаем в action
-			// сейчас скрипты добавляются жостко в объекте CJavaScript
-			// нужно его перевести в аппликатион и пусть каждый скрипт в него добавляет свои пометки
+			// Р•СЃР»Рё JavaScript РІС‹РєР»СЋС‡РµРЅ С‚Рѕ РїРѕРїР°РґР°РµРј РІ action
+			// СЃРµР№С‡Р°СЃ СЃРєСЂРёРїС‚С‹ РґРѕР±Р°РІР»СЏСЋС‚СЃСЏ Р¶РѕСЃС‚РєРѕ РІ РѕР±СЉРµРєС‚Рµ CJavaScript
+			// РЅСѓР¶РЅРѕ РµРіРѕ РїРµСЂРµРІРµСЃС‚Рё РІ Р°РїРїР»РёРєР°С‚РёРѕРЅ Рё РїСѓСЃС‚СЊ РєР°Р¶РґС‹Р№ СЃРєСЂРёРїС‚ РІ РЅРµРіРѕ РґРѕР±Р°РІР»СЏРµС‚ СЃРІРѕРё РїРѕРјРµС‚РєРё
 			//factoryService.getService('CJavaScript').addJScript(fileName=',/js/jquery.validate.js');
 			//factoryService.getService('CJavaScript').addJScript(fileName=',/js/authorization.js');
 
@@ -121,17 +121,17 @@ component attributeName='auth' output='false'{
 			view = '';
 			view &='<div class="prefix_6 grid_4">
 				<div class="signin-box">
-				<h2>ООО "Жемчужина подолья"</h2>
+				<h2>РћРћРћ "Р–РµРјС‡СѓР¶РёРЅР° РїРѕРґРѕР»СЊСЏ"</h2>
 				<form name="LogIn" id="logInForm" action="#arguments.action#" method="post">
 					<div class="username-div">
-						<label><strong class="username-label">Логин</strong></label>
+						<label><strong class="username-label">Р›РѕРіРёРЅ</strong></label>
 						<input style="width:100%;" type="text" id="username" name="username" value="#form.username#" maxlength = "20" >';
 			if (instance.username is not ''){
 			view &= '		<label for="username" class="error" generated="0">#instance.username#</label>';
 			}
 			view &= '	</div>
 					<div class="passwd-div">
-						<label><strong class="passwd-label">Пароль</strong></label>
+						<label><strong class="passwd-label">РџР°СЂРѕР»СЊ</strong></label>
 						<input style="width:100%;" type="password" id="password" name="password" maxlength = "20">';
 			if (instance.password is not ''){
 			view &= '		<label for="password" class="error" generated="1">#instance.password#</label>';
@@ -139,7 +139,7 @@ component attributeName='auth' output='false'{
 			view &= '
 					</div>
 					<input type="hidden" name="redir" value="#redir#">
-					<p><input class="g-button g-button-submit" type="submit" name="login" value="Войти"></p>
+					<p><input class="g-button g-button-submit" type="submit" name="login" value="Р’РѕР№С‚Рё"></p>
 					<div id="mes" style="color:red;">
 					';
 			if (instance.message is not ''){
@@ -158,15 +158,15 @@ component attributeName='auth' output='false'{
 			<div class="grid_8">
 				<form name="LogOut" action = "#arguments.action#" method = "post">
 					<div style="text-align:right;">
-					<b>Пользователь - #instance.user.getUserName()#</b>
-					<input class="g-button g-button-submit" type = "submit" name = "logout" value = "Выйти">
+					<b>РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ - #instance.user.getUserName()#</b>
+					<input class="g-button g-button-submit" type = "submit" name = "logout" value = "Р’С‹Р№С‚Рё">
 					</div>
 				</form>
 			</div>';
 		}else{
-			// надо подумать, но на странице паспорт если вошли должен быть редирект в кабинет.
-			// но если будет логаут в кабинете и не в шапке то здесь нужна форма и есть проблема с явой в этом месте
-			view= '<div id="logout" class="signin-box">Страница авторизации.</div>';
+			// РЅР°РґРѕ РїРѕРґСѓРјР°С‚СЊ, РЅРѕ РЅР° СЃС‚СЂР°РЅРёС†Рµ РїР°СЃРїРѕСЂС‚ РµСЃР»Рё РІРѕС€Р»Рё РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ СЂРµРґРёСЂРµРєС‚ РІ РєР°Р±РёРЅРµС‚.
+			// РЅРѕ РµСЃР»Рё Р±СѓРґРµС‚ Р»РѕРіР°СѓС‚ РІ РєР°Р±РёРЅРµС‚Рµ Рё РЅРµ РІ С€Р°РїРєРµ С‚Рѕ Р·РґРµСЃСЊ РЅСѓР¶РЅР° С„РѕСЂРјР° Рё РµСЃС‚СЊ РїСЂРѕР±Р»РµРјР° СЃ СЏРІРѕР№ РІ СЌС‚РѕРј РјРµСЃС‚Рµ
+			view= '<div id="logout" class="signin-box">РЎС‚СЂР°РЅРёС†Р° Р°РІС‚РѕСЂРёР·Р°С†РёРё.</div>';
 			userGroup = instance.user.getUserGroups();
 			if ( userGroup == 2){
 				factoryService.getService('redirector').redirect('#request.CRequest.updateURL(false,"/?page=rbac")#');

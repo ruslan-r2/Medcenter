@@ -1,9 +1,9 @@
 /* 
-	Виджет общий график врачей --
+	Р’РёРґР¶РµС‚ РѕР±С‰РёР№ РіСЂР°С„РёРє РІСЂР°С‡РµР№ --
 */
 
 component attributeName='usersGraphics' output='false'{
-	// псевдо конструктор
+	// РїСЃРµРІРґРѕ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
 	factoryService = request.factoryService;
 	instance.view = '';
 
@@ -53,24 +53,24 @@ component attributeName='usersGraphics' output='false'{
 
 	function getWeekNameShort(n) {
 		vk = ArrayNew(1);
-		vk[1] = "<font color='red'>Вс</font>";
-		vk[2] = "Пн";
-		vk[3] = "Вт";
-		vk[4] = "Ср";
-		vk[5] = "Чт";
-		vk[6] = "Пт";
-		vk[7] = "<font color='red'>Сб</font>";
+		vk[1] = "<font color='red'>Р’СЃ</font>";
+		vk[2] = "РџРЅ";
+		vk[3] = "Р’С‚";
+		vk[4] = "РЎСЂ";
+		vk[5] = "Р§С‚";
+		vk[6] = "РџС‚";
+		vk[7] = "<font color='red'>РЎР±</font>";
 		return vk[n];
 	}
 
 	function getTypeDay(n) {
 		vk = '';
 		if (n == 2){
-			vk = "<b><font color='##27408B'>В</font></b>";
+			vk = "<b><font color='##27408B'>Р’</font></b>";
 		}else if ( n == 3){
-			vk = "<b><font color='##FF4500'>О</font></b>";
+			vk = "<b><font color='##FF4500'>Рћ</font></b>";
 		}else if( n == 4){
-			vk = "<b><font color='red'>Б</font></b>";
+			vk = "<b><font color='red'>Р‘</font></b>";
 		}else{
 			vk = "<b><font style='font-size:9px;' color='##1F4A14'>#n#</font></b>";
 		}
@@ -87,7 +87,7 @@ component attributeName='usersGraphics' output='false'{
 	}
 
 	private function addUserGraphicFormHandler(userID,date){
-		// --- обработчик формы---
+		// --- РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹---
 		if ( isdefined('form.addUserGraphic') ){
 
 		if ( form.gr_type == 1){
@@ -104,7 +104,7 @@ component attributeName='usersGraphics' output='false'{
 			if ( result.RETVAL is 1 ){
 				factoryService.getService('redirector').redirect('#request.CRequest.updateURL(false,"/?page=usersGraphics&section=userGraphics&action=view&userid=#arguments.userID#")#');
 			}else{
-				// --- пробная версия
+				// --- РїСЂРѕР±РЅР°СЏ РІРµСЂСЃРёСЏ
 				if ( result.RETDESC is '') {
 					instance.message = '';
 				} else {
@@ -146,7 +146,7 @@ component attributeName='usersGraphics' output='false'{
 
 			}
 		}
-		// --- обработчик формы---
+		// --- РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹---
 	}
 
 	function addUserGraphicForm(userID,date){
@@ -162,15 +162,15 @@ component attributeName='usersGraphics' output='false'{
 		param name='form.workTimeMEnd' default='00';
 		param name='form.gr_status' default='1';
 
-		// ---------------------------------------------------------- форма ---------------------------------------------------------------
+		// ---------------------------------------------------------- С„РѕСЂРјР° ---------------------------------------------------------------
 		view = '';
 		view &= '<div class="grid_8">
 			<div class="signin-box">
-			<a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,"/?page=usersGraphics&section=userGraphics&action=view&userid=#arguments.userID#")#">Назад</a><br><br>
-			<h2>Добавление графика:</h2>
+			<a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,"/?page=usersGraphics&section=userGraphics&action=view&userid=#arguments.userID#")#">РќР°Р·Р°Рґ</a><br><br>
+			<h2>Р”РѕР±Р°РІР»РµРЅРёРµ РіСЂР°С„РёРєР°:</h2>
 			<form name="" action="#request.CRequest.updateURL(false,"/?page=usersGraphics&section=userGraphics&action=add&userid=#arguments.userID#&date=#arguments.date#")#" method="post">
 				<div>
-					<label for="user_id"><b>ID пользователя:</b></label>
+					<label for="user_id"><b>ID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ:</b></label>
 					<input disabled type="text" name="_user_id" value="#form.user_id#" size = "2" maxlength = "2">
 					<input type="hidden" name="user_id" value="#form.user_id#" size = "2" maxlength = "2">
 				</div>';
@@ -178,11 +178,11 @@ component attributeName='usersGraphics' output='false'{
 
 			view &= '
 				<div>
-					<label for="gr_type"><b>Тип значения:</b></label> 
-					<input type="radio" name="gr_type" value="1" #checkedRadio("1", form.gr_type)# /> Рабочий день <br>
-					<input type="radio" name="gr_type" value="2" #checkedRadio("2", form.gr_type)#/> Выходной день <br>
-					<input type="radio" name="gr_type" value="3" #checkedRadio("3", form.gr_type)#/> Отпуск <br>
-					<input type="radio" name="gr_type" value="4" #checkedRadio("4", form.gr_type)#/> Больничный <br>
+					<label for="gr_type"><b>РўРёРї Р·РЅР°С‡РµРЅРёСЏ:</b></label> 
+					<input type="radio" name="gr_type" value="1" #checkedRadio("1", form.gr_type)# /> Р Р°Р±РѕС‡РёР№ РґРµРЅСЊ <br>
+					<input type="radio" name="gr_type" value="2" #checkedRadio("2", form.gr_type)#/> Р’С‹С…РѕРґРЅРѕР№ РґРµРЅСЊ <br>
+					<input type="radio" name="gr_type" value="3" #checkedRadio("3", form.gr_type)#/> РћС‚РїСѓСЃРє <br>
+					<input type="radio" name="gr_type" value="4" #checkedRadio("4", form.gr_type)#/> Р‘РѕР»СЊРЅРёС‡РЅС‹Р№ <br>
 				';
 
 			if (instance.grType is not ''){
@@ -192,7 +192,7 @@ component attributeName='usersGraphics' output='false'{
 			view &= '</div>
 				<div>
 					<hr>
-					<label>Дата:</label>
+					<label>Р”Р°С‚Р°:</label>
 					<p>#_DateFormate(form.gr_date)#</p>
 					<input type="hidden" name="gr_date" value="#form.gr_date#" size="20" maxlength="20">';
 
@@ -202,7 +202,7 @@ component attributeName='usersGraphics' output='false'{
 
 			view &= '</div>
 				<div>
-					<label>Начало рабочего дня:</label>';
+					<label>РќР°С‡Р°Р»Рѕ СЂР°Р±РѕС‡РµРіРѕ РґРЅСЏ:</label>';
 				view &= ' <select name="workTimeHStart">';
 					    for ( var x=8; x<=20; x++){
 					     view &= '<option value="#x#" #_DateCompare( x, form.gr_starttime, "HH")#>#numberformat(x,"09")#</option>';
@@ -221,7 +221,7 @@ component attributeName='usersGraphics' output='false'{
 
 			view &= '</div>
 				<div>
-					<label>Конец рабочего дня:</label>';
+					<label>РљРѕРЅРµС† СЂР°Р±РѕС‡РµРіРѕ РґРЅСЏ:</label>';
 				view &= ' <select name="workTimeHEnd">';
 					    for ( var x=8; x<=20; x++){
 					     view &= '<option value="#x#" #_DateCompare( x, form.gr_endtime, "HH")#>#numberformat(x,"09")#</option>';
@@ -239,9 +239,9 @@ component attributeName='usersGraphics' output='false'{
 
 			view &= '</div>
 				<div>
-					<label for="gr_status"><b>Статус:</b></label> 
-					<input type="radio" name="gr_status" value="1" #checkedRadio("1", form.gr_status)# /> Включена <br>
-					<input type="radio" name="gr_status" value="0" #checkedRadio("0", form.gr_status)#/> Выключена <br>
+					<label for="gr_status"><b>РЎС‚Р°С‚СѓСЃ:</b></label> 
+					<input type="radio" name="gr_status" value="1" #checkedRadio("1", form.gr_status)# /> Р’РєР»СЋС‡РµРЅР° <br>
+					<input type="radio" name="gr_status" value="0" #checkedRadio("0", form.gr_status)#/> Р’С‹РєР»СЋС‡РµРЅР° <br>
 				';
 
 			if (instance.grStatus is not ''){
@@ -252,8 +252,8 @@ component attributeName='usersGraphics' output='false'{
 			view &= '
 				</div>
 				<div>
-					<input disabled class="g-button g-button-submit" type="submit" name="escape" value="Отмена">
-					<input class="g-button g-button-submit" type="submit" name="addUserGraphic" value="Сохранить"> ';
+					<input disabled class="g-button g-button-submit" type="submit" name="escape" value="РћС‚РјРµРЅР°">
+					<input class="g-button g-button-submit" type="submit" name="addUserGraphic" value="РЎРѕС…СЂР°РЅРёС‚СЊ"> ';
 
 			if (instance.message is not ''){
 				view &= '<div id="mes" style="color:red;">#instance.message#</div>';
@@ -265,12 +265,12 @@ component attributeName='usersGraphics' output='false'{
 		view &='</div></form>
 			</div></div>';
 
-			// ------------------------------------------------ форма ---------------------------------------------------------------
+			// ------------------------------------------------ С„РѕСЂРјР° ---------------------------------------------------------------
 		return view;
 	}
 
 	private function updateUserGraphicFormHandler(){
-		// --- обработчик формы---
+		// --- РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹---
 		if ( isdefined('form.updateUserGraphic') ){
 
 		if ( form.gr_type == 1 ){
@@ -292,7 +292,7 @@ component attributeName='usersGraphics' output='false'{
 					instance.message = '';
 				}
 			}else{
-				// --- пробная версия
+				// --- РїСЂРѕР±РЅР°СЏ РІРµСЂСЃРёСЏ
 				if ( result.RETDESC is '') {
 					instance.message = '';
 				} else {
@@ -333,7 +333,7 @@ component attributeName='usersGraphics' output='false'{
 
 			}
 		}
-		// --- обработчик формы---
+		// --- РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹---
 	}
 
 	function updateUserGraphicForm(userID, grID){
@@ -352,12 +352,12 @@ component attributeName='usersGraphics' output='false'{
 		param name='form.workTimeMEnd' default='00';
 		param name='form.gr_status' default='#userGraphic.gr_status#';
 
-		// ---------------------------------------------------------- форма ---------------------------------------------------------------
+		// ---------------------------------------------------------- С„РѕСЂРјР° ---------------------------------------------------------------
 		view = '';
 		view &= '<div class="grid_8">
 			<div class="signin-box">
-			<a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,"/?page=usersGraphics&section=userGraphics&action=view&userid=#arguments.userID#")#">Назад</a><br><br>
-			<h2>Редактирование графика:</h2>
+			<a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,"/?page=usersGraphics&section=userGraphics&action=view&userid=#arguments.userID#")#">РќР°Р·Р°Рґ</a><br><br>
+			<h2>Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РіСЂР°С„РёРєР°:</h2>
 			<form name="" action="#request.CRequest.updateURL(false,"/?page=usersGraphics&section=userGraphics&action=edite&userid=#arguments.userID#&grid=#arguments.grID#")#" method="post">
 				<div>
 					<label for="gr_id"><b>ID:</b></label>
@@ -365,7 +365,7 @@ component attributeName='usersGraphics' output='false'{
 					<input type="hidden" name="gr_id" value="#form.gr_id#" size = "2" maxlength = "2">
 				</div>
 				<div>
-					<label for="user_id"><b>ID пользователя:</b></label>
+					<label for="user_id"><b>ID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ:</b></label>
 					<input disabled type="text" name="_user_id" value="#form.user_id#" size = "2" maxlength = "2">
 					<input type="hidden" name="user_id" value="#form.user_id#" size = "2" maxlength = "2">
 				</div>';
@@ -373,11 +373,11 @@ component attributeName='usersGraphics' output='false'{
 
 			view &= '
 				<div>
-					<label for="gr_type"><b>Тип значения:</b></label> 
-					<input type="radio" name="gr_type" value="1" #checkedRadio("1", form.gr_type)# /> Рабочий день <br>
-					<input type="radio" name="gr_type" value="2" #checkedRadio("2", form.gr_type)#/> Выходной день <br>
-					<input type="radio" name="gr_type" value="3" #checkedRadio("3", form.gr_type)#/> Отпуск <br>
-					<input type="radio" name="gr_type" value="4" #checkedRadio("4", form.gr_type)#/> Больничный <br>
+					<label for="gr_type"><b>РўРёРї Р·РЅР°С‡РµРЅРёСЏ:</b></label> 
+					<input type="radio" name="gr_type" value="1" #checkedRadio("1", form.gr_type)# /> Р Р°Р±РѕС‡РёР№ РґРµРЅСЊ <br>
+					<input type="radio" name="gr_type" value="2" #checkedRadio("2", form.gr_type)#/> Р’С‹С…РѕРґРЅРѕР№ РґРµРЅСЊ <br>
+					<input type="radio" name="gr_type" value="3" #checkedRadio("3", form.gr_type)#/> РћС‚РїСѓСЃРє <br>
+					<input type="radio" name="gr_type" value="4" #checkedRadio("4", form.gr_type)#/> Р‘РѕР»СЊРЅРёС‡РЅС‹Р№ <br>
 				';
 
 			if (instance.grType is not ''){
@@ -387,7 +387,7 @@ component attributeName='usersGraphics' output='false'{
 			view &= '</div>
 				<div>
 					<hr>
-					<label>Дата:</label>
+					<label>Р”Р°С‚Р°:</label>
 					<p>#_DateFormate(form.gr_date)#</p>
 					<input type="hidden" name="gr_date" value="#form.gr_date#" size="20" maxlength="20">';
 
@@ -397,7 +397,7 @@ component attributeName='usersGraphics' output='false'{
 
 			view &= '</div>
 				<div>
-					<label>Начало рабочего дня:</label>';
+					<label>РќР°С‡Р°Р»Рѕ СЂР°Р±РѕС‡РµРіРѕ РґРЅСЏ:</label>';
 				view &= ' <select name="workTimeHStart">';
 					    for ( var x=8; x<=20; x++){
 					     view &= '<option value="#x#" #_DateCompare( x, form.gr_starttime, "HH")#>#numberformat(x,"09")#</option>';
@@ -416,7 +416,7 @@ component attributeName='usersGraphics' output='false'{
 
 			view &= '</div>
 				<div>
-					<label>Конец рабочего дня:</label>';
+					<label>РљРѕРЅРµС† СЂР°Р±РѕС‡РµРіРѕ РґРЅСЏ:</label>';
 				view &= ' <select name="workTimeHEnd">';
 					    for ( var x=8; x<=20; x++){
 					     view &= '<option value="#x#" #_DateCompare( x, form.gr_endtime, "HH")#>#numberformat(x,"09")#</option>';
@@ -434,9 +434,9 @@ component attributeName='usersGraphics' output='false'{
 
 			view &= '</div>
 				<div>
-					<label for="gr_status"><b>Статус:</b></label> 
-					<input type="radio" name="gr_status" value="1" #checkedRadio("1", form.gr_status)# /> Включена <br>
-					<input type="radio" name="gr_status" value="0" #checkedRadio("0", form.gr_status)#/> Выключена <br>
+					<label for="gr_status"><b>РЎС‚Р°С‚СѓСЃ:</b></label> 
+					<input type="radio" name="gr_status" value="1" #checkedRadio("1", form.gr_status)# /> Р’РєР»СЋС‡РµРЅР° <br>
+					<input type="radio" name="gr_status" value="0" #checkedRadio("0", form.gr_status)#/> Р’С‹РєР»СЋС‡РµРЅР° <br>
 				';
 
 			if (instance.grStatus is not ''){
@@ -447,8 +447,8 @@ component attributeName='usersGraphics' output='false'{
 			view &= '
 				</div>
 				<div>
-					<input disabled class="g-button g-button-submit" type="submit" name="escape" value="Отмена">
-					<input class="g-button g-button-submit" type="submit" name="updateUserGraphic" value="Сохранить"> ';
+					<input disabled class="g-button g-button-submit" type="submit" name="escape" value="РћС‚РјРµРЅР°">
+					<input class="g-button g-button-submit" type="submit" name="updateUserGraphic" value="РЎРѕС…СЂР°РЅРёС‚СЊ"> ';
 
 			if (instance.message is not ''){
 				view &= '<div id="mes" style="color:red;">#instance.message#</div>';
@@ -460,7 +460,7 @@ component attributeName='usersGraphics' output='false'{
 		view &='</div></form>
 			</div></div>';
 
-			// ------------------------------------------------ форма ---------------------------------------------------------------
+			// ------------------------------------------------ С„РѕСЂРјР° ---------------------------------------------------------------
 		return view;
 	}
 
@@ -486,8 +486,8 @@ component attributeName='usersGraphics' output='false'{
 
 		var view = '';
 		view &= '<div class="grid_16"><div class="signin-box">
-			<a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,"/?page=usersGraphics")#">Назад</a><br><br>
-			<h2>График врача - #qUser.emp_family# #qUser.emp_firstname# #qUser.emp_lastname#:</h2><hr>';
+			<a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,"/?page=usersGraphics")#">РќР°Р·Р°Рґ</a><br><br>
+			<h2>Р“СЂР°С„РёРє РІСЂР°С‡Р° - #qUser.emp_family# #qUser.emp_firstname# #qUser.emp_lastname#:</h2><hr>';
 
 			view &= '<table width="100%">
 
@@ -500,11 +500,11 @@ component attributeName='usersGraphics' output='false'{
 						</tr>
 
 						<tr style="color:grey;">
-						<td>Дата</td> 
-						<td>Тип</td> 
-						<td>Начало</td>
-						<td>Конец</td>
-						<td>Статус</td>
+						<td>Р”Р°С‚Р°</td> 
+						<td>РўРёРї</td> 
+						<td>РќР°С‡Р°Р»Рѕ</td>
+						<td>РљРѕРЅРµС†</td>
+						<td>РЎС‚Р°С‚СѓСЃ</td>
 						<td> --- </td>
 						</tr>';
 
@@ -519,12 +519,12 @@ component attributeName='usersGraphics' output='false'{
 					<td>#timeFormat(userGraphic.gr_starttime, "HH:MM")#</td>
 					<td>#timeFormat(userGraphic.gr_endtime, "HH:MM")#</td>
 					<td>#userGraphic.gr_status#</td>
-					<td><a href="/?page=usersGraphics&section=userGraphics&action=edite&userid=#arguments.userid#&grid=#userGraphic.gr_id#">Редактировать</a></td>';
+					<td><a href="/?page=usersGraphics&section=userGraphics&action=edite&userid=#arguments.userid#&grid=#userGraphic.gr_id#">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a></td>';
 
 			}else{
 				view &= '<td>#_DateFormate(_Date)# #getWeekNameShort(DayOfWeek(_Date))#</td>
 					<td colspan="4">-</td>
-					<td><a href="/?page=usersGraphics&section=userGraphics&action=add&userid=#arguments.userid#&date=#currentYear#.#currentMonth#.#y#">Добавить</a></td>';
+					<td><a href="/?page=usersGraphics&section=userGraphics&action=add&userid=#arguments.userid#&date=#currentYear#.#currentMonth#.#y#">Р”РѕР±Р°РІРёС‚СЊ</a></td>';
 			}
 
 			view &= '</tr>';
@@ -563,11 +563,11 @@ component attributeName='usersGraphics' output='false'{
 		var view = '';
 
 		view &= '<div class="grid_16"><div class="signin-box">
-			<h2>Общий график врачей:</h2>';
+			<h2>РћР±С‰РёР№ РіСЂР°С„РёРє РІСЂР°С‡РµР№:</h2>';
 
 			view &= '<table width="100%" cellspacing="0">
 						<tr>
-						<td class="block1" style="color:grey;vertical-align:middle;" rowspan="3">Врачи: а-я \ тип</td>
+						<td class="block1" style="color:grey;vertical-align:middle;" rowspan="3">Р’СЂР°С‡Рё: Р°-СЏ \ С‚РёРї</td>
 						<td class="block1" colspan="#DayInMonth#">
 							<a href="/?page=usersGraphics&date=#dateFormat(dateAdd('m', -1, currentDate),'YYYY.MM.DD')#"><<</a> 
 								#MonthAsString(currentMonth)# #currentYear#
@@ -602,7 +602,7 @@ component attributeName='usersGraphics' output='false'{
 						view &= '<td> --- </td>
 						</tr>';
 
-			// создаём интервал дат
+			// СЃРѕР·РґР°С‘Рј РёРЅС‚РµСЂРІР°Р» РґР°С‚
 			firstDayInMonth = CreateDate( currentYear, currentMonth, 1);
 			lastDayInMonth = CreateDate( currentYear, currentMonth, DayInMonth);
 			userGraphics = factoryService.getService('usersGraphicsAPI');
@@ -652,10 +652,10 @@ component attributeName='usersGraphics' output='false'{
 							}
 						}
 						if( date is not 'false' ){
-							view &= '<td> <a href="/?page=usersGraphics&section=userGraphics&action=view&userid=#userList.user_id[x]#&date=#date#">Ред.</a> </td>
+							view &= '<td> <a href="/?page=usersGraphics&section=userGraphics&action=view&userid=#userList.user_id[x]#&date=#date#">Р РµРґ.</a> </td>
 						</tr>';
 						}else{
-							view &= '<td> <a href="/?page=usersGraphics&section=userGraphics&action=view&userid=#userList.user_id[x]#">Ред.</a> </td>
+							view &= '<td> <a href="/?page=usersGraphics&section=userGraphics&action=view&userid=#userList.user_id[x]#">Р РµРґ.</a> </td>
 						</tr>';
 						}
 
@@ -666,11 +666,11 @@ component attributeName='usersGraphics' output='false'{
 
 			day = DayOfWeek(now());
 			view &= '
-				#getTypeDay(1)# - Рабочий день<br>
-				#getTypeDay(2)# - Выходной день<br>
-				#getTypeDay(3)# - Отпуск<br>
-				#getTypeDay(4)# - Больничный<br>
-				"-" - Не назначен';
+				#getTypeDay(1)# - Р Р°Р±РѕС‡РёР№ РґРµРЅСЊ<br>
+				#getTypeDay(2)# - Р’С‹С…РѕРґРЅРѕР№ РґРµРЅСЊ<br>
+				#getTypeDay(3)# - РћС‚РїСѓСЃРє<br>
+				#getTypeDay(4)# - Р‘РѕР»СЊРЅРёС‡РЅС‹Р№<br>
+				"-" - РќРµ РЅР°Р·РЅР°С‡РµРЅ';
 
 		view &= '</div></div>';
 		return view;
@@ -690,7 +690,7 @@ component attributeName='usersGraphics' output='false'{
 		return '#myDay# #myMonth# #myYear#';
 
 	}
-	                                   // HH или MM
+	                                   // HH РёР»Рё MM
 	function _DateCompare(date1,date2, type){
 		date1 = arguments.date1;
 		date2 = timeFormat(arguments.date2, "#arguments.type#");

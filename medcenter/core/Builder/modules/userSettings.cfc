@@ -1,10 +1,10 @@
-/*	Описание:
-	Все переменные которые есть в базе жестко привязоны ко всем скриптам, грубо говоря если удалить из
-	базы переменную region то произойдет кретическая ошибка. Так гибкость возможна только при добавлении
-	новых перемнных по необходимости.
+/*	РћРїРёСЃР°РЅРёРµ:
+	Р’СЃРµ РїРµСЂРµРјРµРЅРЅС‹Рµ РєРѕС‚РѕСЂС‹Рµ РµСЃС‚СЊ РІ Р±Р°Р·Рµ Р¶РµСЃС‚РєРѕ РїСЂРёРІСЏР·РѕРЅС‹ РєРѕ РІСЃРµРј СЃРєСЂРёРїС‚Р°Рј, РіСЂСѓР±Рѕ РіРѕРІРѕСЂСЏ РµСЃР»Рё СѓРґР°Р»РёС‚СЊ РёР·
+	Р±Р°Р·С‹ РїРµСЂРµРјРµРЅРЅСѓСЋ region С‚Рѕ РїСЂРѕРёР·РѕР№РґРµС‚ РєСЂРµС‚РёС‡РµСЃРєР°СЏ РѕС€РёР±РєР°. РўР°Рє РіРёР±РєРѕСЃС‚СЊ РІРѕР·РјРѕР¶РЅР° С‚РѕР»СЊРєРѕ РїСЂРё РґРѕР±Р°РІР»РµРЅРёРё
+	РЅРѕРІС‹С… РїРµСЂРµРјРЅРЅС‹С… РїРѕ РЅРµРѕР±С…РѕРґРёРјРѕСЃС‚Рё.
 
-	dataType: 2-boolian; 1-numeric; 0-string;	// но отсебя вводить ничего нельзя
-							// вся сложность вокруг валидации и вывода для пользователя
+	dataType: 2-boolian; 1-numeric; 0-string;	// РЅРѕ РѕС‚СЃРµР±СЏ РІРІРѕРґРёС‚СЊ РЅРёС‡РµРіРѕ РЅРµР»СЊР·СЏ
+							// РІСЃСЏ СЃР»РѕР¶РЅРѕСЃС‚СЊ РІРѕРєСЂСѓРі РІР°Р»РёРґР°С†РёРё Рё РІС‹РІРѕРґР° РґР»СЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
 */
 component displayname='userSettings' output='false' {
 
@@ -20,15 +20,15 @@ component displayname='userSettings' output='false' {
 	}
 
 	function handler(){
-		// обработчик формы
+		// РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹
 		if ( isdefined('form.varUserSave') ){
 			for (var x=1; x<=instance.user.recordcount; x++){
 				if ( listFind( instance.user.listVarValue[x] , form[instance.user.cfvar[x]] ) ){
-					client[instance.user.cfvar[x]] = form[instance.user.cfvar[x]]; // все хорошо
-					instance.userMessage = 'Настройки сохранены!';
+					client[instance.user.cfvar[x]] = form[instance.user.cfvar[x]]; // РІСЃРµ С…РѕСЂРѕС€Рѕ
+					instance.userMessage = 'РќР°СЃС‚СЂРѕР№РєРё СЃРѕС…СЂР°РЅРµРЅС‹!';
 				}else{
-					// логирование
-					instance.userMessage = 'Недопустимый формат данных!';
+					// Р»РѕРіРёСЂРѕРІР°РЅРёРµ
+					instance.userMessage = 'РќРµРґРѕРїСѓСЃС‚РёРјС‹Р№ С„РѕСЂРјР°С‚ РґР°РЅРЅС‹С…!';
 				}
 			}
 		}
@@ -36,11 +36,11 @@ component displayname='userSettings' output='false' {
 		if ( isdefined('form.varMenuSave') ){
 			for (var x=1; x<=instance.menu.recordcount; x++){
 				if ( listFind( instance.menu.listVarValue[x] , form[instance.menu.cfvar[x]] ) ){
-					client[instance.menu.cfvar[x]] = form[instance.menu.cfvar[x]]; // все хорошо
-					instance.menuMessage = 'Настройки сохранены!';
+					client[instance.menu.cfvar[x]] = form[instance.menu.cfvar[x]]; // РІСЃРµ С…РѕСЂРѕС€Рѕ
+					instance.menuMessage = 'РќР°СЃС‚СЂРѕР№РєРё СЃРѕС…СЂР°РЅРµРЅС‹!';
 				}else{
-					// логирование
-					instance.menuMessage = 'Недопустимый формат данных!';
+					// Р»РѕРіРёСЂРѕРІР°РЅРёРµ
+					instance.menuMessage = 'РќРµРґРѕРїСѓСЃС‚РёРјС‹Р№ С„РѕСЂРјР°С‚ РґР°РЅРЅС‹С…!';
 				}
 			}
 
@@ -50,8 +50,8 @@ component displayname='userSettings' output='false' {
 
 	function View() {
 	var menu = '<div class="grid_8"><div class="signin-box">';
-	menu &= '<h2>Пользовательские настройки.</h2>';
-	menu &= '<strong>Настройки пользователя.</strong>';
+	menu &= '<h2>РџРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРёРµ РЅР°СЃС‚СЂРѕР№РєРё.</h2>';
+	menu &= '<strong>РќР°СЃС‚СЂРѕР№РєРё РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.</strong>';
 		// loop
 		//writeDump(instance.user);
 		menu &= '<form id="" name="formUser" action="#request.CRequest.updateURL(false,"/?page=settings")#" method="post">';
@@ -60,14 +60,14 @@ component displayname='userSettings' output='false' {
 				menu &= '#selectMenu("dropdown", instance.user.cfvar[x], instance.user.listVarName[x], instance.user.listVarValue[x], client[instance.user.cfvar[x]])#';
 			menu &= '</p>';
 		}
-		menu &= '<input type="submit" name="varUserSave" value="Сохранить">';
+		menu &= '<input type="submit" name="varUserSave" value="РЎРѕС…СЂР°РЅРёС‚СЊ">';
 		menu &= '</form>';
 		if( instance.userMessage != '' ){
 			menu &= '<label class="error">#instance.userMessage#</label>';
 		}
 
 
-	menu &= '<strong>Настройки меню.</strong>';
+	menu &= '<strong>РќР°СЃС‚СЂРѕР№РєРё РјРµРЅСЋ.</strong>';
 		// loop
 		//writeDump(instance.menu);
 		menu &= '<form id="" name="formMenu" action="#request.CRequest.updateURL(false,"/?page=settings")#" method="post">';
@@ -76,7 +76,7 @@ component displayname='userSettings' output='false' {
 				menu &= '#selectMenu("dropdown", instance.menu.cfvar[x], instance.menu.listVarName[x], instance.menu.listVarValue[x], client[instance.menu.cfvar[x]])#';
 			menu &= '</p>';
 		}
-		menu &= '<input type="submit" name="varMenuSave" value="Сохранить">';
+		menu &= '<input type="submit" name="varMenuSave" value="РЎРѕС…СЂР°РЅРёС‚СЊ">';
 		menu &= '</form>';
 		if( instance.menuMessage != '' ){
 			menu &= '<label class="error">#instance.menuMessage#</label>';
@@ -116,20 +116,20 @@ component displayname='userSettings' output='false' {
 			menu &= '<select name="#arguments.name#">';
 			menu &= '<option value="0"';
 			if(arguments.value == true){ menu &= 'selected';}
-			menu &= '>Да</option>';
+			menu &= '>Р”Р°</option>';
 			menu &= '<option value="1"';
 			if(arguments.value == false){ menu &= 'selected';}
-			menu &= '>Нет</option>';
+			menu &= '>РќРµС‚</option>';
 			menu &= '</select>';
 		}else if (arguments.type=='radio'){
 			menu &= '<input type="Radio" name="#arguments.name#" id="#tag_last_yes_no_radio#" value="1"';
 			if (arguments.value == true){ menu&='checked';}
-			menu&= '>Да';
+			menu&= '>Р”Р°';
 			menu&= '&nbsp;&nbsp;&nbsp;';
 			tag_last_yes_no_radio = tag_last_yes_no_radio + 1;
 			menu &= '<input type="Radio" name="#arguments.name#" id="#tag_last_yes_no_radio#" value="0"';
 			if (arguments.value == false){ menu&='checked'; }
-			menu &= '>Нет';
+			menu &= '>РќРµС‚';
 			tag_last_yes_no_radio = tag_last_yes_no_radio + 1;
 		}
 		return menu;

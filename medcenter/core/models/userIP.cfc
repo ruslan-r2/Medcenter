@@ -1,15 +1,15 @@
 /*
-  объект userIP - userIP object
+  РѕР±СЉРµРєС‚ userIP - userIP object
 */
 
 component displayname="userIP" output="false" {
 
-	// Псевдо конструктор
-	// Таблица в базе данных - id, ipFrom, ipTo, isRange, dateTimeCreate, dateTimeEdite, type, description, ipCfid, ipCftoken
-	instance.userIP = structNew(); // структура
+	// РџСЃРµРІРґРѕ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
+	// РўР°Р±Р»РёС†Р° РІ Р±Р°Р·Рµ РґР°РЅРЅС‹С… - id, ipFrom, ipTo, isRange, dateTimeCreate, dateTimeEdite, type, description, ipCfid, ipCftoken
+	instance.userIP = structNew(); // СЃС‚СЂСѓРєС‚СѓСЂР°
 	instance.userIP.currentIp = '';
 	instance.userIP.warnings = 0;
-	//из базы
+	//РёР· Р±Р°Р·С‹
 	instance.userIP.ipFrom = '';
 	instance.userIP.ipTo = '';
 	instance.userIP.isRange = 'No';
@@ -48,6 +48,6 @@ component displayname="userIP" output="false" {
 	function setIpCfid(required string ipCfid){instance.userIP.ipCfid = arguments.ipCfid;}
 	function setIpCftoken(required string ipCftoken){instance.userIP.ipCftoken = arguments.ipCftoken;}
 
-	// Для дебаагера
+	// Р”Р»СЏ РґРµР±Р°Р°РіРµСЂР°
 	function getMemento(){return instance.userIP;}
 }

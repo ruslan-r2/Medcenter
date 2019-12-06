@@ -1,6 +1,6 @@
 component attributeName='typeEmployees' {
 
-	// для виджетов
+	// РґР»СЏ РІРёРґР¶РµС‚РѕРІ
 	request.factoryWidget=createObject('component','core.builder.factoryWidget').Init();
 
 	service.rbac = request.RBAC;
@@ -11,11 +11,11 @@ component attributeName='typeEmployees' {
 	function Init() {
 		// -------------------------------------------------------------------------
 
-		instance.title='Типы служащих';
+		instance.title='РўРёРїС‹ СЃР»СѓР¶Р°С‰РёС…';
 
-		instance.description='Типы служащих.';
+		instance.description='РўРёРїС‹ СЃР»СѓР¶Р°С‰РёС….';
 
-		instance.keywords='Типы служащих.';
+		instance.keywords='РўРёРїС‹ СЃР»СѓР¶Р°С‰РёС….';
 
 		widget.meta=request.factoryWidget.GetWidget('meta').Init( title=instance.title, description=instance.description, keywords=instance.keywords);
 		widget.logo=request.factoryWidget.GetWidget('logo').Init(active=true);

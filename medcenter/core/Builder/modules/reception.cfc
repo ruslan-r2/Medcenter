@@ -1,9 +1,9 @@
 /* 
-	Виджет текущий график врачей + запись пациентов --
+	Р’РёРґР¶РµС‚ С‚РµРєСѓС‰РёР№ РіСЂР°С„РёРє РІСЂР°С‡РµР№ + Р·Р°РїРёСЃСЊ РїР°С†РёРµРЅС‚РѕРІ --
 */
 
 component attributeName='usersGraphicsReception' output='false'{
-	// псевдо конструктор
+	// РїСЃРµРІРґРѕ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
 	factoryService = request.factoryService;
 	instance.view = '';
 
@@ -84,7 +84,7 @@ component attributeName='usersGraphicsReception' output='false'{
 			var qSearch = factoryService.getService('patientsAPI').searchPatients(form.emp_family);
 			patientsList = qSearch;
 			//writeDump(qSearch);
-			//writeOutPut('Нажата кнопка найти');
+			//writeOutPut('РќР°Р¶Р°С‚Р° РєРЅРѕРїРєР° РЅР°Р№С‚Рё');
 			//writeDump(form);
 			//
 		}
@@ -94,13 +94,13 @@ component attributeName='usersGraphicsReception' output='false'{
 			result = userReception.editeUserReception(form.rp_id, form.pt_id);
 				//result.RETVAL = 1;
 				if ( result.RETVAL is 1 ){
-					// сюда нужно вернуть rp_id и перенаправить на форму редактирования
-					// где можно будет добавлять услуги и пациента !!!!!!!!!!!!!!!!!
+					// СЃСЋРґР° РЅСѓР¶РЅРѕ РІРµСЂРЅСѓС‚СЊ rp_id Рё РїРµСЂРµРЅР°РїСЂР°РІРёС‚СЊ РЅР° С„РѕСЂРјСѓ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ
+					// РіРґРµ РјРѕР¶РЅРѕ Р±СѓРґРµС‚ РґРѕР±Р°РІР»СЏС‚СЊ СѓСЃР»СѓРіРё Рё РїР°С†РёРµРЅС‚Р° !!!!!!!!!!!!!!!!!
 					factoryService.getService('redirector').redirect('#request.CRequest.updateURL(false,"/?page=reception&section=reception&action=view&rpid=#form.rp_id#")#');
 
 				}else{
 					//writeDump(result);
-					// --- пробная версия
+					// --- РїСЂРѕР±РЅР°СЏ РІРµСЂСЃРёСЏ
 					if ( result.RETDESC is '') {
 						instance.message = '';
 					} else {
@@ -123,7 +123,7 @@ component attributeName='usersGraphicsReception' output='false'{
 						instance.rpStatus = '';
 					}
 				}
-			// --- обработчик формы---
+			// --- РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹---
 		}
 	}
 
@@ -135,19 +135,19 @@ component attributeName='usersGraphicsReception' output='false'{
 		var view = '';
 		view &= '
 			<form name="" action="#request.CRequest.updateURL(false,"/?page=reception&section=reception&action=addPatient&rpid=#rpID#")#" method="post">
-				<div class="grid_16"><div class="signin-box"><h2>Пациенты:</h2>
-				Фамилия: <input type="text" name="emp_family" value="#form.emp_family#" size="20" maxlength="20">
-				<input class="g-button g-button-submit" type="submit" name="Search" value="Найти">
+				<div class="grid_16"><div class="signin-box"><h2>РџР°С†РёРµРЅС‚С‹:</h2>
+				Р¤Р°РјРёР»РёСЏ: <input type="text" name="emp_family" value="#form.emp_family#" size="20" maxlength="20">
+				<input class="g-button g-button-submit" type="submit" name="Search" value="РќР°Р№С‚Рё">
 			</form>';
 
 		view &= '<table width="100%">
 				<tr style="color:grey;">
 					<td>id</td> 
-					<td>Ф.И.О</td>
+					<td>Р¤.Р.Рћ</td>
 					<td>-</td>
-					<td>Пол</td>
-					<td>Дата рождения</td>
-					<td> Контакты </td>
+					<td>РџРѕР»</td>
+					<td>Р”Р°С‚Р° СЂРѕР¶РґРµРЅРёСЏ</td>
+					<td> РљРѕРЅС‚Р°РєС‚С‹ </td>
 					<td> --- </td>
 				</tr>';
 				if ( isDefined('patientsList') ){
@@ -166,9 +166,9 @@ component attributeName='usersGraphicsReception' output='false'{
 						<td>#patientsList.pt_id[x]#</td>
 						<td style="text-align:left;">
 							#patientsList.pt_family[x]# #patientsList.pt_firstname[x]# #patientsList.pt_lastname[x]# 
-							<a href="/?page=patients&section=patient&action=view&patientid=#patientsList.pt_id[x]#" title="Перейти в картотеку"><img src="img/users.png" border="0"></a>
+							<a href="/?page=patients&section=patient&action=view&patientid=#patientsList.pt_id[x]#" title="РџРµСЂРµР№С‚Рё РІ РєР°СЂС‚РѕС‚РµРєСѓ"><img src="img/users.png" border="0"></a>
 						</td>
-						<td>#IIF( patient_dms.recordcount , DE("<img src='img/health-16.png' border='0' title='Страховая информация'>"), DE("") )#</td>
+						<td>#IIF( patient_dms.recordcount , DE("<img src='img/health-16.png' border='0' title='РЎС‚СЂР°С…РѕРІР°СЏ РёРЅС„РѕСЂРјР°С†РёСЏ'>"), DE("") )#</td>
 						<td>#patientsList.pt_gender[x]#</td>
 						<td>#_DateFormate(patientsList.pt_dob[x])#</td>
 						<td>';
@@ -176,7 +176,7 @@ component attributeName='usersGraphicsReception' output='false'{
 							view&= '#patient_cnt.ptc_data[y]#&nbsp;';
 						}
 						view &='</td>
-						<td><input class="g-button g-button-submit" type="submit" name="addPt" value="Добавить">
+						<td><input class="g-button g-button-submit" type="submit" name="addPt" value="Р”РѕР±Р°РІРёС‚СЊ">
 						<input type="hidden" name="pt_id" value="#patientsList.pt_id[x]#" size="20" maxlength="20">
 						<input type="hidden" name="rp_id" value="#rpID#" size="20" maxlength="20"></td>
 					</tr>
@@ -185,19 +185,19 @@ component attributeName='usersGraphicsReception' output='false'{
 
 				  }else{
 					view &= '<tr class="block1">
-							<td colspan="6">Ничего не нашёл! #now()#</td>
+							<td colspan="6">РќРёС‡РµРіРѕ РЅРµ РЅР°С€С‘Р»! #now()#</td>
 						</tr>';
 				  }
 
 				}
 
-			view &= '<tr><td style="text-align:left;" colspan="6"><a href="/?page=patients&section=patient&action=add"><br>+Добавить пациента</a></td></tr>';
+			view &= '<tr><td style="text-align:left;" colspan="6"><a href="/?page=patients&section=patient&action=add"><br>+Р”РѕР±Р°РІРёС‚СЊ РїР°С†РёРµРЅС‚Р°</a></td></tr>';
 
 			view &= '</table>';
 
 			if (instance.rpStatus is not ''){
 				view &= '
-					<div id="rpStatus" style="color:red;"> <a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,"/?page=reception&section=reception&action=view&rpid=#form.rp_id#")#">Назад</a> #instance.rpStatus#</div>';
+					<div id="rpStatus" style="color:red;"> <a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,"/?page=reception&section=reception&action=view&rpid=#form.rp_id#")#">РќР°Р·Р°Рґ</a> #instance.rpStatus#</div>';
 			}
 
 		view &= '</div></div>';
@@ -214,7 +214,7 @@ component attributeName='usersGraphicsReception' output='false'{
 			var qReception = factoryService.getService('userReceptionAPI').getReception(form.rp_id);
 			var qUser = factoryService.getService( 'authorization' ).getUser( qReception.user_id );
 			var qService = factoryService.getService('servicesAPI').getService(form.plsID);
-			// сделать проверку на наличие услуги
+			// СЃРґРµР»Р°С‚СЊ РїСЂРѕРІРµСЂРєСѓ РЅР° РЅР°Р»РёС‡РёРµ СѓСЃР»СѓРіРё
 			usersInterest = factoryService.getService('usersInterestAPI');
 			UI = usersInterest.getUserInterest( qUser.user_id, qService.st_id );
 			if ( UI.recordcount ){
@@ -234,13 +234,13 @@ component attributeName='usersGraphicsReception' output='false'{
 		  }else{
 			result.RETVAL = 0;
 			result.RETDESC = "";
-			result.STRUCT = structNew(); // для валидации полей
-			structInsert(result.struct, 'plsID','Вы не указали услугу, выберите услугу!!!');
+			result.STRUCT = structNew(); // РґР»СЏ РІР°Р»РёРґР°С†РёРё РїРѕР»РµР№
+			structInsert(result.struct, 'plsID','Р’С‹ РЅРµ СѓРєР°Р·Р°Р»Рё СѓСЃР»СѓРіСѓ, РІС‹Р±РµСЂРёС‚Рµ СѓСЃР»СѓРіСѓ!!!');
 		  }	
 			if ( result.RETVAL is 1 ){
 				factoryService.getService('redirector').redirect('#request.CRequest.updateURL(false,"/?page=reception&section=reception&action=view&rpid=#form.rp_id#")#');
 			}else{
-				// --- пробная версия
+				// --- РїСЂРѕР±РЅР°СЏ РІРµСЂСЃРёСЏ
 				if ( result.RETDESC is '') {
 					instance.message = '';
 				} else {
@@ -353,31 +353,31 @@ component attributeName='usersGraphicsReception' output='false'{
 		var qReception = factoryService.getService('userReceptionAPI').getReception(arguments.rpID);
 		var qUser = factoryService.getService( 'authorization' ).getUser( qReception.user_id );
 		var qUser_reg = factoryService.getService( 'authorization' ).getUser( qReception.rp_useridadd );
-		// ------------------------------------------------ форма ---------------------------------------------------------------
+		// ------------------------------------------------ С„РѕСЂРјР° ---------------------------------------------------------------
 		view = '';
 		view &= '<div class="grid_8">
 			<div class="signin-box">
-			<a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,"/?page=reception")#">Назад к общему расписанию.</a>
-			<a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,"/?page=reception&section=userGraphicsReception&action=view&userid=#qReception.user_id#")#">Назад к расписанию врача.</a><br><br>
+			<a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,"/?page=reception")#">РќР°Р·Р°Рґ Рє РѕР±С‰РµРјСѓ СЂР°СЃРїРёСЃР°РЅРёСЋ.</a>
+			<a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,"/?page=reception&section=userGraphicsReception&action=view&userid=#qReception.user_id#")#">РќР°Р·Р°Рґ Рє СЂР°СЃРїРёСЃР°РЅРёСЋ РІСЂР°С‡Р°.</a><br><br>
 	
-			<h2>Запись пациента на приём:</h2>
+			<h2>Р—Р°РїРёСЃСЊ РїР°С†РёРµРЅС‚Р° РЅР° РїСЂРёС‘Рј:</h2>
 			<hr>';
 
-			view &= '<div>Статус: #status(qReception.rp_status)#<br>';
-			view &= 'Врач: <b>#qUser.emp_family# #qUser.EMP_FIRSTNAME# #qUser.EMP_LASTNAME#</b><br>';
-			view &= 'Дата: <b><font color="green">#_DateFormate(qReception.rp_date)#</font></b><br>';
-			view &= 'Начало приёма у врача: <b><font color="green">#TimeFormat(qReception.rp_starttime_default, "HH:mm")#</font></b><br>';
-			view &= 'Окончание приёма у врача: <b><font color="green">#TimeFormat(dateAdd("s", +1, qReception.rp_endtime_default), "HH:mm")#</font></b><br>';
-			view &= 'Регистратор: #qUser_reg.emp_family# #qUser_reg.EMP_FIRSTNAME# #qUser_reg.EMP_LASTNAME#<br>';
+			view &= '<div>РЎС‚Р°С‚СѓСЃ: #status(qReception.rp_status)#<br>';
+			view &= 'Р’СЂР°С‡: <b>#qUser.emp_family# #qUser.EMP_FIRSTNAME# #qUser.EMP_LASTNAME#</b><br>';
+			view &= 'Р”Р°С‚Р°: <b><font color="green">#_DateFormate(qReception.rp_date)#</font></b><br>';
+			view &= 'РќР°С‡Р°Р»Рѕ РїСЂРёС‘РјР° Сѓ РІСЂР°С‡Р°: <b><font color="green">#TimeFormat(qReception.rp_starttime_default, "HH:mm")#</font></b><br>';
+			view &= 'РћРєРѕРЅС‡Р°РЅРёРµ РїСЂРёС‘РјР° Сѓ РІСЂР°С‡Р°: <b><font color="green">#TimeFormat(dateAdd("s", +1, qReception.rp_endtime_default), "HH:mm")#</font></b><br>';
+			view &= 'Р РµРіРёСЃС‚СЂР°С‚РѕСЂ: #qUser_reg.emp_family# #qUser_reg.EMP_FIRSTNAME# #qUser_reg.EMP_LASTNAME#<br>';
 			if (qReception.rp_status != 3 AND qReception.rp_status != 2){
-				view &= '<a href="#request.CRequest.updateURL(false,"/?page=reception&section=reception&action=edite&rpid=#arguments.rpID#")#">Редактировать</a>';
+				view &= '<a href="#request.CRequest.updateURL(false,"/?page=reception&section=reception&action=edite&rpid=#arguments.rpID#")#">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a>';
 			}
 			view &= '</div>';
 
 			if ( qReception.pt_id is ''){
-				view &= '<hr><div>Пациент: <font color="red">Пациент не выбран.</font>';
+				view &= '<hr><div>РџР°С†РёРµРЅС‚: <font color="red">РџР°С†РёРµРЅС‚ РЅРµ РІС‹Р±СЂР°РЅ.</font>';
 					if (qReception.rp_status != 3 AND qReception.rp_status != 2){
-						view &= '<a href="#request.CRequest.updateURL(false,"/?page=reception&section=reception&action=addPatient&rpid=#arguments.rpID#")#">+Добавить пациента.</a>';
+						view &= '<a href="#request.CRequest.updateURL(false,"/?page=reception&section=reception&action=addPatient&rpid=#arguments.rpID#")#">+Р”РѕР±Р°РІРёС‚СЊ РїР°С†РёРµРЅС‚Р°.</a>';
 					}
 					view &= '</div>';
 			}else{
@@ -390,37 +390,37 @@ component attributeName='usersGraphicsReception' output='false'{
 				patient_cnt = factoryService.getService('patientsAPI').getPatientContacts();
 				patient_dms = factoryService.getService('patientsAPI').getPatientDMS('',patientid);
                                                                                   
-				view &= '<hr><div>Пациент: <b>#patient.pt_family# #patient.pt_firstname# #patient.pt_lastname#</b> <a target="_blank" href="/?page=patients&section=patient&action=view&patientid=#patient.pt_id#" title="Перейти в картотеку"><img src="img/users.png" border="0"></a> #IIF( patient_dms.recordcount , DE("<img src='img/health-20.png' border='0' title='Страховой'>"), DE("") )#<br>
-					Дата рождения: <b>#_DateFormate(patient.pt_dob)#</b><br>';
+				view &= '<hr><div>РџР°С†РёРµРЅС‚: <b>#patient.pt_family# #patient.pt_firstname# #patient.pt_lastname#</b> <a target="_blank" href="/?page=patients&section=patient&action=view&patientid=#patient.pt_id#" title="РџРµСЂРµР№С‚Рё РІ РєР°СЂС‚РѕС‚РµРєСѓ"><img src="img/users.png" border="0"></a> #IIF( patient_dms.recordcount , DE("<img src='img/health-20.png' border='0' title='РЎС‚СЂР°С…РѕРІРѕР№'>"), DE("") )#<br>
+					Р”Р°С‚Р° СЂРѕР¶РґРµРЅРёСЏ: <b>#_DateFormate(patient.pt_dob)#</b><br>';
 				for(var y=1; y<=patient_cnt.recordcount; y++){
 					view&= '#patient_cnt.cnt_type_description[y]#: <b>#patient_cnt.ptc_data[y]#</b> <br>';
 				}
 
 				if (qReception.rp_status != 3 AND qReception.rp_status != 2){
-					view &= '<a href="#request.CRequest.updateURL(false,"/?page=reception&section=reception&action=addPatient&rpid=#arguments.rpID#")#">Изменить.</a><br>';
+					view &= '<a href="#request.CRequest.updateURL(false,"/?page=reception&section=reception&action=addPatient&rpid=#arguments.rpID#")#">РР·РјРµРЅРёС‚СЊ.</a><br>';
 				}
 				view &= '</div>';
 			}
 
 			view &= '<hr>
-				<div>Примечание: #qReception.rp_description#<br>';
+				<div>РџСЂРёРјРµС‡Р°РЅРёРµ: #qReception.rp_description#<br>';
 				if (qReception.rp_status != 3 AND qReception.rp_status != 2){
-					view &= '<a href="#request.CRequest.updateURL(false,"/?page=reception&section=reception&action=edite&rpid=#arguments.rpID#")#">Изменить.</a>';
+					view &= '<a href="#request.CRequest.updateURL(false,"/?page=reception&section=reception&action=edite&rpid=#arguments.rpID#")#">РР·РјРµРЅРёС‚СЊ.</a>';
 				}
 				view &= '</div>';
 
-			// выводим список услуг
+			// РІС‹РІРѕРґРёРј СЃРїРёСЃРѕРє СѓСЃР»СѓРі
 			var qRServices = factoryService.getService('userServicesAPI').getReceptionServices(arguments.rpID);
 			//writeDump(qRServices);
-// всплывающая форма услуг--------------------------------------------------
+// РІСЃРїР»С‹РІР°СЋС‰Р°СЏ С„РѕСЂРјР° СѓСЃР»СѓРі--------------------------------------------------
 		view &= '<div id="popup">
 				<div id="popup_close"></div>
 				<div id="popup_form">
 					<form>
 					<input type="hidden" name="rp_id_" value="#arguments.rpID#">
-					<h2>Услуги на оплату</h2><hr>
+					<h2>РЈСЃР»СѓРіРё РЅР° РѕРїР»Р°С‚Сѓ</h2><hr>
 					<table width="100%">
-						<tr><td class="block">№</td><td class="block">Наименование услуги</td><td class="block">руб.</td><td class="block">-</td></tr>';
+						<tr><td class="block">в„–</td><td class="block">РќР°РёРјРµРЅРѕРІР°РЅРёРµ СѓСЃР»СѓРіРё</td><td class="block">СЂСѓР±.</td><td class="block">-</td></tr>';
 					if (qRServices.recordcount){
 						for(var x=1; x<=qRServices.recordcount; x++){
 							view &= '<tr><td class="block">#x#</td><td class="block" style="text-align:left;">#qRServices.sv_name[x]#</td><td class="block">#round(qRServices.sv_price[x])#</td><td class="block"><input type="checkbox" name="service" value="#qRServices.sv_id[x]#" #iif(qRServices.sv_status[x] is 2, DE("checked"), "")#></td></tr>';
@@ -428,14 +428,14 @@ component attributeName='usersGraphicsReception' output='false'{
 					}
 
 		view &= '		</table>
-					<hr><input class="g-button g-button-submit" type="button" id="paid1" name="paid1" value="Оплатить">
-					<input class="g-button g-button-submit" type="button" id="paid2" name="paid1" value="Отменить оплату"></form>
+					<hr><input class="g-button g-button-submit" type="button" id="paid1" name="paid1" value="РћРїР»Р°С‚РёС‚СЊ">
+					<input class="g-button g-button-submit" type="button" id="paid2" name="paid1" value="РћС‚РјРµРЅРёС‚СЊ РѕРїР»Р°С‚Сѓ"></form>
 				</div>
 				<div id="popup_mes" style="color:red;"></div>
 			</div>';
 		view &= '<div id="overlay"></div>';
 //--------------------------------------------------
-			view &= '<hr><div><table width="100%"><tr><td class="block">Список услуги</td><td class="block">руб.</td><td class="block">-</td></tr>';
+			view &= '<hr><div><table width="100%"><tr><td class="block">РЎРїРёСЃРѕРє СѓСЃР»СѓРіРё</td><td class="block">СЂСѓР±.</td><td class="block">-</td></tr>';
 			if (qRServices.recordcount){
 				var summ = 0;
 				for(var x=1; x<=qRServices.recordcount; x++){
@@ -447,34 +447,34 @@ component attributeName='usersGraphicsReception' output='false'{
 						<input type="hidden" name="sv_id" value="#qRServices.sv_id[x]#" size="20" maxlength="20">
 						<script>
 							function clicked(e){
-							    if(!confirm("Вы уверены? Данные будут удалены безвозвратно!"))e.preventDefault();
+							    if(!confirm("Р’С‹ СѓРІРµСЂРµРЅС‹? Р”Р°РЅРЅС‹Рµ Р±СѓРґСѓС‚ СѓРґР°Р»РµРЅС‹ Р±РµР·РІРѕР·РІСЂР°С‚РЅРѕ!"))e.preventDefault();
 							}
 						</script>
 						';
-						// #qRServices.sv_status[x]# статус услуги
+						// #qRServices.sv_status[x]# СЃС‚Р°С‚СѓСЃ СѓСЃР»СѓРіРё
 						if (qReception.rp_status == 1){
-							view &= '<td class="block"><input class="g-button g-button-submit" type="submit" name="deleteService" value="Удалить" onclick="clicked(event)"></td>';
+							view &= '<td class="block"><input class="g-button g-button-submit" type="submit" name="deleteService" value="РЈРґР°Р»РёС‚СЊ" onclick="clicked(event)"></td>';
 						}else{
 							view &= '<td class="block">-</td>';
 						}
 						view &= '</form></tr>';
 				}
-				view &= '<tr><td class="block" style="text-align:right;"><span ><b>Итого:</b></span></td><td class="block"><b>#summ#</b></td></tr>';
-				// сделать обработчик начат приём
+				view &= '<tr><td class="block" style="text-align:right;"><span ><b>РС‚РѕРіРѕ:</b></span></td><td class="block"><b>#summ#</b></td></tr>';
+				// СЃРґРµР»Р°С‚СЊ РѕР±СЂР°Р±РѕС‚С‡РёРє РЅР°С‡Р°С‚ РїСЂРёС‘Рј
 				if (qReception.rp_status == 2 OR qReception.rp_status == 3){
-					view &= '<tr><td class="block" style="text-align:left;"><span><input class="g-button g-button-submit" type="button" id="paid" name="paid" value="Оплата"></span></td></tr>';
+					view &= '<tr><td class="block" style="text-align:left;"><span><input class="g-button g-button-submit" type="button" id="paid" name="paid" value="РћРїР»Р°С‚Р°"></span></td></tr>';
 				}
 			}else{
-				view &= '<tr><td class="block"><font color="red">Нет выбранных услуг!</font></td><td class="block">-</td><td class="block">-</td></tr>';
+				view &= '<tr><td class="block"><font color="red">РќРµС‚ РІС‹Р±СЂР°РЅРЅС‹С… СѓСЃР»СѓРі!</font></td><td class="block">-</td><td class="block">-</td></tr>';
 			}
 			view &= '</table>';
 
-			// форма добавки услуги
-			// строим выпадающий список услуг
+			// С„РѕСЂРјР° РґРѕР±Р°РІРєРё СѓСЃР»СѓРіРё
+			// СЃС‚СЂРѕРёРј РІС‹РїР°РґР°СЋС‰РёР№ СЃРїРёСЃРѕРє СѓСЃР»СѓРі
 			if (qReception.rp_status == 1){
 			  var qEmpServices = factoryService.getService('userServicesAPI').getEmpServices(qUser.emp_type);
 			//writeDump(qEmpServices);
-			  view &= '<hr><b>Добавить услугу к данному приёму:</b>
+			  view &= '<hr><b>Р”РѕР±Р°РІРёС‚СЊ СѓСЃР»СѓРіСѓ Рє РґР°РЅРЅРѕРјСѓ РїСЂРёС‘РјСѓ:</b>
 				<form name="" action="#request.CRequest.updateURL(false,"/?page=reception&section=reception&action=view&rpid=#arguments.rpID#")#" method="post">
 				<input type="hidden" name="rp_id" value="#form.rp_id#" size="20" maxlength="20">
 				<div>
@@ -489,17 +489,17 @@ component attributeName='usersGraphicsReception' output='false'{
 							var qServicesType = factoryService.getService('servicesTypeAPI').getServiceType(qEmpServices.st_id[x]);
 							view &= '<option value="#x#" disabled>#qEmpt.empt_name#</option>';
 							view &= '<option value="#x#" disabled>#qServicesType.st_name#</option>';
-							view &= '<option value="#qEmpServices.pls_id[x]#">#qEmpServices.pls_name[x]# - #iif(qEmpServices.pls_price_do[x] is '', DE("#LSCurrencyFormat(qEmpServices.pls_price_ot[x])#"), DE("от #LSCurrencyFormat(qEmpServices.pls_price_ot[x])# - до #LSCurrencyFormat(qEmpServices.pls_price_do[x])#") )#</option>';
+							view &= '<option value="#qEmpServices.pls_id[x]#">#qEmpServices.pls_name[x]# - #iif(qEmpServices.pls_price_do[x] is '', DE("#LSCurrencyFormat(qEmpServices.pls_price_ot[x])#"), DE("РѕС‚ #LSCurrencyFormat(qEmpServices.pls_price_ot[x])# - РґРѕ #LSCurrencyFormat(qEmpServices.pls_price_do[x])#") )#</option>';
 							empt_id = qEmpServices.empt_id[x];
 							st_id = qEmpServices.st_id[x];
 
 						}else if(empt_id == qEmpServices.empt_id[x] and st_id == qEmpServices.st_id[x]){
-							view &= '<option value="#qEmpServices.pls_id[x]#">#qEmpServices.pls_name[x]# - #iif(qEmpServices.pls_price_do[x] is '', DE("#LSCurrencyFormat(qEmpServices.pls_price_ot[x])#"), DE("от #LSCurrencyFormat(qEmpServices.pls_price_ot[x])# - до #LSCurrencyFormat(qEmpServices.pls_price_do[x])#") )#</option>';
+							view &= '<option value="#qEmpServices.pls_id[x]#">#qEmpServices.pls_name[x]# - #iif(qEmpServices.pls_price_do[x] is '', DE("#LSCurrencyFormat(qEmpServices.pls_price_ot[x])#"), DE("РѕС‚ #LSCurrencyFormat(qEmpServices.pls_price_ot[x])# - РґРѕ #LSCurrencyFormat(qEmpServices.pls_price_do[x])#") )#</option>';
 
 						}else if(empt_id == qEmpServices.empt_id[x] and st_id != qEmpServices.st_id[x]){
 							var qServicesType = factoryService.getService('servicesTypeAPI').getServiceType(qEmpServices.st_id[x]);
 							view &= '<option value="#x#" disabled>#qServicesType.st_name#</option>';
-							view &= '<option value="#qEmpServices.pls_id[x]#">#qEmpServices.pls_name[x]# - #iif(qEmpServices.pls_price_do[x] is '', DE("#LSCurrencyFormat(qEmpServices.pls_price_ot[x])#"), DE("от #LSCurrencyFormat(qEmpServices.pls_price_ot[x])# - до #LSCurrencyFormat(qEmpServices.pls_price_do[x])#") )#</option>';
+							view &= '<option value="#qEmpServices.pls_id[x]#">#qEmpServices.pls_name[x]# - #iif(qEmpServices.pls_price_do[x] is '', DE("#LSCurrencyFormat(qEmpServices.pls_price_ot[x])#"), DE("РѕС‚ #LSCurrencyFormat(qEmpServices.pls_price_ot[x])# - РґРѕ #LSCurrencyFormat(qEmpServices.pls_price_do[x])#") )#</option>';
 							st_id = qEmpServices.st_id[x];
 
 						}else if(empt_id != qEmpServices.empt_id[x]){
@@ -507,7 +507,7 @@ component attributeName='usersGraphicsReception' output='false'{
 							var qServicesType = factoryService.getService('servicesTypeAPI').getServiceType(qEmpServices.st_id[x]);
 							view &= '<option value="#x#" disabled>#qEmpt.empt_name#</option>';
 							view &= '<option value="#x#" disabled>#qServicesType.st_name#</option>';
-							view &= '<option value="#qEmpServices.pls_id[x]#">#qEmpServices.pls_name[x]# - #iif(qEmpServices.pls_price_do[x] is '', DE("#LSCurrencyFormat(qEmpServices.pls_price_ot[x])#"), DE("от #LSCurrencyFormat(qEmpServices.pls_price_ot[x])# - до #LSCurrencyFormat(qEmpServices.pls_price_do[x])#") )#</option>';
+							view &= '<option value="#qEmpServices.pls_id[x]#">#qEmpServices.pls_name[x]# - #iif(qEmpServices.pls_price_do[x] is '', DE("#LSCurrencyFormat(qEmpServices.pls_price_ot[x])#"), DE("РѕС‚ #LSCurrencyFormat(qEmpServices.pls_price_ot[x])# - РґРѕ #LSCurrencyFormat(qEmpServices.pls_price_do[x])#") )#</option>';
 							empt_id = qEmpServices.empt_id[x];
 							st_id = qEmpServices.st_id[x];
 						}
@@ -515,8 +515,8 @@ component attributeName='usersGraphicsReception' output='false'{
 					//writeDump(qEmpServices);
 
 			  view &= '</select>';
-			  //view &= '<a href="#request.CRequest.updateURL(false,"/?page=reception&section=reception&action=addService&rpid=#arguments.rpID#&emptype=#qUser.emp_type#")#">+Добавить услугу.</a></div>';
-			  view &= ' <input class="g-button g-button-submit" type="submit" name="addService" value="Добавить"></div>';
+			  //view &= '<a href="#request.CRequest.updateURL(false,"/?page=reception&section=reception&action=addService&rpid=#arguments.rpID#&emptype=#qUser.emp_type#")#">+Р”РѕР±Р°РІРёС‚СЊ СѓСЃР»СѓРіСѓ.</a></div>';
+			  view &= ' <input class="g-button g-button-submit" type="submit" name="addService" value="Р”РѕР±Р°РІРёС‚СЊ"></div>';
 			  if (instance.plsID is not ''){
 				view &= '<div id="plsID" style="color:red;">#instance.plsID#</div>';
 			  }
@@ -536,7 +536,7 @@ component attributeName='usersGraphicsReception' output='false'{
                 view &= '</div>';
 
 		if (qReception.rp_status == 1){
-			view &= '<div><input class="g-button g-button-red" type="submit" name="deleteReception" value="Удалить запись"></div>';
+			view &= '<div><input class="g-button g-button-red" type="submit" name="deleteReception" value="РЈРґР°Р»РёС‚СЊ Р·Р°РїРёСЃСЊ"></div>';
 		}
 		view &='</form>
 			</div></div>';
@@ -546,10 +546,10 @@ component attributeName='usersGraphicsReception' output='false'{
 			<div class="signin-box">';
 
 		view &= '	<fieldset>
-					<legend>Записи пациента к врачам:</legend>';
+					<legend>Р—Р°РїРёСЃРё РїР°С†РёРµРЅС‚Р° Рє РІСЂР°С‡Р°Рј:</legend>';
 
 		if ( qReception.pt_id is ''){
-			view &= 'Пациент не выбран.';
+			view &= 'РџР°С†РёРµРЅС‚ РЅРµ РІС‹Р±СЂР°РЅ.';
 		}else{
 			patientid = qReception.pt_id;
 			//factoryService.getService('patientsAPI').setPatient(patientid);
@@ -559,13 +559,13 @@ component attributeName='usersGraphicsReception' output='false'{
 				var num = patient_reception.rp_status[x];
 				if (num == 1){
 					class = 'span1';
-					title = 'Приём не начался.';
+					title = 'РџСЂРёС‘Рј РЅРµ РЅР°С‡Р°Р»СЃСЏ.';
 				}else if(num == 2){
 					class = 'span2';
-					title = 'Идёт приём у врача';
+					title = 'РРґС‘С‚ РїСЂРёС‘Рј Сѓ РІСЂР°С‡Р°';
 				}else if(num == 3){
 					class = 'span3';
-					title = 'Приём окончен.';
+					title = 'РџСЂРёС‘Рј РѕРєРѕРЅС‡РµРЅ.';
 				}
 				qUser = factoryService.getService( 'authorization' ).getUser( patient_reception.user_id[x] );
 				rbac = request.RBAC;
@@ -583,14 +583,14 @@ component attributeName='usersGraphicsReception' output='false'{
 						view &= '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- #_qRServices.sv_name[y]# ';
 						if ( _qRServices.pls_shablon[y] != ''){
 							if( patient_reception.rp_status[x] >= 2 AND patient_reception.pt_id[x] != ''){
-								view &= '<a href="/?page=cabinet&section=document&svid=#_qRServices.sv_id[y]#" target="_blank"><img src = "img/pdf1.png" align = "absmiddle" title="Открыть документ"></a>';
+								view &= '<a href="/?page=cabinet&section=document&svid=#_qRServices.sv_id[y]#" target="_blank"><img src = "img/pdf1.png" align = "absmiddle" title="РћС‚РєСЂС‹С‚СЊ РґРѕРєСѓРјРµРЅС‚"></a>';
 							}
 						}
 						view &= '<br>';
 					}
 					view &= '<br>';
 				}else{
-					view &= '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Нет услуг!<br><br>';
+					view &= '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- РќРµС‚ СѓСЃР»СѓРі!<br><br>';
 				}
 			}
 
@@ -599,12 +599,12 @@ component attributeName='usersGraphicsReception' output='false'{
 
 		view &=	'</div></div>';
 
-			// ------------------------------------------------ форма ---------------------------------------------------------------
+			// ------------------------------------------------ С„РѕСЂРјР° ---------------------------------------------------------------
 		return view;
 	}
 	
 	private function addUserReceptionFormHandler(userID){
-		// --- обработчик формы---
+		// --- РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹---
 		//writeDump(form);
 		if ( isdefined('form.addUserReception') ){
 		form.rp_starttime_default = '#form.rpTimeHStart#:#form.rpTimeMStart#';
@@ -615,12 +615,12 @@ component attributeName='usersGraphicsReception' output='false'{
 		result = userReception.addUserReception( #form.user_id#, #form.rp_date#, #form.rp_starttime_default#, #form._rp_endtime_default#, #form.rp_status#, #form.gr_starttime#, #form.gr_endtime# );
 			//result.RETVAL = 1;
 			if ( result.RETVAL is 1 ){
-				// сюда нужно вернуть rp_id и перенаправить на форму редактирования
-				// где можно будет добавлять услуги и пациента !!!!!!!!!!!!!!!!!
+				// СЃСЋРґР° РЅСѓР¶РЅРѕ РІРµСЂРЅСѓС‚СЊ rp_id Рё РїРµСЂРµРЅР°РїСЂР°РІРёС‚СЊ РЅР° С„РѕСЂРјСѓ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ
+				// РіРґРµ РјРѕР¶РЅРѕ Р±СѓРґРµС‚ РґРѕР±Р°РІР»СЏС‚СЊ СѓСЃР»СѓРіРё Рё РїР°С†РёРµРЅС‚Р° !!!!!!!!!!!!!!!!!
 				factoryService.getService('redirector').redirect('#request.CRequest.updateURL(false,"/?page=reception&section=reception&action=view&rpid=#result.RETDESC#")#');
 
 			}else{
-				// --- пробная версия
+				// --- РїСЂРѕР±РЅР°СЏ РІРµСЂСЃРёСЏ
 				if ( result.RETDESC is '') {
 					instance.message = '';
 				} else {
@@ -666,7 +666,7 @@ component attributeName='usersGraphicsReception' output='false'{
 
 			}
 		}
-		// --- обработчик формы---
+		// --- РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹---
 	}
 
 	function addUserReceptionForm( userid, date, starttime, endtime ){
@@ -708,26 +708,26 @@ component attributeName='usersGraphicsReception' output='false'{
 		//writeDump(qUser);
 		//writeDump(userGraphic);
 
-		// ---------------------------------------------------------- форма ---------------------------------------------------------------
+		// ---------------------------------------------------------- С„РѕСЂРјР° ---------------------------------------------------------------
 		view = '';
 		view &= '<div class="grid_8">
 			<div class="signin-box">
-			<a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,"/?page=reception")#">Назад к общему расписанию</a><br><br>
-			<a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,"/?page=reception&section=userGraphicsReception&action=view&userid=#arguments.userid#")#">Назад к расписанию врача</a><br><br>
-			<h2>Записать пациента на приём:</h2>
+			<a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,"/?page=reception")#">РќР°Р·Р°Рґ Рє РѕР±С‰РµРјСѓ СЂР°СЃРїРёСЃР°РЅРёСЋ</a><br><br>
+			<a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,"/?page=reception&section=userGraphicsReception&action=view&userid=#arguments.userid#")#">РќР°Р·Р°Рґ Рє СЂР°СЃРїРёСЃР°РЅРёСЋ РІСЂР°С‡Р°</a><br><br>
+			<h2>Р—Р°РїРёСЃР°С‚СЊ РїР°С†РёРµРЅС‚Р° РЅР° РїСЂРёС‘Рј:</h2>
 			<hr>
 			<form name="" action="#request.CRequest.updateURL(false,"/?page=reception&section=reception&action=add&userid=#arguments.userID#")#" method="post">';
 
-			view &= '<div>Врач: <b>#qUser.emp_family# #qUser.EMP_FIRSTNAME# #qUser.EMP_LASTNAME#</b></div>';
+			view &= '<div>Р’СЂР°С‡: <b>#qUser.emp_family# #qUser.EMP_FIRSTNAME# #qUser.EMP_LASTNAME#</b></div>';
 			view &= '<div><input type="hidden" name="user_id" value="#form.user_id#" size="20" maxlength="20"></div>';
 			view &= '<div><input type="hidden" name="gr_starttime" value="#form.gr_starttime#" size="20" maxlength="20"></div>';
 			view &= '<div><input type="hidden" name="gr_endtime" value="#form.gr_endtime#" size="20" maxlength="20"></div>';
 
-			view &= '<div>Дата: <b>#_DateFormate(form.rp_date)#</b><br>
+			view &= '<div>Р”Р°С‚Р°: <b>#_DateFormate(form.rp_date)#</b><br>
 				<input type="hidden" name="rp_date" value="#form.rp_date#" size="20" maxlength="20"></div>';
 
 			view &= '<div>
-					<label>Начало приёма у врача:</label>'; // если что, добавить <label>
+					<label>РќР°С‡Р°Р»Рѕ РїСЂРёС‘РјР° Сѓ РІСЂР°С‡Р°:</label>'; // РµСЃР»Рё С‡С‚Рѕ, РґРѕР±Р°РІРёС‚СЊ <label>
 				view &= ' <select name="rpTimeHStart">';
 					    for ( var x=8; x<=20; x++){
 					     view &= '<option value="#x#" #_DateCompare( x, form.rp_starttime_default, "HH")#>#numberformat(x,"09")#</option>';
@@ -750,7 +750,7 @@ component attributeName='usersGraphicsReception' output='false'{
 
 			view &= '</div>
 				<div>
-					<label>Окончание приёма у врача:</label>';
+					<label>РћРєРѕРЅС‡Р°РЅРёРµ РїСЂРёС‘РјР° Сѓ РІСЂР°С‡Р°:</label>';
 				view &= ' <select name="rpTimeHEnd">';
 					    for ( var x=8; x<=20; x++){
 					     view &= '<option value="#x#" #_DateCompare( x, form.rp_endtime_default, "HH")#>#numberformat(x,"09")#</option>';
@@ -775,8 +775,8 @@ component attributeName='usersGraphicsReception' output='false'{
 			view &= '<div><input type="hidden" name="rp_status" value="#form.rp_status#" size="20" maxlength="20"></div>';
 
 			view &= '</div><div>
-					<input disabled class="g-button g-button-submit" type="submit" name="escape" value="Отмена">
-					<input class="g-button g-button-submit" type="submit" name="addUserReception" value="Сохранить"> ';
+					<input disabled class="g-button g-button-submit" type="submit" name="escape" value="РћС‚РјРµРЅР°">
+					<input class="g-button g-button-submit" type="submit" name="addUserReception" value="РЎРѕС…СЂР°РЅРёС‚СЊ"> ';
 
 			if (instance.message is not ''){
 				view &= '<div id="mes" style="color:red;">#instance.message#</div>';
@@ -785,12 +785,12 @@ component attributeName='usersGraphicsReception' output='false'{
 		view &='</div></form>
 			</div></div>';
 
-			// ------------------------------------------------ форма ---------------------------------------------------------------
+			// ------------------------------------------------ С„РѕСЂРјР° ---------------------------------------------------------------
 		return view;
 	}
 
 	private function editeUserReceptionFormHandler(){
-		// --- обработчик формы---
+		// --- РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹---
 
 		if ( isdefined('form.editeUserReception') ){
 		form.rp_starttime_default = '#form.rpTimeHStart#:#form.rpTimeMStart#';
@@ -801,12 +801,12 @@ component attributeName='usersGraphicsReception' output='false'{
 		result = userReception._editeUserReception( #form.rp_id#, #form.user_id#, #form.rp_date#, #form.rp_starttime_default#, #form._rp_endtime_default#, #form.rp_description#, #form.rp_status#, #form.gr_starttime#, #form.gr_endtime# );
 			//result.RETVAL = 1;
 			if ( result.RETVAL is 1 ){
-				// сюда нужно вернуть rp_id и перенаправить на форму редактирования
-				// где можно будет добавлять услуги и пациента !!!!!!!!!!!!!!!!!
+				// СЃСЋРґР° РЅСѓР¶РЅРѕ РІРµСЂРЅСѓС‚СЊ rp_id Рё РїРµСЂРµРЅР°РїСЂР°РІРёС‚СЊ РЅР° С„РѕСЂРјСѓ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ
+				// РіРґРµ РјРѕР¶РЅРѕ Р±СѓРґРµС‚ РґРѕР±Р°РІР»СЏС‚СЊ СѓСЃР»СѓРіРё Рё РїР°С†РёРµРЅС‚Р° !!!!!!!!!!!!!!!!!
 				factoryService.getService('redirector').redirect('#request.CRequest.updateURL(false,"/?page=reception&section=reception&action=view&rpid=#form.rp_id#")#');
 
 			}else{
-				// --- пробная версия
+				// --- РїСЂРѕР±РЅР°СЏ РІРµСЂСЃРёСЏ
 				if ( result.RETDESC is '') {
 					instance.message = '';
 				} else {
@@ -857,7 +857,7 @@ component attributeName='usersGraphicsReception' output='false'{
 
 			}
 		}
-		// --- обработчик формы---
+		// --- РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹---
 	}
 
 	function editeUserReceptionForm( rpID ){
@@ -886,27 +886,27 @@ component attributeName='usersGraphicsReception' output='false'{
 		//writeDump(qUser);
 		//writeDump(userGraphic);
 
-		// ---------------------------------------------------------- форма ---------------------------------------------------------------
+		// ---------------------------------------------------------- С„РѕСЂРјР° ---------------------------------------------------------------
 		view = '';
 		view &= '<div class="grid_8">
 			<div class="signin-box">
-			<a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,"/?page=reception&section=reception&action=view&rpid=#userReception.rp_id#")#">Назад</a><br><br>
+			<a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,"/?page=reception&section=reception&action=view&rpid=#userReception.rp_id#")#">РќР°Р·Р°Рґ</a><br><br>
 
-			<h2>Записать пациента на приём:</h2>
+			<h2>Р—Р°РїРёСЃР°С‚СЊ РїР°С†РёРµРЅС‚Р° РЅР° РїСЂРёС‘Рј:</h2>
 			<hr>
 			<form name="" action="#request.CRequest.updateURL(false,"/?page=reception&section=reception&action=edite&rpid=#userReception.rp_id#")#" method="post">';
 
-			view &= '<div>Врач: <b>#qUser.emp_family# #qUser.EMP_FIRSTNAME# #qUser.EMP_LASTNAME#</b></div>';
+			view &= '<div>Р’СЂР°С‡: <b>#qUser.emp_family# #qUser.EMP_FIRSTNAME# #qUser.EMP_LASTNAME#</b></div>';
 			view &= '<div><input type="hidden" name="rp_id" value="#form.rp_id#" size="20" maxlength="20"></div>';
 			view &= '<div><input type="hidden" name="user_id" value="#form.user_id#" size="20" maxlength="20"></div>';
 			view &= '<div><input type="hidden" name="gr_starttime" value="#form.gr_starttime#" size="20" maxlength="20"></div>';
 			view &= '<div><input type="hidden" name="gr_endtime" value="#form.gr_endtime#" size="20" maxlength="20"></div>';
 
-			view &= '<div>Дата: <b>#_DateFormate(form.rp_date)#</b><br>
+			view &= '<div>Р”Р°С‚Р°: <b>#_DateFormate(form.rp_date)#</b><br>
 				<input type="hidden" name="rp_date" value="#form.rp_date#" size="20" maxlength="20"></div>';
 
 			view &= '<div>
-					<label>Начало приёма у врача:</label>'; // если что, добавить <label>
+					<label>РќР°С‡Р°Р»Рѕ РїСЂРёС‘РјР° Сѓ РІСЂР°С‡Р°:</label>'; // РµСЃР»Рё С‡С‚Рѕ, РґРѕР±Р°РІРёС‚СЊ <label>
 				view &= ' <select name="rpTimeHStart">';
 					    for ( var x=8; x<=20; x++){
 					     view &= '<option value="#x#" #_DateCompare( x, form.rp_starttime_default, "HH")#>#numberformat(x,"09")#</option>';
@@ -929,7 +929,7 @@ component attributeName='usersGraphicsReception' output='false'{
 
 			view &= '</div>
 				<div>
-					<label>Окончание приёма у врача:</label>';
+					<label>РћРєРѕРЅС‡Р°РЅРёРµ РїСЂРёС‘РјР° Сѓ РІСЂР°С‡Р°:</label>';
 				view &= ' <select name="rpTimeHEnd">';
 					    for ( var x=8; x<=20; x++){
 					     view &= '<option value="#x#" #_DateCompare( x, form.rp_endtime_default, "HH")#>#numberformat(x,"09")#</option>';
@@ -955,7 +955,7 @@ component attributeName='usersGraphicsReception' output='false'{
 
 			view &= '
 				<div>
-					<label for="rp_description"><b>Примечание:</b></label>
+					<label for="rp_description"><b>РџСЂРёРјРµС‡Р°РЅРёРµ:</b></label>
 					<textarea name = "rp_description" rows="6" cols="47" >#form.rp_description#</textarea>';
 
 			if (instance.rpDescription is not ''){
@@ -967,8 +967,8 @@ component attributeName='usersGraphicsReception' output='false'{
 			}
 
 			view &= '</div><div>
-					<input disabled class="g-button g-button-submit" type="submit" name="escape" value="Отмена">
-					<input class="g-button g-button-submit" type="submit" name="editeUserReception" value="Сохранить"> ';
+					<input disabled class="g-button g-button-submit" type="submit" name="escape" value="РћС‚РјРµРЅР°">
+					<input class="g-button g-button-submit" type="submit" name="editeUserReception" value="РЎРѕС…СЂР°РЅРёС‚СЊ"> ';
 
 			if (instance.message is not ''){
 				view &= '<div id="mes" style="color:red;">#instance.message#</div>';
@@ -977,7 +977,7 @@ component attributeName='usersGraphicsReception' output='false'{
 		view &='</div></form>
 			</div></div>';
 
-			// ------------------------------------------------ форма ---------------------------------------------------------------
+			// ------------------------------------------------ С„РѕСЂРјР° ---------------------------------------------------------------
 		return view;
 	}
 
@@ -1052,7 +1052,7 @@ component attributeName='usersGraphicsReception' output='false'{
 
 		var view = '';
 		view &= '<div class="grid_16"><div class="signin-box">
-			<h2>График врача: #qUser.emp_family# #Left(qUser.emp_firstname,1)#.#Left(qUser.emp_lastname,1)# </h2>';
+			<h2>Р“СЂР°С„РёРє РІСЂР°С‡Р°: #qUser.emp_family# #Left(qUser.emp_firstname,1)#.#Left(qUser.emp_lastname,1)# </h2>';
 
 			                date1 = listGetAt(listDateOfWeek,1);
 			                date7 = listGetAt(listDateOfWeek,7);
@@ -1063,7 +1063,7 @@ component attributeName='usersGraphicsReception' output='false'{
 
 					view &=	'<div class="block" style="text-align:center;">
 						<span style="width: 9%; display:inline-block;">
-						<a class="g-button g-button-submit" href="/?page=reception">Назад</a> 
+						<a class="g-button g-button-submit" href="/?page=reception">РќР°Р·Р°Рґ</a> 
 						</span>
 						<span style="width: 90%; display:inline-block;">
 						<a class="g-button1 g-button-submit" href="/?page=reception&section=userGraphicsReception&action=view&userid=#arguments.userid#&date=#dateFormat(dateAdd("ww", -1, currentDate),"YYYY.MM.DD")#"><</a> 
@@ -1106,9 +1106,9 @@ component attributeName='usersGraphicsReception' output='false'{
 											instance.mass1 = arrayNew(1);
 											_start_time = DateAdd("h", -8, "#userGraphic.gr_starttime#");
 											_minutes = hour(_start_time)*60 + minute(_start_time);
-											_block1(0,_minutes,'start','Н-#TimeFormat(userGraphic.gr_starttime, "HH:mm")#','','','');
+											_block1(0,_minutes,'start','Рќ-#TimeFormat(userGraphic.gr_starttime, "HH:mm")#','','','');
 
-											// считываем рассписание
+											// СЃС‡РёС‚С‹РІР°РµРј СЂР°СЃСЃРїРёСЃР°РЅРёРµ
 											userReception = factoryService.getService('userReceptionAPI').getUserReception( arguments.userid, _Date);
 											if (userReception.recordcount NEQ 0){
 												for (var i=1; i<=userReception.recordcount; i++){
@@ -1119,7 +1119,7 @@ component attributeName='usersGraphicsReception' output='false'{
 													patient = '';
 													dms = '';
 													if ( userReception.pt_id[i] is not '') {
-														//запрос к базе
+														//Р·Р°РїСЂРѕСЃ Рє Р±Р°Р·Рµ
 														request.factoryService.getService('patientsAPI').setPatient(userReception.pt_id[i]);
 														qPatient = factoryService.getService('patientsAPI').getPatient();
 														patient_dms = factoryService.getService('patientsAPI').getPatientDMS('',userReception.pt_id[i]);
@@ -1142,7 +1142,7 @@ component attributeName='usersGraphicsReception' output='false'{
 
 											_end_time = DateAdd("h", -8, "#userGraphic.gr_endtime#");
 											_minutes = hour(_end_time)*60 + minute(_end_time);
-											_block1(_minutes,720,'end','К-#TimeFormat(userGraphic.gr_endtime, "HH:mm")#','','','');
+											_block1(_minutes,720,'end','Рљ-#TimeFormat(userGraphic.gr_endtime, "HH:mm")#','','','');
 
 											instance.mass1 = normalMassive(instance.mass1, arguments.userid, dateFormat(_Date,"YYYY.MM.DD") );
 
@@ -1203,23 +1203,23 @@ component attributeName='usersGraphicsReception' output='false'{
 
 
 											}else if (userGraphic.gr_type == 2){
-												view &= 'Выходной день.';
+												view &= 'Р’С‹С…РѕРґРЅРѕР№ РґРµРЅСЊ.';
 
 											}else if (userGraphic.gr_type == 3){
-												view &= 'В отпуске.';
+												view &= 'Р’ РѕС‚РїСѓСЃРєРµ.';
 
 											}else if (userGraphic.gr_type == 4){
-												view &= 'На больничном.';
+												view &= 'РќР° Р±РѕР»СЊРЅРёС‡РЅРѕРј.';
 											}
 
 										}else{
-											view &= '<font color="red">расписание не задано</font>';
+											view &= '<font color="red">СЂР°СЃРїРёСЃР°РЅРёРµ РЅРµ Р·Р°РґР°РЅРѕ</font>';
 										}
 
 										if (userGraphic.gr_type == 1){
-											//view &= '<a href="/?page=reception&section=reception&action=add&userid=#arguments.userid#&date=#dateFormat(currentDate,"YYYY.MM.DD")#">записать</a>';
+											//view &= '<a href="/?page=reception&section=reception&action=add&userid=#arguments.userid#&date=#dateFormat(currentDate,"YYYY.MM.DD")#">Р·Р°РїРёСЃР°С‚СЊ</a>';
 										}else{
-											//view &= '&nbsp;записать';
+											//view &= '&nbsp;Р·Р°РїРёСЃР°С‚СЊ';
 										}
 									view &= '</td>';
 
@@ -1244,7 +1244,7 @@ component attributeName='usersGraphicsReception' output='false'{
 		userList = factoryService.getService('usersAPI').getUserList();
 		/////////////////////////////////////////////////////////////////////////////////////////
 
-		// обработчик что не false
+		// РѕР±СЂР°Р±РѕС‚С‡РёРє С‡С‚Рѕ РЅРµ false
 		sortBy = arguments.sortBy;
 		if (sortBy == false){
 			if (isDefined('client.sortby_')){
@@ -1281,7 +1281,7 @@ component attributeName='usersGraphicsReception' output='false'{
 
 		DayInMonth = DaysInMonth(currentDate);
 
-			// создаём интервал дат
+			// СЃРѕР·РґР°С‘Рј РёРЅС‚РµСЂРІР°Р» РґР°С‚
 			firstDayInMonth = CreateDate( currentYear, currentMonth, 1);
 			lastDayInMonth = CreateDate( currentYear, currentMonth, DayInMonth);
 			userGraphics = factoryService.getService('usersGraphicsAPI');
@@ -1291,11 +1291,11 @@ component attributeName='usersGraphicsReception' output='false'{
 				
 		var view = '';
 		view &= '<div class="grid_16"><div class="signin-box">
-			<h2>График врачей:</h2>';
+			<h2>Р“СЂР°С„РёРє РІСЂР°С‡РµР№:</h2>';
 
 			view &= '<table width="100%" cellspacing="0">
 				<tr>
-					<td class="block1" style="color:grey;vertical-align:middle;" rowspan="2">Врачи: <a href="/?page=reception&sortBy=all">all</a> \ <a href="/?page=reception&sortBy=works">wr</a> </td>
+					<td class="block1" style="color:grey;vertical-align:middle;" rowspan="2">Р’СЂР°С‡Рё: <a href="/?page=reception&sortBy=all">all</a> \ <a href="/?page=reception&sortBy=works">wr</a> </td>
 					<td class="block" colspan="12" width="100%">
 						<span style="width:14%; display:inline-block; text-align:left;"><input class="date" type="text" value="#dateFormat( currentDate,'YYYY.MM.DD')#" size="6" maxlength="10"></span>
 						<span style="width: 75%; display:inline-block;">
@@ -1304,7 +1304,7 @@ component attributeName='usersGraphicsReception' output='false'{
 						<a class="g-button1 g-button-submit" href="/?page=reception&date=#dateFormat(dateAdd('d', +1, currentDate),'YYYY.MM.DD')#">></a>
 						</span>
 					        <span style="width: 9%; display:inline-block; text-align:right;">
-							<a class="g-button1 g-button-submit" href="/?page=reception&date=#dateFormat(now(),'YYYY.MM.DD')#">Сегодня</a>
+							<a class="g-button1 g-button-submit" href="/?page=reception&date=#dateFormat(now(),'YYYY.MM.DD')#">РЎРµРіРѕРґРЅСЏ</a>
 						</span>
 					</td>
 					<td>-</td>
@@ -1326,7 +1326,7 @@ component attributeName='usersGraphicsReception' output='false'{
 				//writeDump(userGraphic);
 				//writeDump(userGraphic.recordcount);
 					view &= '<tr class="tr_hover">';
-					// обработчик all
+					// РѕР±СЂР°Р±РѕС‚С‡РёРє all
 					if (sortBy == 'all'){
 						view &= '<td class="block1" style="text-align:left;" nowrap>&nbsp;<b><a href="/?page=reception&section=userGraphicsReception&action=view&userid=#userList.user_id[x]#">#userList.emp_family[x]# #Left(userList.emp_firstname[x],1)#.#Left(userList.emp_lastname[x],1)#.</a></b> <img style="vertical-align:top;" src="img/comment.png" title="#userList.emp_type[x]#">&nbsp;</td>';
 					}
@@ -1341,10 +1341,10 @@ component attributeName='usersGraphicsReception' output='false'{
 							_minutes = hour(_start_time)*60 + minute(_start_time);
 							//persent = _minutes/30*4.1666;
 							//if (0 NEQ _minutes){
-								_block1(0,_minutes,'start','Н-#TimeFormat(userGraphic.gr_starttime, "HH:mm")#','','','');
+								_block1(0,_minutes,'start','Рќ-#TimeFormat(userGraphic.gr_starttime, "HH:mm")#','','','');
 							//}
 
-							// считываем рассписание
+							// СЃС‡РёС‚С‹РІР°РµРј СЂР°СЃСЃРїРёСЃР°РЅРёРµ
 							userReception = factoryService.getService('userReceptionAPI').getUserReception( userList.user_id[x], _Date);
 							//writeDump(userReception);
 
@@ -1357,7 +1357,7 @@ component attributeName='usersGraphicsReception' output='false'{
 									patient = '';
 									dms = '';
 									if ( userReception.pt_id[i] is not '') {
-										//запрос к базе
+										//Р·Р°РїСЂРѕСЃ Рє Р±Р°Р·Рµ
 										request.factoryService.getService('patientsAPI').setPatient(userReception.pt_id[i]);
 										qPatient = factoryService.getService('patientsAPI').getPatient();
 										patient_dms = factoryService.getService('patientsAPI').getPatientDMS('',userReception.pt_id[i]);
@@ -1382,7 +1382,7 @@ component attributeName='usersGraphicsReception' output='false'{
 							_end_time = DateAdd("h", -8, "#userGraphic.gr_endtime#");
 							_minutes = hour(_end_time)*60 + minute(_end_time);
 							//if (_minutes NEQ 720){
-								_block1(_minutes,720,'end','К-#TimeFormat(userGraphic.gr_endtime, "HH:mm")#','','','');
+								_block1(_minutes,720,'end','Рљ-#TimeFormat(userGraphic.gr_endtime, "HH:mm")#','','','');
 							//}
 
 							//writeDump(instance.mass);
@@ -1450,36 +1450,36 @@ component attributeName='usersGraphicsReception' output='false'{
 
 
 						}else if (userGraphic.gr_type == 2){
-							// обработчик all
+							// РѕР±СЂР°Р±РѕС‚С‡РёРє all
 							if (sortBy == 'all'){
-							view &= '<td class="block1" style="background: lightgrey;" colspan="12">Выходной день.</td>';
+							view &= '<td class="block1" style="background: lightgrey;" colspan="12">Р’С‹С…РѕРґРЅРѕР№ РґРµРЅСЊ.</td>';
 							}
 
 						}else if (userGraphic.gr_type == 3){
-							// обработчик all
+							// РѕР±СЂР°Р±РѕС‚С‡РёРє all
 							if (sortBy == 'all'){
-							view &= '<td class="block1" style="background: lightgrey;" colspan="12">В отпуске.</td>';
+							view &= '<td class="block1" style="background: lightgrey;" colspan="12">Р’ РѕС‚РїСѓСЃРєРµ.</td>';
 							}
 
 						}else if (userGraphic.gr_type == 4){
-							// обработчик all
+							// РѕР±СЂР°Р±РѕС‚С‡РёРє all
 							if (sortBy == 'all'){
-							view &= '<td class="block1" style="background: lightgrey;" colspan="12">На больничном.</td>';
+							view &= '<td class="block1" style="background: lightgrey;" colspan="12">РќР° Р±РѕР»СЊРЅРёС‡РЅРѕРј.</td>';
 							}
 						}
 
 					}else{
-						// обработчик all
+						// РѕР±СЂР°Р±РѕС‚С‡РёРє all
 						if (sortBy == 'all'){
-						view &= '<td class="block1" style="background: lightgrey;" colspan="12"><font color="red">расписание на задано</font></td>';
+						view &= '<td class="block1" style="background: lightgrey;" colspan="12"><font color="red">СЂР°СЃРїРёСЃР°РЅРёРµ РЅР° Р·Р°РґР°РЅРѕ</font></td>';
 						}
 					}
 
 					if (userGraphic.gr_type == 1){
-						view &= '<td class="block1">&nbsp;<a href="/?page=reception&section=reception&action=add&userid=#userList.user_id[x]#&date=#dateFormat(currentDate,"YYYY.MM.DD")#">записать</a>&nbsp;</td>';
+						view &= '<td class="block1">&nbsp;<a href="/?page=reception&section=reception&action=add&userid=#userList.user_id[x]#&date=#dateFormat(currentDate,"YYYY.MM.DD")#">Р·Р°РїРёСЃР°С‚СЊ</a>&nbsp;</td>';
 					}else{
 						if (sortBy == 'all'){
-						view &= '<td>&nbsp;записать</td>';
+						view &= '<td>&nbsp;Р·Р°РїРёСЃР°С‚СЊ</td>';
 						}
 					}
 					view &= '</tr>';
@@ -1581,13 +1581,13 @@ component attributeName='usersGraphicsReception' output='false'{
 	function status(status){
 		status = arguments.status;
 		if ( status == 1 ){
-			return 'Приём не начался.';
+			return 'РџСЂРёС‘Рј РЅРµ РЅР°С‡Р°Р»СЃСЏ.';
 
 		}else if ( status == 2 ){
-			return 'Идёт приём.';
+			return 'РРґС‘С‚ РїСЂРёС‘Рј.';
 
 		}else if ( status == 3 ){
-			return 'Приём окончен.';
+			return 'РџСЂРёС‘Рј РѕРєРѕРЅС‡РµРЅ.';
 
 		}
 

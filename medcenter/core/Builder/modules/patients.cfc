@@ -1,9 +1,9 @@
 /* 
-	Виджет список пациентов --
+	Р’РёРґР¶РµС‚ СЃРїРёСЃРѕРє РїР°С†РёРµРЅС‚РѕРІ --
 */
 
 component attributeName='userlist' output='false'{
-	// псевдо конструктор
+	// РїСЃРµРІРґРѕ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
 	factoryService = request.factoryService;
 
 	instance.view = '';
@@ -155,7 +155,7 @@ component attributeName='userlist' output='false'{
 					updateAnamnezFormHandler();
 					instance.view = updateAnamnezForm(patientid);
 				}else{
-					instance.view = 'Доступ закрыт!';
+					instance.view = 'Р”РѕСЃС‚СѓРї Р·Р°РєСЂС‹С‚!';
 				}
 			}
 
@@ -206,10 +206,10 @@ component attributeName='userlist' output='false'{
 
 
 	private function addPatientFormHandler(){
-		// --- обработчик формы---
+		// --- РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹---
 		if ( isdefined('form.addPatient') ){
 
-		// собрать дату из формы
+		// СЃРѕР±СЂР°С‚СЊ РґР°С‚Сѓ РёР· С„РѕСЂРјС‹
 		form.pt_dob = '#form.pt_dobYear#-#form.pt_dobMonth#-#form.pt_dobDay#';
 		var patientsAPI = factoryService.getService('patientsAPI');
 		  result = patientsAPI.addPatient( #form.pt_family#, #form.pt_firstname#, #form.pt_lastname#, #form.pt_gender#, #form.pt_dob#, #form.pt_status# );
@@ -218,7 +218,7 @@ component attributeName='userlist' output='false'{
 			if ( result.RETVAL is 1 ){
 				factoryService.getService('redirector').redirect('#request.CRequest.updateURL(false,"/?page=patients&section=patient&action=view&patientid=#result.RETDESC#")#');
 			}else{
-				// --- пробная версия
+				// --- РїСЂРѕР±РЅР°СЏ РІРµСЂСЃРёСЏ
 				if ( result.RETDESC is '') {
 					instance.message = '';
 				} else {
@@ -268,13 +268,13 @@ component attributeName='userlist' output='false'{
 
 			}
 		}
-		// --- обработчик формы---
+		// --- РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹---
 	}
 
 	function addPatientForm(){
-		param name='form.pt_family' default='';		// фамилия
-		param name='form.pt_firstname' default='';	// Имя
-		param name='form.pt_lastname' default='';	// Отчество
+		param name='form.pt_family' default='';		// С„Р°РјРёР»РёСЏ
+		param name='form.pt_firstname' default='';	// РРјСЏ
+		param name='form.pt_lastname' default='';	// РћС‚С‡РµСЃС‚РІРѕ
 		param name='form.pt_gender' default='';
 		param name='form.pt_dob' default='';
 		param name='form.pt_dobYear' default='';
@@ -282,17 +282,17 @@ component attributeName='userlist' output='false'{
 		param name='form.pt_dobDay' default='';
 		param name='form.pt_status' default='1';
 
-		// ---------------------------------------------------------- форма ---------------------------------------------------------------
+		// ---------------------------------------------------------- С„РѕСЂРјР° ---------------------------------------------------------------
 		action = '#request.CRequest.updateURL(false,"/?page=patients&section=patient&action=add")#';
 
 		view = '';
 		view &= '<div class="grid_8">
 			<div class="signin-box">
-			<a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,"/?page=patients")#">Назад</a><br><br>
-			<h2>Добавление нового пациента:</h2>
+			<a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,"/?page=patients")#">РќР°Р·Р°Рґ</a><br><br>
+			<h2>Р”РѕР±Р°РІР»РµРЅРёРµ РЅРѕРІРѕРіРѕ РїР°С†РёРµРЅС‚Р°:</h2>
 			<form id="addpatient" name="addpatient" action="#action#" method="post">
 				<div>
-					<label for="ptFamily"><strong>Фамилия</strong></label>
+					<label for="ptFamily"><strong>Р¤Р°РјРёР»РёСЏ</strong></label>
 					<input type="text" id="ptFamily" name="pt_family" value="#form.pt_family#" maxlength="50" size="20">';
 
 		if (instance.patientFamily is not ''){
@@ -301,7 +301,7 @@ component attributeName='userlist' output='false'{
 
 		view &= '	</div>
 				<div>
-					<label><strong>Имя</strong></label>
+					<label><strong>РРјСЏ</strong></label>
 					<input type="text" id="ptFirstname" name="pt_firstname" value="#form.pt_firstname#" maxlength="50" size="20">';
    		if (instance.patientFirstname is not ''){
 		view &= '		<label for="ptFirstname" class="error" generated="1">#instance.patientFirstname#</label>';
@@ -309,7 +309,7 @@ component attributeName='userlist' output='false'{
 
 		view &= '	</div>
 				<div>
-					<label>Отчество:</label>
+					<label>РћС‚С‡РµСЃС‚РІРѕ:</label>
 					<input type="text" id="ptLastname" name="pt_lastname" value="#form.pt_lastname#" maxlength="50" size="20">';
    		if (instance.patientLastname is not ''){
 		view &= '		<label for="ptLastname" class="error" generated="2">#instance.patientLastname#</label>';
@@ -318,10 +318,10 @@ component attributeName='userlist' output='false'{
 
 		view &= '	</div>
 				<div>
-					<label for="pt_gender"><b>Пол пациента:</b></label>
+					<label for="pt_gender"><b>РџРѕР» РїР°С†РёРµРЅС‚Р°:</b></label>
 					<select name="pt_gender">
-						<option value="Мужской" #checkedSelect("Мужской", form.pt_gender)# >Мужской</option>
-						<option value="Женский" #checkedSelect("Женский", form.pt_gender)# >Женский</option>
+						<option value="РњСѓР¶СЃРєРѕР№" #checkedSelect("РњСѓР¶СЃРєРѕР№", form.pt_gender)# >РњСѓР¶СЃРєРѕР№</option>
+						<option value="Р–РµРЅСЃРєРёР№" #checkedSelect("Р–РµРЅСЃРєРёР№", form.pt_gender)# >Р–РµРЅСЃРєРёР№</option>
 					</select>
 				';
 
@@ -331,13 +331,13 @@ component attributeName='userlist' output='false'{
 
 		view &= '	</div>
 				<div>
-					<label for="pt_dob"><b>Дата рождения:</b></label>
+					<label for="pt_dob"><b>Р”Р°С‚Р° СЂРѕР¶РґРµРЅРёСЏ:</b></label>
 
-					<label for="pt_dobDay">День:</label>
+					<label for="pt_dobDay">Р”РµРЅСЊ:</label>
 					<input type="text" id="ptDobDay" name="pt_dobDay" value="#form.pt_dobDay#" maxlength="2" size="2">
-					<label for="pt_dobMonth">Месяц:</label>
+					<label for="pt_dobMonth">РњРµСЃСЏС†:</label>
 					<input type="text" id="ptDobMonth" name="pt_dobMonth" value="#form.pt_dobMonth#" maxlength="2" size="2">
-					<label for="pt_dobYear">Год:</label>
+					<label for="pt_dobYear">Р“РѕРґ:</label>
 					<input type="text" id="ptDobYear" name="pt_dobYear" value="#form.pt_dobYear#" maxlength="4" size="4">
 				';
 
@@ -348,8 +348,8 @@ component attributeName='userlist' output='false'{
 		view &= '	</div><div>
 				<input type="hidden" name="pt_status" value="#form.pt_status#" size = "2" maxlength = "2">
 				<hr>
-				<input disabled class="g-button g-button-submit" type="submit" name="escape" value="Отмена">
-				<input class="g-button g-button-submit" type="submit" name="addPatient" value="Сохранить"> ';
+				<input disabled class="g-button g-button-submit" type="submit" name="escape" value="РћС‚РјРµРЅР°">
+				<input class="g-button g-button-submit" type="submit" name="addPatient" value="РЎРѕС…СЂР°РЅРёС‚СЊ"> ';
 
 		if (instance.chPatient is not ''){
 			view &= '<div id="mes" style="color:red;">#instance.chPatient#</div>';
@@ -362,15 +362,15 @@ component attributeName='userlist' output='false'{
 		view &='</div></form>
 			</div></div>';
 
-			// ------------------------------------------------ форма ---------------------------------------------------------------
+			// ------------------------------------------------ С„РѕСЂРјР° ---------------------------------------------------------------
 		return view;
 	}
 
 	private function updatePatientFormHandler(){
-		// --- обработчик формы---
+		// --- РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹---
 		if ( isdefined('form.updatePatient') ){
 
-		// собрать дату из формы
+		// СЃРѕР±СЂР°С‚СЊ РґР°С‚Сѓ РёР· С„РѕСЂРјС‹
 		form.pt_dob = '#form.pt_dobYear#-#form.pt_dobMonth#-#form.pt_dobDay#';
 		var patientsAPI = factoryService.getService('patientsAPI');
 		  result = patientsAPI.editePatient( #form.pt_id#, #form.pt_family#, #form.pt_firstname#, #form.pt_lastname#, #form.pt_gender#, #form.pt_dob#, #form.pt_status# );
@@ -384,7 +384,7 @@ component attributeName='userlist' output='false'{
 				}
 
 			}else{
-				// --- пробная версия
+				// --- РїСЂРѕР±РЅР°СЏ РІРµСЂСЃРёСЏ
 				if ( result.RETDESC is '') {
 					instance.message = '';
 				} else {
@@ -433,7 +433,7 @@ component attributeName='userlist' output='false'{
 
 			}
 		}
-		// --- обработчик формы---
+		// --- РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹---
 	}
 
 	function updatePatientForm(patientid){
@@ -442,9 +442,9 @@ component attributeName='userlist' output='false'{
 		patient = factoryService.getService( 'patientsAPI' ).getPatient();
 
 		param name='form.pt_id' default='#patient.pt_id#';
-		param name='form.pt_family' default='#patient.pt_family#';		// фамилия
-		param name='form.pt_firstname' default='#patient.pt_firstname#';	// Имя
-		param name='form.pt_lastname' default='#patient.pt_lastname#';	// Отчество
+		param name='form.pt_family' default='#patient.pt_family#';		// С„Р°РјРёР»РёСЏ
+		param name='form.pt_firstname' default='#patient.pt_firstname#';	// РРјСЏ
+		param name='form.pt_lastname' default='#patient.pt_lastname#';	// РћС‚С‡РµСЃС‚РІРѕ
 		param name='form.pt_gender' default='#patient.pt_gender#';
 		param name='form.pt_dob' default='#patient.pt_dob#';
 		param name='form.pt_dobYear' default='#year(patient.pt_dob)#';
@@ -452,22 +452,22 @@ component attributeName='userlist' output='false'{
 		param name='form.pt_dobDay' default='#day(patient.pt_dob)#';
 		param name='form.pt_status' default='#patient.pt_status#';
 
-		// ---------------------------------------------------------- форма ---------------------------------------------------------------
+		// ---------------------------------------------------------- С„РѕСЂРјР° ---------------------------------------------------------------
 		action = '#request.CRequest.updateURL(false,"/?page=patients&section=patient&action=edite&patientid=#arguments.patientid#")#';
 
 		view = '';
 		view &= '<div class="grid_8">
 			<div class="signin-box">
-			<a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,"/?page=patients")#">Назад</a><br><br>
-			<h2>Редактирование пациента:</h2>
+			<a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,"/?page=patients")#">РќР°Р·Р°Рґ</a><br><br>
+			<h2>Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РїР°С†РёРµРЅС‚Р°:</h2>
 			<form id="addpatient" name="addpatient" action="#action#" method="post">
 				<div>
-					<label for="pt_id"><b>ID пациента:</b></label>
+					<label for="pt_id"><b>ID РїР°С†РёРµРЅС‚Р°:</b></label>
 					<input disabled type="text" name="_pt_id" value="#form.pt_id#" size = "2" maxlength = "2">
 					<input type="hidden" name="pt_id" value="#form.pt_id#" size = "2" maxlength = "2">
 				</div>
 				<div>
-					<label for="ptFamily"><strong>Фамилия</strong></label>
+					<label for="ptFamily"><strong>Р¤Р°РјРёР»РёСЏ</strong></label>
 					<input type="text" id="ptFamily" name="pt_family" value="#form.pt_family#" maxlength="50" size="20">';
 
 		if (instance.patientFamily is not ''){
@@ -476,7 +476,7 @@ component attributeName='userlist' output='false'{
 
 		view &= '	</div>
 				<div>
-					<label><strong>Имя</strong></label>
+					<label><strong>РРјСЏ</strong></label>
 					<input type="text" id="ptFirstname" name="pt_firstname" value="#form.pt_firstname#" maxlength="50" size="20">';
    		if (instance.patientFirstname is not ''){
 		view &= '		<label for="ptFirstname" class="error" generated="1">#instance.patientFirstname#</label>';
@@ -484,7 +484,7 @@ component attributeName='userlist' output='false'{
 
 		view &= '	</div>
 				<div>
-					<label>Отчество:</label>
+					<label>РћС‚С‡РµСЃС‚РІРѕ:</label>
 					<input type="text" id="ptLastname" name="pt_lastname" value="#form.pt_lastname#" maxlength="50" size="20">';
    		if (instance.patientLastname is not ''){
 		view &= '		<label for="ptLastname" class="error" generated="2">#instance.patientLastname#</label>';
@@ -493,10 +493,10 @@ component attributeName='userlist' output='false'{
 
 		view &= '	</div>
 				<div>
-					<label for="pt_gender"><b>Пол пациента:</b></label>
+					<label for="pt_gender"><b>РџРѕР» РїР°С†РёРµРЅС‚Р°:</b></label>
 					<select name="pt_gender">
-						<option value="Мужской" #checkedSelect("Мужской", form.pt_gender)# >Мужской</option>
-						<option value="Женский" #checkedSelect("Женский", form.pt_gender)# >Женский</option>
+						<option value="РњСѓР¶СЃРєРѕР№" #checkedSelect("РњСѓР¶СЃРєРѕР№", form.pt_gender)# >РњСѓР¶СЃРєРѕР№</option>
+						<option value="Р–РµРЅСЃРєРёР№" #checkedSelect("Р–РµРЅСЃРєРёР№", form.pt_gender)# >Р–РµРЅСЃРєРёР№</option>
 					</select>
 				';
 
@@ -506,12 +506,12 @@ component attributeName='userlist' output='false'{
 
 		view &= '	</div>
 				<div>
-					<label for="pt_dob"><b>Дата рождения:</b></label>
-					<label for="pt_dobDay">День:</label>
+					<label for="pt_dob"><b>Р”Р°С‚Р° СЂРѕР¶РґРµРЅРёСЏ:</b></label>
+					<label for="pt_dobDay">Р”РµРЅСЊ:</label>
 					<input type="text" id="ptDobDay" name="pt_dobDay" value="#form.pt_dobDay#" maxlength="2" size="2">
-					<label for="pt_dobMonth">Месяц:</label>
+					<label for="pt_dobMonth">РњРµСЃСЏС†:</label>
 					<input type="text" id="ptDobMonth" name="pt_dobMonth" value="#form.pt_dobMonth#" maxlength="2" size="2">
-					<label for="pt_dobYear">Год:</label>
+					<label for="pt_dobYear">Р“РѕРґ:</label>
 					<input type="text" id="ptDobYear" name="pt_dobYear" value="#form.pt_dobYear#" maxlength="4" size="4">
 				';
 
@@ -522,8 +522,8 @@ component attributeName='userlist' output='false'{
 		view &= '	</div><div>
 				<input type="hidden" name="pt_status" value="#form.pt_status#" size = "2" maxlength = "2">
 				<hr>
-				<input disabled class="g-button g-button-submit" type="submit" name="escape" value="Отмена">
-				<input class="g-button g-button-submit" type="submit" name="updatePatient" value="Сохранить"> ';
+				<input disabled class="g-button g-button-submit" type="submit" name="escape" value="РћС‚РјРµРЅР°">
+				<input class="g-button g-button-submit" type="submit" name="updatePatient" value="РЎРѕС…СЂР°РЅРёС‚СЊ"> ';
 
 		if (instance.chPatient is not ''){
 			view &= '<div id="mes" style="color:red;">#instance.chPatient#</div>';
@@ -536,7 +536,7 @@ component attributeName='userlist' output='false'{
 		view &='</div></form>
 			</div></div>';
 
-			// ------------------------------------------------ форма ---------------------------------------------------------------
+			// ------------------------------------------------ С„РѕСЂРјР° ---------------------------------------------------------------
 		return view;
 	}
 
@@ -565,46 +565,46 @@ component attributeName='userlist' output='false'{
 
 		var view = '';
 		view &= '<div class="grid_8"><div class="signin-box">
-				<div> <a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,"/?page=patients")#">Назад</a></div>
-				<h2>Пациент: #patient.pt_family#</b> #patient.pt_firstname# #patient.pt_lastname# </h2>
+				<div> <a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,"/?page=patients")#">РќР°Р·Р°Рґ</a></div>
+				<h2>РџР°С†РёРµРЅС‚: #patient.pt_family#</b> #patient.pt_firstname# #patient.pt_lastname# </h2>
 				<fieldset>
-					<legend>Основная информация</legend>
+					<legend>РћСЃРЅРѕРІРЅР°СЏ РёРЅС„РѕСЂРјР°С†РёСЏ</legend>
 					<p>
-					Пол: <b>#patient.pt_gender#</b><br>
-					Дата рождения: <b>#_DateFormate(patient.pt_dob)#</b><br>
-					Дата добавления: <b>#_DateFormate(patient.pt_dateadd)#</b><br>
-					<a href="/?page=patients&section=patient&action=edite&patientid=#patient.pt_id#">Редактировать</a>
+					РџРѕР»: <b>#patient.pt_gender#</b><br>
+					Р”Р°С‚Р° СЂРѕР¶РґРµРЅРёСЏ: <b>#_DateFormate(patient.pt_dob)#</b><br>
+					Р”Р°С‚Р° РґРѕР±Р°РІР»РµРЅРёСЏ: <b>#_DateFormate(patient.pt_dateadd)#</b><br>
+					<a href="/?page=patients&section=patient&action=edite&patientid=#patient.pt_id#">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a>
 					</p>
 				</fieldset>
 
 				<fieldset>
-					<legend>Контакты:</legend>';
+					<legend>РљРѕРЅС‚Р°РєС‚С‹:</legend>';
 
 					if (patient_cnt.recordcount == 0){
-						view &= '<font color="red">Нет контактных данных.</font><br>';
+						view &= '<font color="red">РќРµС‚ РєРѕРЅС‚Р°РєС‚РЅС‹С… РґР°РЅРЅС‹С….</font><br>';
 					}else{
 						for (var x=1; x<=patient_cnt.recordcount; x++ ){
 							view &= '#patient_cnt.cnt_type_description[x]#: <b>#patient_cnt.ptc_data[x]#</b> 
-								<a href="/?page=patients&section=contact&action=edite&ptcid=#patient_cnt.ptc_id[x]#">Редактировать</a> | 
-								<a href="/?page=patients&section=contact&action=delete&ptcid=#patient_cnt.ptc_id[x]#">Удалить</a><br>';
+								<a href="/?page=patients&section=contact&action=edite&ptcid=#patient_cnt.ptc_id[x]#">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a> | 
+								<a href="/?page=patients&section=contact&action=delete&ptcid=#patient_cnt.ptc_id[x]#">РЈРґР°Р»РёС‚СЊ</a><br>';
 						}
 					}
 
-					view &= '<a href="/?page=patients&section=contact&action=add&patientid=#patient.pt_id#">+Добавить контакт</a>
+					view &= '<a href="/?page=patients&section=contact&action=add&patientid=#patient.pt_id#">+Р”РѕР±Р°РІРёС‚СЊ РєРѕРЅС‚Р°РєС‚</a>
 				</fieldset>';
 ///xxx
 				view &= '<fieldset>
-					<legend>ДМС:</legend>';
+					<legend>Р”РњРЎ:</legend>';
 					if (patient_dms.recordcount == 0){
-						view &= '<font color="red">Нет данных.</font><br>
-						<a href="/?page=patients&section=dms&action=add&patientid=#patient.pt_id#">+Добавить информацию о ДМС</a>';
+						view &= '<font color="red">РќРµС‚ РґР°РЅРЅС‹С….</font><br>
+						<a href="/?page=patients&section=dms&action=add&patientid=#patient.pt_id#">+Р”РѕР±Р°РІРёС‚СЊ РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ Р”РњРЎ</a>';
 					}else{
 						for (var x=1; x<=patient_dms.recordcount; x++ ){
-							view &= 'Номер полиса: <b>#patient_dms.ptdms_polis_number[x]#</b><br>
-								Примечание: <b>#patient_dms.ptdms_description[x]#</b><br>
-								Компания ДМС: <b>#patient_dms.cdms_name[x]#</b><br>
-								<a href="/?page=patients&section=dms&action=edite&ptdmsid=#patient_dms.ptdms_id[x]#">Редактировать</a> | 
-								<a href="/?page=patients&section=dms&action=delete&ptdmsid=#patient_dms.ptdms_id[x]#">Удалить</a><br>';
+							view &= 'РќРѕРјРµСЂ РїРѕР»РёСЃР°: <b>#patient_dms.ptdms_polis_number[x]#</b><br>
+								РџСЂРёРјРµС‡Р°РЅРёРµ: <b>#patient_dms.ptdms_description[x]#</b><br>
+								РљРѕРјРїР°РЅРёСЏ Р”РњРЎ: <b>#patient_dms.cdms_name[x]#</b><br>
+								<a href="/?page=patients&section=dms&action=edite&ptdmsid=#patient_dms.ptdms_id[x]#">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a> | 
+								<a href="/?page=patients&section=dms&action=delete&ptdmsid=#patient_dms.ptdms_id[x]#">РЈРґР°Р»РёС‚СЊ</a><br>';
 						}
 					}
 
@@ -612,44 +612,44 @@ component attributeName='userlist' output='false'{
 
 				
        				view &= '<fieldset>
-					<legend>Документы:</legend> 
+					<legend>Р”РѕРєСѓРјРµРЅС‚С‹:</legend> 
 					<p>';
 					if (patient_doc.recordcount == 0){
-						view &= '<font color="red">Нет данных.</font><br>';
-						view &= '<a href="/?page=patients&section=document&action=add&patientid=#patient.pt_id#">+Добавить</a>';
+						view &= '<font color="red">РќРµС‚ РґР°РЅРЅС‹С….</font><br>';
+						view &= '<a href="/?page=patients&section=document&action=add&patientid=#patient.pt_id#">+Р”РѕР±Р°РІРёС‚СЊ</a>';
 					}else{
-						view &= 'Документ: <b>#patient_doc.ptd_document#</b><br>
-							Cерия-номер:<b>#patient_doc.ptd_number#</b><br> 
-							Паспорт выдан: <b>#patient_doc.ptd_issued#</b><br>
-							Дата выдачи: <b>#_DateFormate(patient_doc.ptd_date)#</b><br>
-							Код подразделения: <b>#patient_doc.ptd_sc#</b>
-							<a href="/?page=patients&section=document&action=edite&ptdID=#patient_doc.ptd_id#">Редактировать</a> | <a href="/?page=patients&section=document&action=delete">Удалить</a><br>';
+						view &= 'Р”РѕРєСѓРјРµРЅС‚: <b>#patient_doc.ptd_document#</b><br>
+							CРµСЂРёСЏ-РЅРѕРјРµСЂ:<b>#patient_doc.ptd_number#</b><br> 
+							РџР°СЃРїРѕСЂС‚ РІС‹РґР°РЅ: <b>#patient_doc.ptd_issued#</b><br>
+							Р”Р°С‚Р° РІС‹РґР°С‡Рё: <b>#_DateFormate(patient_doc.ptd_date)#</b><br>
+							РљРѕРґ РїРѕРґСЂР°Р·РґРµР»РµРЅРёСЏ: <b>#patient_doc.ptd_sc#</b>
+							<a href="/?page=patients&section=document&action=edite&ptdID=#patient_doc.ptd_id#">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a> | <a href="/?page=patients&section=document&action=delete">РЈРґР°Р»РёС‚СЊ</a><br>';
 					}
 			
 		view &='	</p>
 				</fieldset>
 
 				<fieldset>
-					<legend>Адреса:</legend>
+					<legend>РђРґСЂРµСЃР°:</legend>
 						<p>';
 					if (patient_add.recordcount == 0){
-						view &= '<font color="red">Нет данных.</font><br>';
-						view &= '<a href="/?page=patients&section=address&action=add&patientid=#patient.pt_id#">+Добавить</a>';
+						view &= '<font color="red">РќРµС‚ РґР°РЅРЅС‹С….</font><br>';
+						view &= '<a href="/?page=patients&section=address&action=add&patientid=#patient.pt_id#">+Р”РѕР±Р°РІРёС‚СЊ</a>';
 
 					}else{
 						for (var x=1; x<=patient_add.recordcount; x++){
 							view &= '
-								Адрес #x#:<br>
-								Страна: <b>#patient_add.pta_country#</b><br>
-								Регион\область:<b>#patient_add.pta_region#</b><br>
-								Индекс:<b>#patient_add.pta_index#</b><br>
-								Город:<b>#patient_add.pta_city#</b><br>
-								Населённый пункт:<b>#patient_add.pta_locality#</b><br>
-								Улица:<b>#patient_add.pta_street#</b><br>
-								Дом:<b>#patient_add.pta_house#</b><br>
-								Корпус:<b>#patient_add.pta_building#</b><br>
-								Квартира:<b>#patient_add.pta_flat#</b>
-								<a href="/?page=patients&section=address&action=edite&ptaID=#patient_add.pta_id#">Редактировать</a> | <a href="/?page=patients&section=address&action=delete">Удалить</a><br>';
+								РђРґСЂРµСЃ #x#:<br>
+								РЎС‚СЂР°РЅР°: <b>#patient_add.pta_country#</b><br>
+								Р РµРіРёРѕРЅ\РѕР±Р»Р°СЃС‚СЊ:<b>#patient_add.pta_region#</b><br>
+								РРЅРґРµРєСЃ:<b>#patient_add.pta_index#</b><br>
+								Р“РѕСЂРѕРґ:<b>#patient_add.pta_city#</b><br>
+								РќР°СЃРµР»С‘РЅРЅС‹Р№ РїСѓРЅРєС‚:<b>#patient_add.pta_locality#</b><br>
+								РЈР»РёС†Р°:<b>#patient_add.pta_street#</b><br>
+								Р”РѕРј:<b>#patient_add.pta_house#</b><br>
+								РљРѕСЂРїСѓСЃ:<b>#patient_add.pta_building#</b><br>
+								РљРІР°СЂС‚РёСЂР°:<b>#patient_add.pta_flat#</b>
+								<a href="/?page=patients&section=address&action=edite&ptaID=#patient_add.pta_id#">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a> | <a href="/?page=patients&section=address&action=delete">РЈРґР°Р»РёС‚СЊ</a><br>';
 						}
 					}
 
@@ -665,7 +665,7 @@ component attributeName='userlist' output='false'{
 					rbac = request.RBAC;
 					if ( rbac.CheckAccess('anamnez','read') ){
 					view &= '<fieldset>
-						<legend>АНАМНЕЗ ЖИЗНИ:</legend> 
+						<legend>РђРќРђРњРќР•Р— Р–РР—РќР:</legend> 
 						<p>';
 						if ( patient.pt_anamnez != '' ){
 							anamnez = DeserializeJSON( patient.pt_anamnez );
@@ -678,29 +678,29 @@ component attributeName='userlist' output='false'{
 							}
 
 						}else{
-							view &= 'нет данных <br>';
+							view &= 'РЅРµС‚ РґР°РЅРЅС‹С… <br>';
 						}
 
-						view &= '<a href="/?page=patients&section=anamnez&action=edite&patientid=#patientid#">Редактировать.</a></p>';
+						view &= '<a href="/?page=patients&section=anamnez&action=edite&patientid=#patientid#">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ.</a></p>';
 		                                view &= '</fieldset>';
 					}
 
 				
 
 		view &= '	<fieldset>
-					<legend>Записи пациента к врачам:</legend>';
+					<legend>Р—Р°РїРёСЃРё РїР°С†РёРµРЅС‚Р° Рє РІСЂР°С‡Р°Рј:</legend>';
 
 		for (var x=1; x<=patient_reception.recordcount; x++ ){
 			var num = patient_reception.rp_status[x];
 			if (num == 1){
 				class = 'span1';
-				title = 'Приём не начался.';
+				title = 'РџСЂРёС‘Рј РЅРµ РЅР°С‡Р°Р»СЃСЏ.';
 			}else if(num == 2){
 				class = 'span2';
-				title = 'Идёт приём у врача';
+				title = 'РРґС‘С‚ РїСЂРёС‘Рј Сѓ РІСЂР°С‡Р°';
 			}else if(num == 3){
 				class = 'span3';
-				title = 'Приём окончен.';
+				title = 'РџСЂРёС‘Рј РѕРєРѕРЅС‡РµРЅ.';
 			}
 			qUser = factoryService.getService( 'authorization' ).getUser( patient_reception.user_id[x] );
 			rbac = request.RBAC;
@@ -718,14 +718,14 @@ component attributeName='userlist' output='false'{
 					view &= '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- #_qRServices.sv_name[y]# ';
 					if ( _qRServices.pls_shablon[y] != ''){
 						if( patient_reception.rp_status[x] >= 2 AND patient_reception.pt_id[x] != ''){
-							view &= '<a href="/?page=cabinet&section=document&svid=#_qRServices.sv_id[y]#" target="_blank"><img src = "img/pdf1.png" align = "absmiddle" title="Открыть документ"></a>';
+							view &= '<a href="/?page=cabinet&section=document&svid=#_qRServices.sv_id[y]#" target="_blank"><img src = "img/pdf1.png" align = "absmiddle" title="РћС‚РєСЂС‹С‚СЊ РґРѕРєСѓРјРµРЅС‚"></a>';
 						}
 					}
 					view &= '<br>';
 				}
 				view &= '<br>';
 			}else{
-				view &= '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Нет услуг!<br><br>';
+				view &= '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- РќРµС‚ СѓСЃР»СѓРі!<br><br>';
 			}
 		}
 
@@ -756,31 +756,31 @@ component attributeName='userlist' output='false'{
 		
 		var view = '';
 		view &= '<div class="grid_16"><div class="signin-box">
-			<h2>Пациенты:</h2>';
+			<h2>РџР°С†РёРµРЅС‚С‹:</h2>';
 			view &= '<table class="td_head" width="100%">
 						<tr>
 							<td style="text-align:left;" colspan="9">
 							<form name="" action="#request.CRequest.updateURL(false,"/?page=patients")#" method="post">
-								Фамилия: <input type="text" name="pt_family" value="#form.pt_family#" size="20" maxlength="20">
-								<input class="g-button g-button-submit" type="submit" name="Search" value="Найти">
+								Р¤Р°РјРёР»РёСЏ: <input type="text" name="pt_family" value="#form.pt_family#" size="20" maxlength="20">
+								<input class="g-button g-button-submit" type="submit" name="Search" value="РќР°Р№С‚Рё">
 							</form>
 							</td>
 						</tr>
 
 						<tr>
-							<td style="text-align:right;" colspan="9"><a class="g-button g-button-submit" href="/?page=patients&section=patient&action=add">+Добавить пациента</a></td>
+							<td style="text-align:right;" colspan="9"><a class="g-button g-button-submit" href="/?page=patients&section=patient&action=add">+Р”РѕР±Р°РІРёС‚СЊ РїР°С†РёРµРЅС‚Р°</a></td>
 						</tr>
 
 						<tr style="color:grey;">
-							<th>№</th> 
-							<th>Ф.И.О</th>
-							<th title="Кол-во записей к врачу">-</th>
-							<th title="Страховой пациент или нет">-</th>
+							<th>в„–</th> 
+							<th>Р¤.Р.Рћ</th>
+							<th title="РљРѕР»-РІРѕ Р·Р°РїРёСЃРµР№ Рє РІСЂР°С‡Сѓ">-</th>
+							<th title="РЎС‚СЂР°С…РѕРІРѕР№ РїР°С†РёРµРЅС‚ РёР»Рё РЅРµС‚">-</th>
 							<th>id</th> 
-							<th>Пол</th>
-							<th>Дата рождения</th>
-							<th>Контакты</th>
-							<th>Док.</th>
+							<th>РџРѕР»</th>
+							<th>Р”Р°С‚Р° СЂРѕР¶РґРµРЅРёСЏ</th>
+							<th>РљРѕРЅС‚Р°РєС‚С‹</th>
+							<th>Р”РѕРє.</th>
 						</tr>';
 
 			if ( patientsList.recordcount ){
@@ -798,7 +798,7 @@ component attributeName='userlist' output='false'{
 							#patientsList.pt_family[x]# #patientsList.pt_firstname[x]# #patientsList.pt_lastname[x]#</a>
 						</td>
 						<td>#patientsList.cnt[x]#</td>
-						<td style="FONT-SIZE:11px;">#IIF( patient_dms.recordcount , DE("<img src='img/health-16.png' title='Страховая информация'>"), DE("") )#</td>
+						<td style="FONT-SIZE:11px;">#IIF( patient_dms.recordcount , DE("<img src='img/health-16.png' title='РЎС‚СЂР°С…РѕРІР°СЏ РёРЅС„РѕСЂРјР°С†РёСЏ'>"), DE("") )#</td>
 						<td>#patientsList.pt_id[x]#</td> 
 						<td>#patientsList.pt_gender[x]#</td>
 						<td>#_DateFormate(patientsList.pt_dob[x])#</td>
@@ -821,7 +821,7 @@ component attributeName='userlist' output='false'{
 			}else{
 				view &= '
 					<tr class="block">
-						<td colspan="9">Нет пациентов #now()#</td>
+						<td colspan="9">РќРµС‚ РїР°С†РёРµРЅС‚РѕРІ #now()#</td>
 					</tr>
 					';
 			}
@@ -834,7 +834,7 @@ component attributeName='userlist' output='false'{
 					<td style="text-align:right;" colspan="3">&nbsp;#pager.view1()#&nbsp;</td>
 				</tr>';
 
-			view &= '<tr><td style="text-align:right;" colspan="9"><a class="g-button g-button-submit" href="/?page=patients&section=patient&action=add">+Добавить пациента</a></td></tr>';
+			view &= '<tr><td style="text-align:right;" colspan="9"><a class="g-button g-button-submit" href="/?page=patients&section=patient&action=add">+Р”РѕР±Р°РІРёС‚СЊ РїР°С†РёРµРЅС‚Р°</a></td></tr>';
 
 			view &= '</table>';
 		view &= '</div></div>';
@@ -845,7 +845,7 @@ component attributeName='userlist' output='false'{
 
 
 	private function addContactFormHandler(){
-		// --- обработчик формы---
+		// --- РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹---
 		if ( isdefined('form.addContact') ){
 
 		var patientsAPI = factoryService.getService('patientsAPI');
@@ -855,7 +855,7 @@ component attributeName='userlist' output='false'{
 			if ( result.RETVAL is 1 ){
 				factoryService.getService('redirector').redirect('#request.CRequest.updateURL(false,"/?page=patients&section=patient&action=view&patientid=#form.pt_id#")#');
 			}else{
-				// --- пробная версия
+				// --- РїСЂРѕР±РЅР°СЏ РІРµСЂСЃРёСЏ
 				if ( result.RETDESC is '') {
 					instance.message = '';
 				} else {
@@ -889,7 +889,7 @@ component attributeName='userlist' output='false'{
 
 			}
 		}
-		// --- обработчик формы---
+		// --- РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹---
 	}
 
 	function addContactForm(patientid){
@@ -897,28 +897,28 @@ component attributeName='userlist' output='false'{
 		contactsType = factoryService.getService('contactsTypeAPI').getContactsTypeList();
 		//writeDump(contactsType);
 
-		//param name='form.ptc_id' default='';		// id контакта
-		param name='form.pt_id' default='#arguments.patientid#';		// id пациента
+		//param name='form.ptc_id' default='';		// id РєРѕРЅС‚Р°РєС‚Р°
+		param name='form.pt_id' default='#arguments.patientid#';		// id РїР°С†РёРµРЅС‚Р°
 		param name='form.ct_id' default='2';
 		param name='form.ptc_data' default='';
 		param name='form.ptc_description' default='';
 		param name='form.ptc_status' default='1';
 
-		// ---------------------------------------------------------- форма ---------------------------------------------------------------
+		// ---------------------------------------------------------- С„РѕСЂРјР° ---------------------------------------------------------------
 		action = '#request.CRequest.updateURL(false,"/?page=patients&section=contact&action=add&patientid=#arguments.patientid#")#';
 
 		view = '';
 		view &= '<div class="grid_8">
 			<div class="signin-box">
-			<a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,"/?page=patients&section=patient&action=view&patientid=#arguments.patientid#")#">Назад</a><br><br>
-			<h2>Добавление нового контакта:</h2>
+			<a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,"/?page=patients&section=patient&action=view&patientid=#arguments.patientid#")#">РќР°Р·Р°Рґ</a><br><br>
+			<h2>Р”РѕР±Р°РІР»РµРЅРёРµ РЅРѕРІРѕРіРѕ РєРѕРЅС‚Р°РєС‚Р°:</h2>
 			<form id="addpatient" name="addpatient" action="#action#" method="post">
 				<div>
 					<input type="hidden" id="pt_id" name="pt_id" value="#form.pt_id#" maxlength="50" size="20">';
 
 		view &= '	</div>
 				<div>
-					<label for="ct_id"><b>Тип контакта:</b></label>
+					<label for="ct_id"><b>РўРёРї РєРѕРЅС‚Р°РєС‚Р°:</b></label>
 					<select name="ct_id">';
 					for (var x=1; x<=contactsType.recordcount; x++){
 						view &= ' <option value="#contactsType.cnt_type_id[x]#" #checkedSelect("#contactsType.cnt_type_id[x]#", form.ct_id)# >#contactsType.CNT_TYPE_DESCRIPTION[x]#</option>';
@@ -931,7 +931,7 @@ component attributeName='userlist' output='false'{
 
 		view &= '	</div>
 				<div>
-					<label>Контакт:</label>
+					<label>РљРѕРЅС‚Р°РєС‚:</label>
 					<input class="phone" type="text" id="ptc_data" name="ptc_data" value="#form.ptc_data#" maxlength="50" size="45">';
    		if (instance.ptcData is not ''){
 		view &= '		<label for="ptcData" class="error" generated="2">#instance.ptcData#</label>';
@@ -940,7 +940,7 @@ component attributeName='userlist' output='false'{
 		view &= '
 				</div>
 				<div>
-					<label for="ptc_description"><b>Описание:</b></label>
+					<label for="ptc_description"><b>РћРїРёСЃР°РЅРёРµ:</b></label>
 					<textarea name = "ptc_description" rows="6" cols="47" >#form.ptc_description#</textarea>';
 		if (instance.ptcDescription is not ''){
 			view &= '		<label for="ptc_description" class="error" generated="0">#instance.ptcDescription#</label>';
@@ -950,8 +950,8 @@ component attributeName='userlist' output='false'{
 		view &= '	</div><div>
 				<input type="hidden" name="ptc_status" value="#form.ptc_status#" size = "2" maxlength = "2">
 				<hr>
-				<input disabled class="g-button g-button-submit" type="submit" name="escape" value="Отмена">
-				<input class="g-button g-button-submit" type="submit" name="addContact" value="Сохранить"> ';
+				<input disabled class="g-button g-button-submit" type="submit" name="escape" value="РћС‚РјРµРЅР°">
+				<input class="g-button g-button-submit" type="submit" name="addContact" value="РЎРѕС…СЂР°РЅРёС‚СЊ"> ';
 
 		if (instance.message is not ''){
 			view &= '<div id="mes" style="color:red;">#instance.message#</div>';
@@ -960,12 +960,12 @@ component attributeName='userlist' output='false'{
 		view &='</div></form>
 			</div></div>';
 
-			// ------------------------------------------------ форма ---------------------------------------------------------------
+			// ------------------------------------------------ С„РѕСЂРјР° ---------------------------------------------------------------
 		return view;
 	}
 
 	private function updateContactFormHandler(){
-		// --- обработчик формы---
+		// --- РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹---
 		if ( isdefined('form.updateContact') ){
 
 		var patientsAPI = factoryService.getService('patientsAPI');
@@ -975,7 +975,7 @@ component attributeName='userlist' output='false'{
 			if ( result.RETVAL is 1 ){
 				factoryService.getService('redirector').redirect('#request.CRequest.updateURL(false,"/?page=patients&section=patient&action=view&patientid=#form.pt_id#")#');
 			}else{
-				// --- пробная версия
+				// --- РїСЂРѕР±РЅР°СЏ РІРµСЂСЃРёСЏ
 				if ( result.RETDESC is '') {
 					instance.message = '';
 				} else {
@@ -1009,7 +1009,7 @@ component attributeName='userlist' output='false'{
 
 			}
 		}
-		// --- обработчик формы---
+		// --- РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹---
 	}
 
 	function updateContactForm(ptcid){
@@ -1018,21 +1018,21 @@ component attributeName='userlist' output='false'{
 		//writeDump(contactsType);
 		contact = factoryService.getService('patientsAPI').getContact(arguments.ptcID);
 
-		param name='form.ptc_id' default='#contact.ptc_id#';		// id контакта
-		param name='form.pt_id' default='#contact.pt_id#';		// id пациента
+		param name='form.ptc_id' default='#contact.ptc_id#';		// id РєРѕРЅС‚Р°РєС‚Р°
+		param name='form.pt_id' default='#contact.pt_id#';		// id РїР°С†РёРµРЅС‚Р°
 		param name='form.ct_id' default='#contact.ct_id#';
 		param name='form.ptc_data' default='#contact.ptc_data#';
 		param name='form.ptc_description' default='#contact.ptc_description#';
 		param name='form.ptc_status' default='#contact.ptc_status#';
 
-		// ---------------------------------------------------------- форма ---------------------------------------------------------------
+		// ---------------------------------------------------------- С„РѕСЂРјР° ---------------------------------------------------------------
 		action = '#request.CRequest.updateURL(false,"/?page=patients&section=contact&action=edite&ptcid=#arguments.ptcid#")#';
 
 		view = '';
 		view &= '<div class="grid_8">
 			<div class="signin-box">
-			<a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,"/?page=patients&section=patient&action=view&patientid=#contact.pt_id#")#">Назад</a><br><br>
-			<h2>Добавление нового контакта:</h2>
+			<a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,"/?page=patients&section=patient&action=view&patientid=#contact.pt_id#")#">РќР°Р·Р°Рґ</a><br><br>
+			<h2>Р”РѕР±Р°РІР»РµРЅРёРµ РЅРѕРІРѕРіРѕ РєРѕРЅС‚Р°РєС‚Р°:</h2>
 			<form id="addpatient" name="addpatient" action="#action#" method="post">
 				<div>
 					<input type="hidden" id="ptc_id" name="ptc_id" value="#form.ptc_id#" maxlength="50" size="20">
@@ -1040,7 +1040,7 @@ component attributeName='userlist' output='false'{
 
 		view &= '	</div>
 				<div>
-					<label for="ct_id"><b>Тип контакта:</b></label>
+					<label for="ct_id"><b>РўРёРї РєРѕРЅС‚Р°РєС‚Р°:</b></label>
 					<select name="ct_id">';
 					for (var x=1; x<=contactsType.recordcount; x++){
 						view &= ' <option value="#contactsType.cnt_type_id[x]#" #checkedSelect("#contactsType.cnt_type_id[x]#", form.ct_id)# >#contactsType.CNT_TYPE_DESCRIPTION[x]#</option>';
@@ -1053,7 +1053,7 @@ component attributeName='userlist' output='false'{
 
 		view &= '	</div>
 				<div>
-					<label>Контакт:</label>
+					<label>РљРѕРЅС‚Р°РєС‚:</label>
 					<input type="text" id="ptc_data" name="ptc_data" value="#form.ptc_data#" maxlength="50" size="45">';
    		if (instance.ptcData is not ''){
 		view &= '		<label for="ptcData" class="error" generated="2">#instance.ptcData#</label>';
@@ -1062,7 +1062,7 @@ component attributeName='userlist' output='false'{
 		view &= '
 				</div>
 				<div>
-					<label for="ptc_description"><b>Описание:</b></label>
+					<label for="ptc_description"><b>РћРїРёСЃР°РЅРёРµ:</b></label>
 					<textarea name = "ptc_description" rows="6" cols="47" >#form.ptc_description#</textarea>';
 		if (instance.ptcDescription is not ''){
 			view &= '		<label for="ptc_description" class="error" generated="0">#instance.ptcDescription#</label>';
@@ -1072,8 +1072,8 @@ component attributeName='userlist' output='false'{
 		view &= '	</div><div>
 				<input type="hidden" name="ptc_status" value="#form.ptc_status#" size = "2" maxlength = "2">
 				<hr>
-				<input disabled class="g-button g-button-submit" type="submit" name="escape" value="Отмена">
-				<input class="g-button g-button-submit" type="submit" name="updateContact" value="Сохранить"> ';
+				<input disabled class="g-button g-button-submit" type="submit" name="escape" value="РћС‚РјРµРЅР°">
+				<input class="g-button g-button-submit" type="submit" name="updateContact" value="РЎРѕС…СЂР°РЅРёС‚СЊ"> ';
 
 		if (instance.message is not ''){
 			view &= '<div id="mes" style="color:red;">#instance.message#</div>';
@@ -1082,7 +1082,7 @@ component attributeName='userlist' output='false'{
 		view &='</div></form>
 			</div></div>';
 
-			// ------------------------------------------------ форма ---------------------------------------------------------------
+			// ------------------------------------------------ С„РѕСЂРјР° ---------------------------------------------------------------
 		return view;
 	}
 
@@ -1091,20 +1091,20 @@ component attributeName='userlist' output='false'{
 
 		//writeDump(form);
 		shablon = '
-			[	{"NAME":"Наследственность","POS":1,"DATA":""},
-				{"NAME":"Семейное положение","POS":2,"DATA":""},
-				{"NAME":"Характер питания","POS":3,"DATA":""},
-				{"NAME":"Вредные привычки","POS":4,"DATA":""},
-				{"NAME":"Перенесённые заболевания","POS":5,"DATA":""},
-				{"NAME":"Перенесённые травмы и хирургические вмешательства","POS":6,"DATA":""},
-				{"NAME":"Переливание крови и кровезаменителей","POS":7,"DATA":""},
-				{"NAME":"Аллергологический анамнез","POS":8,"DATA":""}
+			[	{"NAME":"РќР°СЃР»РµРґСЃС‚РІРµРЅРЅРѕСЃС‚СЊ","POS":1,"DATA":""},
+				{"NAME":"РЎРµРјРµР№РЅРѕРµ РїРѕР»РѕР¶РµРЅРёРµ","POS":2,"DATA":""},
+				{"NAME":"РҐР°СЂР°РєС‚РµСЂ РїРёС‚Р°РЅРёСЏ","POS":3,"DATA":""},
+				{"NAME":"Р’СЂРµРґРЅС‹Рµ РїСЂРёРІС‹С‡РєРё","POS":4,"DATA":""},
+				{"NAME":"РџРµСЂРµРЅРµСЃС‘РЅРЅС‹Рµ Р·Р°Р±РѕР»РµРІР°РЅРёСЏ","POS":5,"DATA":""},
+				{"NAME":"РџРµСЂРµРЅРµСЃС‘РЅРЅС‹Рµ С‚СЂР°РІРјС‹ Рё С…РёСЂСѓСЂРіРёС‡РµСЃРєРёРµ РІРјРµС€Р°С‚РµР»СЊСЃС‚РІР°","POS":6,"DATA":""},
+				{"NAME":"РџРµСЂРµР»РёРІР°РЅРёРµ РєСЂРѕРІРё Рё РєСЂРѕРІРµР·Р°РјРµРЅРёС‚РµР»РµР№","POS":7,"DATA":""},
+				{"NAME":"РђР»Р»РµСЂРіРѕР»РѕРіРёС‡РµСЃРєРёР№ Р°РЅР°РјРЅРµР·","POS":8,"DATA":""}
 			]';
 
 		shablonJSON = DeserializeJSON(shablon);
 		//writeDump(shablonJSON);
 
-		// --- обработчик формы---
+		// --- РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹---
 		if ( isdefined('form.updateAnamnez') ){
 
 			for (var i=1; i<=arrayLen(shablonJSON); i++){
@@ -1126,7 +1126,7 @@ component attributeName='userlist' output='false'{
 			if ( result.RETVAL is 1 ){
 				factoryService.getService('redirector').redirect('#request.CRequest.updateURL(false,"/?page=patients&section=patient&action=view&patientid=#form.patientid#")#');
 			}else{
-				// --- пробная версия
+				// --- РїСЂРѕР±РЅР°СЏ РІРµСЂСЃРёСЏ
 				if ( result.RETDESC is '') {
 					instance.message = '';
 				} else {
@@ -1143,7 +1143,7 @@ component attributeName='userlist' output='false'{
 			}
 		}
 		
-		// --- обработчик формы---
+		// --- РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹---
 
 	}
 
@@ -1169,8 +1169,8 @@ component attributeName='userlist' output='false'{
 				<div class="signin-box">';
 
 		view &= '<form name="editeAnamnez" action="" method="post">';
-		view &= '<p><a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,"/?page=patients&section=patient&action=view&patientid=#patientid#")#">Назад</a></p>';
-		view &= '<h2>АНАМНЕЗ ЖИЗНИ</h2>';
+		view &= '<p><a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,"/?page=patients&section=patient&action=view&patientid=#patientid#")#">РќР°Р·Р°Рґ</a></p>';
+		view &= '<h2>РђРќРђРњРќР•Р— Р–РР—РќР</h2>';
 		view &= '<h2>#patient.pt_family# #patient.pt_firstname# #patient.pt_lastname#</h2>';
 		view &= '<input type="hidden" name="patientid" value="#form.patientid#" maxlength="20" size="20">';
 		//view &= '#anamnez#';
@@ -1196,8 +1196,8 @@ component attributeName='userlist' output='false'{
 		}
 
 		view &= '<hr>
-			<input disabled class="g-button g-button-submit" type="submit" name="escape" value="Отмена">
-			<input class="g-button g-button-submit" type="submit" name="updateAnamnez" value="Сохранить"> ';
+			<input disabled class="g-button g-button-submit" type="submit" name="escape" value="РћС‚РјРµРЅР°">
+			<input class="g-button g-button-submit" type="submit" name="updateAnamnez" value="РЎРѕС…СЂР°РЅРёС‚СЊ"> ';
 
 		view &= '	</div>
 			</div>';
@@ -1207,8 +1207,8 @@ component attributeName='userlist' output='false'{
 		view &= '<div class="grid_8">
 				<div class="signin-box">';
 
-		view &= '<h2>Помощь</h2>
-			<p>Анамнез жизни пациента</p>';
+		view &= '<h2>РџРѕРјРѕС‰СЊ</h2>
+			<p>РђРЅР°РјРЅРµР· Р¶РёР·РЅРё РїР°С†РёРµРЅС‚Р°</p>';
 
 		view &= '	</div>
 			</div>';
@@ -1217,9 +1217,9 @@ component attributeName='userlist' output='false'{
 	}
 
 	private function addDocumentFormHandler(){
-		// --- обработчик формы---
+		// --- РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹---
 		if ( isdefined('form.addDocument') ){
-		// собрать дату из формы
+		// СЃРѕР±СЂР°С‚СЊ РґР°С‚Сѓ РёР· С„РѕСЂРјС‹
 
 			form.ptd_date = '#form.ptd_dateYear#-#form.ptd_dateMonth#-#form.ptd_dateDay#';
 			var patientsAPI = factoryService.getService('patientsAPI');
@@ -1229,7 +1229,7 @@ component attributeName='userlist' output='false'{
 			if ( result.RETVAL is 1 ){
 				factoryService.getService('redirector').redirect('#request.CRequest.updateURL(false,"/?page=patients&section=patient&action=view&patientid=#form.pt_id#")#');
 			}else{
-				// --- пробная версия
+				// --- РїСЂРѕР±РЅР°СЏ РІРµСЂСЃРёСЏ
 				if ( result.RETDESC is '') {
 					instance.message = '';
 				} else {
@@ -1245,13 +1245,13 @@ component attributeName='userlist' output='false'{
 				}
 			}
 		}
-		// --- обработчик формы---
+		// --- РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹---
 	}
 
 	function addDocumentForm(patientid){
 
-		param name='form.pt_id' default='#arguments.patientid#';		// id пациента
-		param name='form.ptd_document' default='ПАСПОРТ';
+		param name='form.pt_id' default='#arguments.patientid#';		// id РїР°С†РёРµРЅС‚Р°
+		param name='form.ptd_document' default='РџРђРЎРџРћР Рў';
 		param name='form.ptd_number' default='';
 		param name='form.ptd_number1' default='';
 		param name='form.ptd_issued' default='';
@@ -1266,19 +1266,19 @@ component attributeName='userlist' output='false'{
 
 		action = '#request.CRequest.updateURL(false,"/?page=patients&section=document&action=add&patientid=#arguments.patientid#")#';
 
-		// ---------------------------------------------------------- форма ---------------------------------------------------------------
+		// ---------------------------------------------------------- С„РѕСЂРјР° ---------------------------------------------------------------
 		view = '';
 		view &= '<div class="grid_8">
 			<div class="signin-box">
-			<a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,'/?page=patients&section=patient&action=view&patientid=#arguments.patientid#')#">Назад</a><br><br>
-			<h2>Добавление нового дкумента:</h2>
+			<a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,'/?page=patients&section=patient&action=view&patientid=#arguments.patientid#')#">РќР°Р·Р°Рґ</a><br><br>
+			<h2>Р”РѕР±Р°РІР»РµРЅРёРµ РЅРѕРІРѕРіРѕ РґРєСѓРјРµРЅС‚Р°:</h2>
 			<form id="addDocument" name="addDocument" action="#action#" method="post">
 				<div>
 					<input type="hidden" id="pt_id" name="pt_id" value="#form.pt_id#" maxlength="50" size="20">';
 
 		view &= '	</div>
 				<div>
-					<label for="ptd_document"><b>Документ:</b></label>
+					<label for="ptd_document"><b>Р”РѕРєСѓРјРµРЅС‚:</b></label>
 					<input disabled type="text" id="ptd_doc" name="ptd_doc" value="#form.ptd_document#" maxlength="7" size="7">
 					<input type="hidden" id="ptd_document" name="ptd_document" value="#form.ptd_document#" maxlength="7" size="7">';
 
@@ -1288,7 +1288,7 @@ component attributeName='userlist' output='false'{
 
 		view &= '	</div>
 				<div>
-					<label>Номер:</label>
+					<label>РќРѕРјРµСЂ:</label>
 					<input type="text" id="ptd_number" name="ptd_number" value="#form.ptd_number#" maxlength="4" size="4">';
    		if (instance.ptdNumber is not ''){
 		view &= '		<label for="ptdNumber" class="error" generated="2">#instance.ptdNumber#</label>';
@@ -1296,7 +1296,7 @@ component attributeName='userlist' output='false'{
 
 		view &= '	</div>
 				<div>
-					<label>Серия:</label>
+					<label>РЎРµСЂРёСЏ:</label>
 					<input type="text" id="ptd_number1" name="ptd_number1" value="#form.ptd_number1#" maxlength="6" size="6">';
    		if (instance.ptdNumber1 is not ''){
 		view &= '		<label for="ptdNumber1" class="error" generated="2">#instance.ptdNumber1#</label>';
@@ -1304,7 +1304,7 @@ component attributeName='userlist' output='false'{
 
 		view &= '</div>
 				<div>
-					<label for="ptd_issued"><b>Выдан:</b></label>
+					<label for="ptd_issued"><b>Р’С‹РґР°РЅ:</b></label>
 					<textarea name = "ptd_issued" rows="6" cols="47" >#form.ptd_issued#</textarea>';
 		if (instance.ptdIssued is not ''){
 			view &= '		<label for="ptd_issued" class="error" generated="0">#instance.ptdIssued#</label>';
@@ -1312,13 +1312,13 @@ component attributeName='userlist' output='false'{
 
 		view &= '	</div>
 				<div>
-					<label for="ptd_date"><b>Дата выдачи:</b></label>
+					<label for="ptd_date"><b>Р”Р°С‚Р° РІС‹РґР°С‡Рё:</b></label>
 
-					<label for="ptd_dateDay">День:</label>
+					<label for="ptd_dateDay">Р”РµРЅСЊ:</label>
 					<input type="text" id="ptdDateDay" name="ptd_dateDay" value="#form.ptd_dateDay#" maxlength="2" size="2">
-					<label for="ptd_dateMonth">Месяц:</label>
+					<label for="ptd_dateMonth">РњРµСЃСЏС†:</label>
 					<input type="text" id="ptdDateMonth" name="ptd_dateMonth" value="#form.ptd_dateMonth#" maxlength="2" size="2">
-					<label for="ptd_dateYear">Год:</label>
+					<label for="ptd_dateYear">Р“РѕРґ:</label>
 					<input type="text" id="ptdDateYear" name="ptd_dateYear" value="#form.ptd_dateYear#" maxlength="4" size="4">
 				';
 
@@ -1328,7 +1328,7 @@ component attributeName='userlist' output='false'{
 
 		view &= '</div>
 				<div>
-					<label for="ptd_sc"><b>Код подразделения:</b></label>
+					<label for="ptd_sc"><b>РљРѕРґ РїРѕРґСЂР°Р·РґРµР»РµРЅРёСЏ:</b></label>
 					<input type="text" id="ptd_sc" name="ptd_sc" value="#form.ptd_sc#" maxlength="3" size="3">-<input type="text" id="ptd_sc1" name="ptd_sc1" value="#form.ptd_sc1#" maxlength="3" size="3">';
 		if (instance.ptdSc is not ''){
 			view &= '		<label for="ptd_sc" class="error" generated="0">#instance.ptdSc#</label>';
@@ -1341,8 +1341,8 @@ component attributeName='userlist' output='false'{
 		view &= '	</div><div>
 				<input type="hidden" name="ptd_status" value="#form.ptd_status#" size = "2" maxlength = "2">
 				<hr>
-				<input disabled class="g-button g-button-submit" type="submit" name="escape" value="Отмена">
-				<input class="g-button g-button-submit" type="submit" name="addDocument" value="Сохранить"> ';
+				<input disabled class="g-button g-button-submit" type="submit" name="escape" value="РћС‚РјРµРЅР°">
+				<input class="g-button g-button-submit" type="submit" name="addDocument" value="РЎРѕС…СЂР°РЅРёС‚СЊ"> ';
 
 		if (instance.message is not ''){
 			view &= '<div id="mes" style="color:red;">#instance.message#</div>';
@@ -1356,9 +1356,9 @@ component attributeName='userlist' output='false'{
 	}
 
 	private function updateDocumentFormHandler(){
-		// --- обработчик формы---
+		// --- РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹---
 		if ( isdefined('form.updateDocument') ){
-		// собрать дату из формы
+		// СЃРѕР±СЂР°С‚СЊ РґР°С‚Сѓ РёР· С„РѕСЂРјС‹
 
 			form.ptd_date = '#form.ptd_dateYear#-#form.ptd_dateMonth#-#form.ptd_dateDay#';
 			var patientsAPI = factoryService.getService('patientsAPI');
@@ -1367,7 +1367,7 @@ component attributeName='userlist' output='false'{
 			if ( result.RETVAL is 1 ){
 				factoryService.getService('redirector').redirect('#request.CRequest.updateURL(false,"/?page=patients&section=patient&action=view&patientid=#form.pt_id#")#');
 			}else{
-				// --- пробная версия
+				// --- РїСЂРѕР±РЅР°СЏ РІРµСЂСЃРёСЏ
 				if ( result.RETDESC is '') {
 					instance.message = '';
 				} else {
@@ -1383,12 +1383,12 @@ component attributeName='userlist' output='false'{
 				}
 			}
 		}
-		// --- обработчик формы---
+		// --- РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹---
 	}
 
 	function updateDocumentForm( ptdID ){
 
-		// запрос к базе
+		// Р·Р°РїСЂРѕСЃ Рє Р±Р°Р·Рµ
 		patient_doc = factoryService.getService('patientsAPI').getPatientDocument(ptdID);
 
 		param name='form.ptd_id' default='#patient_doc.ptd_id#';
@@ -1409,12 +1409,12 @@ component attributeName='userlist' output='false'{
 
 		action = '#request.CRequest.updateURL(false,"/?page=patients&section=document&action=edite&ptdID=#patient_doc.ptd_id#")#';
 
-		// ---------------------------------------------------------- форма ---------------------------------------------------------------
+		// ---------------------------------------------------------- С„РѕСЂРјР° ---------------------------------------------------------------
 		view = '';
 		view &= '<div class="grid_8">
 			<div class="signin-box">
-			<a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,'/?page=patients&section=patient&action=view&patientid=#patient_doc.pt_id#')#">Назад</a><br><br>
-			<h2>Редактирование дкумента:</h2>
+			<a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,'/?page=patients&section=patient&action=view&patientid=#patient_doc.pt_id#')#">РќР°Р·Р°Рґ</a><br><br>
+			<h2>Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РґРєСѓРјРµРЅС‚Р°:</h2>
 			<form id="updateDocument" name="updateDocument" action="#action#" method="post">
 				<div>
 					<input type="hidden" id="ptd_id" name="ptd_id" value="#form.ptd_id#" maxlength="50" size="20">
@@ -1422,7 +1422,7 @@ component attributeName='userlist' output='false'{
 
 		view &= '	</div>
 				<div>
-					<label for="ptd_document"><b>Документ:</b></label>
+					<label for="ptd_document"><b>Р”РѕРєСѓРјРµРЅС‚:</b></label>
 					<input disabled type="text" id="ptd_doc" name="ptd_doc" value="#form.ptd_document#" maxlength="7" size="7">
 					<input type="hidden" id="ptd_document" name="ptd_document" value="#form.ptd_document#" maxlength="7" size="7">';
 
@@ -1432,7 +1432,7 @@ component attributeName='userlist' output='false'{
 
 		view &= '	</div>
 				<div>
-					<label>Номер:</label>
+					<label>РќРѕРјРµСЂ:</label>
 					<input type="text" id="ptd_number" name="ptd_number" value="#form.ptd_number#" maxlength="4" size="4">';
    		if (instance.ptdNumber is not ''){
 		view &= '		<label for="ptdNumber" class="error" generated="2">#instance.ptdNumber#</label>';
@@ -1440,7 +1440,7 @@ component attributeName='userlist' output='false'{
 
 		view &= '	</div>
 				<div>
-					<label>Серия:</label>
+					<label>РЎРµСЂРёСЏ:</label>
 					<input type="text" id="ptd_number1" name="ptd_number1" value="#form.ptd_number1#" maxlength="6" size="6">';
    		if (instance.ptdNumber1 is not ''){
 		view &= '		<label for="ptdNumber1" class="error" generated="2">#instance.ptdNumber1#</label>';
@@ -1448,7 +1448,7 @@ component attributeName='userlist' output='false'{
 
 		view &= '</div>
 				<div>
-					<label for="ptd_issued"><b>Выдан:</b></label>
+					<label for="ptd_issued"><b>Р’С‹РґР°РЅ:</b></label>
 					<textarea name = "ptd_issued" rows="6" cols="47" >#form.ptd_issued#</textarea>';
 		if (instance.ptdIssued is not ''){
 			view &= '		<label for="ptd_issued" class="error" generated="0">#instance.ptdIssued#</label>';
@@ -1456,13 +1456,13 @@ component attributeName='userlist' output='false'{
 
 		view &= '	</div>
 				<div>
-					<label for="ptd_date"><b>Дата выдачи:</b></label>
+					<label for="ptd_date"><b>Р”Р°С‚Р° РІС‹РґР°С‡Рё:</b></label>
 
-					<label for="ptd_dateDay">День:</label>
+					<label for="ptd_dateDay">Р”РµРЅСЊ:</label>
 					<input type="text" id="ptdDateDay" name="ptd_dateDay" value="#form.ptd_dateDay#" maxlength="2" size="2">
-					<label for="ptd_dateMonth">Месяц:</label>
+					<label for="ptd_dateMonth">РњРµСЃСЏС†:</label>
 					<input type="text" id="ptdDateMonth" name="ptd_dateMonth" value="#form.ptd_dateMonth#" maxlength="2" size="2">
-					<label for="ptd_dateYear">Год:</label>
+					<label for="ptd_dateYear">Р“РѕРґ:</label>
 					<input type="text" id="ptdDateYear" name="ptd_dateYear" value="#form.ptd_dateYear#" maxlength="4" size="4">
 				';
 
@@ -1472,7 +1472,7 @@ component attributeName='userlist' output='false'{
 
 		view &= '</div>
 				<div>
-					<label for="ptd_sc"><b>Код подразделения:</b></label>
+					<label for="ptd_sc"><b>РљРѕРґ РїРѕРґСЂР°Р·РґРµР»РµРЅРёСЏ:</b></label>
 					<input type="text" id="ptd_sc" name="ptd_sc" value="#form.ptd_sc#" maxlength="3" size="3">-<input type="text" id="ptd_sc1" name="ptd_sc1" value="#form.ptd_sc1#" maxlength="3" size="3">';
 		if (instance.ptdSc is not ''){
 			view &= '		<label for="ptd_sc" class="error" generated="0">#instance.ptdSc#</label>';
@@ -1485,8 +1485,8 @@ component attributeName='userlist' output='false'{
 		view &= '	</div><div>
 				<input type="hidden" name="ptd_status" value="#form.ptd_status#" size = "2" maxlength = "2">
 				<hr>
-				<input disabled class="g-button g-button-submit" type="submit" name="escape" value="Отмена">
-				<input class="g-button g-button-submit" type="submit" name="updateDocument" value="Сохранить"> ';
+				<input disabled class="g-button g-button-submit" type="submit" name="escape" value="РћС‚РјРµРЅР°">
+				<input class="g-button g-button-submit" type="submit" name="updateDocument" value="РЎРѕС…СЂР°РЅРёС‚СЊ"> ';
 
 		if (instance.message is not ''){
 			view &= '<div id="mes" style="color:red;">#instance.message#</div>';
@@ -1500,9 +1500,9 @@ component attributeName='userlist' output='false'{
 	}
 
 	private function addAddressFormHandler(){
-		// --- обработчик формы---
+		// --- РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹---
 		if ( isdefined('form.addAddress') ){
-		// собрать дату из формы
+		// СЃРѕР±СЂР°С‚СЊ РґР°С‚Сѓ РёР· С„РѕСЂРјС‹
 			writeDump(form);
 			var patientsAPI = factoryService.getService('patientsAPI');
 			result = patientsAPI.addAddress( #form.pt_id#, #form.pta_type#, #form.pta_firmdata#, #form.pta_country#, #form.pta_region#, #form.pta_city#, #form.pta_locality#, #form.pta_street#, #form.pta_index#, #form.pta_house#, #form.pta_building#, #form.pta_flat#, #form.pta_description#, #form.pta_status# );
@@ -1510,7 +1510,7 @@ component attributeName='userlist' output='false'{
 			if ( result.RETVAL is 1 ){
 				factoryService.getService('redirector').redirect('#request.CRequest.updateURL(false,"/?page=patients&section=patient&action=view&patientid=#form.pt_id#")#');
 			}else{
-				// --- пробная версия
+				// --- РїСЂРѕР±РЅР°СЏ РІРµСЂСЃРёСЏ
 				if ( result.RETDESC is '') {
 					instance.message = '';
 				} else {
@@ -1526,15 +1526,15 @@ component attributeName='userlist' output='false'{
 				}
 			}
 		}
-		// --- обработчик формы---
+		// --- РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹---
 	}
 
 	function addAddressForm(patientid){
 
-		param name='form.pt_id' default='#arguments.patientid#';		// id пациента
+		param name='form.pt_id' default='#arguments.patientid#';		// id РїР°С†РёРµРЅС‚Р°
 		param name='form.pta_type' default='1';
 		param name='form.pta_firmdata' default='';
-		param name='form.pta_country' default='Россия';
+		param name='form.pta_country' default='Р РѕСЃСЃРёСЏ';
 		param name='form.pta_region' default='';
 		param name='form.pta_city' default='';
 		param name='form.pta_locality' default='';
@@ -1548,12 +1548,12 @@ component attributeName='userlist' output='false'{
 
 		action = '#request.CRequest.updateURL(false,"/?page=patients&section=address&action=add&patientid=#arguments.patientid#")#';
 
-		// ---------------------------------------------------------- форма ---------------------------------------------------------------
+		// ---------------------------------------------------------- С„РѕСЂРјР° ---------------------------------------------------------------
 		view = '';
 		view &= '<div class="grid_8">
 			<div class="signin-box">
-			<a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,'/?page=patients&section=patient&action=view&patientid=#arguments.patientid#')#">Назад</a><br><br>
-			<h2>Добавление нового дкумента:</h2>
+			<a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,'/?page=patients&section=patient&action=view&patientid=#arguments.patientid#')#">РќР°Р·Р°Рґ</a><br><br>
+			<h2>Р”РѕР±Р°РІР»РµРЅРёРµ РЅРѕРІРѕРіРѕ РґРєСѓРјРµРЅС‚Р°:</h2>
 			<form id="addDocument" name="addDocument" action="#action#" method="post">
 				<div>
 					<input type="hidden" id="pt_id" name="pt_id" value="#form.pt_id#" maxlength="50" size="20">
@@ -1563,7 +1563,7 @@ component attributeName='userlist' output='false'{
 
 		view &= '	</div>
 				<div>
-					<label for="pta_country"><b>Страна:</b></label>
+					<label for="pta_country"><b>РЎС‚СЂР°РЅР°:</b></label>
 					<input type="text" id="pta_country" name="pta_country" value="#form.pta_country#" maxlength="50" size="30">';
 
 		if (instance.ptaCountry is not ''){
@@ -1572,7 +1572,7 @@ component attributeName='userlist' output='false'{
 
 		view &= '	</div>
 				<div>
-					<label>Регион\область:</label>
+					<label>Р РµРіРёРѕРЅ\РѕР±Р»Р°СЃС‚СЊ:</label>
 					<input type="text" id="pta_region" name="pta_region" value="#form.pta_region#" maxlength="50" size="30">';
    		if (instance.ptaRegion is not ''){
 		view &= '		<label for="ptaRegion" class="error" generated="2">#instance.ptaRegion#</label>';
@@ -1580,7 +1580,7 @@ component attributeName='userlist' output='false'{
 
 		view &= '	</div>
 				<div>
-					<label>Город:</label>
+					<label>Р“РѕСЂРѕРґ:</label>
 					<input type="text" id="pta_city" name="pta_city" value="#form.pta_city#" maxlength="50" size="40">';
    		if (instance.ptaCity is not ''){
 		view &= '		<label for="ptaCity" class="error" generated="2">#instance.ptaCity#</label>';
@@ -1588,7 +1588,7 @@ component attributeName='userlist' output='false'{
 
 		view &= '</div>
 				<div>
-					<label for="pta_locality"><b>Населённый пункт:</b></label>
+					<label for="pta_locality"><b>РќР°СЃРµР»С‘РЅРЅС‹Р№ РїСѓРЅРєС‚:</b></label>
 					<input type="text" id="pta_locality" name="pta_locality" value="#form.pta_locality#" maxlength="50" size="40">';
 		if (instance.ptaLocality is not ''){
 			view &= '		<label for="pta_locality" class="error" generated="0">#instance.ptaLocality#</label>';
@@ -1596,7 +1596,7 @@ component attributeName='userlist' output='false'{
 
 		view &= '</div>
 				<div>
-					<label for="pta_street"><b>Улица:</b></label>
+					<label for="pta_street"><b>РЈР»РёС†Р°:</b></label>
 					<input type="text" id="pta_street" name="pta_street" value="#form.pta_street#" maxlength="50" size="40">';
 		if (instance.ptaStreet is not ''){
 			view &= '		<label for="pta_street" class="error" generated="0">#instance.ptaStreet#</label>';
@@ -1604,7 +1604,7 @@ component attributeName='userlist' output='false'{
 
 		view &= '</div>
 				<div>
-					<label for="pta_index"><b>Индекс:</b></label>
+					<label for="pta_index"><b>РРЅРґРµРєСЃ:</b></label>
 					<input type="text" id="pta_index" name="pta_index" value="#form.pta_index#" maxlength="6" size="6">';
 		if (instance.ptaIndex is not ''){
 			view &= '		<label for="pta_index" class="error" generated="0">#instance.ptaIndex#</label>';
@@ -1612,7 +1612,7 @@ component attributeName='userlist' output='false'{
 
 		view &= '</div>
 				<div>
-					<label for="pta_houes"><b>Дом:</b></label>
+					<label for="pta_houes"><b>Р”РѕРј:</b></label>
 					<input type="text" id="pta_house" name="pta_house" value="#form.pta_house#" maxlength="10" size="10">';
 		if (instance.ptaHouse is not ''){
 			view &= '		<label for="pta_house" class="error" generated="0">#instance.ptaHouse#</label>';
@@ -1620,7 +1620,7 @@ component attributeName='userlist' output='false'{
 
 		view &= '</div>
 				<div>
-					<label for="pta_building"><b>Строение:</b></label>
+					<label for="pta_building"><b>РЎС‚СЂРѕРµРЅРёРµ:</b></label>
 					<input type="text" id="pta_building" name="pta_building" value="#form.pta_building#" maxlength="10" size="10">';
 		if (instance.ptaBuilding is not ''){
 			view &= '		<label for="pta_building" class="error" generated="0">#instance.ptaBuilding#</label>';
@@ -1628,7 +1628,7 @@ component attributeName='userlist' output='false'{
 
 		view &= '</div>
 				<div>
-					<label for="pta_flat"><b>Квартира:</b></label>
+					<label for="pta_flat"><b>РљРІР°СЂС‚РёСЂР°:</b></label>
 					<input type="text" id="pta_flat" name="pta_flat" value="#form.pta_flat#" maxlength="10" size="10">';
 		if (instance.ptaFlat is not ''){
 			view &= '		<label for="pta_flat" class="error" generated="0">#instance.ptaFlat#</label>';
@@ -1636,7 +1636,7 @@ component attributeName='userlist' output='false'{
 
 		view &= '</div>
 				<div>
-					<label for="pta_description"><b>Описание:</b></label>
+					<label for="pta_description"><b>РћРїРёСЃР°РЅРёРµ:</b></label>
 					<textarea name = "pta_description" rows="6" cols="47" >#form.pta_description#</textarea>';
 		if (instance.ptaDescription is not ''){
 			view &= '		<label for="pta_description" class="error" generated="0">#instance.ptaDescription#</label>';
@@ -1645,8 +1645,8 @@ component attributeName='userlist' output='false'{
 		view &= '	</div><div>
 				<input type="hidden" name="pta_status" value="#form.pta_status#" size = "2" maxlength = "2">
 				<hr>
-				<input disabled class="g-button g-button-submit" type="submit" name="escape" value="Отмена">
-				<input class="g-button g-button-submit" type="submit" name="addAddress" value="Сохранить"> ';
+				<input disabled class="g-button g-button-submit" type="submit" name="escape" value="РћС‚РјРµРЅР°">
+				<input class="g-button g-button-submit" type="submit" name="addAddress" value="РЎРѕС…СЂР°РЅРёС‚СЊ"> ';
 
 		if (instance.message is not ''){
 			view &= '<div id="mes" style="color:red;">#instance.message#</div>';
@@ -1660,9 +1660,9 @@ component attributeName='userlist' output='false'{
 	}
 
 	private function updateAddressFormHandler(){
-		// --- обработчик формы---
+		// --- РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹---
 		if ( isdefined('form.updateAddress') ){
-		// собрать дату из формы
+		// СЃРѕР±СЂР°С‚СЊ РґР°С‚Сѓ РёР· С„РѕСЂРјС‹
 			writeDump(form);
 			var patientsAPI = factoryService.getService('patientsAPI');
 			result = patientsAPI.editeAddress( form.pta_id, form.pt_id, form.pta_type, form.pta_firmdata, form.pta_country, form.pta_region, form.pta_city, form.pta_locality, form.pta_street, form.pta_index, form.pta_house, form.pta_building, form.pta_flat, form.pta_description, form.pta_status );
@@ -1670,7 +1670,7 @@ component attributeName='userlist' output='false'{
 			if ( result.RETVAL is 1 ){
 				factoryService.getService('redirector').redirect('#request.CRequest.updateURL(false,"/?page=patients&section=patient&action=view&patientid=#form.pt_id#")#');
 			}else{
-				// --- пробная версия
+				// --- РїСЂРѕР±РЅР°СЏ РІРµСЂСЃРёСЏ
 				if ( result.RETDESC is '') {
 					instance.message = '';
 				} else {
@@ -1686,16 +1686,16 @@ component attributeName='userlist' output='false'{
 				}
 			}
 		}
-		// --- обработчик формы---
+		// --- РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹---
 	}
 
 	function updateAddressForm( ptaID ){
 
-		// запрос к базе
+		// Р·Р°РїСЂРѕСЃ Рє Р±Р°Р·Рµ
 		patient_add = factoryService.getService('patientsAPI').getPatientAddress(ptaID);
 
 		param name='form.pta_id' default='#patient_add.pta_id#';
-		param name='form.pt_id' default='#patient_add.pt_id#';		// id пациента
+		param name='form.pt_id' default='#patient_add.pt_id#';		// id РїР°С†РёРµРЅС‚Р°
 		param name='form.pta_type' default='#patient_add.pta_type#';
 		param name='form.pta_firmdata' default='#patient_add.pta_firmdata#';
 		param name='form.pta_country' default='#patient_add.pta_country#';
@@ -1712,12 +1712,12 @@ component attributeName='userlist' output='false'{
 
 		action = '#request.CRequest.updateURL(false,"/?page=patients&section=address&action=edite&ptaID=#patient_add.pta_id#")#';
 
-		// ---------------------------------------------------------- форма ---------------------------------------------------------------
+		// ---------------------------------------------------------- С„РѕСЂРјР° ---------------------------------------------------------------
 		view = '';
 		view &= '<div class="grid_8">
 			<div class="signin-box">
-			<a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,'/?page=patients&section=patient&action=view&patientid=#patient_add.pt_id#')#">Назад</a><br><br>
-			<h2>Добавление нового дкумента:</h2>
+			<a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,'/?page=patients&section=patient&action=view&patientid=#patient_add.pt_id#')#">РќР°Р·Р°Рґ</a><br><br>
+			<h2>Р”РѕР±Р°РІР»РµРЅРёРµ РЅРѕРІРѕРіРѕ РґРєСѓРјРµРЅС‚Р°:</h2>
 			<form id="editeDocument" name="editeDocument" action="#action#" method="post">
 				<div>
 					<input type="hidden" id="pta_id" name="pta_id" value="#form.pta_id#" maxlength="50" size="20">
@@ -1727,7 +1727,7 @@ component attributeName='userlist' output='false'{
 
 		view &= '	</div>
 				<div>
-					<label for="pta_country"><b>Страна:</b></label>
+					<label for="pta_country"><b>РЎС‚СЂР°РЅР°:</b></label>
 					<input type="text" id="pta_country" name="pta_country" value="#form.pta_country#" maxlength="50" size="30">';
 
 		if (instance.ptaCountry is not ''){
@@ -1736,7 +1736,7 @@ component attributeName='userlist' output='false'{
 
 		view &= '	</div>
 				<div>
-					<label>Регион\область:</label>
+					<label>Р РµРіРёРѕРЅ\РѕР±Р»Р°СЃС‚СЊ:</label>
 					<input type="text" id="pta_region" name="pta_region" value="#form.pta_region#" maxlength="50" size="30">';
    		if (instance.ptaRegion is not ''){
 		view &= '		<label for="ptaRegion" class="error" generated="2">#instance.ptaRegion#</label>';
@@ -1744,7 +1744,7 @@ component attributeName='userlist' output='false'{
 
 		view &= '	</div>
 				<div>
-					<label>Город:</label>
+					<label>Р“РѕСЂРѕРґ:</label>
 					<input type="text" id="pta_city" name="pta_city" value="#form.pta_city#" maxlength="50" size="40">';
    		if (instance.ptaCity is not ''){
 		view &= '		<label for="ptaCity" class="error" generated="2">#instance.ptaCity#</label>';
@@ -1752,7 +1752,7 @@ component attributeName='userlist' output='false'{
 
 		view &= '</div>
 				<div>
-					<label for="pta_locality"><b>Населённый пункт:</b></label>
+					<label for="pta_locality"><b>РќР°СЃРµР»С‘РЅРЅС‹Р№ РїСѓРЅРєС‚:</b></label>
 					<input type="text" id="pta_locality" name="pta_locality" value="#form.pta_locality#" maxlength="50" size="40">';
 		if (instance.ptaLocality is not ''){
 			view &= '		<label for="pta_locality" class="error" generated="0">#instance.ptaLocality#</label>';
@@ -1760,7 +1760,7 @@ component attributeName='userlist' output='false'{
 
 		view &= '</div>
 				<div>
-					<label for="pta_street"><b>Улица:</b></label>
+					<label for="pta_street"><b>РЈР»РёС†Р°:</b></label>
 					<input type="text" id="pta_street" name="pta_street" value="#form.pta_street#" maxlength="50" size="40">';
 		if (instance.ptaStreet is not ''){
 			view &= '		<label for="pta_street" class="error" generated="0">#instance.ptaStreet#</label>';
@@ -1769,7 +1769,7 @@ component attributeName='userlist' output='false'{
 		// ---------------
 		view &= '</div>
 				<div>
-					<label for="pta_index"><b>Индекс:</b></label>
+					<label for="pta_index"><b>РРЅРґРµРєСЃ:</b></label>
 					<input type="text" id="pta_index" name="pta_index" value="#form.pta_index#" maxlength="6" size="6">';
 		if (instance.ptaIndex is not ''){
 			view &= '		<label for="pta_index" class="error" generated="0">#instance.ptaIndex#</label>';
@@ -1777,7 +1777,7 @@ component attributeName='userlist' output='false'{
 		// ---------------
 		view &= '</div>
 				<div>
-					<label for="pta_houes"><b>Дом:</b></label>
+					<label for="pta_houes"><b>Р”РѕРј:</b></label>
 					<input type="text" id="pta_house" name="pta_house" value="#form.pta_house#" maxlength="10" size="10">';
 		if (instance.ptaHouse is not ''){
 			view &= '		<label for="pta_house" class="error" generated="0">#instance.ptaHouse#</label>';
@@ -1785,7 +1785,7 @@ component attributeName='userlist' output='false'{
 
 		view &= '</div>
 				<div>
-					<label for="pta_building"><b>Строение:</b></label>
+					<label for="pta_building"><b>РЎС‚СЂРѕРµРЅРёРµ:</b></label>
 					<input type="text" id="pta_building" name="pta_building" value="#form.pta_building#" maxlength="10" size="10">';
 		if (instance.ptaBuilding is not ''){
 			view &= '		<label for="pta_building" class="error" generated="0">#instance.ptaBuilding#</label>';
@@ -1793,7 +1793,7 @@ component attributeName='userlist' output='false'{
 
 		view &= '</div>
 				<div>
-					<label for="pta_flat"><b>Квартира:</b></label>
+					<label for="pta_flat"><b>РљРІР°СЂС‚РёСЂР°:</b></label>
 					<input type="text" id="pta_flat" name="pta_flat" value="#form.pta_flat#" maxlength="10" size="10">';
 		if (instance.ptaFlat is not ''){
 			view &= '		<label for="pta_flat" class="error" generated="0">#instance.ptaFlat#</label>';
@@ -1801,7 +1801,7 @@ component attributeName='userlist' output='false'{
 
 		view &= '</div>
 				<div>
-					<label for="pta_description"><b>Описание:</b></label>
+					<label for="pta_description"><b>РћРїРёСЃР°РЅРёРµ:</b></label>
 					<textarea name = "pta_description" rows="6" cols="47" >#form.pta_description#</textarea>';
 		if (instance.ptaDescription is not ''){
 			view &= '		<label for="pta_description" class="error" generated="0">#instance.ptaDescription#</label>';
@@ -1810,8 +1810,8 @@ component attributeName='userlist' output='false'{
 		view &= '	</div><div>
 				<input type="hidden" name="pta_status" value="#form.pta_status#" size = "2" maxlength = "2">
 				<hr>
-				<input disabled class="g-button g-button-submit" type="submit" name="escape" value="Отмена">
-				<input class="g-button g-button-submit" type="submit" name="updateAddress" value="Сохранить"> ';
+				<input disabled class="g-button g-button-submit" type="submit" name="escape" value="РћС‚РјРµРЅР°">
+				<input class="g-button g-button-submit" type="submit" name="updateAddress" value="РЎРѕС…СЂР°РЅРёС‚СЊ"> ';
 
 		if (instance.message is not ''){
 			view &= '<div id="mes" style="color:red;">#instance.message#</div>';
@@ -1854,27 +1854,27 @@ component attributeName='userlist' output='false'{
 
 		companysDms = factoryService.getService('companysDmsAPI').getCompanysDmsList();
 
-		param name='form.pt_id' default='#arguments.patientid#';		// id пациента
+		param name='form.pt_id' default='#arguments.patientid#';		// id РїР°С†РёРµРЅС‚Р°
 		param name='form.cdms_id' default='';
 		param name='form.ptdms_polis_number' default='';
 		param name='form.ptdms_description' default='';
 		param name='form.ptdms_status' default='1';
 
-		// ---------------------------------------------------------- форма ---------------------------------------------------------------
+		// ---------------------------------------------------------- С„РѕСЂРјР° ---------------------------------------------------------------
 		action = '#request.CRequest.updateURL(false,"/?page=patients&section=dms&action=add&patientid=#arguments.patientid#")#';
 
 		view = '';
 		view &= '<div class="grid_8">
 			<div class="signin-box">
-			<a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,"/?page=patients&section=patient&action=view&patientid=#arguments.patientid#")#">Назад</a><br><br>
-			<h2>Добавление информации ДМС:</h2>
+			<a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,"/?page=patients&section=patient&action=view&patientid=#arguments.patientid#")#">РќР°Р·Р°Рґ</a><br><br>
+			<h2>Р”РѕР±Р°РІР»РµРЅРёРµ РёРЅС„РѕСЂРјР°С†РёРё Р”РњРЎ:</h2>
 			<form id="addDMS" name="addDMS" action="#action#" method="post">
 				<div>
 					<input type="hidden" id="pt_id" name="pt_id" value="#form.pt_id#" maxlength="50" size="20">';
 
 		view &= '	</div>
 				<div>
-					<label>Номер полиса:</label>
+					<label>РќРѕРјРµСЂ РїРѕР»РёСЃР°:</label>
 					<input class="phone" type="text" id="ptdms_polis_number" name="ptdms_polis_number" value="#form.ptdms_polis_number#" maxlength="50" size="12">';
    		if (instance.ptdmsPolisNumber is not ''){
 		view &= '		<label for="ptdmsPolisNumber" class="error" generated="2">#instance.ptdmsPolisNumber#</label>';
@@ -1882,7 +1882,7 @@ component attributeName='userlist' output='false'{
 
 		view &= '	</div>
 				<div>
-					<label for="cdms_id"><b>Компания ДМС:</b></label>
+					<label for="cdms_id"><b>РљРѕРјРїР°РЅРёСЏ Р”РњРЎ:</b></label>
 					<select name="cdms_id">
 					<option value="" #checkedSelect("", form.cdms_id)# >-</option>';
 					for (var x=1; x<=companysDms.recordcount; x++){
@@ -1897,7 +1897,7 @@ component attributeName='userlist' output='false'{
 		view &= '
 				</div>
 				<div>
-					<label for="ptdns_description"><b>Описание:</b></label>
+					<label for="ptdns_description"><b>РћРїРёСЃР°РЅРёРµ:</b></label>
 					<textarea name = "ptdms_description" rows="6" cols="47" >#form.ptdms_description#</textarea>';
 		if (instance.ptdmsDescription is not ''){
 			view &= '		<label for="ptdms_description" class="error" generated="0">#instance.ptdmsDescription#</label>';
@@ -1907,8 +1907,8 @@ component attributeName='userlist' output='false'{
 		view &= '	</div><div>
 				<input type="hidden" name="ptdms_status" value="#form.ptdms_status#" size = "2" maxlength = "2">
 				<hr>
-				<input disabled class="g-button g-button-submit" type="submit" name="escape" value="Отмена">
-				<input class="g-button g-button-submit" type="submit" name="addDMS" value="Сохранить"> ';
+				<input disabled class="g-button g-button-submit" type="submit" name="escape" value="РћС‚РјРµРЅР°">
+				<input class="g-button g-button-submit" type="submit" name="addDMS" value="РЎРѕС…СЂР°РЅРёС‚СЊ"> ';
 
 		if (instance.message is not ''){
 			view &= '<div id="mes" style="color:red;">#instance.message#</div>';
@@ -1917,7 +1917,7 @@ component attributeName='userlist' output='false'{
 		view &='</div></form>
 			</div></div>';
 
-			// ------------------------------------------------ форма ---------------------------------------------------------------
+			// ------------------------------------------------ С„РѕСЂРјР° ---------------------------------------------------------------
 		return view;
 	}
 
@@ -1951,21 +1951,21 @@ component attributeName='userlist' output='false'{
 		companysDms = factoryService.getService('companysDmsAPI').getCompanysDmsList();
 		patient_dms = factoryService.getService('patientsAPI').getPatientDms(arguments.ptdmsid,'');
 
-		param name='form.ptdms_id' default='#patient_dms.ptdms_id#';		// id пациента
-		param name='form.pt_id' default='#patient_dms.pt_id#';		// id пациента
+		param name='form.ptdms_id' default='#patient_dms.ptdms_id#';		// id РїР°С†РёРµРЅС‚Р°
+		param name='form.pt_id' default='#patient_dms.pt_id#';		// id РїР°С†РёРµРЅС‚Р°
 		param name='form.cdms_id' default='#patient_dms.cdms_id#';
 		param name='form.ptdms_polis_number' default='#patient_dms.ptdms_polis_number#';
 		param name='form.ptdms_description' default='#patient_dms.ptdms_description#';
 		param name='form.ptdms_status' default='#patient_dms.ptdms_status#';
 
-		// ---------------------------------------------------------- форма ---------------------------------------------------------------
+		// ---------------------------------------------------------- С„РѕСЂРјР° ---------------------------------------------------------------
 		action = '#request.CRequest.updateURL(false,"/?page=patients&section=dms&action=edite&ptdmsid=#patient_dms.ptdms_id#")#';
 
 		view = '';
 		view &= '<div class="grid_8">
 			<div class="signin-box">
-			<a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,"/?page=patients&section=patient&action=view&patientid=#patient_dms.pt_id#")#">Назад</a><br><br>
-			<h2>Добавление информации ДМС:</h2>
+			<a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,"/?page=patients&section=patient&action=view&patientid=#patient_dms.pt_id#")#">РќР°Р·Р°Рґ</a><br><br>
+			<h2>Р”РѕР±Р°РІР»РµРЅРёРµ РёРЅС„РѕСЂРјР°С†РёРё Р”РњРЎ:</h2>
 			<form id="addDMS" name="addDMS" action="#action#" method="post">
 				<div>
 					<input type="hidden" id="ptdms_id" name="ptdms_id" value="#form.ptdms_id#" maxlength="50" size="20">
@@ -1973,7 +1973,7 @@ component attributeName='userlist' output='false'{
 
 		view &= '	</div>
 				<div>
-					<label>Номер полиса:</label>
+					<label>РќРѕРјРµСЂ РїРѕР»РёСЃР°:</label>
 					<input class="phone" type="text" id="ptdms_polis_number" name="ptdms_polis_number" value="#form.ptdms_polis_number#" maxlength="50" size="12">';
    		if (instance.ptdmsPolisNumber is not ''){
 		view &= '		<label for="ptdmsPolisNumber" class="error" generated="2">#instance.ptdmsPolisNumber#</label>';
@@ -1981,7 +1981,7 @@ component attributeName='userlist' output='false'{
 
 		view &= '	</div>
 				<div>
-					<label for="cdms_id"><b>Компания ДМС:</b></label>
+					<label for="cdms_id"><b>РљРѕРјРїР°РЅРёСЏ Р”РњРЎ:</b></label>
 					<select name="cdms_id">
 					<option value="" #checkedSelect("", form.cdms_id)# >-</option>';
 					for (var x=1; x<=companysDms.recordcount; x++){
@@ -1996,7 +1996,7 @@ component attributeName='userlist' output='false'{
 		view &= '
 				</div>
 				<div>
-					<label for="ptdns_description"><b>Описание:</b></label>
+					<label for="ptdns_description"><b>РћРїРёСЃР°РЅРёРµ:</b></label>
 					<textarea name = "ptdms_description" rows="6" cols="47" >#form.ptdms_description#</textarea>';
 		if (instance.ptdmsDescription is not ''){
 			view &= '		<label for="ptdms_description" class="error" generated="0">#instance.ptdmsDescription#</label>';
@@ -2006,8 +2006,8 @@ component attributeName='userlist' output='false'{
 		view &= '	</div><div>
 				<input type="hidden" name="ptdms_status" value="#form.ptdms_status#" size = "2" maxlength = "2">
 				<hr>
-				<input disabled class="g-button g-button-submit" type="submit" name="escape" value="Отмена">
-				<input class="g-button g-button-submit" type="submit" name="updateDMS" value="Сохранить"> ';
+				<input disabled class="g-button g-button-submit" type="submit" name="escape" value="РћС‚РјРµРЅР°">
+				<input class="g-button g-button-submit" type="submit" name="updateDMS" value="РЎРѕС…СЂР°РЅРёС‚СЊ"> ';
 
 		if (instance.message is not ''){
 			view &= '<div id="mes" style="color:red;">#instance.message#</div>';
@@ -2016,7 +2016,7 @@ component attributeName='userlist' output='false'{
 		view &='</div></form>
 			</div></div>';
 
-			// ------------------------------------------------ форма ---------------------------------------------------------------
+			// ------------------------------------------------ С„РѕСЂРјР° ---------------------------------------------------------------
 		return view;
 	}
 

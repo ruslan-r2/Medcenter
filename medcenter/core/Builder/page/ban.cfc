@@ -1,6 +1,6 @@
 component attributeName='ban' {
 
-	// для виджетов
+	// РґР»СЏ РІРёРґР¶РµС‚РѕРІ
 	request.factoryWidget=createObject('component','core.builder.factoryWidget').Init();
 
 	function Init() {
@@ -25,7 +25,7 @@ component attributeName='ban' {
 
 		//body
 			page &= widget.info.View();
-			page &= '<div id="block"><br><br><br><b>BAN</b> По возможности указать за что ban и на сколько.<br><br><br><br><br></div>';
+			page &= '<div id="block"><br><br><br><b>BAN</b> РџРѕ РІРѕР·РјРѕР¶РЅРѕСЃС‚Рё СѓРєР°Р·Р°С‚СЊ Р·Р° С‡С‚Рѕ ban Рё РЅР° СЃРєРѕР»СЊРєРѕ.<br><br><br><br><br></div>';
 		//body
 
 		page &= '		</div>';

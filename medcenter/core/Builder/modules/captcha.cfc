@@ -1,13 +1,13 @@
 /*
-	widget captcha - виджет капча 
+	widget captcha - РІРёРґР¶РµС‚ РєР°РїС‡Р° 
 */
 
 component attributeName='captcha' output='false'{
 
-	// псевдо конструктор
+	// РїСЃРµРІРґРѕ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
 	factoryService = request.factoryService;
-	instance.CCaptcha = factoryService.getService('CCaptcha'); // вызываем службу капча
-	// включена ява или нет
+	instance.CCaptcha = factoryService.getService('CCaptcha'); // РІС‹Р·С‹РІР°РµРј СЃР»СѓР¶Р±Сѓ РєР°РїС‡Р°
+	// РІРєР»СЋС‡РµРЅР° СЏРІР° РёР»Рё РЅРµС‚
 	//instance.javaScript = factoryService.getService('CJavaScript').addMeta(fileName=',/js/captcha.js');
 
 	function Init() {
@@ -27,36 +27,36 @@ component attributeName='captcha' output='false'{
 
 	}
 
-	// обработчик формы если ява выключена
+	// РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹ РµСЃР»Рё СЏРІР° РІС‹РєР»СЋС‡РµРЅР°
 	function formHandler(){
 		param name='errmsg' default='';
 		param name='captcha' default='';
-		//--- Обработчик формы ---
+		//--- РћР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹ ---
 		if ( isdefined('form.ok') ){
 			if ( instance.CCaptcha.getCaptcha(form.UUID) == form.captcha ){
-				//errmsg = "Все правильно ввел.";
+				//errmsg = "Р’СЃРµ РїСЂР°РІРёР»СЊРЅРѕ РІРІРµР».";
 
-                		// нужно сбросить настройки фаервола чтобы пользователя пропустить.
-				factoryService.getService('CFireWall').setUserIpParam( role='user', description='Снимаем бан и подозрение с данного IP, пользователь ввел капчу.', doLog=true);
-				// нужно удалять IP из базы
+                		// РЅСѓР¶РЅРѕ СЃР±СЂРѕСЃРёС‚СЊ РЅР°СЃС‚СЂРѕР№РєРё С„Р°РµСЂРІРѕР»Р° С‡С‚РѕР±С‹ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РїСЂРѕРїСѓСЃС‚РёС‚СЊ.
+				factoryService.getService('CFireWall').setUserIpParam( role='user', description='РЎРЅРёРјР°РµРј Р±Р°РЅ Рё РїРѕРґРѕР·СЂРµРЅРёРµ СЃ РґР°РЅРЅРѕРіРѕ IP, РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ РІРІРµР» РєР°РїС‡Сѓ.', doLog=true);
+				// РЅСѓР¶РЅРѕ СѓРґР°Р»СЏС‚СЊ IP РёР· Р±Р°Р·С‹
 				//instance.fireWallDAO.deleteIP(UserIP=#instance.UserIp.getCurrentIp()#);
 
 				factoryService.getService('redirector').redirect('#redir#');
 			}else{
-				errmsg = "Неправильные цифры капчи.";
-				// надо удалить из сессионного объекта введенные данные
+				errmsg = "РќРµРїСЂР°РІРёР»СЊРЅС‹Рµ С†РёС„СЂС‹ РєР°РїС‡Рё.";
+				// РЅР°РґРѕ СѓРґР°Р»РёС‚СЊ РёР· СЃРµСЃСЃРёРѕРЅРЅРѕРіРѕ РѕР±СЉРµРєС‚Р° РІРІРµРґРµРЅРЅС‹Рµ РґР°РЅРЅС‹Рµ
 			}
-			// надо удалить из сессионного объекта введенные данные
+			// РЅР°РґРѕ СѓРґР°Р»РёС‚СЊ РёР· СЃРµСЃСЃРёРѕРЅРЅРѕРіРѕ РѕР±СЉРµРєС‚Р° РІРІРµРґРµРЅРЅС‹Рµ РґР°РЅРЅС‹Рµ
 			instance.CCaptcha.delCaptcha(form.UUID);
-		//--- Обработчик формы ---
+		//--- РћР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹ ---
 		}
 	}
 
 
 	function View() {
 
-		UUID = createUUID(); // уникальный ID для формы
- 		instance.CCaptcha.generateCaptcha(UUID); // генрируем капчу для ID формы
+		UUID = createUUID(); // СѓРЅРёРєР°Р»СЊРЅС‹Р№ ID РґР»СЏ С„РѕСЂРјС‹
+ 		instance.CCaptcha.generateCaptcha(UUID); // РіРµРЅСЂРёСЂСѓРµРј РєР°РїС‡Сѓ РґР»СЏ ID С„РѕСЂРјС‹
 
 		savecontent variable="cfimage"{ 
 			include 'cfimage.cfm';

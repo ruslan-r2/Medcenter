@@ -12,18 +12,18 @@ component displayname="Application" output="false" {
 
 	function OnApplicationStart(){
 
-		// инициализация хранилища приложения
+		// РёРЅРёС†РёР°Р»РёР·Р°С†РёСЏ С…СЂР°РЅРёР»РёС‰Р° РїСЂРёР»РѕР¶РµРЅРёСЏ
 		application.applicationStorage = createObject("component","core.applicationStorage").init();
-		// первый запуск фабрики сервисов
+		// РїРµСЂРІС‹Р№ Р·Р°РїСѓСЃРє С„Р°Р±СЂРёРєРё СЃРµСЂРІРёСЃРѕРІ
 		factoryService = createObject("component","core.factoryService").init();
-		// нужно подрубить csettings
+		// РЅСѓР¶РЅРѕ РїРѕРґСЂСѓР±РёС‚СЊ csettings
 		factoryService.getService('CSettings').setSettings();
 	}
 
 	function onSessionStart(){
-		// инициализация хранилища сессий
+		// РёРЅРёС†РёР°Р»РёР·Р°С†РёСЏ С…СЂР°РЅРёР»РёС‰Р° СЃРµСЃСЃРёР№
 		session.sessionStorage = createObject("component","core.sessionStorage").init();
-		// в этом месте имеет смысл авторизовать пользователя
+		// РІ СЌС‚РѕРј РјРµСЃС‚Рµ РёРјРµРµС‚ СЃРјС‹СЃР» Р°РІС‚РѕСЂРёР·РѕРІР°С‚СЊ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
 	}
 	
 	function onRequestStart(){ // onRequestStart(required string targetPage)
@@ -32,8 +32,8 @@ component displayname="Application" output="false" {
 
 	function onRequestEnd(){
 		request.end_t = getTickCount();
-		if ( request.CRequest.isAjax() is 'html'){ // это условие для ajax запроса
-			writeOutPut('<div id="block" style="text-align:center">Время обработки запроса: #numberFormat(request.end_t-request.start_t)# ms.</div>');
+		if ( request.CRequest.isAjax() is 'html'){ // СЌС‚Рѕ СѓСЃР»РѕРІРёРµ РґР»СЏ ajax Р·Р°РїСЂРѕСЃР°
+			writeOutPut('<div id="block" style="text-align:center">Р’СЂРµРјСЏ РѕР±СЂР°Р±РѕС‚РєРё Р·Р°РїСЂРѕСЃР°: #numberFormat(request.end_t-request.start_t)# ms.</div>');
 		}
 	}
 
@@ -43,7 +43,7 @@ component displayname="Application" output="false" {
 	      errorHandler=createObject('component','core.errorHandler').Init();
 	      errorHandler.Handler(arguments.exception);
 	    } catch(any e) {
-	      WriteOutput('критическая ошибка');
+	      WriteOutput('РєСЂРёС‚РёС‡РµСЃРєР°СЏ РѕС€РёР±РєР°');
 	    } 
 	}
 

@@ -33,25 +33,25 @@
 		</style>
 		    <table cellspacing="0" cellpadding="0" style="font-size:10px; FONT-FAMILY:Tahoma,Verdana,Arial,Helvetica,sans-serif;" > 
 		        <tr> 
-		            <td><b>Договор на оказание платных медицинских услуг</b> № #patient.pt_id# от #now()#</td> 
+		            <td><b>Р”РѕРіРѕРІРѕСЂ РЅР° РѕРєР°Р·Р°РЅРёРµ РїР»Р°С‚РЅС‹С… РјРµРґРёС†РёРЅСЃРєРёС… СѓСЃР»СѓРі</b> в„– #patient.pt_id# РѕС‚ #now()#</td> 
 		        </tr>
 
 		        <tr> 
-		            <td style="text-align: justify;">Общество с ограниченной ответственностью "Жемчужина Подолья", именуемое в дальнейшем "Исполнитель",
-				в лице генерального директора Чагайдак Альберта Александровича, действующего на основании Устава и
-				лицензии на медицинскую деятельность № ЛО-50-01-003487 от 30.05.2012 г. с одной стороны и 
-				<b>#patient.pt_family#</b> <b>#patient.pt_firstname#</b> <b>#patient.pt_lastname#</b>, именуемый(ая) в дальнейшем "Пациент", 
-				с другой стороны, далее "Стороны", заключили настоящий Договор о нижеследующем:<br><br>
-				<b>1. Предмет договора.</b><br>
-				1.1. Пациент поручает, а Исполнитель обязуется оказать Пацменту платную медицинскую услугу:<br>
+		            <td style="text-align: justify;">РћР±С‰РµСЃС‚РІРѕ СЃ РѕРіСЂР°РЅРёС‡РµРЅРЅРѕР№ РѕС‚РІРµС‚СЃС‚РІРµРЅРЅРѕСЃС‚СЊСЋ "Р–РµРјС‡СѓР¶РёРЅР° РџРѕРґРѕР»СЊСЏ", РёРјРµРЅСѓРµРјРѕРµ РІ РґР°Р»СЊРЅРµР№С€РµРј "РСЃРїРѕР»РЅРёС‚РµР»СЊ",
+				РІ Р»РёС†Рµ РіРµРЅРµСЂР°Р»СЊРЅРѕРіРѕ РґРёСЂРµРєС‚РѕСЂР° Р§Р°РіР°Р№РґР°Рє РђР»СЊР±РµСЂС‚Р° РђР»РµРєСЃР°РЅРґСЂРѕРІРёС‡Р°, РґРµР№СЃС‚РІСѓСЋС‰РµРіРѕ РЅР° РѕСЃРЅРѕРІР°РЅРёРё РЈСЃС‚Р°РІР° Рё
+				Р»РёС†РµРЅР·РёРё РЅР° РјРµРґРёС†РёРЅСЃРєСѓСЋ РґРµСЏС‚РµР»СЊРЅРѕСЃС‚СЊ в„– Р›Рћ-50-01-003487 РѕС‚ 30.05.2012 Рі. СЃ РѕРґРЅРѕР№ СЃС‚РѕСЂРѕРЅС‹ Рё 
+				<b>#patient.pt_family#</b> <b>#patient.pt_firstname#</b> <b>#patient.pt_lastname#</b>, РёРјРµРЅСѓРµРјС‹Р№(Р°СЏ) РІ РґР°Р»СЊРЅРµР№С€РµРј "РџР°С†РёРµРЅС‚", 
+				СЃ РґСЂСѓРіРѕР№ СЃС‚РѕСЂРѕРЅС‹, РґР°Р»РµРµ "РЎС‚РѕСЂРѕРЅС‹", Р·Р°РєР»СЋС‡РёР»Рё РЅР°СЃС‚РѕСЏС‰РёР№ Р”РѕРіРѕРІРѕСЂ Рѕ РЅРёР¶РµСЃР»РµРґСѓСЋС‰РµРј:<br><br>
+				<b>1. РџСЂРµРґРјРµС‚ РґРѕРіРѕРІРѕСЂР°.</b><br>
+				1.1. РџР°С†РёРµРЅС‚ РїРѕСЂСѓС‡Р°РµС‚, Р° РСЃРїРѕР»РЅРёС‚РµР»СЊ РѕР±СЏР·СѓРµС‚СЃСЏ РѕРєР°Р·Р°С‚СЊ РџР°С†РјРµРЅС‚Сѓ РїР»Р°С‚РЅСѓСЋ РјРµРґРёС†РёРЅСЃРєСѓСЋ СѓСЃР»СѓРіСѓ:<br>
 				<table cellspacing="0" cellpadding="1" width="100%">
 					<tr>
-						<td class="block" width="50%">Наименование услуги</td>
-						<td class="block" width="50%">Наименование услуги</td>
+						<td class="block" width="50%">РќР°РёРјРµРЅРѕРІР°РЅРёРµ СѓСЃР»СѓРіРё</td>
+						<td class="block" width="50%">РќР°РёРјРµРЅРѕРІР°РЅРёРµ СѓСЃР»СѓРіРё</td>
 					</tr>
 					<tr>
-						<td class="block">Консультация врача-специалиста</td>
-						<td class="block">Озонотерапия</td>
+						<td class="block">РљРѕРЅСЃСѓР»СЊС‚Р°С†РёСЏ РІСЂР°С‡Р°-СЃРїРµС†РёР°Р»РёСЃС‚Р°</td>
+						<td class="block">РћР·РѕРЅРѕС‚РµСЂР°РїРёСЏ</td>
 					</tr>
 				</table>
 			    </td>
@@ -71,7 +71,7 @@
 		<cfset shablonDocStruct = DeserializeJSON(shablonDoc)>
 		<cfset userReception = factoryService.getService('userReceptionAPI').getReception( qRServices.rp_id )>
 		<cfset qUser = factoryService.getService( 'authorization' ).getUser( userReception.user_id ) >
-		// пациент
+		// РїР°С†РёРµРЅС‚
 		<cfset patientid = userReception.pt_id >
 		<cfset factoryService.getService('patientsAPI').setPatient(patientid) >
 		<cfset patient = factoryService.getService('patientsAPI').getPatient() >
@@ -90,49 +90,49 @@
 		</style>
 
 			<cfscript>
-				view &= '<p><img style="float:left; margin: 0px 0px 0px 0px;" src="img/logodoc.png" width="110px" boredr="0"><center><b>Многопрофильный медицинский центр ООО "Жемчужина подолья"<br>
-					г. Подольск, ул. Беляевская, д. 86Б <br>
-					тел.: 8(499)705-86-56, 8(4967)66-33-63, 8(968)688-61-71</b></center>
+				view &= '<p><img style="float:left; margin: 0px 0px 0px 0px;" src="img/logodoc.png" width="110px" boredr="0"><center><b>РњРЅРѕРіРѕРїСЂРѕС„РёР»СЊРЅС‹Р№ РјРµРґРёС†РёРЅСЃРєРёР№ С†РµРЅС‚СЂ РћРћРћ "Р–РµРјС‡СѓР¶РёРЅР° РїРѕРґРѕР»СЊСЏ"<br>
+					Рі. РџРѕРґРѕР»СЊСЃРє, СѓР». Р‘РµР»СЏРµРІСЃРєР°СЏ, Рґ. 86Р‘ <br>
+					С‚РµР».: 8(499)705-86-56, 8(4967)66-33-63, 8(968)688-61-71</b></center>
 					</p>';
 
 				if ( qRServices.st_id == 1 OR qRServices.st_id == 4){
-					view &= '<p align="center"><b>МЕДИЦИНСКАЯ КАРТА АМБУЛАТОРНОГО БОЛЬНОГО</b></p>';
+					view &= '<p align="center"><b>РњР•Р”РР¦РРќРЎРљРђРЇ РљРђР РўРђ РђРњР‘РЈР›РђРўРћР РќРћР“Рћ Р‘РћР›Р¬РќРћР“Рћ</b></p>';
 					view &= '<p align="center"><b>#qRServices.sv_name#</b></p>';			
-					view &= '<br><p><b>Номер карты:</b> #patient.pt_id#<br>';
-					view &= '<b>Дата приёма:</b> #dateFormat(userReception.rp_date,"DD/MM/YYYY")#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Начало приёма:</b>#timeFormat(userReception.rp_starttime,"HH:MM")#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Окончание приёма:</b>#timeFormat(userReception.rp_endtime,"HH:MM")#<br>';
-					view &= '<b>Пациент:</b> #patient.pt_family# #patient.pt_firstname# #patient.pt_lastname# <b>Дата рождения:</b> #dateFormat(patient.pt_dob,"DD/MM/YYYY")#<br>';
-					view &= '<b>Врач:</b> #qUser.emp_family# #qUser.emp_firstname# #qUser.emp_lastname#</p>';
+					view &= '<br><p><b>РќРѕРјРµСЂ РєР°СЂС‚С‹:</b> #patient.pt_id#<br>';
+					view &= '<b>Р”Р°С‚Р° РїСЂРёС‘РјР°:</b> #dateFormat(userReception.rp_date,"DD/MM/YYYY")#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>РќР°С‡Р°Р»Рѕ РїСЂРёС‘РјР°:</b>#timeFormat(userReception.rp_starttime,"HH:MM")#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>РћРєРѕРЅС‡Р°РЅРёРµ РїСЂРёС‘РјР°:</b>#timeFormat(userReception.rp_endtime,"HH:MM")#<br>';
+					view &= '<b>РџР°С†РёРµРЅС‚:</b> #patient.pt_family# #patient.pt_firstname# #patient.pt_lastname# <b>Р”Р°С‚Р° СЂРѕР¶РґРµРЅРёСЏ:</b> #dateFormat(patient.pt_dob,"DD/MM/YYYY")#<br>';
+					view &= '<b>Р’СЂР°С‡:</b> #qUser.emp_family# #qUser.emp_firstname# #qUser.emp_lastname#</p>';
 					view &= '-----------------------------------------------------------------------------------------------------------------------------------------------------------------';
 
 
 				}else if ( qRServices.st_id == 2 OR qRServices.st_id == 3){
-					view &= '<p align="center"><b>ПРОТОКОЛ № #qRServices.sv_id#</b></p>';
+					view &= '<p align="center"><b>РџР РћРўРћРљРћР› в„– #qRServices.sv_id#</b></p>';
 					view &= '<p align="center"><b>#qRServices.sv_name#</b></p>';
-					view &= '<p><b>Номер карты:</b> #patient.pt_id#<br>';
-					view &= '<b>Дата:</b> #dateFormat(userReception.rp_date,"DD/MM/YYYY")#<br>';
-					view &= '<b>Пациент:</b> #patient.pt_family# #patient.pt_firstname# #patient.pt_lastname# <b>Дата рождения:</b> #dateFormat(patient.pt_dob,"DD/MM/YYYY")#<br>';
-					view &= '<b>Врач:</b> #qUser.emp_family# #qUser.emp_firstname# #qUser.emp_lastname#</p>';
+					view &= '<p><b>РќРѕРјРµСЂ РєР°СЂС‚С‹:</b> #patient.pt_id#<br>';
+					view &= '<b>Р”Р°С‚Р°:</b> #dateFormat(userReception.rp_date,"DD/MM/YYYY")#<br>';
+					view &= '<b>РџР°С†РёРµРЅС‚:</b> #patient.pt_family# #patient.pt_firstname# #patient.pt_lastname# <b>Р”Р°С‚Р° СЂРѕР¶РґРµРЅРёСЏ:</b> #dateFormat(patient.pt_dob,"DD/MM/YYYY")#<br>';
+					view &= '<b>Р’СЂР°С‡:</b> #qUser.emp_family# #qUser.emp_firstname# #qUser.emp_lastname#</p>';
 					view &= '-----------------------------------------------------------------------------------------------------------------------------------------------------------------';
 				}else if ( qRServices.st_id == 6 ){
-					view &= '<p align="center"><b>ПРОТОКОЛ ОПЕРАЦИИ № #qRServices.sv_id#</b></p>';
+					view &= '<p align="center"><b>РџР РћРўРћРљРћР› РћРџР•Р РђР¦РР в„– #qRServices.sv_id#</b></p>';
 					view &= '<p align="center"><b>#qRServices.sv_name#</b></p>';
-					view &= '<p><b>Номер карты:</b> #patient.pt_id#<br>';
-					view &= '<b>Дата:</b> #dateFormat(userReception.rp_date,"DD/MM/YYYY")#<br>';
-					view &= '<b>Пациент:</b> #patient.pt_family# #patient.pt_firstname# #patient.pt_lastname# <b>Дата рождения:</b> #dateFormat(patient.pt_dob,"DD/MM/YYYY")#<br>';
-					view &= '<b>Врач:</b> #qUser.emp_family# #qUser.emp_firstname# #qUser.emp_lastname#</p>';
+					view &= '<p><b>РќРѕРјРµСЂ РєР°СЂС‚С‹:</b> #patient.pt_id#<br>';
+					view &= '<b>Р”Р°С‚Р°:</b> #dateFormat(userReception.rp_date,"DD/MM/YYYY")#<br>';
+					view &= '<b>РџР°С†РёРµРЅС‚:</b> #patient.pt_family# #patient.pt_firstname# #patient.pt_lastname# <b>Р”Р°С‚Р° СЂРѕР¶РґРµРЅРёСЏ:</b> #dateFormat(patient.pt_dob,"DD/MM/YYYY")#<br>';
+					view &= '<b>Р’СЂР°С‡:</b> #qUser.emp_family# #qUser.emp_firstname# #qUser.emp_lastname#</p>';
 					view &= '-----------------------------------------------------------------------------------------------------------------------------------------------------------------';
 				}
 
 				for (var i=1; i<=arrayLen(shablonDocStruct); i++){
-					// добавить скрытие пустых полей.
-					if ( shablonDocStruct[i].name == 'АНАМНЕЗ ЗАБОЛЕВАНИЯ' ){
+					// РґРѕР±Р°РІРёС‚СЊ СЃРєСЂС‹С‚РёРµ РїСѓСЃС‚С‹С… РїРѕР»РµР№.
+					if ( shablonDocStruct[i].name == 'РђРќРђРњРќР•Р— Р—РђР‘РћР›Р•Р’РђРќРРЇ' ){
 						if (shablonDocStruct[i].data != ''){
 							view &= '<p><b>#shablonDocStruct[i].name#:</b><br> #_toString(shablonDocStruct[i].data)#</p>';
 						}
 
 						if (qRServices.st_id == 1){
 							if ( patient.pt_anamnez != '' ){
-							view &= '<p><b>АНАМНЕЗ ЖИЗНИ:</b><br>';
+							view &= '<p><b>РђРќРђРњРќР•Р— Р–РР—РќР:</b><br>';
 								anamnez = DeserializeJSON( patient.pt_anamnez );
 								for (var j=1; j<=arrayLen(anamnez); j++){
 									if ( anamnez[j].data != '' ){
@@ -153,11 +153,11 @@
 				}
 
 				if ( qRServices.st_id == 1 ){
-					view &= "<p align='right'>Лечащий врач __________________ #Left(qUser.emp_firstname,1)#.#Left(qUser.emp_lastname,1)#. #qUser.emp_family#</p>";					
+					view &= "<p align='right'>Р›РµС‡Р°С‰РёР№ РІСЂР°С‡ __________________ #Left(qUser.emp_firstname,1)#.#Left(qUser.emp_lastname,1)#. #qUser.emp_family#</p>";					
 				}else if( qRServices.st_id == 2 ){
-					view &= "<p align='right'>Врач УЗИ__________________ #Left(qUser.emp_firstname,1)#.#Left(qUser.emp_lastname,1)#. #qUser.emp_family#</p>";
+					view &= "<p align='right'>Р’СЂР°С‡ РЈР—Р__________________ #Left(qUser.emp_firstname,1)#.#Left(qUser.emp_lastname,1)#. #qUser.emp_family#</p>";
 				}else{
-					view &= "<p align='right'>Врач __________________ #Left(qUser.emp_firstname,1)#.#Left(qUser.emp_lastname,1)#. #qUser.emp_family#</p>";
+					view &= "<p align='right'>Р’СЂР°С‡ __________________ #Left(qUser.emp_firstname,1)#.#Left(qUser.emp_lastname,1)#. #qUser.emp_family#</p>";
 
 				}
 				writeOutPut(view);
@@ -175,7 +175,7 @@
 		<cfset shablonDocStruct = DeserializeJSON(shablonDoc)>
 		<cfset userReception = factoryService.getService('userReceptionAPI').getReception( qRServices.rp_id )>
 		<cfset qUser = factoryService.getService( 'authorization' ).getUser( userReception.user_id ) >
-		// пациент
+		// РїР°С†РёРµРЅС‚
 		<cfset patientid = userReception.pt_id >
 		<cfset factoryService.getService('patientsAPI').setPatient(patientid) >
 		<cfset patient = factoryService.getService('patientsAPI').getPatient() >
@@ -195,27 +195,27 @@
 		</style>
 
 			<cfscript>
-				view &= '<p><img style="float:left; margin: 0px 0px 30px 20px;" src="img/logodoc.png" width="110px" boredr="0"><center><b>Многопрофильный медицинский центр ООО "Жемчужина подолья"<br>
-					г. Подольск, ул. Беляевская, д. 86Б <br>
-					тел.: 8(499)705-86-56, 8(4967)66-33-63, 8(968)688-61-71</b></center>
+				view &= '<p><img style="float:left; margin: 0px 0px 30px 20px;" src="img/logodoc.png" width="110px" boredr="0"><center><b>РњРЅРѕРіРѕРїСЂРѕС„РёР»СЊРЅС‹Р№ РјРµРґРёС†РёРЅСЃРєРёР№ С†РµРЅС‚СЂ РћРћРћ "Р–РµРјС‡СѓР¶РёРЅР° РїРѕРґРѕР»СЊСЏ"<br>
+					Рі. РџРѕРґРѕР»СЊСЃРє, СѓР». Р‘РµР»СЏРµРІСЃРєР°СЏ, Рґ. 86Р‘ <br>
+					С‚РµР».: 8(499)705-86-56, 8(4967)66-33-63, 8(968)688-61-71</b></center>
 					</p><br>';
 
-					view &= '<p><b>Номер карты:</b> #patient.pt_id#<br>';
-					view &= '<b>Дата приёма:</b> #dateFormat(userReception.rp_date,"DD/MM/YYYY")#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Начало приёма:</b>#timeFormat(userReception.rp_starttime,"HH:MM")#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Окончание приёма:</b>#timeFormat(userReception.rp_endtime,"HH:MM")#<br>';
-					view &= '<b>Пациент:</b> #patient.pt_family# #patient.pt_firstname# #patient.pt_lastname# <b>Дата рождения:</b> #dateFormat(patient.pt_dob,"DD/MM/YYYY")#<br>';
-					view &= '<b>Врач:</b> #qUser.emp_family# #qUser.emp_firstname# #qUser.emp_lastname#</p>';
+					view &= '<p><b>РќРѕРјРµСЂ РєР°СЂС‚С‹:</b> #patient.pt_id#<br>';
+					view &= '<b>Р”Р°С‚Р° РїСЂРёС‘РјР°:</b> #dateFormat(userReception.rp_date,"DD/MM/YYYY")#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>РќР°С‡Р°Р»Рѕ РїСЂРёС‘РјР°:</b>#timeFormat(userReception.rp_starttime,"HH:MM")#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>РћРєРѕРЅС‡Р°РЅРёРµ РїСЂРёС‘РјР°:</b>#timeFormat(userReception.rp_endtime,"HH:MM")#<br>';
+					view &= '<b>РџР°С†РёРµРЅС‚:</b> #patient.pt_family# #patient.pt_firstname# #patient.pt_lastname# <b>Р”Р°С‚Р° СЂРѕР¶РґРµРЅРёСЏ:</b> #dateFormat(patient.pt_dob,"DD/MM/YYYY")#<br>';
+					view &= '<b>Р’СЂР°С‡:</b> #qUser.emp_family# #qUser.emp_firstname# #qUser.emp_lastname#</p>';
 					view &= '-----------------------------------------------------------------------------------------------------------------------------------------------------------------';
 
 				for (var i=1; i<=arrayLen(shablonDocStruct); i++){
-					// добавить скрытие пустых полей.
-					if ( shablonDocStruct[i].name == 'ДИАГНОЗ' OR 
-						shablonDocStruct[i].name == 'КЛИНИЧЕСКИЙ ДИАГНОЗ' OR
-						shablonDocStruct[i].name == 'ЛИСТ НАЗНАЧЕНИЙ' OR
-						shablonDocStruct[i].name == 'РЕКОМЕНДАЦИИ' OR
-						shablonDocStruct[i].name == 'ЛЕЧЕНИЕ' OR
-						shablonDocStruct[i].name == 'ДОПОЛНИТЕЛЬНЫЕ НАЗНАЧЕНИЯ' OR
-						shablonDocStruct[i].name == 'ПЛАН ОБСЛЕДОВАНИЯ' OR
-						shablonDocStruct[i].name == 'РЕЦЕПТЫ'){
+					// РґРѕР±Р°РІРёС‚СЊ СЃРєСЂС‹С‚РёРµ РїСѓСЃС‚С‹С… РїРѕР»РµР№.
+					if ( shablonDocStruct[i].name == 'Р”РРђР“РќРћР—' OR 
+						shablonDocStruct[i].name == 'РљР›РРќРР§Р•РЎРљРР™ Р”РРђР“РќРћР—' OR
+						shablonDocStruct[i].name == 'Р›РРЎРў РќРђР—РќРђР§Р•РќРР™' OR
+						shablonDocStruct[i].name == 'Р Р•РљРћРњР•РќР”РђР¦РР' OR
+						shablonDocStruct[i].name == 'Р›Р•Р§Р•РќРР•' OR
+						shablonDocStruct[i].name == 'Р”РћРџРћР›РќРРўР•Р›Р¬РќР«Р• РќРђР—РќРђР§Р•РќРРЇ' OR
+						shablonDocStruct[i].name == 'РџР›РђРќ РћР‘РЎР›Р•Р”РћР’РђРќРРЇ' OR
+						shablonDocStruct[i].name == 'Р Р•Р¦Р•РџРўР«'){
 
 						if (shablonDocStruct[i].data != ''){
 							view &= '<p><b>#shablonDocStruct[i].name#:</b><br> #_toString(shablonDocStruct[i].data)#</p>';
@@ -223,7 +223,7 @@
 
 					}
 				}
-				view &= "<p align='right'>Лечащий врач __________________ #Left(qUser.emp_firstname,1)#.#Left(qUser.emp_lastname,1)#. #qUser.emp_family#</p>";
+				view &= "<p align='right'>Р›РµС‡Р°С‰РёР№ РІСЂР°С‡ __________________ #Left(qUser.emp_firstname,1)#.#Left(qUser.emp_lastname,1)#. #qUser.emp_family#</p>";
 											
 				writeOutPut(view);
 			</cfscript>

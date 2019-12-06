@@ -1,5 +1,5 @@
 /*
-  Сервис Авторизации - Service authorization
+  РЎРµСЂРІРёСЃ РђРІС‚РѕСЂРёР·Р°С†РёРё - Service authorization
 */
 
 component displayname="authorization" {
@@ -7,7 +7,7 @@ component displayname="authorization" {
 
 	instance.userDAO = createObject('component', 'core.db.userDAO' ).init();
 	lock scope="session" type="exclusive" timeout="5" {
-		instance.user = session.sessionStorage.getObject('user'); // сесионный Объект
+		instance.user = session.sessionStorage.getObject('user'); // СЃРµСЃРёРѕРЅРЅС‹Р№ РћР±СЉРµРєС‚
 	}
 
 	function init(){
@@ -20,10 +20,10 @@ component displayname="authorization" {
 	}
 
 	function logoutUser(){
-		// сбросить сессионный объект user
+		// СЃР±СЂРѕСЃРёС‚СЊ СЃРµСЃСЃРёРѕРЅРЅС‹Р№ РѕР±СЉРµРєС‚ user
 		instance.user.setUserId(1);
-		// Переписать роль пользователя.
-		instance.user.setUserName('Гость');
+		// РџРµСЂРµРїРёСЃР°С‚СЊ СЂРѕР»СЊ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
+		instance.user.setUserName('Р“РѕСЃС‚СЊ');
 		instance.user.setUserFamily('');
 		instance.user.setUserFirstName('');
 		instance.user.setUserLastName('');
@@ -31,16 +31,16 @@ component displayname="authorization" {
 		instance.user.setUserGroups('1'); // rbac UserNoReg
 
 		var result.LOGGEDIN = 0;
-		result.MESSAGE = "Вы вышли!";
+		result.MESSAGE = "Р’С‹ РІС‹С€Р»Рё!";
 		return result;
 	}
 
 	function loginUser(required string username, required string password, string redir=''){
 		var result = structNew();
 		result.RETVAL = 0;
-		result.STRUCT = structNew(); // для валидации полей
-		result.RETDESC = ""; // ответ если пропустил валидатор но что то не так в базе
-		result.REDIR = "#arguments.redir#"; // этот параметр нужен только для явы
+		result.STRUCT = structNew(); // РґР»СЏ РІР°Р»РёРґР°С†РёРё РїРѕР»РµР№
+		result.RETDESC = ""; // РѕС‚РІРµС‚ РµСЃР»Рё РїСЂРѕРїСѓСЃС‚РёР» РІР°Р»РёРґР°С‚РѕСЂ РЅРѕ С‡С‚Рѕ С‚Рѕ РЅРµ С‚Р°Рє РІ Р±Р°Р·Рµ
+		result.REDIR = "#arguments.redir#"; // СЌС‚РѕС‚ РїР°СЂР°РјРµС‚СЂ РЅСѓР¶РµРЅ С‚РѕР»СЊРєРѕ РґР»СЏ СЏРІС‹
 
 		validator = request.factoryService.getService('Validator');
 
@@ -55,16 +55,16 @@ component displayname="authorization" {
 		}
 
 		if ( !structIsEmpty(result.struct) ){
-			// к базе не пропускает а структура с сообщениями уже есть
+			// Рє Р±Р°Р·Рµ РЅРµ РїСЂРѕРїСѓСЃРєР°РµС‚ Р° СЃС‚СЂСѓРєС‚СѓСЂР° СЃ СЃРѕРѕР±С‰РµРЅРёСЏРјРё СѓР¶Рµ РµСЃС‚СЊ
 		}else{
-			// можно еще добавить проверку о том что пользователь уже залогинен
+			// РјРѕР¶РЅРѕ РµС‰Рµ РґРѕР±Р°РІРёС‚СЊ РїСЂРѕРІРµСЂРєСѓ Рѕ С‚РѕРј С‡С‚Рѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ СѓР¶Рµ Р·Р°Р»РѕРіРёРЅРµРЅ
 			structUser = instance.userDAO.readUser(arguments.userName, arguments.password);
 			if (structUser.RETVAL is true){
-				// обновляем объект user
+				// РѕР±РЅРѕРІР»СЏРµРј РѕР±СЉРµРєС‚ user
 				result.RETVAL = structUser.RETVAL;
 				result.RETDESC = structUser.RETDESC;
-				// База
-				// есть смысл заменить все одной функцией в User
+				// Р‘Р°Р·Р°
+				// РµСЃС‚СЊ СЃРјС‹СЃР» Р·Р°РјРµРЅРёС‚СЊ РІСЃРµ РѕРґРЅРѕР№ С„СѓРЅРєС†РёРµР№ РІ User
 				instance.user.setUserId(structUser.user_id);
 				instance.user.setUserName(structUser.user_name);
 				instance.user.setUserFamily(structUser.emp_family);
@@ -74,7 +74,7 @@ component displayname="authorization" {
 				instance.user.setUserGroups(structUser.user_groups);
 			}
 			else {
-				// говорим что нет такого пользователя
+				// РіРѕРІРѕСЂРёРј С‡С‚Рѕ РЅРµС‚ С‚Р°РєРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
 				result.RETVAL = structUser.RETVAL;
 				result.RETDESC = structUser.RETDESC;
 			}
@@ -98,11 +98,11 @@ component displayname="authorization" {
 		var result = structNew();
 		result.RETVAL = 0;
 		result.RETDESC = "";
-		result.STRUCT = structNew(); // для валидации полей
+		result.STRUCT = structNew(); // РґР»СЏ РІР°Р»РёРґР°С†РёРё РїРѕР»РµР№
 
 		validator = request.factoryService.getService('Validator');
 		                                                          //required                 //DB
-		var struct_ = validator.checkInput('#userName#',true,'isAllowSimbol',2,20, true, 'bbs_users', 'user_name','Логин');
+		var struct_ = validator.checkInput('#userName#',true,'isAllowSimbol',2,20, true, 'bbs_users', 'user_name','Р›РѕРіРёРЅ');
 		if ( !struct_.retval ){
 			structInsert(result.struct, 'userName','#struct_.retdesc#');
 		}
@@ -146,7 +146,7 @@ component displayname="authorization" {
 		}
 
 		//--------------------------------------------------------------------
-	        // если обнаружены ошибки
+	        // РµСЃР»Рё РѕР±РЅР°СЂСѓР¶РµРЅС‹ РѕС€РёР±РєРё
 		if ( structIsEmpty(result.struct) ){
 
 			structRegUser = instance.userDAO.createUser(userName, userPass, userStatus, userGroups, empType, empFamily, empFirstName, empLastName, empDescription );
@@ -179,11 +179,11 @@ component displayname="authorization" {
 		var result = structNew();
 		result.RETVAL = 0;
 		result.RETDESC = "";
-		result.STRUCT = structNew(); // для валидации полей
+		result.STRUCT = structNew(); // РґР»СЏ РІР°Р»РёРґР°С†РёРё РїРѕР»РµР№
 
 		validator = request.factoryService.getService('Validator');
 		                                                          //required                 //DB
-		//var struct_ = validator.checkInput('#userName#',true,'isAllowSimbol',2,20, true, 'bbs_users', 'user_name','Логин');
+		//var struct_ = validator.checkInput('#userName#',true,'isAllowSimbol',2,20, true, 'bbs_users', 'user_name','Р›РѕРіРёРЅ');
 		var struct_ = validator.checkInput('#userName#',true,'isAllowSimbol',2,20);
 		if ( !struct_.retval ){
 			structInsert(result.struct, 'userName','#struct_.retdesc#');
@@ -228,7 +228,7 @@ component displayname="authorization" {
 		}
 
 		//--------------------------------------------------------------------
-	        // если обнаружены ошибки
+	        // РµСЃР»Рё РѕР±РЅР°СЂСѓР¶РµРЅС‹ РѕС€РёР±РєРё
 		if ( structIsEmpty(result.struct) ){
 
 			structRegUser = instance.userDAO.updateUser( userID, userName, userPass, userStatus, userGroups, empType, empFamily, empFirstName, empLastName, empDescription );

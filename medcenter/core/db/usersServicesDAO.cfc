@@ -1,7 +1,7 @@
 component displayName='usersServicesDAO'{
 
-	// Псевдо конструктор
-	instance = {datasource = ''} ; // объект
+	// РџСЃРµРІРґРѕ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
+	instance = {datasource = ''} ; // РѕР±СЉРµРєС‚
 	instance.datasource = createObject('component', 'core.db.Datasource').init();
 
 
@@ -17,7 +17,7 @@ component displayName='usersServicesDAO'{
 
 		qUserServices.setSQL("SELECT * FROM services WHERE user_id = #arguments.userID# AND sv_date = #arguments.date#");
 	
-		var execute = qUserServices.execute(); // вся структура и result и prefix
+		var execute = qUserServices.execute(); // РІСЃСЏ СЃС‚СЂСѓРєС‚СѓСЂР° Рё result Рё prefix
 		var result = execute.getResult();
 		return result; //query
 	}

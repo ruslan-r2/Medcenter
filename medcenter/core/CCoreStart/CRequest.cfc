@@ -1,6 +1,6 @@
 component displayname="CRequest" {
 
-	// псевдо конструктор
+	// РїСЃРµРІРґРѕ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
 	instance.CRequest = { HttpRequestData='', url = '', form= '' } ;
 	instance.CRequest.url = URL;
 	instance.CRequest.form = FORM;
@@ -10,14 +10,14 @@ component displayname="CRequest" {
 		return this;
 	}
 
-	// проверка урла запускается после фаервола и редиректа
+	// РїСЂРѕРІРµСЂРєР° СѓСЂР»Р° Р·Р°РїСѓСЃРєР°РµС‚СЃСЏ РїРѕСЃР»Рµ С„Р°РµСЂРІРѕР»Р° Рё СЂРµРґРёСЂРµРєС‚Р°
 	function CheckUrl() {
 		urlString=cgi.query_string;
 		// regular=request.factoryService.getService('cSettings').getSettings('request');
 		regular='%D0%[9AB][0-9A-F]|%D1%8[0-9A-F]|%D0%81|%D1%91|%20|%3A%2F%2F|%3F|%3D|[a-zA-Z0-9=&]|[\/\:\.\?\%]';
 		check=ReReplace(urlString,regular,'','all');
 		if (!check=='') {
-			request.factoryService.getService('Clog').AddLogging(ssection='CRequest', type='event', description='Недопустимые символы в урле!');
+			request.factoryService.getService('Clog').AddLogging(ssection='CRequest', type='event', description='РќРµРґРѕРїСѓСЃС‚РёРјС‹Рµ СЃРёРјРІРѕР»С‹ РІ СѓСЂР»Рµ!');
 			request.factoryService.getService('cFireWall').addWarnings(1);
 
 			return false;
@@ -63,7 +63,7 @@ component displayname="CRequest" {
 	}
 
 	function addUrlToken(){
-		// и спросить у фаервола роль ip адреса
+		// Рё СЃРїСЂРѕСЃРёС‚СЊ Сѓ С„Р°РµСЂРІРѕР»Р° СЂРѕР»СЊ ip Р°РґСЂРµСЃР°
 		if ( CGI.HTTP_COOKIE == ''  AND request.factoryService.getService('CFireWall').getRole() != 'robot'){
 			return '&#client.urlToken#';
 		} else {
@@ -71,7 +71,7 @@ component displayname="CRequest" {
 		}
 	}
 
-	// конструктор URL автоматическая добавка urlToken
+	// РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ URL Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєР°СЏ РґРѕР±Р°РІРєР° urlToken
 	function updateURL(boolian SSL=false, required string inURL ){
 		var outURL = '';
 		if ( !arguments.SSL ){ outURL &= 'http://'; }
@@ -79,7 +79,7 @@ component displayname="CRequest" {
 		outURL &= #request.factoryService.getService('CSettings').getSettings('system').domainName#;
 		//outURL &= 'localhost';
 		outURL &= '#arguments.inURL#';
-		// и спросить у фаервола роль ip адреса
+		// Рё СЃРїСЂРѕСЃРёС‚СЊ Сѓ С„Р°РµСЂРІРѕР»Р° СЂРѕР»СЊ ip Р°РґСЂРµСЃР°
 		if ( CGI.HTTP_COOKIE == ''  AND request.factoryService.getService('CFireWall').getRole() != 'robot'){ outURL &= '&#client.urlToken#';}
 		else{ outURL &= '';}
 		return outURL;		

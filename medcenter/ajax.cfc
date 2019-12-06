@@ -1,12 +1,12 @@
 /*
-	Темповый файл для ajax запросов.
+	РўРµРјРїРѕРІС‹Р№ С„Р°Р№Р» РґР»СЏ ajax Р·Р°РїСЂРѕСЃРѕРІ.
 */
 component displayname="ajax" output="false"{
 
 	remote function login(required string username, required string password, string redir){
 		authorization = request.factoryService.getService('authorization');
-		// можно еще добавить проверку о том что пользователь уже залогинен
-		// можно отлавливать ошибки и уведомлять пользователя!
+		// РјРѕР¶РЅРѕ РµС‰Рµ РґРѕР±Р°РІРёС‚СЊ РїСЂРѕРІРµСЂРєСѓ Рѕ С‚РѕРј С‡С‚Рѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ СѓР¶Рµ Р·Р°Р»РѕРіРёРЅРµРЅ
+		// РјРѕР¶РЅРѕ РѕС‚Р»Р°РІР»РёРІР°С‚СЊ РѕС€РёР±РєРё Рё СѓРІРµРґРѕРјР»СЏС‚СЊ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ!
 		result = authorization.loginUser(arguments.userName, arguments.password, arguments.redir);
 		//sleep(2000);
 		return result;
@@ -22,34 +22,34 @@ component displayname="ajax" output="false"{
 
 	remote function registration(required string username, required string password, required string password1, string tel_mob, string mail, string captcha, string UUID){
 		authorization = request.factoryService.getService('authorization');
-		// можно еще добавить проверку о том что пользователь уже залогинен
-		// можно отлавливать ошибки и уведомлять пользователя!
+		// РјРѕР¶РЅРѕ РµС‰Рµ РґРѕР±Р°РІРёС‚СЊ РїСЂРѕРІРµСЂРєСѓ Рѕ С‚РѕРј С‡С‚Рѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ СѓР¶Рµ Р·Р°Р»РѕРіРёРЅРµРЅ
+		// РјРѕР¶РЅРѕ РѕС‚Р»Р°РІР»РёРІР°С‚СЊ РѕС€РёР±РєРё Рё СѓРІРµРґРѕРјР»СЏС‚СЊ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ!
 		result = authorization.registrationUser(arguments.username, arguments.password, arguments.password1, arguments.tel_mob, arguments.mail, arguments.captcha, arguments.UUID);
 		return result;
 	}
 
 	remote function checkUserName(string username){
 		validator = request.factoryService.getService('Validator');
-		return validator.checkInputDB('bbs_users','user_name',arguments.username); // возвращает true \false
+		return validator.checkInputDB('bbs_users','user_name',arguments.username); // РІРѕР·РІСЂР°С‰Р°РµС‚ true \false
 	}
 
 	remote function checkEmail(string mail){
 		validator = request.factoryService.getService('Validator');
-		return validator.checkInputDB('bbs_users','user_mail',arguments.mail); // возвращает true \false
+		return validator.checkInputDB('bbs_users','user_mail',arguments.mail); // РІРѕР·РІСЂР°С‰Р°РµС‚ true \false
 	}
 
 	remote function checkTelMob(string tel_mob){
 		validator = request.factoryService.getService('Validator');
-		return validator.checkInputDB('bbs_users','user_telmob',arguments.tel_mob); // возвращает true \false
+		return validator.checkInputDB('bbs_users','user_telmob',arguments.tel_mob); // РІРѕР·РІСЂР°С‰Р°РµС‚ true \false
 	}
 
 	remote function checkCaptcha(string captcha, string UUID){
 		validator = request.factoryService.getService('Validator');
-		struct_ = validator.checkCaptcha(captcha,UUID); // возвращает структуру retval retdesc
-		return struct_.retval; // либо true либо false
+		struct_ = validator.checkCaptcha(captcha,UUID); // РІРѕР·РІСЂР°С‰Р°РµС‚ СЃС‚СЂСѓРєС‚СѓСЂСѓ retval retdesc
+		return struct_.retval; // Р»РёР±Рѕ true Р»РёР±Рѕ false
 	}
 
-	remote function javaScripts(string page='null'){ // все равно в ява скрипте ставится значение undefined 
+	remote function javaScripts(string page='null'){ // РІСЃРµ СЂР°РІРЅРѕ РІ СЏРІР° СЃРєСЂРёРїС‚Рµ СЃС‚Р°РІРёС‚СЃСЏ Р·РЅР°С‡РµРЅРёРµ undefined 
 		var list = request.factoryService.getService('CJavaScript').getListJScripts(arguments.page);
 		return list;
 	}
@@ -92,13 +92,13 @@ component displayname="ajax" output="false"{
 			result.RETVAL = 1;
 			result.RETDESC= '';
 			result.REDIR= arguments.redir;
-			// подчищаем капчу
+			// РїРѕРґС‡РёС‰Р°РµРј РєР°РїС‡Сѓ
 			request.factoryService.getService('CCaptcha').delCaptcha(urlDecode(arguments.UUID));
-			// пропускаем в фаерволе
+			// РїСЂРѕРїСѓСЃРєР°РµРј РІ С„Р°РµСЂРІРѕР»Рµ
 			request.factoryService.getService('CFireWall').goodUser();
 		}else{
 			result.RETVAL = 0;
-			result.RETDESC= 'Контрольные сиволы не верны';
+			result.RETDESC= 'РљРѕРЅС‚СЂРѕР»СЊРЅС‹Рµ СЃРёРІРѕР»С‹ РЅРµ РІРµСЂРЅС‹';
 		}
 
 		return result;

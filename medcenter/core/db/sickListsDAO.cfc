@@ -1,7 +1,7 @@
 component displayName='sickListsDAO'{
 
-	// Псевдо конструктор
-	instance = {datasource = ''} ; // объект
+	// РџСЃРµРІРґРѕ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
+	instance = {datasource = ''} ; // РѕР±СЉРµРєС‚
 	instance.datasource = createObject('component', 'core.db.Datasource').init();
 
 
@@ -18,7 +18,7 @@ component displayName='sickListsDAO'{
 
 		qSickList.setSQL("SELECT * FROM sick_lists");
 	
-		var execute = qSickList.execute(); // вся структура и result и prefix
+		var execute = qSickList.execute(); // РІСЃСЏ СЃС‚СЂСѓРєС‚СѓСЂР° Рё result Рё prefix
 		var result = execute.getResult();
 		return result; //query
 	}
@@ -38,7 +38,7 @@ component displayName='sickListsDAO'{
 
 		qFindSL.setSQL("SELECT * FROM sick_lists");
 	
-		var execute = qFindSL.execute(); // вся структура и result и prefix
+		var execute = qFindSL.execute(); // РІСЃСЏ СЃС‚СЂСѓРєС‚СѓСЂР° Рё result Рё prefix
 		var result = execute.getResult();
 		return result; //query
 	}

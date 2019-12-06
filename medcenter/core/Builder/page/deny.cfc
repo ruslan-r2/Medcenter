@@ -1,6 +1,6 @@
 component attributeName='deny' {
 
-	// для виджетов
+	// РґР»СЏ РІРёРґР¶РµС‚РѕРІ
 	request.factoryWidget=createObject('component','core.builder.factoryWidget').Init();
 
 	function Init() {
@@ -25,7 +25,7 @@ component attributeName='deny' {
 
 		//body
 			page &= widget.info.View();
-			page &= '<div id="block"><br><br><br><b>DENY</b> По возможности указать за что deny.<br><br><br><br><br></div>';
+			page &= '<div id="block"><br><br><br><b>DENY</b> РџРѕ РІРѕР·РјРѕР¶РЅРѕСЃС‚Рё СѓРєР°Р·Р°С‚СЊ Р·Р° С‡С‚Рѕ deny.<br><br><br><br><br></div>';
 		//body
 
 		page &= '		</div>';

@@ -1,12 +1,12 @@
 /*
-	Нужно дописать СЕТТЕР и ГЕТТЕР.
-	Нужно стравнить сравнить то что есть в базе и то что есть по умолчанию.
-	лишнее удалить , недостающее добавить.
+	РќСѓР¶РЅРѕ РґРѕРїРёСЃР°С‚СЊ РЎР•РўРўР•Р  Рё Р“Р•РўРўР•Р .
+	РќСѓР¶РЅРѕ СЃС‚СЂР°РІРЅРёС‚СЊ СЃСЂР°РІРЅРёС‚СЊ С‚Рѕ С‡С‚Рѕ РµСЃС‚СЊ РІ Р±Р°Р·Рµ Рё С‚Рѕ С‡С‚Рѕ РµСЃС‚СЊ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ.
+	Р»РёС€РЅРµРµ СѓРґР°Р»РёС‚СЊ , РЅРµРґРѕСЃС‚Р°СЋС‰РµРµ РґРѕР±Р°РІРёС‚СЊ.
 
 */
 component displayname="CClient" {
 
-	// в лок обернуть
+	// РІ Р»РѕРє РѕР±РµСЂРЅСѓС‚СЊ
 	instance._default = structNew();
 	structAppend( instance._default, request.factoryService.getService('CSettings').getSettings('system') );
 	structAppend( instance._default, request.factoryService.getService('CSettings').getSettings('menu') );
@@ -18,8 +18,8 @@ component displayname="CClient" {
 	
 	function init(){
 		
-		instance._client = client; //Сюда помещаются клиентские данные которые есть в БД
-		// потом поменять request на application
+		instance._client = client; //РЎСЋРґР° РїРѕРјРµС‰Р°СЋС‚СЃСЏ РєР»РёРµРЅС‚СЃРєРёРµ РґР°РЅРЅС‹Рµ РєРѕС‚РѕСЂС‹Рµ РµСЃС‚СЊ РІ Р‘Р”
+		// РїРѕС‚РѕРј РїРѕРјРµРЅСЏС‚СЊ request РЅР° application
 		//writeDump(instance._client);
 		
 		for (key in instance._default){
@@ -28,7 +28,7 @@ component displayname="CClient" {
 				instance._client[key] = instance._default[key];
 			}
 		}
-		// Удаление старых клиентских переменных.
+		// РЈРґР°Р»РµРЅРёРµ СЃС‚Р°СЂС‹С… РєР»РёРµРЅС‚СЃРєРёС… РїРµСЂРµРјРµРЅРЅС‹С….
 		DeleteOld();
 		return this;
 	}
@@ -47,7 +47,7 @@ component displayname="CClient" {
 
 	function DeleteOld() {
 		clientVarList=GetClientVariablesList();
-		enableVarList=StructKeyList(instance._default); // если написать переменные как javascript и javaScript, скрипт не сработает
+		enableVarList=StructKeyList(instance._default); // РµСЃР»Рё РЅР°РїРёСЃР°С‚СЊ РїРµСЂРµРјРµРЅРЅС‹Рµ РєР°Рє javascript Рё javaScript, СЃРєСЂРёРїС‚ РЅРµ СЃСЂР°Р±РѕС‚Р°РµС‚
 
 		for ( i=1; i<=ListLen(clientVarList); i++) {
 			varName=ListGetAt(clientVarList,i);

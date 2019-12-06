@@ -1,7 +1,7 @@
 component displayName='rbacDAO'{
 
-	// Псевдо конструктор
-	instance = {datasource = ''} ; // объект
+	// РџСЃРµРІРґРѕ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
+	instance = {datasource = ''} ; // РѕР±СЉРµРєС‚
 	instance.datasource = createObject('component', 'core.db.Datasource').init();
 
 
@@ -17,13 +17,13 @@ component displayName='rbacDAO'{
 
 		qGroupList.setSQL("SELECT * FROM bbs_rbac_groups");
 	
-		var execute = qGroupList.execute(); // вся структура и result и prefix
+		var execute = qGroupList.execute(); // РІСЃСЏ СЃС‚СЂСѓРєС‚СѓСЂР° Рё result Рё prefix
 		var result = execute.getResult();
 		return result; //query
 	}
 
 	function createGroup( required string groupName, required string groupDescription , string rolesID, numeric groupStatus) {
-		// дописать время создания и ip
+		// РґРѕРїРёСЃР°С‚СЊ РІСЂРµРјСЏ СЃРѕР·РґР°РЅРёСЏ Рё ip
 		createGroup = new Query();
 		createGroup.setDatasource("#instance.datasource.getDSName()#");
 		createGroup.setName("createGroup");
@@ -37,11 +37,11 @@ component displayName='rbacDAO'{
 			VALUES ( :groupName, :groupDescription, :rolesID, :groupStatus )
 			");
 
-		createGroup.execute(); // вся структура и result и prefix
+		createGroup.execute(); // РІСЃСЏ СЃС‚СЂСѓРєС‚СѓСЂР° Рё result Рё prefix
 
 		var structCreateGroup = structNew();
 		structCreateGroup.RETVAL = 1; // create
-		structCreateGroup.RETDESC = 'Пользовательская группа создана!';
+		structCreateGroup.RETDESC = 'РџРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєР°СЏ РіСЂСѓРїРїР° СЃРѕР·РґР°РЅР°!';
 		return structCreateGroup;
 	}
 
@@ -69,13 +69,13 @@ component displayName='rbacDAO'{
 		updateGroup.execute();
 		var structUpdateGroup = structNew();
 		structUpdateGroup.RETVAL = 1; // create
-		structUpdateGroup.RETDESC = 'Пользовательская группа изменена!';
+		structUpdateGroup.RETDESC = 'РџРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєР°СЏ РіСЂСѓРїРїР° РёР·РјРµРЅРµРЅР°!';
 		return structUpdateGroup;
 
 	}
 
 	function createRole( required string roleName, required string roleDescription , roleChild, roleParent, string prmsIDs, numeric roleStatus) {
-		// дописать время создания и ip
+		// РґРѕРїРёСЃР°С‚СЊ РІСЂРµРјСЏ СЃРѕР·РґР°РЅРёСЏ Рё ip
 		createRole = new Query();
 		createRole.setDatasource("#instance.datasource.getDSName()#");
 		createRole.setName("createRole");
@@ -91,11 +91,11 @@ component displayName='rbacDAO'{
 			VALUES ( :roleName, :roleDescription, :roleChild, :roleParent, :prmsIDs, :roleStatus )
 			");
 
-		createRole.execute(); // вся структура и result и prefix
+		createRole.execute(); // РІСЃСЏ СЃС‚СЂСѓРєС‚СѓСЂР° Рё result Рё prefix
 
 		var structCreateRole = structNew();
 		structCreateRole.RETVAL = 1; // create
-		structCreateRole.RETDESC = 'Пользовательская роль создана!';
+		structCreateRole.RETDESC = 'РџРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєР°СЏ СЂРѕР»СЊ СЃРѕР·РґР°РЅР°!';
 		return structCreateRole;
 	}
 
@@ -127,13 +127,13 @@ component displayName='rbacDAO'{
 		updateRole.execute();
 		var structUpdateRole = structNew();
 		structUpdateRole.RETVAL = 1; // create
-		structUpdateRole.RETDESC = 'Пользовательская роль изменена!';
+		structUpdateRole.RETDESC = 'РџРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєР°СЏ СЂРѕР»СЊ РёР·РјРµРЅРµРЅР°!';
 		return structUpdateRole;
 
 	}
 
 	function createPermission( required string prmsName, required string prmsDescription , obsID, opsID, numeric prmsStatus) {
-		// дописать время создания и ip
+		// РґРѕРїРёСЃР°С‚СЊ РІСЂРµРјСЏ СЃРѕР·РґР°РЅРёСЏ Рё ip
 		createPermission = new Query();
 		createPermission.setDatasource("#instance.datasource.getDSName()#");
 		createPermission.setName("createPermission");
@@ -148,11 +148,11 @@ component displayName='rbacDAO'{
 			VALUES ( :prmsName, :prmsDescription, :obsID, :opsID, :prmsStatus )
 			");
 
-		createPermission.execute(); // вся структура и result и prefix
+		createPermission.execute(); // РІСЃСЏ СЃС‚СЂСѓРєС‚СѓСЂР° Рё result Рё prefix
 
 		var structCreatePermission = structNew();
 		structCreatePermission.RETVAL = 1; // create
-		structCreatePermission.RETDESC = 'Пользовательская роль создана!';
+		structCreatePermission.RETDESC = 'РџРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєР°СЏ СЂРѕР»СЊ СЃРѕР·РґР°РЅР°!';
 		return structCreatePermission;
 	}
 
@@ -182,7 +182,7 @@ component displayName='rbacDAO'{
 		updatePermission.execute();
 		var structUpdatePermission = structNew();
 		structUpdatePermission.RETVAL = 1; // create
-		structUpdatePermission.RETDESC = 'Пользовательская роль изменена!';
+		structUpdatePermission.RETDESC = 'РџРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєР°СЏ СЂРѕР»СЊ РёР·РјРµРЅРµРЅР°!';
 		return structUpdatePermission;
 
 	}
@@ -195,7 +195,7 @@ component displayName='rbacDAO'{
 
 		qRoleList.setSQL("SELECT * FROM bbs_rbac_roles");
 	
-		var execute = qRoleList.execute(); // вся структура и result и prefix
+		var execute = qRoleList.execute(); // РІСЃСЏ СЃС‚СЂСѓРєС‚СѓСЂР° Рё result Рё prefix
 		var result = execute.getResult();
 		return result; //query
 	}
@@ -208,7 +208,7 @@ component displayName='rbacDAO'{
 
 		qPrmsList.setSQL("SELECT * FROM bbs_rbac_prms");
 	
-		var execute = qPrmsList.execute(); // вся структура и result и prefix
+		var execute = qPrmsList.execute(); // РІСЃСЏ СЃС‚СЂСѓРєС‚СѓСЂР° Рё result Рё prefix
 		var result = execute.getResult();
 		return result; //query
 	}
@@ -221,7 +221,7 @@ component displayName='rbacDAO'{
 
 		qObjList.setSQL("SELECT * FROM bbs_rbac_obs");
 	
-		var execute = qObjList.execute(); // вся структура и result и prefix
+		var execute = qObjList.execute(); // РІСЃСЏ СЃС‚СЂСѓРєС‚СѓСЂР° Рё result Рё prefix
 		var result = execute.getResult();
 		return result; //query
 	}
@@ -234,13 +234,13 @@ component displayName='rbacDAO'{
 
 		qOpList.setSQL("SELECT * FROM bbs_rbac_ops");
 	
-		var execute = qOpList.execute(); // вся структура и result и prefix
+		var execute = qOpList.execute(); // РІСЃСЏ СЃС‚СЂСѓРєС‚СѓСЂР° Рё result Рё prefix
 		var result = execute.getResult();
 		return result; //query
 	}
 
 
-	function readGroups( required groupid , type = 'struct'){ // нужно передать id группы
+	function readGroups( required groupid , type = 'struct'){ // РЅСѓР¶РЅРѕ РїРµСЂРµРґР°С‚СЊ id РіСЂСѓРїРїС‹
 
 		qReadGroups=new Query();
 		if (arguments.type == 'struct' ){
@@ -352,7 +352,7 @@ component displayName='rbacDAO'{
 	}
 
 	function createObject( required string obsName, required string obsType, string obsDescription , numeric obsStatus) {
-		// дописать время создания и ip
+		// РґРѕРїРёСЃР°С‚СЊ РІСЂРµРјСЏ СЃРѕР·РґР°РЅРёСЏ Рё ip
 		createObject = new Query();
 		createObject.setDatasource("#instance.datasource.getDSName()#");
 		createObject.setName("createObject");
@@ -366,11 +366,11 @@ component displayName='rbacDAO'{
 			VALUES ( :obsName, :obsType, :obsDescription, :obsStatus )
 			");
 
-		createObject.execute(); // вся структура и result и prefix
+		createObject.execute(); // РІСЃСЏ СЃС‚СЂСѓРєС‚СѓСЂР° Рё result Рё prefix
 
 		var structCreateObject = structNew();
 		structCreateObject.RETVAL = 1; // create
-		structCreateObject.RETDESC = 'Объект создан!';
+		structCreateObject.RETDESC = 'РћР±СЉРµРєС‚ СЃРѕР·РґР°РЅ!';
 		return structCreateObject;
 	}
 
@@ -398,12 +398,12 @@ component displayName='rbacDAO'{
 		updateObject.execute();
 		var structUpdateObject = structNew();
 		structUpdateObject.RETVAL = 1; // create
-		structUpdateObject.RETDESC = 'Объект изменён!';
+		structUpdateObject.RETDESC = 'РћР±СЉРµРєС‚ РёР·РјРµРЅС‘РЅ!';
 		return structUpdateObject;
 
 	}
 
-	function readObject( required obsid){ // нужно передать id группы
+	function readObject( required obsid){ // РЅСѓР¶РЅРѕ РїРµСЂРµРґР°С‚СЊ id РіСЂСѓРїРїС‹
 
 		qReadObject=new Query();
 		qReadObject.SetName('qReadObject');
@@ -421,7 +421,7 @@ component displayName='rbacDAO'{
 	}
 
 	function createOperation( required string opsName, required string opsType, string opsDescription , numeric opsStatus) {
-		// дописать время создания и ip
+		// РґРѕРїРёСЃР°С‚СЊ РІСЂРµРјСЏ СЃРѕР·РґР°РЅРёСЏ Рё ip
 		createOperation = new Query();
 		createOperation.setDatasource("#instance.datasource.getDSName()#");
 		createOperation.setName("createOperation");
@@ -435,11 +435,11 @@ component displayName='rbacDAO'{
 			VALUES ( :opsName, :opsType, :opsDescription, :opsStatus )
 			");
 
-		createOperation.execute(); // вся структура и result и prefix
+		createOperation.execute(); // РІСЃСЏ СЃС‚СЂСѓРєС‚СѓСЂР° Рё result Рё prefix
 
 		var structCreateOperation = structNew();
 		structCreateOperation.RETVAL = 1; // create
-		structCreateOperation.RETDESC = 'Операция создана!';
+		structCreateOperation.RETDESC = 'РћРїРµСЂР°С†РёСЏ СЃРѕР·РґР°РЅР°!';
 		return structCreateOperation;
 	}
 
@@ -467,12 +467,12 @@ component displayName='rbacDAO'{
 		updateOperation.execute();
 		var structUpdateOperation = structNew();
 		structUpdateOperation.RETVAL = 1; // create
-		structUpdateOperation.RETDESC = 'Операция изменена!';
+		structUpdateOperation.RETDESC = 'РћРїРµСЂР°С†РёСЏ РёР·РјРµРЅРµРЅР°!';
 		return structUpdateOperation;
 
 	}
 
-	function readOperation( required opsid){ // нужно передать id группы
+	function readOperation( required opsid){ // РЅСѓР¶РЅРѕ РїРµСЂРµРґР°С‚СЊ id РіСЂСѓРїРїС‹
 
 		qReadOperation=new Query();
 		qReadOperation.SetName('qReadOperation');

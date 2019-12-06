@@ -1,6 +1,6 @@
 component attributeName='servicesType' {
 
-	// для виджетов
+	// РґР»СЏ РІРёРґР¶РµС‚РѕРІ
 	request.factoryWidget=createObject('component','core.builder.factoryWidget').Init();
 
 	service.rbac = request.RBAC;
@@ -11,11 +11,11 @@ component attributeName='servicesType' {
 	function Init() {
 		// -------------------------------------------------------------------------
 
-		instance.title = 'Типы услуг';
+		instance.title = 'РўРёРїС‹ СѓСЃР»СѓРі';
 
-		instance.description = 'Типы услуг';
+		instance.description = 'РўРёРїС‹ СѓСЃР»СѓРі';
 
-		instance.keywords = 'Типы услуг';
+		instance.keywords = 'РўРёРїС‹ СѓСЃР»СѓРі';
 
 		widget.meta=request.factoryWidget.GetWidget('meta').Init( title=instance.title, description=instance.description, keywords=instance.keywords);
 		widget.logo=request.factoryWidget.GetWidget('logo').Init(active=true);

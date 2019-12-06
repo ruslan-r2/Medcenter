@@ -1,9 +1,9 @@
 /*
-	users graphics API - сервис
+	users graphics API - СЃРµСЂРІРёСЃ
 */
 component displayname="usersGraphicsAPI" output="false" {
 
-	// Псевдо конструктор
+	// РџСЃРµРІРґРѕ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
 	//instance.usersGraphicsDAO = '';
 	//instance.usersGraphics = '';
 
@@ -42,10 +42,10 @@ component displayname="usersGraphicsAPI" output="false" {
 		// --------------------------------------------------------------------------------------------------------------------------
 		qUserGraphicsList.setSQL(select);
 
-		var execute = qUserGraphicsList.execute(dbtype="query"); // вся структура и result и prefix
+		var execute = qUserGraphicsList.execute(dbtype="query"); // РІСЃСЏ СЃС‚СЂСѓРєС‚СѓСЂР° Рё result Рё prefix
 		var result = execute.getResult();
 		//writeDump( result );
-		return result; // возвращает query
+		return result; // РІРѕР·РІСЂР°С‰Р°РµС‚ query
 	}
 
 	function addUserGraphic( userID, grType, grDate, grStartTime, grEndTime, grStatus ){
@@ -60,7 +60,7 @@ component displayname="usersGraphicsAPI" output="false" {
 		var result = structNew();
 		result.RETVAL = 0;
 		result.RETDESC = "";
-		result.STRUCT = structNew(); // для валидации полей
+		result.STRUCT = structNew(); // РґР»СЏ РІР°Р»РёРґР°С†РёРё РїРѕР»РµР№
 
 		validator = request.factoryService.getService('Validator');
 
@@ -89,11 +89,11 @@ component displayname="usersGraphicsAPI" output="false" {
 		//--------------------------------------------------------------------
 		rbac = request.RBAC;
 		if ( !rbac.CheckAccess('usersGraphics','create') ){
-			structInsert(result.struct, 'RBAC','У вас недостаточно прав!');
+			structInsert(result.struct, 'RBAC','РЈ РІР°СЃ РЅРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕ РїСЂР°РІ!');
 		}
 		//--------------------------------------------------------------------
 
-	        // если обнаружены ошибки
+	        // РµСЃР»Рё РѕР±РЅР°СЂСѓР¶РµРЅС‹ РѕС€РёР±РєРё
 		if ( structIsEmpty(result.struct) ){
 
 			structCreateUserGraphic = instance.usersGraphicsDAO.createUserGraphic( userID, grType, grDate, grStartTime, grEndTime, grStatus );
@@ -123,7 +123,7 @@ component displayname="usersGraphicsAPI" output="false" {
 		var result = structNew();
 		result.RETVAL = 0;
 		result.RETDESC = "";
-		result.STRUCT = structNew(); // для валидации полей
+		result.STRUCT = structNew(); // РґР»СЏ РІР°Р»РёРґР°С†РёРё РїРѕР»РµР№
 
 		validator = request.factoryService.getService('Validator');
 
@@ -131,11 +131,11 @@ component displayname="usersGraphicsAPI" output="false" {
 		if ( !struct_.retval ){
 			structInsert(result.struct, 'grType','#struct_.retdesc#');
 		}else{
-			// передаем в функцию проверки grID и grType и grDate
+			// РїРµСЂРµРґР°РµРј РІ С„СѓРЅРєС†РёСЋ РїСЂРѕРІРµСЂРєРё grID Рё grType Рё grDate
 			qCheck = instance.usersGraphicsDAO.checkUserGraphic( userID, grID, grType, grDate, grStartTime, grEndTime );
 			//writeDump(qCheck);
 			if (qCheck.recordcount != 0){
-				structInsert(result.struct, 'grType','У врача на это время записаны пациенты. Кол-во пациентов: <b>#qCheck.recordcount#</b>.');
+				structInsert(result.struct, 'grType','РЈ РІСЂР°С‡Р° РЅР° СЌС‚Рѕ РІСЂРµРјСЏ Р·Р°РїРёСЃР°РЅС‹ РїР°С†РёРµРЅС‚С‹. РљРѕР»-РІРѕ РїР°С†РёРµРЅС‚РѕРІ: <b>#qCheck.recordcount#</b>.');
 			}
 		}
 
@@ -161,11 +161,11 @@ component displayname="usersGraphicsAPI" output="false" {
 		//--------------------------------------------------------------------
 		rbac = request.RBAC;
 		if ( !rbac.CheckAccess('usersGraphics','update') ){
-			structInsert(result.struct, 'RBAC','У вас недостаточно прав!');
+			structInsert(result.struct, 'RBAC','РЈ РІР°СЃ РЅРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕ РїСЂР°РІ!');
 		}
 		//--------------------------------------------------------------------
 
-	        // если обнаружены ошибки
+	        // РµСЃР»Рё РѕР±РЅР°СЂСѓР¶РµРЅС‹ РѕС€РёР±РєРё
 		if ( structIsEmpty(result.struct) ){
 
 			structUpdateUserGraphic = instance.usersGraphicsDAO.updateUserGraphic( grID, userID, grType, grDate, grStartTime, grEndTime, grStatus );

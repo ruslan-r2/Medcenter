@@ -1,6 +1,6 @@
 component attributeName='sick lists' {
 
-	// äëÿ âèäæåòîâ
+	// Ğ´Ğ»Ñ Ğ²Ğ¸Ğ´Ğ¶ĞµÑ‚Ğ¾Ğ²
 	request.factoryWidget=createObject('component','core.builder.factoryWidget').Init();
 
 	instance.url.section = request.CRequest.getUrl('section');
@@ -9,11 +9,11 @@ component attributeName='sick lists' {
 	function Init() {
 		// -------------------------------------------------------------------------
 
-		instance.title='ÁÎËÜÍÈ×ÍÛÅ ËÈÑÒÛ.';
+		instance.title='Ğ‘ĞĞ›Ğ¬ĞĞ˜Ğ§ĞĞ«Ğ• Ğ›Ğ˜Ğ¡Ğ¢Ğ«.';
 
-		instance.description='ÁÎËÜÍÈ×ÍÛÅ ËÈÑÒÛ.';
+		instance.description='Ğ‘ĞĞ›Ğ¬ĞĞ˜Ğ§ĞĞ«Ğ• Ğ›Ğ˜Ğ¡Ğ¢Ğ«.';
 
-		instance.keywords='ÁÎËÜÍÈ×ÍÛÅ ËÈÑÒÛ.';
+		instance.keywords='Ğ‘ĞĞ›Ğ¬ĞĞ˜Ğ§ĞĞ«Ğ• Ğ›Ğ˜Ğ¡Ğ¢Ğ«.';
 
 		widget.meta=request.factoryWidget.GetWidget('meta').Init( title=instance.title, description=instance.description, keywords=instance.keywords);
 		widget.logo=request.factoryWidget.GetWidget('logo').Init(active=true);

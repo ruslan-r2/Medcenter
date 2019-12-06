@@ -1,9 +1,9 @@
 /* 
-	Виджет список пользователей --
+	Р’РёРґР¶РµС‚ СЃРїРёСЃРѕРє РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ --
 */
 
 component attributeName='userlist' output='false'{
-	// псевдо конструктор
+	// РїСЃРµРІРґРѕ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
 	factoryService = request.factoryService;
 
 	instance.view = '';
@@ -58,7 +58,7 @@ component attributeName='userlist' output='false'{
 
 	private function addUserFormHandler(){
 
-		// --- обработчик формы---
+		// --- РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹---
 		if ( isdefined('form.addUser') ){
 		  if ( !isDefined('form.user_groups') ){
 			form.user_groups = '';
@@ -73,7 +73,7 @@ component attributeName='userlist' output='false'{
 			if ( result.RETVAL is 1 ){
 				factoryService.getService('redirector').redirect('#request.CRequest.updateURL(false,"/?page=users")#');
 			}else{
-				// --- пробная версия
+				// --- РїСЂРѕР±РЅР°СЏ РІРµСЂСЃРёСЏ
 				if ( result.RETDESC is '') {
 					instance.message = '';
 				} else {
@@ -138,7 +138,7 @@ component attributeName='userlist' output='false'{
 
 			}
 		}
-		// --- обработчик формы---
+		// --- РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹---
 	}
 
 	function addUserForm(){
@@ -154,17 +154,17 @@ component attributeName='userlist' output='false'{
 		param name='form.emp_lastname' default='';
 		param name='form.emp_description' default='';
 
-		// ---------------------------------------------------------- форма ---------------------------------------------------------------
+		// ---------------------------------------------------------- С„РѕСЂРјР° ---------------------------------------------------------------
 		action = '#request.CRequest.updateURL(false,"/?page=users&section=user&action=add")#';
 
 		view = '';
 		view &= '<div class="grid_8">
 			<div class="signin-box">
-			<a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,"/?page=users")#">Назад</a><br><br>
-			<h2>Добавление учётной записи:</h2>
+			<a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,"/?page=users")#">РќР°Р·Р°Рґ</a><br><br>
+			<h2>Р”РѕР±Р°РІР»РµРЅРёРµ СѓС‡С‘С‚РЅРѕР№ Р·Р°РїРёСЃРё:</h2>
 			<form id="registration" name="registration" action="#action#" method="post">
 				<div>
-					<label for="userName"><strong class="username-label">Логин</strong></label>
+					<label for="userName"><strong class="username-label">Р›РѕРіРёРЅ</strong></label>
 					<input type="text" id="username" name="user_name" value="#form.user_name#" maxlength="20" size="20">';
 
 		if (instance.userName is not ''){
@@ -173,7 +173,7 @@ component attributeName='userlist' output='false'{
 
 		view &= '	</div>
 				<div>
-					<label><strong class="passwd-label">Пароль</strong></label>
+					<label><strong class="passwd-label">РџР°СЂРѕР»СЊ</strong></label>
 					<input type="password" id="password" name="user_pass" value="#form.user_pass#" maxlength="20">';
    		if (instance.userPass is not ''){
 		view &= '		<label for="userPass" class="error" generated="1">#instance.userPass#</label>';
@@ -181,7 +181,7 @@ component attributeName='userlist' output='false'{
 
 		view &= '	</div>
 				<div>
-					<label>Повторите пароль:</label>
+					<label>РџРѕРІС‚РѕСЂРёС‚Рµ РїР°СЂРѕР»СЊ:</label>
 					<input type="password" id="userpass1" name="user_pass1" value="#form.user_pass1#" maxlength="20">';
    		if (instance.userPass1 is not ''){
 		view &= '		<label for="userPass1" class="error" generated="2">#instance.userPass1#</label>';
@@ -190,7 +190,7 @@ component attributeName='userlist' output='false'{
 		view &= '	</div>
 				<div>
 					<hr>
-					<label>Фамилия:</label>
+					<label>Р¤Р°РјРёР»РёСЏ:</label>
 					<input type="text" id="family" name="emp_family" value="#form.emp_family#" maxlength="20">';
 
    		if (instance.empFamily is not ''){
@@ -199,7 +199,7 @@ component attributeName='userlist' output='false'{
 
 		view &= '	</div>
 				<div>
-					<label>Имя:</label>
+					<label>РРјСЏ:</label>
 					<input type="text" name="emp_firstname" value="#form.emp_firstname#" maxlength="20" >';
 
    		if (instance.empFirstname is not ''){
@@ -208,7 +208,7 @@ component attributeName='userlist' output='false'{
 
 		view &='	</div>
 				<div>
-					<label>Отчество:</label>
+					<label>РћС‚С‡РµСЃС‚РІРѕ:</label>
 					<input type="text" name="emp_lastname" value="#form.emp_lastname#" maxlength="20" >';
 
    		if (instance.empLastname is not ''){
@@ -217,7 +217,7 @@ component attributeName='userlist' output='false'{
 
 		view &= '	</div>
 				<div>
-					<label>Описание:</label>
+					<label>РћРїРёСЃР°РЅРёРµ:</label>
 					<textarea name = "emp_description" rows="6" cols="48" >#form.emp_description#</textarea>';
 
    		if (instance.empDescription is not ''){
@@ -226,7 +226,7 @@ component attributeName='userlist' output='false'{
 
 		view &= '	</div>
 				<div>
-					<label><b>Пользовательские группы:</b></label>';
+					<label><b>РџРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРёРµ РіСЂСѓРїРїС‹:</b></label>';
 
 				groupList = factoryService.getService('rbacAPI').getGroupList();
 				for (var x=1; x<=groupList.recordcount; x++){
@@ -241,7 +241,7 @@ component attributeName='userlist' output='false'{
 			view &= '
 				</div>
 				<div>
-					<label for="emp_type"><b>Типы служащих:</b></label> ';
+					<label for="emp_type"><b>РўРёРїС‹ СЃР»СѓР¶Р°С‰РёС…:</b></label> ';
 
 				employeesList = factoryService.getService('employeesAPI').getEmployeesList();
 				for (var x=1; x<=employeesList.recordcount; x++){
@@ -258,9 +258,9 @@ component attributeName='userlist' output='false'{
 
 			view &= '</div>
 				<div>
-					<label for="user_status"><b>Статус:</b></label> 
-					<input type="radio" name="user_status" value="1" #checkedRadio("1", form.user_status)# /> Включена <br>
-					<input type="radio" name="user_status" value="0" #checkedRadio("0", form.user_status)#/> Выключена <br>
+					<label for="user_status"><b>РЎС‚Р°С‚СѓСЃ:</b></label> 
+					<input type="radio" name="user_status" value="1" #checkedRadio("1", form.user_status)# /> Р’РєР»СЋС‡РµРЅР° <br>
+					<input type="radio" name="user_status" value="0" #checkedRadio("0", form.user_status)#/> Р’С‹РєР»СЋС‡РµРЅР° <br>
 				';
 
 			if (instance.userStatus is not ''){
@@ -271,8 +271,8 @@ component attributeName='userlist' output='false'{
 			view &= '
 				</div>
 				<div>
-					<input disabled class="g-button g-button-submit" type="submit" name="escape" value="Отмена">
-					<input class="g-button g-button-submit" type="submit" name="addUser" value="Сохранить"> ';
+					<input disabled class="g-button g-button-submit" type="submit" name="escape" value="РћС‚РјРµРЅР°">
+					<input class="g-button g-button-submit" type="submit" name="addUser" value="РЎРѕС…СЂР°РЅРёС‚СЊ"> ';
 
 			if (instance.message is not ''){
 				view &= '<div id="mes" style="color:red;">#instance.message#</div>';
@@ -281,13 +281,13 @@ component attributeName='userlist' output='false'{
 		view &='</div></form>
 			</div></div>';
 
-			// ------------------------------------------------ форма ---------------------------------------------------------------
+			// ------------------------------------------------ С„РѕСЂРјР° ---------------------------------------------------------------
 		return view;
 	}
 
 	private function updateUserFormHandler(){
 
-		// --- обработчик формы---
+		// --- РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹---
 		if ( isdefined('form.updateUser') ){
 		  if ( !isDefined('form.user_groups') ){
 			form.user_groups = '';
@@ -306,7 +306,7 @@ component attributeName='userlist' output='false'{
 					instance.message = '';
 				}
 			}else{
-				// --- пробная версия
+				// --- РїСЂРѕР±РЅР°СЏ РІРµСЂСЃРёСЏ
 				if ( result.RETDESC is '') {
 					instance.message = '';
 				} else {
@@ -371,7 +371,7 @@ component attributeName='userlist' output='false'{
 
 			}
 		}
-		// --- обработчик формы---
+		// --- РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹---
 	}
 
 	function updateUserForm( userid){
@@ -392,22 +392,22 @@ component attributeName='userlist' output='false'{
 		param name='form.emp_lastname' default='#qUser.emp_lastname#';
 		param name='form.emp_description' default='#qUser.emp_description#';
 
-		// ---------------------------------------------------------- форма ---------------------------------------------------------------
+		// ---------------------------------------------------------- С„РѕСЂРјР° ---------------------------------------------------------------
 		action = '#request.CRequest.updateURL(false,"/?page=users&section=user&action=edite&userid=#qUser.user_id#")#';
 
 		view = '';
 		view &= '<div class="grid_8">
 			<div class="signin-box">
-			<a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,"/?page=users")#">Назад</a><br><br>
-			<h2>Редактирование учётной записи:</h2>
+			<a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,"/?page=users")#">РќР°Р·Р°Рґ</a><br><br>
+			<h2>Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ СѓС‡С‘С‚РЅРѕР№ Р·Р°РїРёСЃРё:</h2>
 			<form id="registration" name="registration" action="#action#" method="post">
 				<div>
-					<label for="user_id"><b>ID пользователя:</b></label>
+					<label for="user_id"><b>ID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ:</b></label>
 					<input disabled type="text" name="_user_id" value="#form.user_id#" size = "2" maxlength = "2">
 					<input type="hidden" name="user_id" value="#form.user_id#" size = "2" maxlength = "2">
 				</div>
 				<div>
-					<label for="userName"><strong class="username-label">Логин</strong></label>
+					<label for="userName"><strong class="username-label">Р›РѕРіРёРЅ</strong></label>
 					<input type="text" id="username" name="user_name" value="#form.user_name#" maxlength="20" size="20">';
 
 		if (instance.userName is not ''){
@@ -416,7 +416,7 @@ component attributeName='userlist' output='false'{
 
 		view &= '	</div>
 				<div>
-					<label><strong class="passwd-label">Пароль</strong></label>
+					<label><strong class="passwd-label">РџР°СЂРѕР»СЊ</strong></label>
 					<input type="password" id="password" name="user_pass" value="#form.user_pass#" maxlength="20">';
    		if (instance.userPass is not ''){
 		view &= '		<label for="userPass" class="error" generated="1">#instance.userPass#</label>';
@@ -424,7 +424,7 @@ component attributeName='userlist' output='false'{
 
 		view &= '	</div>
 				<div>
-					<label>Повторите пароль:</label>
+					<label>РџРѕРІС‚РѕСЂРёС‚Рµ РїР°СЂРѕР»СЊ:</label>
 					<input type="password" id="userpass1" name="user_pass1" value="#form.user_pass1#" maxlength="20">';
    		if (instance.userPass1 is not ''){
 		view &= '		<label for="userPass1" class="error" generated="2">#instance.userPass1#</label>';
@@ -433,7 +433,7 @@ component attributeName='userlist' output='false'{
 		view &= '	</div>
 				<div>
 					<hr>
-					<label>Фамилия:</label>
+					<label>Р¤Р°РјРёР»РёСЏ:</label>
 					<input type="text" id="family" name="emp_family" value="#form.emp_family#" maxlength="20">';
 
    		if (instance.empFamily is not ''){
@@ -442,7 +442,7 @@ component attributeName='userlist' output='false'{
 
 		view &= '	</div>
 				<div>
-					<label>Имя:</label>
+					<label>РРјСЏ:</label>
 					<input type="text" name="emp_firstname" value="#form.emp_firstname#" maxlength="20" >';
 
    		if (instance.empFirstname is not ''){
@@ -451,7 +451,7 @@ component attributeName='userlist' output='false'{
 
 		view &='	</div>
 				<div>
-					<label>Отчество:</label>
+					<label>РћС‚С‡РµСЃС‚РІРѕ:</label>
 					<input type="text" name="emp_lastname" value="#form.emp_lastname#" maxlength="20" >';
 
    		if (instance.empLastname is not ''){
@@ -460,7 +460,7 @@ component attributeName='userlist' output='false'{
 
 		view &= '	</div>
 				<div>
-					<label>Описание:</label>
+					<label>РћРїРёСЃР°РЅРёРµ:</label>
 					<textarea name = "emp_description" rows="6" cols="48" >#form.emp_description#</textarea>';
 
    		if (instance.empDescription is not ''){
@@ -469,7 +469,7 @@ component attributeName='userlist' output='false'{
 
 		view &= '	</div>
 				<div>
-					<label><b>Пользовательские группы:</b></label>';
+					<label><b>РџРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРёРµ РіСЂСѓРїРїС‹:</b></label>';
 
 				groupList = factoryService.getService('rbacAPI').getGroupList();
 				for (var x=1; x<=groupList.recordcount; x++){
@@ -484,7 +484,7 @@ component attributeName='userlist' output='false'{
 			view &= '
 				</div>
 				<div>
-					<label for="emp_type"><b>Типы служащих:</b></label> ';
+					<label for="emp_type"><b>РўРёРїС‹ СЃР»СѓР¶Р°С‰РёС…:</b></label> ';
 
 				employeesList = factoryService.getService('employeesAPI').getEmployeesList();
 				for (var x=1; x<=employeesList.recordcount; x++){
@@ -501,9 +501,9 @@ component attributeName='userlist' output='false'{
 
 			view &= '</div>
 				<div>
-					<label for="user_status"><b>Статус:</b></label> 
-					<input type="radio" name="user_status" value="1" #checkedRadio("1", form.user_status)# /> Включена <br>
-					<input type="radio" name="user_status" value="0" #checkedRadio("0", form.user_status)#/> Выключена <br>
+					<label for="user_status"><b>РЎС‚Р°С‚СѓСЃ:</b></label> 
+					<input type="radio" name="user_status" value="1" #checkedRadio("1", form.user_status)# /> Р’РєР»СЋС‡РµРЅР° <br>
+					<input type="radio" name="user_status" value="0" #checkedRadio("0", form.user_status)#/> Р’С‹РєР»СЋС‡РµРЅР° <br>
 				';
 
 			if (instance.userStatus is not ''){
@@ -514,8 +514,8 @@ component attributeName='userlist' output='false'{
 			view &= '
 				</div>
 				<div>
-					<input disabled class="g-button g-button-submit" type="submit" name="escape" value="Отмена">
-					<input class="g-button g-button-submit" type="submit" name="updateUser" value="Сохранить"> ';
+					<input disabled class="g-button g-button-submit" type="submit" name="escape" value="РћС‚РјРµРЅР°">
+					<input class="g-button g-button-submit" type="submit" name="updateUser" value="РЎРѕС…СЂР°РЅРёС‚СЊ"> ';
 
 			if (instance.message is not ''){
 				view &= '<div id="mes" style="color:red;">#instance.message#</div>';
@@ -524,7 +524,7 @@ component attributeName='userlist' output='false'{
 		view &='</div></form>
 			</div></div>';
 
-			// ------------------------------------------------ форма ---------------------------------------------------------------
+			// ------------------------------------------------ С„РѕСЂРјР° ---------------------------------------------------------------
 		return view;
 	}
 
@@ -532,19 +532,19 @@ component attributeName='userlist' output='false'{
 	function userListForm(){
 		userList = factoryService.getService('usersAPI').getAllUserList();
 		var view = '';
-		view &= '<div class="grid_16"><div class="signin-box"><h2>Учётные записи:</h2>';
+		view &= '<div class="grid_16"><div class="signin-box"><h2>РЈС‡С‘С‚РЅС‹Рµ Р·Р°РїРёСЃРё:</h2>';
 			view &= '<table width="100%">
 						<tr style="color:grey;">
 						<td>id</td> 
-						<td>Логин</td> 
-						<td>Пароль</td> 
-						<td>Группы</td> 
-						<td>Статус</td>
-						<td>Тип служащего</td>
-						<td>Фамилия</td>
-						<td>Имя</td>
-						<td>Отчество</td>
-						<!--- <td>Описание</td> --->
+						<td>Р›РѕРіРёРЅ</td> 
+						<td>РџР°СЂРѕР»СЊ</td> 
+						<td>Р“СЂСѓРїРїС‹</td> 
+						<td>РЎС‚Р°С‚СѓСЃ</td>
+						<td>РўРёРї СЃР»СѓР¶Р°С‰РµРіРѕ</td>
+						<td>Р¤Р°РјРёР»РёСЏ</td>
+						<td>РРјСЏ</td>
+						<td>РћС‚С‡РµСЃС‚РІРѕ</td>
+						<!--- <td>РћРїРёСЃР°РЅРёРµ</td> --->
 						<td> --- </td>
 						</tr>';
 			//writeDump(userList);
@@ -562,11 +562,11 @@ component attributeName='userlist' output='false'{
 					<td>#userList.emp_firstname[x]#</td>
 					<td>#userList.emp_lastname[x]#</td>
 					<!--- <td>#userList.emp_description[x]#</td> --->
-					<td> <a href="/?page=users&section=user&action=edite&userid=#userList.user_id[x]#">Редактировать</a> | <a href="/?page=users&section=user&action=delete&userid=#userList.user_id[x]#">Удалить</a> </td>
+					<td> <a href="/?page=users&section=user&action=edite&userid=#userList.user_id[x]#">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a> | <a href="/?page=users&section=user&action=delete&userid=#userList.user_id[x]#">РЈРґР°Р»РёС‚СЊ</a> </td>
 					</tr>';
 			}
 
-			view &= '<tr><td style="text-align:left;" colspan="10"><a href="/?page=users&section=user&action=add"><br>+Добавить пользователя</a></td></tr>';
+			view &= '<tr><td style="text-align:left;" colspan="10"><a href="/?page=users&section=user&action=add"><br>+Р”РѕР±Р°РІРёС‚СЊ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ</a></td></tr>';
 
 			view &= '</table>';
 		view &= '</div></div>';

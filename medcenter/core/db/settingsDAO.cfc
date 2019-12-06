@@ -2,8 +2,8 @@
 */
 component displayname="settingsDAO" output="false" {
 
-	// Псевдо конструктор
-	instance = {datasource = ''} ; // объект
+	// РџСЃРµРІРґРѕ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
+	instance = {datasource = ''} ; // РѕР±СЉРµРєС‚
 	instance.datasource = createObject('component', 'core.db.Datasource').init();
 
 	function init() {
@@ -17,8 +17,8 @@ component displayname="settingsDAO" output="false" {
 		qSettings.setDatasource("#instance.datasource.getDSName()#");
 		qSettings.setSQL("select * from bbs_settings");
 
-		var result = qSettings.execute(); // вся структура и result и prefix
+		var result = qSettings.execute(); // РІСЃСЏ СЃС‚СЂСѓРєС‚СѓСЂР° Рё result Рё prefix
 		var dataSetting=result.getResult();
-		return dataSetting; // возвращает query
+		return dataSetting; // РІРѕР·РІСЂР°С‰Р°РµС‚ query
 	}
 }

@@ -1,5 +1,5 @@
 /* 
-	Виджет список пациентов --
+	Р’РёРґР¶РµС‚ СЃРїРёСЃРѕРє РїР°С†РёРµРЅС‚РѕРІ --
 */
 
 component attributeName='userlist' output='false'{
@@ -8,9 +8,9 @@ component attributeName='userlist' output='false'{
 	function PatientForm( ptID, ptFamily, ptFirstName, ptLastName, ptGender, ptDob, ptStatus ){
 
 		param name='form.pt_id' default='';
-		param name='form.pt_family' default='';		// фамилия
-		param name='form.pt_firstname' default='';	// Имя
-		param name='form.pt_lastname' default='';	// Отчество
+		param name='form.pt_family' default='';		// С„Р°РјРёР»РёСЏ
+		param name='form.pt_firstname' default='';	// РРјСЏ
+		param name='form.pt_lastname' default='';	// РћС‚С‡РµСЃС‚РІРѕ
 		param name='form.pt_gender' default='';
 		param name='form.pt_dob' default='';
 		//param name='form.pt_dobYear' default='';
@@ -18,17 +18,17 @@ component attributeName='userlist' output='false'{
 		//param name='form.pt_dobDay' default='';
 		param name='form.pt_status' default='1';
 
-		// ---------------------------------------------------------- форма ---------------------------------------------------------------
+		// ---------------------------------------------------------- С„РѕСЂРјР° ---------------------------------------------------------------
 		action = '#request.CRequest.updateURL(false,"/?page=patients&section=patient&action=add")#';
 
 		view = '';
 		view &= '<div class="grid_8">
 			<div class="signin-box">
-			<a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,"/?page=patients")#">Назад</a><br><br>
-			<h2>Добавление нового пациента:</h2>
+			<a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,"/?page=patients")#">РќР°Р·Р°Рґ</a><br><br>
+			<h2>Р”РѕР±Р°РІР»РµРЅРёРµ РЅРѕРІРѕРіРѕ РїР°С†РёРµРЅС‚Р°:</h2>
 			<form id="addpatient" name="addpatient" action="#action#" method="post">
 			<div>
-				<label for="ptFamily"><strong>Фамилия</strong></label>
+				<label for="ptFamily"><strong>Р¤Р°РјРёР»РёСЏ</strong></label>
 				<input type="text" id="ptFamily" name="pt_family" value="#form.pt_family#" maxlength="50" size="20">';
 
 			if (instance.patientFamily is not ''){
@@ -37,7 +37,7 @@ component attributeName='userlist' output='false'{
 
 		view &= '</div>
 			<div>
-				<label><strong>Имя</strong></label>
+				<label><strong>РРјСЏ</strong></label>
 				<input type="text" id="ptFirstname" name="pt_firstname" value="#form.pt_firstname#" maxlength="50" size="20">';
    			if (instance.patientFirstname is not ''){
 			view &= '<label for="ptFirstname" class="error" generated="1">#instance.patientFirstname#</label>';
@@ -45,7 +45,7 @@ component attributeName='userlist' output='false'{
 
 		view &= '</div>
 			<div>
-				<label>Отчество:</label>
+				<label>РћС‚С‡РµСЃС‚РІРѕ:</label>
 				<input type="text" id="ptLastname" name="pt_lastname" value="#form.pt_lastname#" maxlength="50" size="20">';
    			if (instance.patientLastname is not ''){
 			view &= '<label for="ptLastname" class="error" generated="2">#instance.patientLastname#</label>';
@@ -54,10 +54,10 @@ component attributeName='userlist' output='false'{
 
 		view &= '</div>
 			<div>
-				<label for="pt_gender"><b>Пол пациента:</b></label>
+				<label for="pt_gender"><b>РџРѕР» РїР°С†РёРµРЅС‚Р°:</b></label>
 				<select name="pt_gender">
-					<option value="Мужской" #checkedSelect("Мужской", form.pt_gender)# >Мужской</option>
-					<option value="Женский" #checkedSelect("Женский", form.pt_gender)# >Женский</option>
+					<option value="РњСѓР¶СЃРєРѕР№" #checkedSelect("РњСѓР¶СЃРєРѕР№", form.pt_gender)# >РњСѓР¶СЃРєРѕР№</option>
+					<option value="Р–РµРЅСЃРєРёР№" #checkedSelect("Р–РµРЅСЃРєРёР№", form.pt_gender)# >Р–РµРЅСЃРєРёР№</option>
 				</select>
 			';
 
@@ -67,13 +67,13 @@ component attributeName='userlist' output='false'{
 
 		view &= '</div>
 			<div>
-				<label for="pt_dob"><b>Дата рождения:</b></label>
+				<label for="pt_dob"><b>Р”Р°С‚Р° СЂРѕР¶РґРµРЅРёСЏ:</b></label>
                         
-				<label for="pt_dobDay">День:</label>
+				<label for="pt_dobDay">Р”РµРЅСЊ:</label>
 				<input type="text" id="ptDobDay" name="pt_dobDay" value="#form.pt_dobDay#" maxlength="2" size="2">
-				<label for="pt_dobMonth">Месяц:</label>
+				<label for="pt_dobMonth">РњРµСЃСЏС†:</label>
 				<input type="text" id="ptDobMonth" name="pt_dobMonth" value="#form.pt_dobMonth#" maxlength="2" size="2">
-				<label for="pt_dobYear">Год:</label>
+				<label for="pt_dobYear">Р“РѕРґ:</label>
 				<input type="text" id="ptDobYear" name="pt_dobYear" value="#form.pt_dobYear#" maxlength="4" size="4">
 			';
 
@@ -84,8 +84,8 @@ component attributeName='userlist' output='false'{
 		view &= '</div><div>
 				<input type="hidden" name="pt_status" value="#form.pt_status#" size = "2" maxlength = "2">
 				<hr>
-				<input disabled class="g-button g-button-submit" type="submit" name="escape" value="Отмена">
-				<input class="g-button g-button-submit" type="submit" name="addPatient" value="Сохранить"> ';
+				<input disabled class="g-button g-button-submit" type="submit" name="escape" value="РћС‚РјРµРЅР°">
+				<input class="g-button g-button-submit" type="submit" name="addPatient" value="РЎРѕС…СЂР°РЅРёС‚СЊ"> ';
 
 			if (instance.message is not ''){
 			view &= '<div id="mes" style="color:red;">#instance.message#</div>';
@@ -94,7 +94,7 @@ component attributeName='userlist' output='false'{
 		view &='</div></form>
 			</div></div>';
 
-			// ------------------------------------------------ форма ---------------------------------------------------------------
+			// ------------------------------------------------ С„РѕСЂРјР° ---------------------------------------------------------------
 		return view;
 	}
 

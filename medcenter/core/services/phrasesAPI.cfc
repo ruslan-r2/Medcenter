@@ -1,9 +1,9 @@
 /*
-	phrases API - сервис
+	phrases API - СЃРµСЂРІРёСЃ
 */
 component displayname="phrasesAPI" output="false" {
 
-	// Псевдо конструктор
+	// РџСЃРµРІРґРѕ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
 	instance = {phrases = '', phrasesDAO = '' };
 	instance.phrasesDAO = createObject('component', 'core.db.phrasesDAO' ).init();
 		
@@ -25,16 +25,16 @@ component displayname="phrasesAPI" output="false" {
 		var result = structNew();
 		result.RETVAL = 0;
 		result.RETDESC = "";
-		result.STRUCT = structNew(); // для валидации полей
+		result.STRUCT = structNew(); // РґР»СЏ РІР°Р»РёРґР°С†РёРё РїРѕР»РµР№
 
-		// проверку полей формы перед отправкой в базу нужно организовать здесь
-		// нужно структурировать формат ответа функции, чтобы можно было использовать
-		// в любых скриптах получается как API
+		// РїСЂРѕРІРµСЂРєСѓ РїРѕР»РµР№ С„РѕСЂРјС‹ РїРµСЂРµРґ РѕС‚РїСЂР°РІРєРѕР№ РІ Р±Р°Р·Сѓ РЅСѓР¶РЅРѕ РѕСЂРіР°РЅРёР·РѕРІР°С‚СЊ Р·РґРµСЃСЊ
+		// РЅСѓР¶РЅРѕ СЃС‚СЂСѓРєС‚СѓСЂРёСЂРѕРІР°С‚СЊ С„РѕСЂРјР°С‚ РѕС‚РІРµС‚Р° С„СѓРЅРєС†РёРё, С‡С‚РѕР±С‹ РјРѕР¶РЅРѕ Р±С‹Р»Рѕ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ
+		// РІ Р»СЋР±С‹С… СЃРєСЂРёРїС‚Р°С… РїРѕР»СѓС‡Р°РµС‚СЃСЏ РєР°Рє API
 
 		validator = request.factoryService.getService('Validator');
 
 		if ( userID != session.sessionStorage.getObject('user').getUserId() ){
-			structInsert(result.struct, 'RBAC','У Вас нет прав доступа.');
+			structInsert(result.struct, 'RBAC','РЈ Р’Р°СЃ РЅРµС‚ РїСЂР°РІ РґРѕСЃС‚СѓРїР°.');
 		}else{
 			var struct_ = validator.checkInput('#phValue#',true,'checkString',1,1500);
 			if ( !struct_.retval ){
@@ -44,7 +44,7 @@ component displayname="phrasesAPI" output="false" {
 
 		//--------------------------------------------------------------------
 
-	        // если обнаружены ошибки
+	        // РµСЃР»Рё РѕР±РЅР°СЂСѓР¶РµРЅС‹ РѕС€РёР±РєРё
 		if ( structIsEmpty(result.struct) ){
 			phValue=replace(phValue, chr(39), "#chr(34)#", "all");
 			phValue=replace(phValue, chr(60), "&##60;", "all");
@@ -72,12 +72,12 @@ component displayname="phrasesAPI" output="false" {
 		var result = structNew();
 		result.RETVAL = 0;
 		result.RETDESC = "";
-		result.STRUCT = structNew(); // для валидации полей
+		result.STRUCT = structNew(); // РґР»СЏ РІР°Р»РёРґР°С†РёРё РїРѕР»РµР№
 
 		validator = request.factoryService.getService('Validator');
 
 		if ( userID != session.sessionStorage.getObject('user').getUserId() ){
-			structInsert(result.struct, 'RBAC','У Вас нет прав доступа.');
+			structInsert(result.struct, 'RBAC','РЈ Р’Р°СЃ РЅРµС‚ РїСЂР°РІ РґРѕСЃС‚СѓРїР°.');
 		}else{
 			var struct_ = validator.checkInput('#phValue#',true,'checkString',1,1500);
 			if ( !struct_.retval ){
@@ -87,7 +87,7 @@ component displayname="phrasesAPI" output="false" {
 
 		//--------------------------------------------------------------------
 
-	        // если обнаружены ошибки
+	        // РµСЃР»Рё РѕР±РЅР°СЂСѓР¶РµРЅС‹ РѕС€РёР±РєРё
 		if ( structIsEmpty(result.struct) ){
 			phValue=replace(phValue, chr(39), "#chr(34)#", "all");
 			phValue=replace(phValue, chr(60), "&##60;", "all");

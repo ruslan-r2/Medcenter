@@ -1,9 +1,9 @@
 /* 
-	Виджет % от услуг--
+	Р’РёРґР¶РµС‚ % РѕС‚ СѓСЃР»СѓРі--
 */
 
 component attributeName='usersInterest' output='false'{
-	// псевдо конструктор
+	// РїСЃРµРІРґРѕ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
 	factoryService = request.factoryService;
 	instance.view = '';
 
@@ -57,7 +57,7 @@ component attributeName='usersInterest' output='false'{
 
 	private function addUserInterestFormHandler(userID){
 
-		// --- обработчик формы---
+		// --- РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹---
 		if ( isdefined('form.addUserInterest') ){
 		  if ( !isDefined('form.ui_value') ){
 			form.ui_value = '';
@@ -69,7 +69,7 @@ component attributeName='usersInterest' output='false'{
 			if ( result.RETVAL is 1 ){
 				factoryService.getService('redirector').redirect('#request.CRequest.updateURL(false,"/?page=usersInterest&section=userInterest&action=view&userid=#arguments.userID#")#');
 			}else{
-				// --- пробная версия
+				// --- РїСЂРѕР±РЅР°СЏ РІРµСЂСЃРёСЏ
 				if ( result.RETDESC is '') {
 					instance.message = '';
 				} else {
@@ -95,7 +95,7 @@ component attributeName='usersInterest' output='false'{
 
 			}
 		}
-		// --- обработчик формы---
+		// --- РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹---
 	}
 
 	function addUserInterestForm(userID,stID){
@@ -106,20 +106,20 @@ component attributeName='usersInterest' output='false'{
 		param name='form.ui_value' default='';
 		param name='form.ui_status' default='1';
 
-		// ---------------------------------------------------------- форма ---------------------------------------------------------------
+		// ---------------------------------------------------------- С„РѕСЂРјР° ---------------------------------------------------------------
 		view = '';
 		view &= '<div class="grid_8">
 			<div class="signin-box">
-			<a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,"/?page=usersInterest&section=userInterest&action=view&userid=#arguments.userID#")#">Назад</a><br><br>
-			<h2>Добавление % по типу услуг:</h2>
+			<a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,"/?page=usersInterest&section=userInterest&action=view&userid=#arguments.userID#")#">РќР°Р·Р°Рґ</a><br><br>
+			<h2>Р”РѕР±Р°РІР»РµРЅРёРµ % РїРѕ С‚РёРїСѓ СѓСЃР»СѓРі:</h2>
 			<form name="" action="#request.CRequest.updateURL(false,"/?page=usersInterest&section=userInterest&action=add&userid=#arguments.userID#&stid=#arguments.stID#")#" method="post">
 				<div>
-					<label for="user_id"><b>ID пользователя:</b></label>
+					<label for="user_id"><b>ID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ:</b></label>
 					<input disabled type="text" name="_user_id" value="#form.user_id#" size = "2" maxlength = "2">
 					<input type="hidden" name="user_id" value="#form.user_id#" size = "2" maxlength = "2">
 				</div>
 				<div>
-					<label for="st_id"><b>ID типа услуги:</b></label>
+					<label for="st_id"><b>ID С‚РёРїР° СѓСЃР»СѓРіРё:</b></label>
 					<input disabled type="text" name="_st_id" value="#form.st_id#" size = "2" maxlength = "2">
 					<input type="hidden" name="st_id" value="#form.st_id#" size = "2" maxlength = "2">
 				</div>';
@@ -127,9 +127,9 @@ component attributeName='usersInterest' output='false'{
 
 			view &= '
 				<div>
-					<label for="ui_type"><b>Тип значения:</b></label> 
+					<label for="ui_type"><b>РўРёРї Р·РЅР°С‡РµРЅРёСЏ:</b></label> 
 					<input type="radio" name="ui_type" value="1" #checkedRadio("1", form.ui_type)# /> %  <br>
-					<input type="radio" name="ui_type" value="0" #checkedRadio("0", form.ui_type)#/> Руб. <br>
+					<input type="radio" name="ui_type" value="0" #checkedRadio("0", form.ui_type)#/> Р СѓР±. <br>
 				';
 
 			if (instance.uiType is not ''){
@@ -139,7 +139,7 @@ component attributeName='usersInterest' output='false'{
 			view &= '</div>
 				<div>
 					<hr>
-					<label>Значение:</label>
+					<label>Р—РЅР°С‡РµРЅРёРµ:</label>
 					<input type="text" name="ui_value" value="#form.ui_value#" size="2" maxlength="2">';
 
    		if (instance.uiValue is not ''){
@@ -148,9 +148,9 @@ component attributeName='usersInterest' output='false'{
 
 			view &= '</div>
 				<div>
-					<label for="ui_status"><b>Статус:</b></label> 
-					<input type="radio" name="ui_status" value="1" #checkedRadio("1", form.ui_status)# /> Включена <br>
-					<input type="radio" name="ui_status" value="0" #checkedRadio("0", form.ui_status)#/> Выключена <br>
+					<label for="ui_status"><b>РЎС‚Р°С‚СѓСЃ:</b></label> 
+					<input type="radio" name="ui_status" value="1" #checkedRadio("1", form.ui_status)# /> Р’РєР»СЋС‡РµРЅР° <br>
+					<input type="radio" name="ui_status" value="0" #checkedRadio("0", form.ui_status)#/> Р’С‹РєР»СЋС‡РµРЅР° <br>
 				';
 
 			if (instance.uiStatus is not ''){
@@ -161,8 +161,8 @@ component attributeName='usersInterest' output='false'{
 			view &= '
 				</div>
 				<div>
-					<input disabled class="g-button g-button-submit" type="submit" name="escape" value="Отмена">
-					<input class="g-button g-button-submit" type="submit" name="addUserInterest" value="Сохранить"> ';
+					<input disabled class="g-button g-button-submit" type="submit" name="escape" value="РћС‚РјРµРЅР°">
+					<input class="g-button g-button-submit" type="submit" name="addUserInterest" value="РЎРѕС…СЂР°РЅРёС‚СЊ"> ';
 
 			if (instance.message is not ''){
 				view &= '<div id="mes" style="color:red;">#instance.message#</div>';
@@ -171,14 +171,14 @@ component attributeName='usersInterest' output='false'{
 		view &='</div></form>
 			</div></div>';
 
-			// ------------------------------------------------ форма ---------------------------------------------------------------
+			// ------------------------------------------------ С„РѕСЂРјР° ---------------------------------------------------------------
 		return view;
 	}
 
 //
 	private function updateUserInterestFormHandler(){
 
-		// --- обработчик формы---
+		// --- РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹---
 		if ( isdefined('form.updateUserInterest') ){
 		var userInterest = factoryService.getService('usersInterestAPI');
 		  result = userInterest.editeUserInterest( #form.ui_id#, #form.user_id#, #form.st_id#, #form.ui_type#, #form.ui_value#, #form.ui_status# );
@@ -191,7 +191,7 @@ component attributeName='usersInterest' output='false'{
 					instance.message = '';
 				}
 			}else{
-				// --- пробная версия
+				// --- РїСЂРѕР±РЅР°СЏ РІРµСЂСЃРёСЏ
 				if ( result.RETDESC is '') {
 					instance.message = '';
 				} else {
@@ -217,7 +217,7 @@ component attributeName='usersInterest' output='false'{
 
 			}
 		}
-		// --- обработчик формы---
+		// --- РѕР±СЂР°Р±РѕС‚С‡РёРє С„РѕСЂРјС‹---
 	}
 //
 
@@ -232,12 +232,12 @@ component attributeName='usersInterest' output='false'{
 		param name='form.ui_value' default='#userInterest.ui_value#';
 		param name='form.ui_status' default='#userInterest.ui_status#';
 
-		// ---------------------------------------------------------- форма ---------------------------------------------------------------
+		// ---------------------------------------------------------- С„РѕСЂРјР° ---------------------------------------------------------------
 		view = '';
 		view &= '<div class="grid_8">
 			<div class="signin-box">
-			<a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,"/?page=usersInterest&section=userInterest&action=view&userid=#arguments.userID#")#">Назад</a><br><br>
-			<h2>Редактирование % по типу услуг:</h2>
+			<a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,"/?page=usersInterest&section=userInterest&action=view&userid=#arguments.userID#")#">РќР°Р·Р°Рґ</a><br><br>
+			<h2>Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ % РїРѕ С‚РёРїСѓ СѓСЃР»СѓРі:</h2>
 			<form name="" action="#request.CRequest.updateURL(false,"/?page=usersInterest&section=userInterest&action=edite&userid=#arguments.userID#&stid=#arguments.stID#")#" method="post">
 				<div>
 					<label for="ui_id"><b>ID:</b></label>
@@ -245,12 +245,12 @@ component attributeName='usersInterest' output='false'{
 					<input type="hidden" name="ui_id" value="#form.ui_id#" size = "2" maxlength = "2">
 				</div>
 				<div>
-					<label for="user_id"><b>ID пользователя:</b></label>
+					<label for="user_id"><b>ID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ:</b></label>
 					<input disabled type="text" name="_user_id" value="#form.user_id#" size = "2" maxlength = "2">
 					<input type="hidden" name="user_id" value="#form.user_id#" size = "2" maxlength = "2">
 				</div>
 				<div>
-					<label for="st_id"><b>ID типа услуги:</b></label>
+					<label for="st_id"><b>ID С‚РёРїР° СѓСЃР»СѓРіРё:</b></label>
 					<input disabled type="text" name="_st_id" value="#form.st_id#" size = "2" maxlength = "2">
 					<input type="hidden" name="st_id" value="#form.st_id#" size = "2" maxlength = "2">
 				</div>';
@@ -258,9 +258,9 @@ component attributeName='usersInterest' output='false'{
 
 			view &= '
 				<div>
-					<label for="ui_type"><b>Тип значения:</b></label> 
+					<label for="ui_type"><b>РўРёРї Р·РЅР°С‡РµРЅРёСЏ:</b></label> 
 					<input type="radio" name="ui_type" value="1" #checkedRadio("1", form.ui_type)# /> %  <br>
-					<input type="radio" name="ui_type" value="0" #checkedRadio("0", form.ui_type)#/> Руб. <br>
+					<input type="radio" name="ui_type" value="0" #checkedRadio("0", form.ui_type)#/> Р СѓР±. <br>
 				';
 
 			if (instance.uiType is not ''){
@@ -270,7 +270,7 @@ component attributeName='usersInterest' output='false'{
 			view &= '</div>
 				<div>
 					<hr>
-					<label>Значение:</label>
+					<label>Р—РЅР°С‡РµРЅРёРµ:</label>
 					<input type="text" name="ui_value" value="#form.ui_value#" size="2" maxlength="2">';
 
    		if (instance.uiValue is not ''){
@@ -279,9 +279,9 @@ component attributeName='usersInterest' output='false'{
 
 			view &= '</div>
 				<div>
-					<label for="ui_status"><b>Статус:</b></label> 
-					<input type="radio" name="ui_status" value="1" #checkedRadio("1", form.ui_status)# /> Включена <br>
-					<input type="radio" name="ui_status" value="0" #checkedRadio("0", form.ui_status)#/> Выключена <br>
+					<label for="ui_status"><b>РЎС‚Р°С‚СѓСЃ:</b></label> 
+					<input type="radio" name="ui_status" value="1" #checkedRadio("1", form.ui_status)# /> Р’РєР»СЋС‡РµРЅР° <br>
+					<input type="radio" name="ui_status" value="0" #checkedRadio("0", form.ui_status)#/> Р’С‹РєР»СЋС‡РµРЅР° <br>
 				';
 
 			if (instance.uiStatus is not ''){
@@ -292,8 +292,8 @@ component attributeName='usersInterest' output='false'{
 			view &= '
 				</div>
 				<div>
-					<input disabled class="g-button g-button-submit" type="submit" name="escape" value="Отмена">
-					<input class="g-button g-button-submit" type="submit" name="updateUserInterest" value="Сохранить"> ';
+					<input disabled class="g-button g-button-submit" type="submit" name="escape" value="РћС‚РјРµРЅР°">
+					<input class="g-button g-button-submit" type="submit" name="updateUserInterest" value="РЎРѕС…СЂР°РЅРёС‚СЊ"> ';
 
 			if (instance.message is not ''){
 				view &= '<div id="mes" style="color:red;">#instance.message#</div>';
@@ -302,7 +302,7 @@ component attributeName='usersInterest' output='false'{
 		view &='</div></form>
 			</div></div>';
 
-			// ------------------------------------------------ форма ---------------------------------------------------------------
+			// ------------------------------------------------ С„РѕСЂРјР° ---------------------------------------------------------------
 		return view;
 	}
 
@@ -313,15 +313,15 @@ component attributeName='usersInterest' output='false'{
 
 		var view = '';
 		view &= '<div class="grid_16"><div class="signin-box">
-			<a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,"/?page=usersInterest")#">Назад</a><br><br>
-			<h2>#qUser.emp_family# #qUser.emp_firstname# #qUser.emp_lastname# % от услуг:</h2><hr>';
+			<a class="g-button g-button-submit" href="#request.CRequest.updateURL(false,"/?page=usersInterest")#">РќР°Р·Р°Рґ</a><br><br>
+			<h2>#qUser.emp_family# #qUser.emp_firstname# #qUser.emp_lastname# % РѕС‚ СѓСЃР»СѓРі:</h2><hr>';
 
 			view &= '<table width="100%">
 						<tr style="color:grey;">
-						<td>Наименование</td> 
-						<td>Тип</td> 
-						<td>Значение</td>
-						<td>Статус</td>
+						<td>РќР°РёРјРµРЅРѕРІР°РЅРёРµ</td> 
+						<td>РўРёРї</td> 
+						<td>Р—РЅР°С‡РµРЅРёРµ</td>
+						<td>РЎС‚Р°С‚СѓСЃ</td>
 						<td> --- </td>
 						</tr>';
 
@@ -329,14 +329,14 @@ component attributeName='usersInterest' output='false'{
                         UI = usersInterest.getUserInterest( qUser.user_id, servicesTypeList.st_id[y] );
 			view &= '<tr class="block">';
 				if (UI.recordcount == 0){
-					view &= '<td style="text-align:left;color:grey;" colspan="4">&nbsp#servicesTypeList.st_name[y]# - услуги отключены</td>
-						<td><a href="/?page=usersInterest&section=userInterest&action=add&userid=#qUser.user_id#&stid=#servicesTypeList.st_id[y]#">Добавить</a></td>';
+					view &= '<td style="text-align:left;color:grey;" colspan="4">&nbsp#servicesTypeList.st_name[y]# - СѓСЃР»СѓРіРё РѕС‚РєР»СЋС‡РµРЅС‹</td>
+						<td><a href="/?page=usersInterest&section=userInterest&action=add&userid=#qUser.user_id#&stid=#servicesTypeList.st_id[y]#">Р”РѕР±Р°РІРёС‚СЊ</a></td>';
 				}else{
 					view &= '<td style="text-align:left;">&nbsp#servicesTypeList.st_name[y]#</td> 
 					<td>#UI.ui_type#</td> 
 					<td>#UI.ui_value#</td>
 					<td>#UI.ui_status#</td>
-					<td><a href="/?page=usersInterest&section=userInterest&action=edite&userid=#qUser.user_id#&stid=#UI.st_id#">Редактировать</a></td>';
+					<td><a href="/?page=usersInterest&section=userInterest&action=edite&userid=#qUser.user_id#&stid=#UI.st_id#">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a></td>';
 				}
 			view &= '</tr>';
 
@@ -357,10 +357,10 @@ component attributeName='usersInterest' output='false'{
 				
 		var view = '';
 
-		view &= '<div class="grid_16"><div class="signin-box"><h2>Список врачей и пречитающиеся %:</h2>';
+		view &= '<div class="grid_16"><div class="signin-box"><h2>РЎРїРёСЃРѕРє РІСЂР°С‡РµР№ Рё РїСЂРµС‡РёС‚Р°СЋС‰РёРµСЃСЏ %:</h2>';
 			view &= '<table width="100%">
 						<tr style="color:grey;">
-						<td>Пользователь</td>';
+						<td>РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ</td>';
 						for ( var y=1; y<=servicesTypeList.recordcount; y++){ 
 							view &= '<td>#servicesTypeList.st_name[y]#</td>';
 						} 
@@ -380,7 +380,7 @@ component attributeName='usersInterest' output='false'{
 							}
 							view &= '<td>#value#</td>';
 						}
-						view &= '<td> <a href="/?page=usersInterest&section=userInterest&action=view&userid=#userList.user_id[x]#">Редактировать</a> </td>
+						view &= '<td> <a href="/?page=usersInterest&section=userInterest&action=view&userid=#userList.user_id[x]#">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a> </td>
 						</tr>';
 			}
 

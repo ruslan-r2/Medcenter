@@ -6,18 +6,18 @@ component attributeName = 'footer' {
 
 	function View() {
 	footer = '';
-	footer &= '<div class="grid_16"><div class="block" style="text-align:right;background:##f1f1f1">&nbsp;АлРус@2005-2014 г.&nbsp;</div></div>';
+	footer &= '<div class="grid_16"><div class="block" style="text-align:right;background:##f1f1f1">&nbsp;РђР»Р СѓСЃ@2005-2014 Рі.&nbsp;</div></div>';
 
-/*			<div class="grid_5">О нас<br>
-				<a href = "#request.CRequest.updateURL(false,"/?page=help&did=100001")#">Контакты</a><br>
-				<a href = "#request.CRequest.updateURL(false,"/?page=help&did=100000")#">О нас</a>
+/*			<div class="grid_5">Рћ РЅР°СЃ<br>
+				<a href = "#request.CRequest.updateURL(false,"/?page=help&did=100001")#">РљРѕРЅС‚Р°РєС‚С‹</a><br>
+				<a href = "#request.CRequest.updateURL(false,"/?page=help&did=100000")#">Рћ РЅР°СЃ</a>
 			</div>
-			<div class="grid_6">Основные разделы<br>
-				<a href = "#request.CRequest.updateURL(false,"/?page=help&did=200000")#">Пользовательское соглашение.</a>
+			<div class="grid_6">РћСЃРЅРѕРІРЅС‹Рµ СЂР°Р·РґРµР»С‹<br>
+				<a href = "#request.CRequest.updateURL(false,"/?page=help&did=200000")#">РџРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРѕРµ СЃРѕРіР»Р°С€РµРЅРёРµ.</a>
 			</div>
-			<div class="grid_5">Помощь<br>
-				<a href = "#request.CRequest.updateURL(false,"/?page=quest")#">Форма обратной связи</a><br>
-				<a href = "#request.CRequest.updateURL(false,"/?page=help&did=300000")#">ЧаВо\FAQ</a>
+			<div class="grid_5">РџРѕРјРѕС‰СЊ<br>
+				<a href = "#request.CRequest.updateURL(false,"/?page=quest")#">Р¤РѕСЂРјР° РѕР±СЂР°С‚РЅРѕР№ СЃРІСЏР·Рё</a><br>
+				<a href = "#request.CRequest.updateURL(false,"/?page=help&did=300000")#">Р§Р°Р’Рѕ\FAQ</a>
 			</div>';
 */
 		return footer;

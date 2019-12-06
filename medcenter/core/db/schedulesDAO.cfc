@@ -2,8 +2,8 @@
 */
 component displayname="schedulesDAO" output="false" {
 
-	// Псевдо конструктор
-	instance = {datasource = ''} ; // объект
+	// РџСЃРµРІРґРѕ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
+	instance = {datasource = ''} ; // РѕР±СЉРµРєС‚
 	instance.datasource = createObject('component', 'core.db.Datasource').init();
 
 	function init() {
@@ -17,8 +17,8 @@ component displayname="schedulesDAO" output="false" {
 		qSchedules.setDatasource("#instance.datasource.getDSName()#");
 		qSchedules.setSQL("select * from schedules");
 
-		var result = qSchedules.execute(); // вся структура и result и prefix
+		var result = qSchedules.execute(); // РІСЃСЏ СЃС‚СЂСѓРєС‚СѓСЂР° Рё result Рё prefix
 		var data=result.getResult();
-		return data; // возвращает query
+		return data; // РІРѕР·РІСЂР°С‰Р°РµС‚ query
 	}
 }

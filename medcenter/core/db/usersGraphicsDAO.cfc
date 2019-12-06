@@ -1,7 +1,7 @@
 component displayName='usersGraphicsDAO'{
 
-	// Псевдо конструктор
-	instance = {datasource = ''} ; // объект
+	// РџСЃРµРІРґРѕ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
+	instance = {datasource = ''} ; // РѕР±СЉРµРєС‚
 	instance.datasource = createObject('component', 'core.db.Datasource').init();
 
 
@@ -21,7 +21,7 @@ component displayName='usersGraphicsDAO'{
 			qUI.setSQL("SELECT * FROM users_graphics WHERE gr_date >= #arguments.startDate# AND gr_date <= #arguments.endDate#");
 		}
 	
-		var execute = qUI.execute(); // вся структура и result и prefix
+		var execute = qUI.execute(); // РІСЃСЏ СЃС‚СЂСѓРєС‚СѓСЂР° Рё result Рё prefix
 		var result = execute.getResult();
 		return result; //query
 	}
@@ -34,13 +34,13 @@ component displayName='usersGraphicsDAO'{
 
 		qUG.setSQL("SELECT * FROM users_graphics WHERE gr_id = #arguments.grID#");
 	
-		var execute = qUG.execute(); // вся структура и result и prefix
+		var execute = qUG.execute(); // РІСЃСЏ СЃС‚СЂСѓРєС‚СѓСЂР° Рё result Рё prefix
 		var result = execute.getResult();
 		return result; //query
 	}
 
 	function createUserGraphic(required numeric userID, numeric grType, grDate, grStartTime, grEndTime, numeric grStatus ) {
-		// дописать время создания и ip
+		// РґРѕРїРёСЃР°С‚СЊ РІСЂРµРјСЏ СЃРѕР·РґР°РЅРёСЏ Рё ip
 		createUserGraphic = new Query();
 		createUserGraphic.setDatasource("#instance.datasource.getDSName()#");
 		createUserGraphic.setName("createUserGraphic");
@@ -56,11 +56,11 @@ component displayName='usersGraphicsDAO'{
 			VALUES ( :userID, :grType, :grDate, :grStartTime, :grEndTime, :grStatus )
 			");
 
-		createUserGraphic.execute(); // вся структура и result и prefix
+		createUserGraphic.execute(); // РІСЃСЏ СЃС‚СЂСѓРєС‚СѓСЂР° Рё result Рё prefix
 
 		var structCreateUserGraphic = structNew();
 		structCreateUserGraphic.RETVAL = 1; // create
-		structCreateUserGraphic.RETDESC = 'График создан!';
+		structCreateUserGraphic.RETDESC = 'Р“СЂР°С„РёРє СЃРѕР·РґР°РЅ!';
 		return structCreateUserGraphic;
 	}
 
@@ -92,7 +92,7 @@ component displayName='usersGraphicsDAO'{
 		updateUserGraphic.execute();
 		var structupdateUserGraphic = structNew();
 		structupdateUserGraphic.RETVAL = 1; // create
-		structupdateUserGraphic.RETDESC = 'Запись изменена!';
+		structupdateUserGraphic.RETDESC = 'Р—Р°РїРёСЃСЊ РёР·РјРµРЅРµРЅР°!';
 		return structupdateUserGraphic;
 
 	}
@@ -138,7 +138,7 @@ component displayName='usersGraphicsDAO'{
 						AND b.rp_status > 0 ");
 		}
 	
-		var execute = chUG.execute(); // вся структура и result и prefix
+		var execute = chUG.execute(); // РІСЃСЏ СЃС‚СЂСѓРєС‚СѓСЂР° Рё result Рё prefix
 		var result = execute.getResult();
 		return result; //query
 	}

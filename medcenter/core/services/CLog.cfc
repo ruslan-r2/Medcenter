@@ -1,10 +1,10 @@
 /*
-  Сервис ЖУРНАЛ - Service CLOG
+  РЎРµСЂРІРёСЃ Р–РЈР РќРђР› - Service CLOG
 */
 
 component displayname="CLog" output="false" {
 
-	// Псевдо конструктор
+	// РџСЃРµРІРґРѕ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
 	instance = {objLogDAO = ''};
 	instance.objLogDAO = createObject('component', 'core.db.logDAO' ).init();
 	
@@ -12,24 +12,24 @@ component displayname="CLog" output="false" {
 		return this;
 	}
 
-	// Интерфейс функции Журнала-Log и LogDAO . ЛОГИКА.
+	// РРЅС‚РµСЂС„РµР№СЃ С„СѓРЅРєС†РёРё Р–СѓСЂРЅР°Р»Р°-Log Рё LogDAO . Р›РћР“РРљРђ.
 	function AddLogging(required string ssection, required string type, string description){
 
-	        // каждый раз запрашивать
+	        // РєР°Р¶РґС‹Р№ СЂР°Р· Р·Р°РїСЂР°С€РёРІР°С‚СЊ
 		lock scope="session" type="readonly" timeout="5" {
-			userIP = session.sessionStorage.getObject('userIP'); // сесионный Объект
+			userIP = session.sessionStorage.getObject('userIP'); // СЃРµСЃРёРѕРЅРЅС‹Р№ РћР±СЉРµРєС‚
 		}
-		// потом сделать переменные cgi и client через интерфейс
-		// записываем в базу
+		// РїРѕС‚РѕРј СЃРґРµР»Р°С‚СЊ РїРµСЂРµРјРµРЅРЅС‹Рµ cgi Рё client С‡РµСЂРµР· РёРЅС‚РµСЂС„РµР№СЃ
+		// Р·Р°РїРёСЃС‹РІР°РµРј РІ Р±Р°Р·Сѓ
 		instance.objLogDAO.CreateLogging(
-			now(),			//dateTimeCreate, // время создания саписи
-			userIP.getCurrentIp(),	//userIP,// IP адрес пользователя
-			arguments.ssection,	// скрипт в котором произошло событие\ошибка
-			arguments.type, 	// тип событие\ошибка
-			cgi.QUERY_STRING,	//surl,	// url в момент ошибки
-			arguments.description,	// полное описание
-			client.CFID,		// CFID пользователя
-			client.CFToken);	// CFToken пользователя
+			now(),			//dateTimeCreate, // РІСЂРµРјСЏ СЃРѕР·РґР°РЅРёСЏ СЃР°РїРёСЃРё
+			userIP.getCurrentIp(),	//userIP,// IP Р°РґСЂРµСЃ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+			arguments.ssection,	// СЃРєСЂРёРїС‚ РІ РєРѕС‚РѕСЂРѕРј РїСЂРѕРёР·РѕС€Р»Рѕ СЃРѕР±С‹С‚РёРµ\РѕС€РёР±РєР°
+			arguments.type, 	// С‚РёРї СЃРѕР±С‹С‚РёРµ\РѕС€РёР±РєР°
+			cgi.QUERY_STRING,	//surl,	// url РІ РјРѕРјРµРЅС‚ РѕС€РёР±РєРё
+			arguments.description,	// РїРѕР»РЅРѕРµ РѕРїРёСЃР°РЅРёРµ
+			client.CFID,		// CFID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+			client.CFToken);	// CFToken РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
 	}
 
 }

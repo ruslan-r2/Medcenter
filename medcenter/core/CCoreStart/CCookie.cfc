@@ -17,15 +17,15 @@
 				//instance._cookie['CFTOKEN'] = cookie.CFTOKEN;
 			
 			}
-			// все что приходит из COOKIES кроме CFID и CFTOKEN нужно удалять.
-			// JSESSIONID создается колдой для форм, как отключить или обойтись пока не знаю.
+			// РІСЃРµ С‡С‚Рѕ РїСЂРёС…РѕРґРёС‚ РёР· COOKIES РєСЂРѕРјРµ CFID Рё CFTOKEN РЅСѓР¶РЅРѕ СѓРґР°Р»СЏС‚СЊ.
+			// JSESSIONID СЃРѕР·РґР°РµС‚СЃСЏ РєРѕР»РґРѕР№ РґР»СЏ С„РѕСЂРј, РєР°Рє РѕС‚РєР»СЋС‡РёС‚СЊ РёР»Рё РѕР±РѕР№С‚РёСЃСЊ РїРѕРєР° РЅРµ Р·РЅР°СЋ.
 			if ( key != 'CFID' AND key != 'CFTOKEN' AND key != 'JSESSIONID'){
 				setCookie(name='#key#', value='', expires='NOW', domain='#cgi.REMOTE_ADDR#');
 
-				// лишнее что пришло в кукисах можно сохранять в текстовый файл, в базу опасно.
-				request.factoryService.getService('Clog').AddLogging(ssection='CCookie', type='event', description='Недопустимые символы в Cookie');
-				// фаерволл
-       				// почему то при каждом запросе попадаем в этот иф
+				// Р»РёС€РЅРµРµ С‡С‚Рѕ РїСЂРёС€Р»Рѕ РІ РєСѓРєРёСЃР°С… РјРѕР¶РЅРѕ СЃРѕС…СЂР°РЅСЏС‚СЊ РІ С‚РµРєСЃС‚РѕРІС‹Р№ С„Р°Р№Р», РІ Р±Р°Р·Сѓ РѕРїР°СЃРЅРѕ.
+				request.factoryService.getService('Clog').AddLogging(ssection='CCookie', type='event', description='РќРµРґРѕРїСѓСЃС‚РёРјС‹Рµ СЃРёРјРІРѕР»С‹ РІ Cookie');
+				// С„Р°РµСЂРІРѕР»Р»
+       				// РїРѕС‡РµРјСѓ С‚Рѕ РїСЂРё РєР°Р¶РґРѕРј Р·Р°РїСЂРѕСЃРµ РїРѕРїР°РґР°РµРј РІ СЌС‚РѕС‚ РёС„
 				request.factoryService.getService('CFireWall').addWarnings(1);
 			}
 		}

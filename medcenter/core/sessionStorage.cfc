@@ -1,10 +1,10 @@
 /*
-  Контроллер сессий - sessionStorage
+  РљРѕРЅС‚СЂРѕР»Р»РµСЂ СЃРµСЃСЃРёР№ - sessionStorage
 */
 
 component displayname="sessionStorage" output="false" {
 
-	// Псевдо конструктор
+	// РџСЃРµРІРґРѕ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
 	//lock scope="session" type="exclusive" timeout="15" {
 		session.object = structNew();
 		//session.object = {};

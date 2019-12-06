@@ -1,6 +1,6 @@
 component attributeName='companys DMS' {
 
-	// для виджетов
+	// РґР»СЏ РІРёРґР¶РµС‚РѕРІ
 	request.factoryWidget=createObject('component','core.builder.factoryWidget').Init();
 
 	instance.url.section = request.CRequest.getUrl('section');
@@ -9,11 +9,11 @@ component attributeName='companys DMS' {
 	function Init() {
 		// -------------------------------------------------------------------------
 
-		instance.title='Компании ДМС.';
+		instance.title='РљРѕРјРїР°РЅРёРё Р”РњРЎ.';
 
-		instance.description='Компании ДМС.';
+		instance.description='РљРѕРјРїР°РЅРёРё Р”РњРЎ.';
 
-		instance.keywords='Компании ДМС.';
+		instance.keywords='РљРѕРјРїР°РЅРёРё Р”РњРЎ.';
 
 		widget.meta=request.factoryWidget.GetWidget('meta').Init( title=instance.title, description=instance.description, keywords=instance.keywords);
 		widget.logo=request.factoryWidget.GetWidget('logo').Init(active=true);

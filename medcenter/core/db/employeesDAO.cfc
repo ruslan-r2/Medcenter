@@ -1,7 +1,7 @@
 component displayName='employeesDAO'{
 
-	// Псевдо конструктор
-	instance = {datasource = ''} ; // объект
+	// РџСЃРµРІРґРѕ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
+	instance = {datasource = ''} ; // РѕР±СЉРµРєС‚
 	instance.datasource = createObject('component', 'core.db.Datasource').init();
 
 
@@ -17,7 +17,7 @@ component displayName='employeesDAO'{
 
 		qEmployeesList.setSQL("SELECT * FROM type_employees ORDER BY empt_name");
 	
-		var execute = qEmployeesList.execute(); // вся структура и result и prefix
+		var execute = qEmployeesList.execute(); // РІСЃСЏ СЃС‚СЂСѓРєС‚СѓСЂР° Рё result Рё prefix
 		var result = execute.getResult();
 		return result; //query
 	}
@@ -30,13 +30,13 @@ component displayName='employeesDAO'{
 
 		qEmployee.setSQL("SELECT * FROM type_employees WHERE empt_id = '#arguments.emptid#' ");
 	
-		var execute = qEmployee.execute(); // вся структура и result и prefix
+		var execute = qEmployee.execute(); // РІСЃСЏ СЃС‚СЂСѓРєС‚СѓСЂР° Рё result Рё prefix
 		var result = execute.getResult();
 		return result; //query
 	}
 
 	function createEmployee( required string emptName, string emptDescription , emptParent, emptChild, numeric emptStatus) {
-		// дописать время создания и ip
+		// РґРѕРїРёСЃР°С‚СЊ РІСЂРµРјСЏ СЃРѕР·РґР°РЅРёСЏ Рё ip
 		createEmployee = new Query();
 		createEmployee.setDatasource("#instance.datasource.getDSName()#");
 		createEmployee.setName("createEmployee");
@@ -51,11 +51,11 @@ component displayName='employeesDAO'{
 			VALUES ( :emptName, :emptDescription, :emptParent, :emptChild, :emptStatus )
 			");
 
-		createEmployee.execute(); // вся структура и result и prefix
+		createEmployee.execute(); // РІСЃСЏ СЃС‚СЂСѓРєС‚СѓСЂР° Рё result Рё prefix
 
 		var structCreateEmployee = structNew();
 		structCreateEmployee.RETVAL = 1; // create
-		structCreateEmployee.RETDESC = 'Тип служащего создан!';
+		structCreateEmployee.RETDESC = 'РўРёРї СЃР»СѓР¶Р°С‰РµРіРѕ СЃРѕР·РґР°РЅ!';
 		return structCreateEmployee;
 	}
 
@@ -85,7 +85,7 @@ component displayName='employeesDAO'{
 		updateEmployee.execute();
 		var structUpdateEmployee = structNew();
 		structUpdateEmployee.RETVAL = 1; // create
-		structUpdateEmployee.RETDESC = 'Тип служащего изменён!';
+		structUpdateEmployee.RETDESC = 'РўРёРї СЃР»СѓР¶Р°С‰РµРіРѕ РёР·РјРµРЅС‘РЅ!';
 		return structUpdateEmployee;
 
 	}

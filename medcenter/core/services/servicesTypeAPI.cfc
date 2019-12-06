@@ -1,10 +1,10 @@
 /*
-	servicesAPI - список услуг.
+	servicesAPI - СЃРїРёСЃРѕРє СѓСЃР»СѓРі.
 */
 
 component attributeName='servicesTypeAPI' output='false'{
 
-	// Псевдо конструктор
+	// РџСЃРµРІРґРѕ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
 	instance.servicesTypeDAO = createObject('component', 'core.db.servicesTypeDAO' ).Init();
 
 	instance.servicesType = {};
@@ -14,7 +14,7 @@ component attributeName='servicesTypeAPI' output='false'{
 		return this;
 	}
 
-	// список пользовательских групп
+	// СЃРїРёСЃРѕРє РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРёС… РіСЂСѓРїРї
 	function setServicesTypeList(){
 		qServicesType = instance.servicesTypeDAO.readServiceTypeList();
 		instance.servicesType = qServicesType;
@@ -35,7 +35,7 @@ component attributeName='servicesTypeAPI' output='false'{
 		var result = structNew();
 		result.RETVAL = 0;
 		result.RETDESC = "";
-		result.STRUCT = structNew(); // для валидации полей
+		result.STRUCT = structNew(); // РґР»СЏ РІР°Р»РёРґР°С†РёРё РїРѕР»РµР№
 
 		validator = request.factoryService.getService('Validator');
 		                                               //required
@@ -55,7 +55,7 @@ component attributeName='servicesTypeAPI' output='false'{
 		}
 
 		//--------------------------------------------------------------------
-	        // если обнаружены ошибки
+	        // РµСЃР»Рё РѕР±РЅР°СЂСѓР¶РµРЅС‹ РѕС€РёР±РєРё
 		if ( structIsEmpty(result.struct) ){
 
 			structCreateServiceType = instance.servicesTypeDAO.createServiceType( stName, stDescription, stStatus );
@@ -82,7 +82,7 @@ component attributeName='servicesTypeAPI' output='false'{
 		var result = structNew();
 		result.RETVAL = 0;
 		result.RETDESC = "";
-		result.STRUCT = structNew(); // для валидации полей
+		result.STRUCT = structNew(); // РґР»СЏ РІР°Р»РёРґР°С†РёРё РїРѕР»РµР№
 
 		validator = request.factoryService.getService('Validator');
 		                                                 //required                 //DB
@@ -102,7 +102,7 @@ component attributeName='servicesTypeAPI' output='false'{
 		}
 
 		//--------------------------------------------------------------------
-	        // если обнаружены ошибки
+	        // РµСЃР»Рё РѕР±РЅР°СЂСѓР¶РµРЅС‹ РѕС€РёР±РєРё
 		if ( structIsEmpty(result.struct) ){
 
 			structUpdateServiceType = instance.servicesTypeDAO.updateServiceType( stID, stName, stDescription, stStatus );

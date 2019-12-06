@@ -1,6 +1,6 @@
 component attributeName='patients' {
 
-	// для виджетов
+	// РґР»СЏ РІРёРґР¶РµС‚РѕРІ
 	request.factoryWidget=createObject('component','core.builder.factoryWidget').Init();
 
 	instance.url.section = request.CRequest.getUrl('section');
@@ -9,11 +9,11 @@ component attributeName='patients' {
 	function Init() {
 		// -------------------------------------------------------------------------
 
-		instance.title='Картотека.';
+		instance.title='РљР°СЂС‚РѕС‚РµРєР°.';
 
-		instance.description='Картотека. Список пациентов.';
+		instance.description='РљР°СЂС‚РѕС‚РµРєР°. РЎРїРёСЃРѕРє РїР°С†РёРµРЅС‚РѕРІ.';
 
-		instance.keywords='Список пациентов.';
+		instance.keywords='РЎРїРёСЃРѕРє РїР°С†РёРµРЅС‚РѕРІ.';
 
 		widget.meta=request.factoryWidget.GetWidget('meta').Init( title=instance.title, description=instance.description, keywords=instance.keywords);
 		widget.logo=request.factoryWidget.GetWidget('logo').Init(active=true);

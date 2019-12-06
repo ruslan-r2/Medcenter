@@ -1,7 +1,7 @@
 component displayName='userReceptionDAO'{
 
-	// Псевдо конструктор
-	instance = {datasource = ''} ; // объект
+	// РџСЃРµРІРґРѕ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
+	instance = {datasource = ''} ; // РѕР±СЉРµРєС‚
 	instance.datasource = createObject('component', 'core.db.Datasource').init();
 
 
@@ -17,7 +17,7 @@ component displayName='userReceptionDAO'{
 
 		qReception.setSQL("SELECT * FROM reception WHERE rp_id = #arguments.rpID# AND rp_status >= 1 ");
 	
-		var execute = qReception.execute(); // вся структура и result и prefix
+		var execute = qReception.execute(); // РІСЃСЏ СЃС‚СЂСѓРєС‚СѓСЂР° Рё result Рё prefix
 		var result = execute.getResult();
 		return result; //query
 	}
@@ -30,7 +30,7 @@ component displayName='userReceptionDAO'{
 
 		qUserReception.setSQL("SELECT * FROM reception WHERE user_id = #arguments.userID# AND rp_status >= 1 AND rp_date = #arguments.date# ORDER BY rp_starttime_default");
 	
-		var execute = qUserReception.execute(); // вся структура и result и prefix
+		var execute = qUserReception.execute(); // РІСЃСЏ СЃС‚СЂСѓРєС‚СѓСЂР° Рё result Рё prefix
 		var result = execute.getResult();
 		return result; //query
 	}
@@ -58,13 +58,13 @@ component displayName='userReceptionDAO'{
 					user_id = #userID# AND rp_status >= 1 AND rp_date = #date# AND rp_starttime_default >= #starttime# AND rp_endtime_default <= #endtime# AND rp_id <> #rpID#");
 		}
 
-		var execute = qUserReception.execute(); // вся структура и result и prefix
+		var execute = qUserReception.execute(); // РІСЃСЏ СЃС‚СЂСѓРєС‚СѓСЂР° Рё result Рё prefix
 		var result = execute.getResult();
 		return result; //query
 	}
 
 	function createUserReception(required numeric userID, rpDate, rpStartTime, rpEndTime, numeric rpStatus ) {
-		// дописать время создания
+		// РґРѕРїРёСЃР°С‚СЊ РІСЂРµРјСЏ СЃРѕР·РґР°РЅРёСЏ
 		createUserReception = new Query();
 		createUserReception.setDatasource("#instance.datasource.getDSName()#");
 		createUserReception.setName("createUserReception");
@@ -81,7 +81,7 @@ component displayName='userReceptionDAO'{
 			VALUES ( :userID, :rpDate, :rpStartTime, :rpEndTime, :rpStatus, :rpDateAdd, :rpUserIDAdd )
 			");
 
-		ret = createUserReception.execute(); // вся структура и result и prefix
+		ret = createUserReception.execute(); // РІСЃСЏ СЃС‚СЂСѓРєС‚СѓСЂР° Рё result Рё prefix
 		//writeDump(ret.getPrefix().GENERATEDKEY);
 		//break;
 
@@ -121,7 +121,7 @@ component displayName='userReceptionDAO'{
 		_updateUserReception.execute();
 		var structUpdateUserReception = structNew();
 		structUpdateUserReception.RETVAL = 1; // create
-		structUpdateUserReception.RETDESC = 'Запись изменена!';
+		structUpdateUserReception.RETDESC = 'Р—Р°РїРёСЃСЊ РёР·РјРµРЅРµРЅР°!';
 		return structUpdateUserReception;
 
 	}
@@ -146,7 +146,7 @@ component displayName='userReceptionDAO'{
 		updateUserReception.execute();
 		var structUpdateUserReception = structNew();
 		structUpdateUserReception.RETVAL = 1; // create
-		structUpdateUserReception.RETDESC = 'Запись изменена!';
+		structUpdateUserReception.RETDESC = 'Р—Р°РїРёСЃСЊ РёР·РјРµРЅРµРЅР°!';
 		return structUpdateUserReception;
 
 	}
@@ -189,7 +189,7 @@ component displayName='userReceptionDAO'{
 		SNUserReception.execute();
 		var structSNUserReception = structNew();
 		structSNUserReception.RETVAL = 1; // create
-		structSNUserReception.RETDESC = 'Статус записи изменён!';
+		structSNUserReception.RETDESC = 'РЎС‚Р°С‚СѓСЃ Р·Р°РїРёСЃРё РёР·РјРµРЅС‘РЅ!';
 		return structSNUserReception;
 
 	}
@@ -210,11 +210,11 @@ component displayName='userReceptionDAO'{
 				rp_useriddelete=:rpUserIDDelete 
 				WHERE rp_id = :rpID ");
 
-		deleteUserReception.execute(); // вся структура и result и prefix
+		deleteUserReception.execute(); // РІСЃСЏ СЃС‚СЂСѓРєС‚СѓСЂР° Рё result Рё prefix
 
 		var structDeleteUserReception = structNew();
 		structDeleteUserReception.RETVAL = 1; // create
-		structDeleteUserReception.RETDESC = 'Запись к врачу удалена!';
+		structDeleteUserReception.RETDESC = 'Р—Р°РїРёСЃСЊ Рє РІСЂР°С‡Сѓ СѓРґР°Р»РµРЅР°!';
 		return structDeleteUserReception;
 	}
 

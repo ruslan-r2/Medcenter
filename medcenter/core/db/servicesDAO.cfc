@@ -8,8 +8,8 @@
 
 component displayName='servicesDAO'{
 
-	// Псевдо конструктор
-	instance = {datasource = ''} ; // объект
+	// РџСЃРµРІРґРѕ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
+	instance = {datasource = ''} ; // РѕР±СЉРµРєС‚
 	instance.datasource = createObject('component', 'core.db.Datasource').init();
 
 
@@ -60,7 +60,7 @@ component displayName='servicesDAO'{
 						#_stID# 
 					ORDER BY #_sortBy#");
 	
-		var execute = qServiceList.execute(); // вся структура и result и prefix
+		var execute = qServiceList.execute(); // РІСЃСЏ СЃС‚СЂСѓРєС‚СѓСЂР° Рё result Рё prefix
 		var result = execute.getResult();
 		return result; //query
 	}
@@ -73,13 +73,13 @@ component displayName='servicesDAO'{
 
 		qService.setSQL("SELECT * FROM pricelist_services WHERE pls_id = '#arguments.plsid#' ");
 	
-		var execute = qService.execute(); // вся структура и result и prefix
+		var execute = qService.execute(); // РІСЃСЏ СЃС‚СЂСѓРєС‚СѓСЂР° Рё result Рё prefix
 		var result = execute.getResult();
 		return result; //query
 	}
 
 	function createService( required string plsName, string plsDescription , plsPriceOt, plsPriceDo, plsCost, numeric emptID, numeric stID, numeric plsStatus, plsTime, plsShablon ) {
-		// дописать время создания и ip
+		// РґРѕРїРёСЃР°С‚СЊ РІСЂРµРјСЏ СЃРѕР·РґР°РЅРёСЏ Рё ip
 		createService = new Query();
 		createService.setDatasource("#instance.datasource.getDSName()#");
 		createService.setName("createService");
@@ -99,11 +99,11 @@ component displayName='servicesDAO'{
 			VALUES ( :plsName, :plsDescription, :plsPriceOt, :plsPriceDo, :plsCost, :emptID, :stID, :plsStatus, :plsTime, :plsShablon )
 			");
 
-		createService.execute(); // вся структура и result и prefix
+		createService.execute(); // РІСЃСЏ СЃС‚СЂСѓРєС‚СѓСЂР° Рё result Рё prefix
 
 		var structCreateService = structNew();
 		structCreateService.RETVAL = 1; // create
-		structCreateService.RETDESC = 'Услуга создана!';
+		structCreateService.RETDESC = 'РЈСЃР»СѓРіР° СЃРѕР·РґР°РЅР°!';
 		return structCreateService;
 	}
 
@@ -143,7 +143,7 @@ component displayName='servicesDAO'{
 		updateService.execute();
 		var structupdateService = structNew();
 		structupdateService.RETVAL = 1; // create
-		structupdateService.RETDESC = 'Услуга изменена!';
+		structupdateService.RETDESC = 'РЈСЃР»СѓРіР° РёР·РјРµРЅРµРЅР°!';
 		return structupdateService;
 
 	}
