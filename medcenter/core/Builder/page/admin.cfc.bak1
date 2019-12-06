@@ -1,0 +1,162 @@
+component attributeName='admin' {
+
+  function Init() {
+
+    if (IsDefined('form.renameRole')) {
+      zapros="UPDATE bbs_rbac_roles SET role_name='#form.newRole#' WHERE role_name='#form.oldRole#'";
+      bbsQuery(zapros);
+      location('http://127.0.0.1/?page=admin',false);
+    }
+    if (IsDefined('form.deleteRole')) {
+      zapros="DELETE FROM bbs_rbac_roles WHERE role_name='#form.oldRole#'";
+      bbsQuery(zapros);
+      location('http://127.0.0.1/?page=admin',false);
+    }
+    if (IsDefined('form.createRole')) {
+      zapros="INSERT INTO bbs_rbac_roles (role_name) VALUES ('#form.newRole#')";
+      bbsQuery(zapros);
+      location('http://127.0.0.1/?page=admin',false);
+    }
+    if (IsDefined('form.asignPerm')) {
+      if (form.newRoleName!='empty' and form.newRoleName!=form.oldRoleName) {
+        if (form.oldRoleName=='') {
+          zapros="INSERT INTO bbs_rbac_roles (role_name,prms_id) VALUES ('#form.newRoleName#',#form.oldPrmsId#)";
+        } else {
+          zapros="UPDATE bbs_rbac_roles SET role_name='#form.newRoleName#' WHERE role_name='#form.oldRoleName#' AND prms_id=#form.oldPrmsId#";
+        }
+        bbsQuery(zapros);
+        location('http://127.0.0.1/?page=admin',false);
+      }
+    }
+    if (IsDefined('form.deletePerm')) {
+      zapros="DELETE FROM bbs_rbac_roles WHERE role_name='#form.oldRoleName#' AND prms_id=#form.oldPrmsId#";
+      bbsQuery(zapros);
+      zapros="DELETE FROM bbs_rbac_prms WHERE prms_id=#form.oldPrmsId#";
+      bbsQuery(zapros);
+      location('http://127.0.0.1/?page=admin',false);
+    }
+    if (IsDefined('form.renamePerm')) {
+      if (form.newPermName!='' and form.newPermName!=form.oldPermName) {
+        zapros="UPDATE bbs_rbac_prms SET prms_name='#form.newPermName#' WHERE prms_id=#form.oldPrmsId#";
+        bbsQuery(zapros);
+        location('http://127.0.0.1/?page=admin',false);
+      }
+    }
+    if (IsDefined('form.createPerm')) {
+      if (form.newPerm!='') {
+        zapros="INSERT INTO bbs_rbac_prms (prms_name) VALUES ('#form.newPerm#')";
+        bbsQuery(zapros);
+        location('http://127.0.0.1/?page=admin',false);
+      }
+    }
+
+    writeoutput('<hr>ROLES<br>');
+    zapros="SELECT role_name FROM bbs_rbac_roles GROUP BY role_name ORDER BY role_name";
+    resultRole=bbsQuery(zapros);
+    for (x=1; x<=resultRole.recordCount; x=x+1 ) {
+      roleName=resultRole['role_name'][x];
+      writeoutput(' 
+<form action="" method="post">
+  <input type="hidden" name="oldRole" value="#roleName#">
+  <input type="text" name="newRole" value="#roleName#">
+  <input type="submit" name="renameRole" value="переименовать">
+  <input type="submit" name="deleteRole" value="удалить">
+</form>
+');
+    }
+
+/*
+writeoutput('<hr>');
+    zapros="SELECT * FROM bbs_rbac_roles ORDER BY role_name";
+    resultRole=bbsQuery(zapros);
+writedump(resultRole);
+*/
+
+writeoutput('<hr>PERMISSION<br>');
+    zapros="SELECT a.prms_id,a.prms_name,(SELECT b.role_name FROM bbs_rbac_roles b WHERE b.prms_id=a.prms_id) AS role_name FROM bbs_rbac_prms a ORDER BY a.prms_name";
+    resultRole=bbsQuery(zapros);
+for (x=1; x<=resultRole.recordCount; x=x+1 ) {
+  roleName=resultRole['role_name'][x];
+  prmsId=resultRole['prms_id'][x];
+  prmsName=resultRole['prms_name'][x];
+  writeoutput('
+<form action="" method="post">
+  <input type="hidden" name="oldPermName" value="#prmsName#">
+  <input type="hidden" name="oldPrmsId" value="#prmsId#">
+  <input type="hidden" name="oldRoleName" value="#roleName#">
+  <input type="text" name="newPermName" value="#prmsName#">
+  <input type="submit" name="renamePerm" value="переименовать">
+  <input type="submit" name="deletePerm" value="удалить">
+  <select name="newRoleName"><option value="empty"');
+if (roleName=='') {
+  writeoutput(' selected');
+}
+writeoutput('>не указано</option><option value="abstract"');
+if (roleName=='abstract') {
+  writeoutput(' selected');
+}
+writeoutput('>abstract</option><option value="guest"');
+if (roleName=='guest') {
+  writeoutput(' selected');
+}
+writeoutput('>guest</option><option value="user"');
+if (roleName=='user') {
+  writeoutput(' selected');
+}
+writeoutput('>user</option</select>
+  <input type="submit" name="asignPerm" value="переназначить">
+</form>
+');
+}
+writeoutput('
+<form action="" method="post">
+  <input type="text" name="newPerm">
+  <input type="submit" name="createPerm" value="создать разрешение">
+</form>
+');
+
+
+
+writeoutput('<hr>');
+//zapros="SELECT a.prms_id,a.prms_name,(SELECT b.role_name FROM bbs_rbac_roles b WHERE b.prms_id=a.prms_id) AS role_name FROM bbs_rbac_prms a ORDER BY a.prms_name";
+zapros="SELECT a.role_id,a.role_name,b.prms_name FROM bbs_rbac_roles a,bbs_rbac_prms b WHERE a.prms_id=b.prms_id ORDER BY b.prms_name,a.role_name";
+resultPrms=bbsQuery(zapros);
+writedump(resultPrms);
+
+    return this;
+  }
+
+  function bbsQuery(zapros) {
+    queryNew=new Query();
+    queryNew.SetName('queryNew');
+    queryNew.SetDatasource('bbs_test');
+    queryNew.SetSql(arguments.zapros);
+    execute=queryNew.Execute();
+    result=execute.GetResult();
+    param name='result' default='';
+    return result;
+  }
+
+  function Render() {
+/*
+    service.redirect=request.factoryService.GetService('redirector');
+    widget.frame=request.factoryWidget.GetWidget('frame').Init();
+*/
+/*
+queryRbac.addParam(name="ops_name",value="write");
+queryRbac.addParam(name="ops_type",value="file");
+//queryRbac.setSQL("UPDATE bbs_rbac_roles SET prms_id=8 WHERE role_id=2");
+queryRbac.setSQL("INSERT INTO bbs_rbac_ops (ops_name,ops_type) VALUES (:ops_name,:ops_type)");
+execute=queryRbac.Execute();
+//queryRbac.SetSql("SELECT * FROM bbs_rbac_roles");
+*/
+/*
+    if (service.redirect.GetState()) {
+      widget.frame.ViewTop();
+      widget.frame.ViewMiddle();
+    widget.frame.ViewBottom();
+    }
+*/
+  }
+
+}

@@ -1,0 +1,13 @@
+component attributeName='admin' {
+
+	service.rbac = request.RBAC; //request.factoryService.GetService('rbac');
+
+	function Init(){
+		return this;
+	}
+
+	function Render(){
+		writeDump( service.rbac.getMemento() );
+	}
+
+}

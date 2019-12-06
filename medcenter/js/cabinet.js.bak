@@ -1,0 +1,21 @@
+$(document).ready(function (){
+
+	$('input[type=button]').click(function(){
+		var id = $(this).attr('id');
+		var pattern = /TextInsert_/;
+
+		if ( id.search(pattern,id) == 0 ){
+			var _text = $('#TextSelect_'+num).val();
+			$('#OutPut_'+num).val($('#OutPut_'+num).val()+_text);
+		}
+
+		//console.log( num );
+
+		var pattern = /Key_/;
+
+		console.log( num.search(pattern,num) );
+
+	});
+
+
+});

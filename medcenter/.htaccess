@@ -1,0 +1,12 @@
+# настроичный файл
+AddDefaultCharset utf-8
+
+RewriteEngine on
+RewriteBase /
+
+#RewriteCond %{HTTPS} !=on
+#RewriteCond %{HTTP_HOST} ^(medcenter-gp.ru)$
+#RewriteCond %{QUERY_STRING} ^(.*)page=pasport(.*)$|^(.*)page=registration(.*)$
+#RewriteRule ^(.*)$ https://%{SERVER_NAME}%{REQUEST_URI} [R,L]
+
+Options -Indexes FollowSymLinks

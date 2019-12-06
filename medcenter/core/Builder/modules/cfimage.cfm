@@ -1,0 +1,1 @@
+<cfimage action="captcha" fontsize="20" width="175" height="30" text="#instance.CCaptcha.getCaptcha(UUID)#" fonts="Arial" difficulty="high">
